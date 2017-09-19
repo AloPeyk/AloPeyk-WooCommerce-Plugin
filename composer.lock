@@ -1,0 +1,67 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "fa71deda2da73759e1849829ea4b9eda",
+    "packages": [
+        {
+            "name": "alopeyk/alopeyk-api-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AloPeyk/AloPeyk-Api-PHP.git",
+                "reference": "41048a9b96fae6cd11f61a51c61b4c84aba6f73e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/41048a9b96fae6cd11f61a51c61b4c84aba6f73e",
+                "reference": "41048a9b96fae6cd11f61a51c61b4c84aba6f73e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "AloPeyk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AloPeyk LTD",
+                    "email": "admin@alopeyk.com"
+                }
+            ],
+            "description": "AloPeyk Api PHP Handler",
+            "keywords": [
+                "AloPeyk",
+                "AloPeyk Api",
+                "AloPeyk Business Api",
+                "AloPeyk PHP",
+                "api",
+                "business",
+                "php",
+                "الوپيك",
+                "الوپیک"
+            ],
+            "time": "2017-12-10T12:55:27+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "alopeyk/alopeyk-api-php": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

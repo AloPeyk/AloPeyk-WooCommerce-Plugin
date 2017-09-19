@@ -1,0 +1,5 @@
+{
+    "require": {
+        "alopeyk/alopeyk-api-php": "@dev"
+    }
+}
