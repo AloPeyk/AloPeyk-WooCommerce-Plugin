@@ -1,0 +1,51 @@
+[
+    {
+        "name": "alopeyk/alopeyk-api-php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/AloPeyk/AloPeyk-Api-PHP.git",
+            "reference": "41048a9b96fae6cd11f61a51c61b4c84aba6f73e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/41048a9b96fae6cd11f61a51c61b4c84aba6f73e",
+            "reference": "41048a9b96fae6cd11f61a51c61b4c84aba6f73e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "time": "2017-12-10T12:55:27+00:00",
+        "type": "package",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "AloPeyk\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "AloPeyk LTD",
+                "email": "admin@alopeyk.com"
+            }
+        ],
+        "description": "AloPeyk Api PHP Handler",
+        "keywords": [
+            "AloPeyk",
+            "AloPeyk Api",
+            "AloPeyk Business Api",
+            "AloPeyk PHP",
+            "api",
+            "business",
+            "php",
+            "الوپيك",
+            "الوپیک"
+        ]
+    }
+]
