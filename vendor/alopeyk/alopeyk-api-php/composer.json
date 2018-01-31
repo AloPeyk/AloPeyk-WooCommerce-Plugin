@@ -1,0 +1,24 @@
+{
+  "name": "alopeyk/alopeyk-api-php",
+  "type": "package",
+  "description": "AloPeyk Api PHP Handler",
+  "keywords": [
+    "AloPeyk", "Business", "Api", "AloPeyk Api", "AloPeyk Business Api", "AloPeyk PHP", "PHP", "الوپیک", "الوپيك"
+  ],
+  "authors": [
+    {
+      "name": "AloPeyk LTD",
+      "email": "admin@alopeyk.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.5.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "AloPeyk\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
