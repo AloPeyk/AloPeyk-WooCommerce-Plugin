@@ -43,8 +43,8 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 	 */
 	function init() {
 
-		$this->title     = $this->get_option( 'title' );
-		$this->enabled   = $this->get_option( 'enabled' );
+		$this->title     = $this->get_option( 'title', __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ) );
+		$this->enabled   = $this->get_option( 'enabled', 'no' );
 		$this->wrong_key = $this->get_option( 'wrong_key', 'no' );
 		foreach ( $this->required_fields as $required_field ) {
 			$this->{$required_field} = $this->get_option( $required_field );
@@ -82,7 +82,7 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 			$form_fields['title'] = array(
 				'title'       => __( 'Method Title', 'alopeyk-woocommerce-shipping' ),
 				'type'        => 'text',
-				'default'     => __( 'Alopeyk Shipping', 'alopeyk-woocommerce-shipping'),
+				'default'     => __( 'Alopeyk', 'alopeyk-woocommerce-shipping'),
 				'description' => __( 'This controls the title which the user will see during checkout proccess.', 'alopeyk-woocommerce-shipping' ),
 			);
 			$form_fields['store_options_title_spacer'] = array(

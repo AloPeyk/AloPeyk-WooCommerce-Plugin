@@ -6,18 +6,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/AloPeyk/AloPeyk-Api-PHP.git",
-            "reference": "41048a9b96fae6cd11f61a51c61b4c84aba6f73e"
+            "reference": "447e9ce7133a77fcfe9ce07ddfdd38e1aaad5f25"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/41048a9b96fae6cd11f61a51c61b4c84aba6f73e",
-            "reference": "41048a9b96fae6cd11f61a51c61b4c84aba6f73e",
+            "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/447e9ce7133a77fcfe9ce07ddfdd38e1aaad5f25",
+            "reference": "447e9ce7133a77fcfe9ce07ddfdd38e1aaad5f25",
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9"
         },
-        "time": "2017-12-10T12:55:27+00:00",
+        "time": "2018-01-28T13:55:03+00:00",
         "type": "package",
         "installation-source": "source",
         "autoload": {

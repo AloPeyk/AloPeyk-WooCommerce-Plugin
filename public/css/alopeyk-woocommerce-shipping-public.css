@@ -93,6 +93,9 @@
 .awcshm-return-price-alert {
 	display: block;
 }
+.woocommerce-view-order .awcshm-dashboard-track-button {
+	margin-bottom: 1.25em;
+}
 .awcshm-dashboard-track-button + * {
 	margin-top: 1em;
 }

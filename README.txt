@@ -3,11 +3,11 @@
 Contributors: alopeyk, bmoudi
 Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
 Requires at least: 4.4
-Tested up to: 4.9.1
+Tested up to: 4.9.2
+Stable tag: 1.0
 Requires PHP: 5.4
 WC requires at least: 2.6
-WC tested up to: 3.1.2
-Stable tag: trunk
+WC tested up to: 3.3.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
