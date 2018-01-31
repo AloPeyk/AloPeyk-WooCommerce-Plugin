@@ -526,7 +526,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			$shipping_address           = $checkout ? WC()->session->get( 'destination_address' )   : null;
 			$shipping_address_unit      = $checkout ? WC()->session->get( 'destination_unit' )      : null;
 			$shipping_address_number    = $checkout ? WC()->session->get( 'destination_number' )    : null;
-			echo '<div id="awcshm-address-details"><h3>' . __('Address Details') . '</h3>';
+			echo '<div id="awcshm-address-details"><h3>' . __( 'Address Details', 'alopeyk-woocommerce-shipping' ) . '</h3>';
 			woocommerce_form_field( 'destination_latitude', array(
 				'type'              => 'text',
 				'required'          => true,

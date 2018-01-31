@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Alopeyk WooCommerce Shipping\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-25 12:11+0000\n"
-"PO-Revision-Date: 2017-12-25 12:14+0000\n"
+"POT-Creation-Date: 2018-01-27 14:45+0000\n"
+"PO-Revision-Date: 2018-01-27 14:46+0000\n"
 "Last-Translator: admin <www.moudi@gmail.com>\n"
 "Language-Team: Persian\n"
 "Language: fa-IR\n"
@@ -62,22 +62,9 @@ msgstr ""
 msgid "سفیر باکس حمل مرسوله به همراه نداشت"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:250
-msgid "Order Options"
-msgstr "تنظیمات سفارش"
-
-#: includes/class-alopeyk-woocommerce-shipping-method.php:254
-msgid "Status Change"
-msgstr "تغییر وضعیت"
-
-#: includes/class-alopeyk-woocommerce-shipping-method.php:258
-msgid ""
-"Check this checkbox only if you want WooCommerce orders' status to be "
-"changed based on changes being made in Alopeyk delivery status."
-msgstr ""
-"با فعال کردن این گزینه، به محض تغییر وضعیت سفارش حمل و نقل الوپیک، وضعیت "
-"سفارش(های) فروشگاه ووکامرس شما که از طریق آن سفارش الوپیک در حال ارسال هستند "
-"نیز به صورت خودکار تغییر خواهد کرد."
+#: includes/class-alopeyk-woocommerce-shipping-common.php:529
+msgid "Address Details"
+msgstr "جزئیات آدرس"
 
 #. URI of the plugin
 msgid "https://alopeyk.com/#section-services"
@@ -153,7 +140,7 @@ msgid "Order details not found."
 msgstr "متأسفانه اطلاعات سفارش یافت نشد."
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:287
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:574
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:581
 #: includes/class-alopeyk-woocommerce-shipping-common.php:193
 msgid "Ship via Alopeyk"
 msgstr "ارسال با الوپیک"
@@ -226,8 +213,8 @@ msgid "ID"
 msgstr "شناسه"
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:431
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:506
-#: includes/class-alopeyk-woocommerce-shipping-method.php:458
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:513
+#: includes/class-alopeyk-woocommerce-shipping-method.php:457
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:56
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:27
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:24
@@ -235,100 +222,100 @@ msgid "Motorbike"
 msgstr "موتورسیکلت"
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:431
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:505
-#: includes/class-alopeyk-woocommerce-shipping-method.php:458
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:512
+#: includes/class-alopeyk-woocommerce-shipping-method.php:457
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:56
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:29
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:24
 msgid "Cargo"
 msgstr "وانت"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:442
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:454
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:446
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:458
 #: includes/class-alopeyk-woocommerce-shipping-common.php:991
 #: includes/class-alopeyk-woocommerce-shipping-common.php:1037
-#: includes/class-alopeyk-woocommerce-shipping-method.php:374
+#: includes/class-alopeyk-woocommerce-shipping-method.php:375
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:68
-#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:85
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:89
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:21
 msgid ","
 msgstr "،"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:472
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:479
 msgid "View"
 msgstr "نمایش"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:474
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:481
 #: includes/class-alopeyk-woocommerce-shipping-common.php:2574
-#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:101
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:105
 msgid "Track"
 msgstr "رصد آنلاین"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:477
-#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:96
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:484
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:100
 msgid "Invoice"
 msgstr "فاکتور"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:481
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:488
 #: includes/class-alopeyk-woocommerce-shipping-common.php:178
-#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:108
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:112
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:44
 msgid "Cancel"
 msgstr "لغو"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:484
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:491
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-courier-info.php:31
 msgid "Rate"
 msgstr "امتیاز"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:488
-#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:117
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:495
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:121
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:53
 msgid "Ship Again"
 msgstr "ارسال مجدد"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:510
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:517
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:55
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:23
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:22
 msgid "Transport Type"
 msgstr "نوع حمل و نقل"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:623
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:630
 #, php-format
 msgid "Maximum %s orders can be shipped at once."
 msgstr "حداکثر %s آدرس در هر سفارش قابل انتخاب است."
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:627
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:634
 #: includes/class-alopeyk-woocommerce-shipping-common.php:2352
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:61
 msgid "No order selected for shipping."
 msgstr "هیچ سفارشی برای ارسال انتخاب نشده است."
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:657
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:776
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:800
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:827
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:664
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:783
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:807
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:834
 msgid "Order data not found."
 msgstr "اطلاعات سفارش یافت نشد."
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:705
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:712
 msgid "Coupon data not found."
 msgstr "اطلاعات کوپن یافت نشد."
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:728
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:735
 msgid "Order cannot be canceled."
 msgstr "امکان لغو سفارش وجود ندارد."
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:732
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:739
 msgid "No order is selected to be canceled."
 msgstr "هیچ سفارشی برای لغو انتخاب نشده است."
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:755
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:762
 msgid "Cancelation data not found."
 msgstr "اطلاعات لغو سفارش یافت نشد."
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:796
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:803
 msgid "Courier can not be rated because it is already rated."
 msgstr "سفیر پیش از این برای این سفارش نظرسنجی شده است."
 
@@ -1105,10 +1092,27 @@ msgstr ""
 "اگر این گزینه انتخاب نشود، در صورت تجاوز وزن یا ابعاد محتویات سبد خرید، روش "
 "ارسال الوپیک در لیست روش‌های ارسال مشتری دیده نخواهد شد."
 
+#: includes/class-alopeyk-woocommerce-shipping-method.php:250
+msgid "Order Options"
+msgstr "تنظیمات سفارش"
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:254
+msgid "Status Change"
+msgstr "تغییر وضعیت"
+
 #: includes/class-alopeyk-woocommerce-shipping-method.php:255
 #: includes/class-alopeyk-woocommerce-shipping-method.php:262
 msgid "Enabled"
 msgstr "فعال"
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:258
+msgid ""
+"Check this checkbox only if you want WooCommerce orders' status to be "
+"changed based on changes being made in Alopeyk delivery status."
+msgstr ""
+"با فعال کردن این گزینه، به محض تغییر وضعیت سفارش حمل و نقل الوپیک، وضعیت "
+"سفارش(های) فروشگاه ووکامرس شما که از طریق آن سفارش الوپیک در حال ارسال هستند "
+"نیز به صورت خودکار تغییر خواهد کرد."
 
 #: includes/class-alopeyk-woocommerce-shipping-method.php:261
 msgid "Dashboard Tracking"
@@ -1169,15 +1173,15 @@ msgstr ""
 "عدد، در صورت وجود تعداد بالای سفارشات، درگیری زیادی برای هاستینگ/سرور شما "
 "بوجود خواهد آمد،‌ مقادیر بیش از ۱۰ اکیداً توصیه می‌شود."
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:315
+#: includes/class-alopeyk-woocommerce-shipping-method.php:316
 msgid "Payment Options"
 msgstr "تنظیمات پرداخت"
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:321
+#: includes/class-alopeyk-woocommerce-shipping-method.php:322
 msgid "Has return"
 msgstr "برگشت دارد"
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:324
+#: includes/class-alopeyk-woocommerce-shipping-method.php:325
 msgid ""
 "Check this checkbox only if you need this payment method to have return trip."
 " For example if want the courier to take the money from the customer after "
@@ -1187,11 +1191,11 @@ msgstr ""
 "داشته باشد. برای مثال اگر می‌خواهید سفیر الوپیک هزینه خرید را پس از تحویل "
 "درب منزل از مشتری دریافت کند و آن را به نشانی فروشگاه بازگرداند."
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:330
+#: includes/class-alopeyk-woocommerce-shipping-method.php:331
 msgid "Customer should pay for return cost"
 msgstr "خریدار می‌بایست هزینه برگشت سفیر به فروشگاه را پرداخت کند"
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:333
+#: includes/class-alopeyk-woocommerce-shipping-method.php:334
 msgid ""
 "Check this checkbox only if you want customers to pay for return costs "
 "whenever this payment method is chosen. If not checked, the cost will be "
@@ -1201,11 +1205,11 @@ msgstr ""
 "مقصد را به شرط این روش پرداخت، خریدار پرداخت کند. در غیر این صورت هزینه از "
 "حساب الوپیک شما کاسته خواهد شد."
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:340
+#: includes/class-alopeyk-woocommerce-shipping-method.php:341
 msgid "Warn customer about price change"
 msgstr "تغییرات قیمت ناشی از تغییر روش پرداخت به مشتری اطلاع داده شود"
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:343
+#: includes/class-alopeyk-woocommerce-shipping-method.php:344
 msgid ""
 "Check this checkbox only if you want inform customers about the return cost "
 "that will be added to total price."
@@ -1214,11 +1218,11 @@ msgstr ""
 "(ناشی از برگشت‌دار بودن) که قرار است به قیمت کل اضافه شود به خریدار اطلاع "
 "رسانی شود."
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:362
+#: includes/class-alopeyk-woocommerce-shipping-method.php:364
 msgid "The <strong>API key</strong> is not valid."
 msgstr "کلید API معتبر نیست."
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:374
+#: includes/class-alopeyk-woocommerce-shipping-method.php:375
 msgid "and"
 msgstr "و"
 
