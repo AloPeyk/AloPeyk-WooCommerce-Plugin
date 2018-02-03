@@ -83,6 +83,28 @@ It is also highly recommended to enter your specific [Google Maps API Key](https
 Sure, will be. Currently we are working on it and will be released as soon as it gets complete.
 
 
+== Screenshots ==
+
+1. API key is required to unlock all options and activate the plugin.
+2. Address detail fields, transportation type and possible extra cost hit for courier return will be shown in checkout page.
+3. Address detail fields will be shown in address edit page.
+4. Address detail and description fields, Alopeyk order actions, Alopeyk orders history and detailed shipping log will be shown in dashboard order edit page.
+5. Alopeyk bulk shipping action added in WooCommerce orders list.
+6. Create Alopeyk order modal is accessible from Woocommerce orders list and edit order pages.
+7. Alert will be shown, if Alopeyk credit is not enough to create the order.
+8. Alert will be shown, if origin address or one of destination addresses is not supported by Alopeyk.
+9. Alert will be shown, if weight or dimensions exceed their corresponding Alopeyk limits. It is highly recommended to enter weight and dimensions for all products to make this check functional.
+10. Credit can be added whenever there is not enough credit to create the order.
+11. Coupons can also be applied to increase Alopeyk credit.
+12. List of all Alopeyk orders and their details, actions and statuses.
+13. Alopeyk order detail page can be used to track shipping proccess.
+14. Alopeyk order can be evaluated whenever it is finished.
+15. Online tracking link will be added to customers' order list page if allowed by shop admin.
+16. Online tracking link will be added to customers' order detail page if allowed by shop admin.
+17. Current Alopeyk credit and methods to increase it is available in credit page.
+18. You can have an online chat with Alopeyk support directly from your shop dashboard.
+
+
 == Changelog ==
 
 = 1.0 =
