@@ -1059,7 +1059,7 @@
 
 				}
 
-			alopeyk.wcshm.admin.fn.showModal ( 'create-credit', alopeyk.wcshm.admin.fn.translate ( 'Add Alopeyk credit' ), 'create_credit_modal', data, buttons, null );
+			alopeyk.wcshm.admin.fn.showModal ( 'create-credit', alopeyk.wcshm.admin.fn.translate ( 'Add Alopeyk Credit' ), 'create_credit_modal', data, buttons, null );
 
 		},
 

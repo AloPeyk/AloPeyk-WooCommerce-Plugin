@@ -351,6 +351,7 @@
 	margin-bottom: 0 !important;
 }
 
+
 /**
  * Credit
  */
@@ -437,7 +438,7 @@
 }
 .awcshm-horizonal-table label {
 	display: inline-block;
-	vertical-align: middle;
+	vertical-align: middle;1
 }
 .awcshm-horizonal-table td,
 .awcshm-horizonal-table th {
@@ -459,6 +460,28 @@
 }
 .awcshm-horizonal-table a {
 	font-weight: bold;
+}
+.post-type-shop_order .history-logs tbody td,
+.post-type-shop_order .history-logs thead th,
+.post-type-shop_order .history-logs tbody th,
+.post-type-shop_order .awcshm-horizonal-table tbody td,
+.post-type-shop_order .awcshm-horizonal-table thead th,
+.post-type-shop_order .awcshm-horizonal-table tbody th {
+	line-height: 1.5em;
+	padding: 0.625rem !important;
+	vertical-align: top !important;
+}
+.awcshm-horizonal-table thead th,
+.awcshm-horizonal-table tbody th {
+	width: 8.125rem !important;
+}
+.awcshm-horizonal-table thead td,
+.awcshm-horizonal-table tbody td {
+	width: auto !important;
+}
+.post-type-shop_order .history-logs .column-post_status {
+	width: 2.8125rem;
+	text-align: center;
 }
 
 /**
@@ -521,13 +544,18 @@
 	overflow: visible;
 }
 .widefat .column-order_actions {
-	width: 120px;
+	width: 8.125rem;
 }
 .widefat .column-order_date {
 	width: 12%;
 }
-.post-type-alopeyk_order .wp-heading-inline,
-.post-type-alopeyk_order #post-body-content {
+.post-type-alopeyk_order.edit-php .actions.bulkactions {
+	display: none;
+}
+.post-type-alopeyk_order.post-php .wp-heading-inline {
+	visibility: hidden;
+}
+.post-type-alopeyk_order.post-php #post-body-content {
 	display: none !important;
 }
 .awcshm-order-screenshot {
@@ -595,7 +623,7 @@
 	box-sizing: border-box;
 	height: 2rem;
 	padding: 0.3125rem 0.8rem;
-	background: #f9f9f9f9;
+	background-color: #f9f9f9;
 	font-weight: 600;
 	font-size: 0.75rem;
 }

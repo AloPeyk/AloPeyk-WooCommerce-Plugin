@@ -643,7 +643,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$user_id = $create_account ? wc_get_order( $order_id )->get_user_id() : null;
 				$order = wc_get_order( $order_id );
 				$shipping_prefix = '_shipping_';
-				$package_data = WC()->session->get( 'package_data' );
 				if ( isset( $data->destination_latitude ) && $data->destination_latitude ) {
 					$order->update_meta_data( $shipping_prefix . 'address_latitude', $data->destination_latitude );
 					if ( $user_id ) {
@@ -680,7 +679,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 						update_user_meta( $user_id, 'shipping_address_number', esc_attr( $data->destination_number ) );
 					}
 				}
-				if ( $package_data ) {
+				if ( $package_data = WC()->session->get( 'package_data' ) ) {
 					$package_data = (object) $package_data;
 					if ( isset( $package_data->total_weight ) ) {
 						$order->update_meta_data( '_total_weight', $package_data->total_weight );
