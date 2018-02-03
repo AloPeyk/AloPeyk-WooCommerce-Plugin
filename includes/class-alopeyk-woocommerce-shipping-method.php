@@ -408,17 +408,18 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 		$total_volume = 0;
 		if ( count( $contents ) ) {
 			$dimensions = array_map( function( $content ) use ( $total_volume ) {
-				$width  = $content['data']->get_width();
-				$height = $content['data']->get_height();
-				$length = $content['data']->get_length();
-				$total_volume += $width * $height * $length;
+				$width  = (float) $content['data']->get_width();
+				$height = (float) $content['data']->get_height();
+				$length = (float) $content['data']->get_length();
 				return array(
 					'width'    => $width,
 					'height'   => $height,
 					'length'   => $length,
+					'volume'   => $width * $height * $length,
 					'quantity' => $content['quantity']
 				);
 			}, $contents );
+			$total_volume = array_sum( array_column( $dimensions, 'volume' ) );
 		}
 		$overflowed = $this->helpers->has_overflow( $weights, $dimensions, get_option( 'woocommerce_weight_unit' ), get_option( 'woocommerce_dimension_unit' ) );
 		$subtotal = $package->cart_subtotal;
