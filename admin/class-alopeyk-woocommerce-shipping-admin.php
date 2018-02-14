@@ -645,13 +645,14 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		if ( isset( $data['data'] ) && $data['data'] ) {
 			parse_str( $data['data'], $data );
 			if ( $data ) {
-				$orders       = isset( $data['orders'] )      ? $data['orders']       : array();
-				$type         = isset( $data['type'] )        ? $data['type']         : null;
-				$description  = isset( $data['description'] ) ? $data['description']  : null;
-				$ship_now     = isset( $data['ship_now'] )    ? $data['ship_now']     : null;
-				$ship_date    = isset( $data['ship_date'] )   ? $data['ship_date']    : null;
-				$ship_time    = isset( $data['ship_time'] )   ? $data['ship_time']    : null;
-				$scheduled_at = ( $ship_date && $ship_time && $ship_now !== 'true' ) ? ( $ship_date . ' ' . $ship_time ) : null;
+				$orders       = isset( $data['orders'] )      ? $data['orders']        : array();
+				$type         = isset( $data['type'] )        ? $data['type']          : null;
+				$description  = isset( $data['description'] ) ? $data['description']   : null;
+				$ship_now     = isset( $data['ship_now'] )    ? $data['ship_now']      : null;
+				$ship_date    = isset( $data['ship_date'] )   ? $data['ship_date']     : null;
+				$ship_hour    = isset( $data['ship_hour'] )   ? $data['ship_hour']     : null;
+				$ship_minute  = isset( $data['ship_minute'] )   ? $data['ship_minute'] : null;
+				$scheduled_at = ( $ship_date && $ship_hour && $ship_minute && $ship_now !== 'true' ) ? ( $ship_date . ' ' . $ship_hour . ':' . $ship_minute . ':00' ) : null;
 				$response = $this->helpers->check_order( $orders, $type, $scheduled_at, $description );
 				$success = $response['success'];
 				$message = $response['message'];

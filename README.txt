@@ -3,11 +3,11 @@
 Contributors: alopeyk, bmoudi
 Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
 Requires at least: 4.4
-Tested up to: 4.9.2
-Stable tag: 1.0
+Tested up to: 4.9.4
+Stable tag: 1.1.0
 Requires PHP: 5.4
 WC requires at least: 2.6
-WC tested up to: 3.3.0
+WC tested up to: 3.3.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -73,7 +73,7 @@ The manual installation method involves downloading our plugin and uploading it 
 
 Then you have to enter the API key you've obtained from [Alopeyk](https://alopeyk.com "Alopeyk On-demand Delivery") in the API Key field laid in plugin's settings page. You can access the settings page by clicking the Settings link below Alopeyk item in Dashboard sidebar menu.
 
-It is also highly recommended to enter your specific [Google Maps API Key](https://developers.google.com/maps/documentation/javascript/get-api-key "Get Google Maps API Key") in the relevent field in settings page.
+It is also highly recommended to enter your specific [Google Maps API Key](https://developers.google.com/maps/documentation/javascript/get-api-key "Get Google Maps API Key") in the relevant field in settings page.
 
 
 == Frequently Asked Questions ==
