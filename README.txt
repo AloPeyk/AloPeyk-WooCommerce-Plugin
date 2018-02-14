@@ -109,3 +109,5 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 
 = 1.0 =
 *   **New** : First release
+= 1.1.0 =
+*   **Edit** : Removing limitations from scheduled order options
