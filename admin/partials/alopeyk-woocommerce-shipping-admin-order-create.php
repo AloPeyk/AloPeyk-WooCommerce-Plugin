@@ -17,7 +17,7 @@ $data = $this->vars;
 ?>
 
 <form class="awcshm-create-order-form">
-	<table cellpadding="0" cellspacing="0" border="0" class="fixed striped wp-list-table awcshm-horizonal-table">
+	<table cellpadding="0" cellspacing="0" border="0" class="fixed striped awcshm-horizonal-table">
 		<tbody>
 			<tr>
 				<th valign="middle"><?php echo __( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?></th>
@@ -36,8 +36,14 @@ $data = $this->vars;
 					<input id="ship_now_true" type="radio" name="ship_now" value="true" checked="checked"><label for="ship_now_true"><?php echo __( 'Now', 'alopeyk-woocommerce-shipping' ); ?></label>&nbsp;
 					<input id="ship_now_false" type="radio" name="ship_now" value="false" class="awcshm-shipping-time-filter-trigger"><label for="ship_now_false"><?php echo __( 'Later', 'alopeyk-woocommerce-shipping' ); ?></label>
 					<div class="awcshm-shipping-time-filter">
-						<select name="ship_date"></select>
-						<select name="ship_time"></select>
+						<div class="awcshm-shipping-date-container">
+							<select name="ship_date"></select>						
+						</div>
+						<div class="awcshm-shipping-time-container">
+							<select name="ship_minute"></select>
+							<span class="awcshm-shipping-time-delimiter">:</span>
+							<select name="ship_hour"></select>
+						</div>
 					</div>
 				</td>
 			</tr>

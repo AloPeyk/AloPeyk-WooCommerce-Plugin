@@ -45,9 +45,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		'addresses_limit'              => 5,
 		'cancel_penalty_delay'         => 5,                                                               // Minutes
 		'cancel_penalty_amount'        => 0,                                                               // Tomans
-		'schedule_days_count'          => 5,
-		'schedule_time_interval'       => 30,                                                              // Minutes
-		'schedule_first_request_delay' => 90,                                                              // Minutes
+		'schedule_days_count'          => 30,
+		'schedule_time_interval'       => 1,                                                               // Minutes
+		'schedule_first_request_delay' => 1,                                                               // Minutes
 		'credit_amounts'               => array( '10000', '20000', '30000', '50000', '100000', '200000' ), // Tomans
 		'supportTel'                   => '+982141346',
 		'devEmail'                     => 'dev@alopeyk.com',
@@ -187,16 +187,30 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'Add Coupon'             => __( 'Add Coupon', 'alopeyk-woocommerce-shipping' ),
 				'Pay'                    => __( 'Pay', 'alopeyk-woocommerce-shipping' ),
 				'Apply'                  => __( 'Apply', 'alopeyk-woocommerce-shipping' ),
+				'Yes'                    => __( 'Yes', 'alopeyk-woocommerce-shipping' ),
+				'No'                     => __( 'No', 'alopeyk-woocommerce-shipping' ),
 				'Track Order'            => __( 'Track Order', 'alopeyk-woocommerce-shipping' ),
 				'View Order'             => __( 'View Order', 'alopeyk-woocommerce-shipping' ),
 				'View Invoice'           => __( 'View Invoice', 'alopeyk-woocommerce-shipping' ),
 				'Ship via Alopeyk'       => __( 'Ship via Alopeyk', 'alopeyk-woocommerce-shipping' ),
 				'Unkown error occurred.' => __( 'Unkown error occurred.', 'alopeyk-woocommerce-shipping' ),
-				'Request failed:'        => __( 'Request failed:', 'alopeyk-woocommerce-shipping' ),
+				'Request failed:'        => __( 'Request failed:', 'alopeyk-woocommerce-shipping' )
 			),
 			'dynamic_parts' => $this->get_dynamic_parts( is_admin() ),
 			'refresh_interval' => $this->get_option( ( is_admin() ? 'refresh_admin_interval' : 'refresh_public_interval' ), 10 ),
+			'time' => (int) $this->get_now_in_milliseconds()
 		);
+
+	}
+
+	/**
+	 * @since  1.1.0
+	 * @return int
+	 */
+	public function get_now_in_milliseconds() {
+
+		$mt = explode( ' ', microtime() );
+		return ( (int) $mt[1] ) * 1000 + ( (int) round( $mt[0] * 1000 ) );
 
 	}
 
@@ -333,11 +347,15 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		date_default_timezone_set( 'Asia/Tehran' );
 		$days_count = (float) $this->get_config( 'schedule_days_count' );
-		$time_interval = (float) $this->get_config( 'schedule_time_interval' );
+		$time_interval = min( (float) $this->get_config( 'schedule_time_interval' ), 59 );
 		$first_request_delay = (float) $this->get_config( 'schedule_first_request_delay' );
 		$from = date( 'Y-m-d H:i:s', strtotime( '+ ' . $first_request_delay . 'minutes' ) );
 		$times = array();
-		$schedule_dates = array();
+		$schedule_dates = array(
+			'dates' => null,
+			'steps' => $time_interval,
+			'error' => __( 'You have chosen a date which is passed. So your order will be shipped as soon as being created. Are you sure?', 'alopeyk-woocommerce-shipping' )
+		);
 		for ( $t = 0; $t < 24 * 60 / $time_interval; $t++ ) {
 			$time = $t * $time_interval / 60;
 			$time = sprintf( '%02d:%02d', (int) $time, round( fmod( $time, 1 ) * 60 ) );
@@ -352,9 +370,12 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$times_filtered = array_slice( $times_filtered, $pieces + 1 );
 			}
 			if ( count( $times_filtered ) ) {
-				$schedule_dates[ $date ] = array(
-					'times' => $times_filtered,
-					'label' => date_i18n( 'j F Y', strtotime( $date ) )
+				$initial_time = explode( ':', array_values($times_filtered)[0] );
+				$schedule_dates['dates'][$date] = array(
+					// 'times'          => $times_filtered,
+					'label'          => date_i18n( 'j F Y', strtotime( $date ) ),
+					'initial_hour'   => (int) $initial_time[0],
+					'initial_minute' => (int) $initial_time[1]
 				);
 			}
 		}

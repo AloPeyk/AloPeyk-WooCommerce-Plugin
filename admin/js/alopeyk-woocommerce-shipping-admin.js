@@ -16,6 +16,7 @@
 		common : {
 
 			info                         : window.awcshm,
+			time                         : Date.now(),
 			activeClass                  : 'active',
 			loadingClass                 : 'loading',
 			disabledClass                : 'disabled',
@@ -104,7 +105,9 @@
 
 			priceInputsClass           : 'price-input',
 			dateDropdownElement        : '[name="ship_date"]',
-			timeDropdownElement        : '[name="ship_time"]',
+			hourDropdownElement        : '[name="ship_hour"]',
+			minuteDropdownElement      : '[name="ship_minute"]',
+			shipNowTogglerElement      : '[name="ship_now"]',
 			createOrderFormClass       : 'create-order-form',
 			creditButtonElementClass   : 'amount-button',
 			creditButtonAmountDataAttr : 'credit-amount',
@@ -182,13 +185,15 @@
 			var hash,
 				vars  = [],
 				index = url.indexOf ( '?' ),
-				query = index != -1 ? url.slice ( index + 1 ) : null,
+				query = index != -1 ? decodeURIComponent ( url ).slice ( index + 1 ) : null,
 				vars  = query ? query.split ( '&' ) : [],
 				query_string = [];
 
 			for ( var i = 0; i < vars.length; i++ ) {
 
 				var pair = vars[ i ].split ( '=' );
+
+				pair[ 0 ] = pair[ 0 ].replace ( '[]', '' );
 
 				if ( typeof pair[ 1 ] === 'undefined' ) {
 
@@ -198,16 +203,16 @@
 
 				if ( typeof query_string[ pair[ 0 ] ] === 'undefined' ) {
 
-					query_string[ pair[ 0 ] ] = decodeURIComponent ( pair[ 1 ] );
+					query_string[ pair[ 0 ] ] = pair[ 1 ];
 
 				} else if ( typeof query_string[ pair[ 0 ] ] === 'string' ) {
 
-					var arr = [ query_string[ pair[ 0 ] ], decodeURIComponent ( pair[ 1 ] ) ];
+					var arr = [ query_string[ pair[ 0 ] ], pair[ 1 ] ];
 					query_string[ pair[ 0 ] ] = arr;
 
 				} else {
 
-					query_string[ pair[ 0 ] ].push ( decodeURIComponent ( pair[ 1 ] ) );
+					query_string[ pair[ 0 ] ].push ( pair[ 1 ] );
 
 				}
 
@@ -900,39 +905,49 @@
 				open          : function () {
 
 					var dialogElement = $j( this );
-					alopeyk.wcshm.admin.vars.activeModalConnection = $j.post ( alopeyk.wcshm.admin.vars.common.info.ajaxOptions.url, {
 
-						nonce   : alopeyk.wcshm.admin.vars.common.info.ajaxOptions.nonce,
-						action  : alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id,
-						request : request,
-						scope   : 'admin',
-						data    : data
+					if ( ! content ) {
 
-					}, function ( response ) {
+						alopeyk.wcshm.admin.vars.activeModalConnection = $j.post ( alopeyk.wcshm.admin.vars.common.info.ajaxOptions.url, {
 
-						if ( response && response.success ) {
+							nonce   : alopeyk.wcshm.admin.vars.common.info.ajaxOptions.nonce,
+							action  : alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id,
+							request : request,
+							scope   : 'admin',
+							data    : data
 
-							dialogElement
-							.data ( 'response', response.extra ? response.extra : null )
-							.html ( response.data )
-							.dialog( 'option', 'buttons', buttons );
+						}, function ( response ) {
 
-							if ( callback && typeof callback == 'function' ) {
-								callback ( dialogElement );
+							if ( response && response.success ) {
+
+								dialogElement
+								.data ( 'response', response.extra ? response.extra : null )
+								.html ( response.data )
+								.dialog( 'option', 'buttons', buttons );
+
+								if ( callback && typeof callback == 'function' ) {
+									callback ( dialogElement );
+								}
+
+							} else {
+
+								var error = response ? ( response.data ? response.data : response.toString() ) : alopeyk.wcshm.admin.fn.translate ( 'Unkown error occurred.' );
+								dialogElement.html ( '<div class="error notice"><p>' + error + '</p></div>' );
+
 							}
 
-						} else {
+						}).fail ( function ( jqXHR ) {
 
-							var error = response ? ( response.data ? response.data : response.toString() ) : alopeyk.wcshm.admin.fn.translate ( 'Unkown error occurred.' );
-							dialogElement.html ( '<div class="error notice"><p>' + error + '</p></div>' );
+							dialogElement.html ( '<div class="error notice"><p><strong>' + alopeyk.wcshm.admin.fn.translate ( 'Request failed:' ) + '</strong> ' + alopeyk.wcshm.admin.fn.translate ( jqXHR.statusText ) + '</p></div>' );
 
-						}
+						});
 
-					}).fail ( function ( jqXHR ) {
+					} else {
 
-						dialogElement.html ( '<div class="error notice"><p><strong>' + alopeyk.wcshm.admin.fn.translate ( 'Request failed:' ) + '</strong> ' + alopeyk.wcshm.admin.fn.translate ( jqXHR.statusText ) + '</p></div>' );
+						dialogElement
+						.dialog( 'option', 'buttons', buttons );
 
-					});
+					}
 
 				},
 
@@ -1174,7 +1189,10 @@
 
 		handleDateTimeFilters : function () {
 
-			var schedule_dates   = alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.scope.schedule_dates,
+			var lastActiveHour   = 0,
+				lastActiveMinute = 0,
+				schedule_dates   = alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.scope.schedule_dates.dates,
+				schedule_steps   = alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.scope.schedule_dates.steps,
 
 				shipDateDropdown = $j( alopeyk.wcshm.admin.vars.forms.dateDropdownElement ).filter ( function () {
 
@@ -1182,35 +1200,79 @@
 
 				}).data ( 'alopeyk-initiated', true ),
 
-				shipTimeDropdown = $j( alopeyk.wcshm.admin.vars.forms.timeDropdownElement ).filter ( function () {
+				shipHourDropdown = $j( alopeyk.wcshm.admin.vars.forms.hourDropdownElement ).filter ( function () {
+
+					return ! $j( this ).data ( 'alopeyk-initiated' );
+
+				}).data ( 'alopeyk-initiated', true ),
+
+				shipMinuteDropdown = $j( alopeyk.wcshm.admin.vars.forms.minuteDropdownElement ).filter ( function () {
 
 					return ! $j( this ).data ( 'alopeyk-initiated' );
 
 				}).data ( 'alopeyk-initiated', true );
 
-			if ( shipDateDropdown.length && shipTimeDropdown.length && schedule_dates && Object.keys ( schedule_dates ).length ) {
+
+			if ( shipDateDropdown.length && shipHourDropdown.length && shipMinuteDropdown.length && schedule_dates && Object.keys ( schedule_dates ).length ) {
+
 
 				shipDateDropdown.children().remove().end().on ( 'change', function () {
 
-					shipTimeDropdown.children().remove();
-					var times = $j( this ).find ( ':selected' ).data ( 'times' );
+					shipHourDropdown.children().remove();
 
-					if ( times && Object.keys ( times ).length ) {
+					var selected_date = $j( this ).find ( ':selected' ),
+						initial_hour = parseInt ( selected_date.data ( 'initial_hour' ) ),
+						initial_minute = parseInt ( selected_date.data ( 'initial_minute' ) );
 
-						for ( var time in times ) {
+					for ( var h = initial_hour; h < 24; h++ ) {
 
-							if ( times.hasOwnProperty ( time ) ) {
+						var hour = alopeyk.wcshm.admin.fn.pad ( h, 2, '0' );
 
-								$j( '<option>' )
-								.attr ( 'value', time )
-								.text ( times[ time ] )
-								.appendTo ( shipTimeDropdown );
-
-							}
-
-						}
+						$j( '<option>' )
+						.attr ( 'value', hour )
+						.attr ( 'selected', lastActiveHour == h )
+						.text ( hour )
+						.appendTo ( shipHourDropdown );
 
 					}
+
+					shipHourDropdown.trigger ( 'change' );
+
+				});
+
+				schedule_steps = Math.max ( 1, parseInt ( schedule_steps ) );
+
+				shipHourDropdown.children().remove().end().on ( 'change', function () {
+
+					shipMinuteDropdown.children().remove();
+
+					var selected_date = shipDateDropdown.find ( ':selected' ),
+						initial_hour = parseInt ( selected_date.data ( 'initial_hour' ) ),
+						selected_hour = parseInt ( $j( this ).find ( ':selected' ).val() ),
+						initial_minute = parseInt ( selected_date.data ( 'initial_minute' ) ),
+						initial_minute_limit = initial_hour == selected_hour ? initial_minute : 0;
+
+					lastActiveHour = selected_hour;
+
+					for ( var m = initial_minute_limit; m < 60; m += schedule_steps ) {
+
+						var minute = alopeyk.wcshm.admin.fn.pad ( m, 2, '0' );
+
+						$j( '<option>' )
+						.attr ( 'value', minute )
+						.attr ( 'selected', m == lastActiveMinute )
+						.text ( minute )
+						.appendTo ( shipMinuteDropdown );
+
+					}
+
+					shipMinuteDropdown.trigger ( 'change' );
+
+				});
+
+				shipMinuteDropdown.children().remove().end().on ( 'change', function () {
+
+					lastActiveMinute = parseInt ( $j( this ).find ( ':selected' ).val() );
 
 				});
 
@@ -1222,15 +1284,26 @@
 						.attr ( 'value', date )
 						.text ( schedule_dates[ date ].label )
 						.appendTo ( shipDateDropdown )
-						.data ( 'times', schedule_dates[ date ].times );
+						.data ( 'initial_hour', schedule_dates[ date ].initial_hour )
+						.data ( 'initial_minute', schedule_dates[ date ].initial_minute );
 
 					}
 
 				}
 
 				shipDateDropdown.trigger ( 'change' );
+				shipHourDropdown.trigger ( 'change' );
 
 			}
+
+		},
+
+		pad : function ( input, width, char ) {
+
+			char = char || '0';
+			input = input + '';
+
+			return input.length >= width ? input : new Array ( width - input.length + 1 ).join ( char ) + input;
 
 		},
 
@@ -1297,8 +1370,55 @@
 
 				}],
 
-				data = $j( this ).serialize();
-				alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
+				checkOrderForm = $j( this ),
+				data = checkOrderForm.serialize(),
+				dataObject = alopeyk.wcshm.admin.fn.getUrlVars ( '#?' + data );
+
+				if ( dataObject.ship_now == 'false' && dataObject.ship_date && dataObject.ship_date.length && dataObject.ship_hour && dataObject.ship_hour.length && dataObject.ship_minute && dataObject.ship_minute.length && alopeyk.wcshm.admin.vars.common.time && alopeyk.wcshm.admin.vars.common.info.time ) {
+
+					var timeDiff = new Date ( parseInt ( ( '' + alopeyk.wcshm.admin.vars.common.info.time ).replace ( /-/g, '/' ) ) ) - new Date ( parseInt ( ( '' + alopeyk.wcshm.admin.vars.common.time ).replace ( /-/g, '/' ) ) ),
+						shipDate = ( new Date ( dataObject.ship_date + ' ' + dataObject.ship_hour + ':' + dataObject.ship_minute + ':00' ) ).getTime() + timeDiff;
+
+					if ( shipDate > Date.now() ) {
+
+						alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
+
+					} else {
+
+						var confirm_buttons = [{
+
+							text  : alopeyk.wcshm.admin.fn.translate ( 'No' ),
+							click : function () {
+
+								$j( this ).dialog ( 'destroy' );
+
+							}
+
+						}, {
+
+							text  : alopeyk.wcshm.admin.fn.translate ( 'Yes' ),
+							class : 'button-primary',
+							click : function () {
+
+								$j( alopeyk.wcshm.admin.vars.forms.shipNowTogglerElement ).val ( [ 'true' ] );
+								data = checkOrderForm.serialize();
+								$j( this ).dialog ( 'destroy' );
+
+								alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
+
+							}
+
+						}];
+
+						alopeyk.wcshm.admin.fn.showModal ( 'check-order-time', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), null, null, confirm_buttons, alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.scope.schedule_dates.error );
+
+					}
+
+				} else {
+
+					alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
+
+				}
 
 			});
 
