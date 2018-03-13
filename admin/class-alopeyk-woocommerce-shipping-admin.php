@@ -325,7 +325,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		add_menu_page( __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ), __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ), 'manage_options', 'alopeyk', null, plugins_url( 'admin/img/icon.svg', dirname( __FILE__ ) ), '55.7' );
 		add_submenu_page( 'alopeyk', __( 'Credit', 'alopeyk-woocommerce-shipping' ), __( 'Credit', 'alopeyk-woocommerce-shipping' ), 'manage_options', 'alopeyk-credit', function () {
 			if ( $user_data = $this->helpers->get_user_data() ) {
-				echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-credit-page', array( 'user_data' => $user_data ) );
+				echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-credit-page', array( 'user_data' => $user_data, 'user_credit' => $this->helpers->normalize_price( $this->helpers->get_user_data( 'credit' ) * 10 ) ) );
 			} else {
 				echo '<div class="error notice awcshm-credit-widget-wrapper"><p>' . sprintf( __( 'User data not found. You have to enter a valid API key in <a href="%s" target="blank">settings page</a> in order to access this page.', 'alopeyk-woocommerce-shipping' ), $this->get_settings_url() ) . '</p></div>';
 			}
