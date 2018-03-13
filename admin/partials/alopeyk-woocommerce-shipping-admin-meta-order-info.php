@@ -47,7 +47,7 @@ if ( $order_data ) {
 		<?php if ( isset( $order_data->price ) ) { ?>
 		<p>
 			<span><?php echo __( 'Cost', 'alopeyk-woocommerce-shipping' ); ?>: </span>
-			<strong><?php echo wc_price( $order_data->price * 10 ); ?></strong>
+			<strong><?php echo wc_price( $helpers->normalize_price( $order_data->price * 10 ) ); ?></strong>
 		</p>
 		<?php } ?>
 		<?php if ( isset( $order_data->transport_type ) ) { ?>

@@ -450,7 +450,7 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 		if ( $package && count( $package ) ) {
 			$package = $this->get_package_data( $package );
 			$shipping = (object) $this->helpers->calculate_shipping( $package );
-			if ( $shipping->cost ) {
+			if ( isset( $shipping->cost ) ) {
 				if ( $shipping->cost_type == 'dynamic' ) {
 					$cost_details = (object) $shipping->cost_details;
 					WC()->session->set( 'return_cost', $this->helpers->normalize_price( $cost_details->price_with_return - $cost_details->price ) );
