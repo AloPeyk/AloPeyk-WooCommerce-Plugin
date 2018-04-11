@@ -418,7 +418,8 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 */
 	public function get_options() {
 
-		return WC_Admin_Settings::get_option( 'woocommerce_' . METHOD_ID . '_settings' );
+		$options = 'woocommerce_' . METHOD_ID . '_settings';
+		return class_exists( 'WC_Admin_Settings' ) ? WC_Admin_Settings::get_option( $options ) : get_option( $options );
 
 	}
 
