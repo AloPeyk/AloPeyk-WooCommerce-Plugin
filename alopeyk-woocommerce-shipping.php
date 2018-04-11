@@ -9,14 +9,14 @@
  * Plugin Name:           Alopeyk WooCommerce Shipping
  * Plugin URI:            https://alopeyk.com/#section-services
  * Description:           Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
- * Version:               1.2.0
+ * Version:               1.2.1
  * Author:                Alopeyk
  * Author URI:            https://alopeyk.com/
  * Text Domain:           alopeyk-woocommerce-shipping
  * Domain Path:           /languages
  *
  * WC requires at least:  2.6
- * WC tested up to:       3.3.3
+ * WC tested up to:       3.3.5
  * 
  * Copyright:             © 2017-2018 Alopeyk.
  * License:               GNU General Public License v3.0
@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PLUGIN_VERSION', '1.2.0' );
+define( 'PLUGIN_VERSION', '1.2.1' );
 define( 'METHOD_ID', 'alopeyk_woocommerce_shipping_method' );
 define( 'PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
