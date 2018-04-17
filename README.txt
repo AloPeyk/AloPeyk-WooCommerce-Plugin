@@ -4,7 +4,7 @@ Contributors: alopeyk, bmoudi
 Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
 Requires at least: 4.4
 Tested up to: 4.9.4
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Requires PHP: 5.4
 WC requires at least: 2.6
 WC tested up to: 3.3.5
@@ -120,3 +120,5 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 *   **Edit** : Changing filter name for method availability (alopeyk_woocommerce_shipping_method/is_available)
 = 1.2.1 =
 *   **Fix** : Check for alternative if WC_Admin_Settings is not present
+= 1.2.2 =
+*   **Fix** : Admin shipping address fields visibility issue
