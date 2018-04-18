@@ -4,7 +4,7 @@ Contributors: alopeyk, bmoudi
 Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
 Requires at least: 4.4
 Tested up to: 4.9.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 5.4
 WC requires at least: 2.6
 WC tested up to: 3.3.5
@@ -125,3 +125,5 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 = 1.3.0 =
 *   **New** : Adding current position CTA and functionality to destination address maps
 *   **Fix** : Loading default and minified version of assets based on WP_DEBUG constant
+= 1.3.1 =
+*   **Fix** : Current location CTA UI override issue
