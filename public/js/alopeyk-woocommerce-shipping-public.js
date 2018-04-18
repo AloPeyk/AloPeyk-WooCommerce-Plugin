@@ -42,6 +42,7 @@
 			editAddressButton                          : 'a.edit_address:eq(1)',
 			destinationLocatorMapId                    : 'destination-locator-map',
 			destinationLocatorMapClass                 : 'map-canvas destination-locator-map',
+			destinationLocatorCtaClass                 : 'destination-locator-cta',
 			destinationLocatorInputWrapperId           : 'destination-locator-input-wrapper',
 			destinationLocatorInputWrapperClass        : 'destination-locator-input-wrapper',
 			destinationLocatorAutocompleteResultsClass : 'destination-locator-autocomplete-results',
@@ -177,14 +178,36 @@
 
 		},
 
-		setCurrentGeolocation : function () {
+		setCurrentGeolocation : function ( forceRelocation ) {
 
-			if ( navigator.geolocation ) {
+			var destinationMap      = alopeyk.wcshm.public.vars.common.destinationMap,
+				map                 = destinationMap ? destinationMap.mapObject : null,
+				marker              = destinationMap ? destinationMap.markerObject : null,
+				destinationLatInput = $j( alopeyk.wcshm.public.vars.maps.destinationLatInput ),
+				destinationLngInput = $j( alopeyk.wcshm.public.vars.maps.destinationLngInput );
 
+			if ( navigator.geolocation && map && marker && destinationLatInput.length && destinationLngInput.length && ( forceRelocation || ( ! destinationLatInput.val().length && ! destinationLngInput.val().length ) || ( destinationLatInput.val() == alopeyk.wcshm.public.vars.maps.defaultCenter.lat && destinationngInput.val() == alopeyk.wcshm.public.vars.maps.defaultCenter.lng ) ) ) {
+console.log('test');
 				navigator.geolocation.getCurrentPosition ( function ( position ) {
+console.log('test1');
+					if ( alopeyk.wcshm.public.vars.maps.fetchAddressConnection ) {
+						alopeyk.wcshm.public.vars.maps.fetchAddressConnection.abort();
+					}
+
+					map.setCenter ({
+
+						lat : position.coords.latitude,
+						lng : position.coords.longitude
+
+					});
+
+					marker.setPosition ( new google.maps.LatLng ( position.coords.latitude, position.coords.longitude ) );
 
 					alopeyk.wcshm.public.vars.maps.defaultCenter.lat = position.coords.latitude;
 					alopeyk.wcshm.public.vars.maps.defaultCenter.lng = position.coords.longitude;
+
+					destinationLatInput.val ( position.coords.latitude );
+					destinationLngInput.val ( position.coords.longitude ).trigger ( 'change' );
 
 				});
 
@@ -229,9 +252,15 @@
 						class : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.destinationLocatorAutocompleteResultsClass ),
 
 					}),
-					mapContainer = $j('<div/>').attr ({
+					mapContainer = $j( '<div/>' ).attr ({
 
 						class : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.mapContainerClass ),
+
+					}),
+					destinationLocatorCta = $j( '<button/>' ).attr ({
+
+						type  : 'button',
+						class : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.destinationLocatorCtaClass ),
 
 					});
 
@@ -243,8 +272,11 @@
 				mapCanvas.insertAfter( destinationAutocompleteInputWrapper );
 				mapContainer.insertAfter( mapCanvas );
 
-				mapContainer.append( mapCanvas );
-				mapContainer.append( destinationAutocompleteInputWrapper );
+				mapContainer
+				.append( mapCanvas )
+				.append( destinationAutocompleteInputWrapper )
+				.append( destinationLocatorCta );
+
 
 				var mapMarker  = alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.marker,
 					mapStyles  = alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.styles,
@@ -384,6 +416,13 @@
 					},
 
 					paymentMethodInputSelector = alopeyk.wcshm.public.vars.common.paymentMethodInput;
+
+				alopeyk.wcshm.public.vars.common.destinationMap = {
+
+					mapObject    : map,
+					markerObject : marker
+
+				};
 
 				if ( alopeyk.wcshm.public.vars.common.info.woocommerce.checkout ) {
 					
@@ -621,6 +660,14 @@
 
 				});
 
+				destinationLocatorCta.on ( 'click', function () {
+
+					alopeyk.wcshm.public.fn.setCurrentGeolocation ( true );
+
+				});
+
+				alopeyk.wcshm.public.fn.setCurrentGeolocation();
+
 			};
 
 			if ( editAddressButton.length && editAddressButton.is ( ':visible' ) ) {
@@ -672,7 +719,6 @@
 		'load' : function ( e ) {
 
 			alopeyk.wcshm.public.fn.initMaps();
-			alopeyk.wcshm.public.fn.setCurrentGeolocation();
 
 		},
 
