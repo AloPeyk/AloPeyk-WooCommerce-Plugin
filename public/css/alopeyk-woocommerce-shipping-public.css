@@ -9,41 +9,41 @@
 	height: 25rem;
 }
 .awcshm-destination-locator-cta {
-	position: absolute;
-	bottom: 85px;
-	right: 9.5px;
-	display: inline-block;
-	width: 28px;
-	height: 27px;
-	margin: 0px;
-	padding: 0px;
-	border: 0px;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
-	background: #ffffff url( '../img/marker-small.png' ) center center no-repeat;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	outline: 0 none !important;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px;
-	-moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px;
-	box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px;
-	-webkit-transition: background-color 250ms ease;
-	-o-transition: background-color 250ms ease;
-	-moz-transition: background-color 250ms ease;
-	transition: background-color 250ms ease;
+	position: absolute !important;
+	bottom: 85px !important;
+	right: 9.5px !important;
+	display: inline-block !important;
+	width: 28px !important;
+	height: 27px !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	border: 0px !important;
+	-webkit-border-radius: 2px !important;
+	-moz-border-radius: 2px !important;
+	border-radius: 2px !important;
+	background: #ffffff url( '../img/marker-small.png' ) center center no-repeat !important;
+	cursor: pointer !important;
+	-webkit-user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+	user-select: none !important;
+	outline: 0 none !important !important;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px !important;
+	-moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px !important;
+	box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px !important;
+	-webkit-transition: background-color 250ms ease !important;
+	-o-transition: background-color 250ms ease !important;
+	-moz-transition: background-color 250ms ease !important;
+	transition: background-color 250ms ease !important;
 }
 .awcshm-destination-locator-cta:hover {
-	background-color: #f7f7f7 ;
+	background-color: #f7f7f7 !important;
 }
 .awcshm-destination-locator-cta:active {
-	background-color: #f2f2f2;
+	background-color: #f2f2f2 !important;
 }
 .awcshm-destination-locator-input-wrapper {
 	z-index: 2;
