@@ -70,9 +70,9 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			wp_deregister_style( 'jquery-ui-style' );
 			wp_enqueue_style( 'wp-jquery-ui-dialog' );
 		}
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/alopeyk-woocommerce-shipping-admin' . ( WP_DEBUG ? '.min' : '' ) . '.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/alopeyk-woocommerce-shipping-admin' . ( WP_DEBUG ? '' : '.min' ) . '.css', array(), $this->version, 'all' );
 		if ( $this->is_order_edit() ) {
-			wp_enqueue_style( $this->plugin_name . '__front', plugins_url( 'public/css/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '.min' : '' ) . '.css', dirname( __FILE__ ) ), array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name . '__front', plugins_url( 'public/css/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '' : '.min' ) . '.css', dirname( __FILE__ ) ), array(), $this->version, 'all' );
 		}
 
 	}
@@ -84,9 +84,9 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		
 		wp_enqueue_media();
 		wp_enqueue_script( 'jquery-ui-dialog' );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/alopeyk-woocommerce-shipping-admin' . ( WP_DEBUG ? '.min' : '' ) . '.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/alopeyk-woocommerce-shipping-admin' . ( WP_DEBUG ? '' : '.min' ) . '.js', array( 'jquery' ), $this->version, false );
 		if ( $this->is_order_edit() ) {
-			wp_enqueue_script( $this->plugin_name . '__front', plugins_url( 'public/js/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '.min' : '' ) . '.js', dirname( __FILE__ ) ), array(), $this->version, 'all' );
+			wp_enqueue_script( $this->plugin_name . '__front', plugins_url( 'public/js/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '' : '.min' ) . '.js', dirname( __FILE__ ) ), array(), $this->version, 'all' );
 		}
 
 	}

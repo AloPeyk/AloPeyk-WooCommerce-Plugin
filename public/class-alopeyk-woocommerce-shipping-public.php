@@ -54,7 +54,7 @@ class Alopeyk_WooCommerce_Shipping_Public {
 	public function enqueue_styles() {
 
 		if ( $this->helpers->is_enabled() ) {
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '.min' : '' ) . '.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '' : '.min' ) . '.css', array(), $this->version, 'all' );
 		}
 
 	}
@@ -65,7 +65,7 @@ class Alopeyk_WooCommerce_Shipping_Public {
 	public function enqueue_scripts() {
 
 		if ( $this->helpers->is_enabled() ) {
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '.min' : '' ) . '.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '' : '.min' ) . '.js', array( 'jquery' ), $this->version, false );
 		}
 
 	}

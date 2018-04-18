@@ -4,7 +4,7 @@ Contributors: alopeyk, bmoudi
 Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
 Requires at least: 4.4
 Tested up to: 4.9.4
-Stable tag: 1.2.2
+Stable tag: 1.3.0
 Requires PHP: 5.4
 WC requires at least: 2.6
 WC tested up to: 3.3.5
@@ -122,3 +122,6 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 *   **Fix** : Check for alternative if WC_Admin_Settings is not present
 = 1.2.2 =
 *   **Fix** : Admin shipping address fields visibility issue
+= 1.3.0 =
+*   **New** : Adding current position CTA and functionality to destination address maps
+*   **Fix** : Loading default and minified version of assets based on WP_DEBUG constant
