@@ -418,7 +418,8 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 */
 	public function get_options() {
 
-		return WC_Admin_Settings::get_option( 'woocommerce_' . METHOD_ID . '_settings' );
+		$options = 'woocommerce_' . METHOD_ID . '_settings';
+		return class_exists( 'WC_Admin_Settings' ) ? WC_Admin_Settings::get_option( $options ) : get_option( $options );
 
 	}
 
@@ -1342,7 +1343,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$available = $this->is_available_for_destinations( $package->destinations );
 			}
 		}
-		return apply_filters( 'woocommerce_shipping_' . METHOD_ID . '_is_available', $available, $package );
+		return apply_filters( METHOD_ID . '/is_available', $available, $package );
 	}
 
 	/**
@@ -1353,7 +1354,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @param  string  $cost_type
 	 * @return array
 	 */
-	public function calculate_shipping( $package = null, $type = 'motorbike', $has_return = null, $cost_type = null ) {
+	public function calculate_shipping( $package = null, $type = 'motorbike', $has_return = null, $cost_type = null, $override = true ) {
 
 		$cost         = null;
 		$cost_details = null;
@@ -1416,6 +1417,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			'has_return'   => $has_return,
 			'cost_details' => $cost_details,
 		);
+		if ( $override ) {
+			$shipping_info = apply_filters( METHOD_ID . '/shipping_info', $shipping_info, $package );
+		}
 		$package_data = isset( WC()->session ) ? WC()->session->get( 'package_data' ) : null;
 		if ( $package_data ) {
 			$package_data['shipping'] = $shipping_info;
@@ -2321,7 +2325,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					if ( $type ) {
 						if ( $this->is_available_for_destinations( $package->destinations ) ) {
 							if ( $credit = $this->get_user_data( 'credit' ) * 10 ) {
-								$shipping = (object) $this->calculate_shipping( $package, $type, $package->has_return, 'dynamic' );
+								$shipping = (object) $this->calculate_shipping( $package, $type, $package->has_return, 'dynamic', false );
 								$package->shipping = $shipping;
 								$cost = $shipping->cost;
 								$diff = $cost - $credit;

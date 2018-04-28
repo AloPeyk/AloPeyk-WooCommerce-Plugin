@@ -70,9 +70,9 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			wp_deregister_style( 'jquery-ui-style' );
 			wp_enqueue_style( 'wp-jquery-ui-dialog' );
 		}
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/alopeyk-woocommerce-shipping-admin' . ( WP_DEBUG ? '.min' : '' ) . '.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/alopeyk-woocommerce-shipping-admin' . ( WP_DEBUG ? '' : '.min' ) . '.css', array(), $this->version, 'all' );
 		if ( $this->is_order_edit() ) {
-			wp_enqueue_style( $this->plugin_name . '__front', plugins_url( 'public/css/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '.min' : '' ) . '.css', dirname( __FILE__ ) ), array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name . '__front', plugins_url( 'public/css/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '' : '.min' ) . '.css', dirname( __FILE__ ) ), array(), $this->version, 'all' );
 		}
 
 	}
@@ -84,9 +84,9 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		
 		wp_enqueue_media();
 		wp_enqueue_script( 'jquery-ui-dialog' );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/alopeyk-woocommerce-shipping-admin' . ( WP_DEBUG ? '.min' : '' ) . '.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/alopeyk-woocommerce-shipping-admin' . ( WP_DEBUG ? '' : '.min' ) . '.js', array( 'jquery' ), $this->version, false );
 		if ( $this->is_order_edit() ) {
-			wp_enqueue_script( $this->plugin_name . '__front', plugins_url( 'public/js/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '.min' : '' ) . '.js', dirname( __FILE__ ) ), array(), $this->version, 'all' );
+			wp_enqueue_script( $this->plugin_name . '__front', plugins_url( 'public/js/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '' : '.min' ) . '.js', dirname( __FILE__ ) ), array(), $this->version, 'all' );
 		}
 
 	}
@@ -325,7 +325,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		add_menu_page( __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ), __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ), 'manage_options', 'alopeyk', null, plugins_url( 'admin/img/icon.svg', dirname( __FILE__ ) ), '55.7' );
 		add_submenu_page( 'alopeyk', __( 'Credit', 'alopeyk-woocommerce-shipping' ), __( 'Credit', 'alopeyk-woocommerce-shipping' ), 'manage_options', 'alopeyk-credit', function () {
 			if ( $user_data = $this->helpers->get_user_data() ) {
-				echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-credit-page', array( 'user_data' => $user_data ) );
+				echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-credit-page', array( 'user_data' => $user_data, 'user_credit' => $this->helpers->normalize_price( $this->helpers->get_user_data( 'credit' ) * 10 ) ) );
 			} else {
 				echo '<div class="error notice awcshm-credit-widget-wrapper"><p>' . sprintf( __( 'User data not found. You have to enter a valid API key in <a href="%s" target="blank">settings page</a> in order to access this page.', 'alopeyk-woocommerce-shipping' ), $this->get_settings_url() ) . '</p></div>';
 			}

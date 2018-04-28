@@ -4,10 +4,10 @@ Contributors: alopeyk, bmoudi
 Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
 Requires at least: 4.4
 Tested up to: 4.9.4
-Stable tag: 1.1.0
+Stable tag: 1.3.1
 Requires PHP: 5.4
 WC requires at least: 2.6
-WC tested up to: 3.3.1
+WC tested up to: 3.3.5
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -109,3 +109,21 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 
 = 1.0 =
 *   **New** : First release
+= 1.1.0 =
+*   **Edit** : Removing limitations from scheduled order options
+= 1.1.1 =
+*   **Fix** : Translation refinement
+*   **Fix** : Currency change support for Alopeyk order details page
+*   **Fix** : Currency change support for credit page
+= 1.2.0 =
+*   **New** : Installing a filter for dynamic price (alopeyk_woocommerce_shipping_method/shipping_info)
+*   **Edit** : Changing filter name for method availability (alopeyk_woocommerce_shipping_method/is_available)
+= 1.2.1 =
+*   **Fix** : Check for alternative if WC_Admin_Settings is not present
+= 1.2.2 =
+*   **Fix** : Admin shipping address fields visibility issue
+= 1.3.0 =
+*   **New** : Adding current position CTA and functionality to destination address maps
+*   **Fix** : Loading default and minified version of assets based on WP_DEBUG constant
+= 1.3.1 =
+*   **Fix** : Current location CTA UI override issue

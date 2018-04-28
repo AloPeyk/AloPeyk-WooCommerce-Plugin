@@ -89,7 +89,7 @@ class Alopeyk_WooCommerce_Shipping {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'meta_links', 10, 2 );
 		$this->loader->add_filter( 'plugin_action_links_' . PLUGIN_BASENAME, $plugin_admin, 'action_links' );
-		$this->loader->add_filter( 'woocommerce_admin_shipping_fields', $plugin_admin, 'add_address_fields' );
+		$this->loader->add_filter( 'woocommerce_admin_shipping_fields', $plugin_admin, 'add_address_fields', 1000 );
 		$this->loader->add_action( 'woocommerce_admin_order_data_after_shipping_address', $plugin_admin, 'add_address_description_field' );
 		$this->loader->add_action( 'save_post', $plugin_admin, 'save_address_description_field' );
 		$this->loader->add_filter( 'woocommerce_process_shop_order_meta', $plugin_admin, 'check_address_fields' );

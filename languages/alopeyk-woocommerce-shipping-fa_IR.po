@@ -2,81 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Alopeyk WooCommerce Shipping\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-13 10:02+0000\n"
-"PO-Revision-Date: 2018-02-13 10:02+0000\n"
+"POT-Creation-Date: 2018-02-13 10:01+0000\n"
+"PO-Revision-Date: 2018-02-19 08:14+0000\n"
 "Last-Translator: الوپیک <dev@alopeyk.com>\n"
 "Language-Team: Persian\n"
-"Language: fa-IR\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language: fa_IR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco - https://localise.biz/"
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:198
-msgid ""
-"You have chosen a date which is passed. So your order will be shipped as "
-"soon as being created. Are you sure?"
-msgstr ""
-"زمان انتخابی شما برای زمان‌بندی ارسال، پیش از زمان حال می‌باشد. به همین علت، "
-"در صورت ثبت سفارش، سفارش در لحظه ارسال خواهد شد. آیا اطمینان دارید؟"
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:265
-#: includes/class-alopeyk-woocommerce-shipping-common.php:269
-msgid "دیر رسیدن به مبدا یا مقصد"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:266
-#: includes/class-alopeyk-woocommerce-shipping-common.php:268
-#: includes/class-alopeyk-woocommerce-shipping-common.php:275
-msgid "برخورد و رفتار بد"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:267
-msgid "ظاهر نامرتب و بی نظم"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:270
-msgid "درخواست هزینه اضافه"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:271
-#: includes/class-alopeyk-woocommerce-shipping-common.php:279
-msgid "عدم تماس با درخواست دهنده"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:272
-msgid "نداشتن باکس حمل مرسوله"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:273
-msgid "عدم تسلط بر مسیر"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:274
-#: includes/class-alopeyk-woocommerce-shipping-common.php:280
-msgid "سایر موارد"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:276
-msgid "پیک تقاضای لغو درخواست نمود"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:277
-msgid "فاصله پیک تا مبدا"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-common.php:278
-msgid "سفیر باکس حمل مرسوله به همراه نداشت"
-msgstr ""
-
-#. URI of the plugin
-msgid "https://alopeyk.com/#section-services"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://alopeyk.com/"
-msgstr ""
+"X-Generator: Loco https://localise.biz/"
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:126
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:145
@@ -427,6 +362,63 @@ msgstr "خطای ناشناسی رخ داده است."
 #: includes/class-alopeyk-woocommerce-shipping-common.php:197
 msgid "Request failed:"
 msgstr "درخواست انجام نشد:"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:198
+msgid ""
+"You have chosen a date which is passed. So your order will be shipped as "
+"soon as being created. Are you sure?"
+msgstr ""
+"زمان انتخابی شما برای زمان‌بندی ارسال، پیش از زمان حال می‌باشد. به همین علت، "
+"در صورت ثبت سفارش، سفارش در لحظه ارسال خواهد شد. آیا اطمینان دارید؟"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:265
+#: includes/class-alopeyk-woocommerce-shipping-common.php:269
+msgid "دیر رسیدن به مبدا یا مقصد"
+msgstr "دیر رسیدن به مبدا یا مقصد"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:266
+#: includes/class-alopeyk-woocommerce-shipping-common.php:268
+#: includes/class-alopeyk-woocommerce-shipping-common.php:275
+msgid "برخورد و رفتار بد"
+msgstr "برخورد و رفتار بد"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:267
+msgid "ظاهر نامرتب و بی نظم"
+msgstr "ظاهر نامرتب و بی نظم"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:270
+msgid "درخواست هزینه اضافه"
+msgstr "درخواست هزینه اضافه"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:271
+#: includes/class-alopeyk-woocommerce-shipping-common.php:279
+msgid "عدم تماس با درخواست دهنده"
+msgstr "عدم تماس با درخواست دهنده"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:272
+msgid "نداشتن باکس حمل مرسوله"
+msgstr "نداشتن باکس حمل مرسوله"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:273
+msgid "عدم تسلط بر مسیر"
+msgstr "عدم تسلط بر مسیر"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:274
+#: includes/class-alopeyk-woocommerce-shipping-common.php:280
+msgid "سایر موارد"
+msgstr "سایر موارد"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:276
+msgid "پیک تقاضای لغو درخواست نمود"
+msgstr "پیک تقاضای لغو درخواست نمود"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:277
+msgid "فاصله پیک تا مبدا"
+msgstr "فاصله پیک تا مبدا"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:278
+msgid "سفیر باکس حمل مرسوله به همراه نداشت"
+msgstr "سفیر باکس حمل مرسوله به همراه نداشت"
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:299
 msgid "Please wait ..."
@@ -1532,3 +1524,11 @@ msgid ""
 "Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods."
 msgstr ""
 "افزودن پیک موتوری و وانت‌بار الوپیک به لیست روش‌های ارسال فروشگاه ووکامرس."
+
+#. URI of the plugin
+msgid "https://alopeyk.com/#section-services"
+msgstr "https://alopeyk.com/#section-services"
+
+#. Author URI of the plugin
+msgid "https://alopeyk.com/"
+msgstr "https://alopeyk.com/"

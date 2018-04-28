@@ -23,7 +23,9 @@ if ( $user_data ) {
 	<div class="awcshm-credit-widget">
 		<figure class="awcshm-courier-avatar" style="background-image: url( '<?php echo $avatar; ?>' );"></figure>
 		<span class="awcshm-credit-widget-name"><?php echo $user_data->firstname . ' ' . $user_data->lastname; ?></span>
-		<strong class="awcshm-credit-widget-credit"><?php echo wc_price( $user_data->credit * 10 ); ?></strong>
+		<?php if ( isset( $data['user_credit'] ) && ! is_null( $data['user_credit'] ) ) { ?>
+		<strong class="awcshm-credit-widget-credit"><?php echo wc_price( $data['user_credit'] ); ?></strong>
+		<?php } ?>
 		<div class="awcshm-credit-widget-actions">
 			<button type="button" class="button button-primary awcshm-credit-modal-toggler"><?php echo __( 'Add Alopeyk Credit', 'alopeyk-woocommerce-shipping' ); ?></button>
 			<button type="button" class="button button-primary awcshm-coupon-modal-toggler"><?php echo __( 'Add Coupon', 'alopeyk-woocommerce-shipping' ); ?></button>
