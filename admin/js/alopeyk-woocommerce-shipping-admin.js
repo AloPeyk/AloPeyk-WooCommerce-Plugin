@@ -312,7 +312,7 @@
 				} else {
 
 					window.googleMapIsLoading = true;
-					alopeyk.wcshm.admin.fn.injectScript('https://maps.googleapis.com/maps/api/js?key=' + alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.api_key + '&language=fa&region=IR&callback=alopeykHandleMapsAdmin');
+					alopeyk.wcshm.admin.fn.injectScript ( 'https://maps.googleapis.com/maps/api/js?key=' + alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.api_key + '&language=fa&region=IR&callback=alopeykHandleMapsAdmin' );
 
 				}
 
@@ -328,8 +328,6 @@
 
 		initMaps : function () {
 
-			alopeyk.wcshm.admin.fn.loadGoogleMaps();
-
 			$j( document ).on ( 'alopeyk:admin:map:loaded', function () {
 
 				var inputIdPrefix     = alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id + '_',
@@ -343,6 +341,9 @@
 				}
 
 			});
+
+			alopeyk.wcshm.admin.fn.loadGoogleMaps();
+
 
 		},
 
