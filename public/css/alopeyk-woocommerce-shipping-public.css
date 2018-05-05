@@ -1,5 +1,5 @@
 .awcshm-hidden {
-	display: none;
+	display: none !important;
 }
 .awcshm-map-container {
 	position: relative;
@@ -11,7 +11,7 @@
 .awcshm-destination-locator-cta {
 	position: absolute !important;
 	bottom: 85px !important;
-	right: 9.5px !important;
+	right: 10px !important;
 	display: inline-block !important;
 	width: 28px !important;
 	height: 27px !important;

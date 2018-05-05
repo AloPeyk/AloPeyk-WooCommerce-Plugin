@@ -153,8 +153,6 @@
 
 		initMaps : function () {
 
-			alopeyk.wcshm.public.fn.loadGoogleMaps();
-
 			$j( document ).on ( 'alopeyk:public:map:loaded', function () {
 
 				var destinationLatInput         = $j( alopeyk.wcshm.public.vars.maps.destinationLatInput ),
@@ -176,6 +174,8 @@
 
 			});
 
+			alopeyk.wcshm.public.fn.loadGoogleMaps();
+
 		},
 
 		setCurrentGeolocation : function ( forceRelocation ) {
@@ -187,9 +187,9 @@
 				destinationLngInput = $j( alopeyk.wcshm.public.vars.maps.destinationLngInput );
 
 			if ( navigator.geolocation && map && marker && destinationLatInput.length && destinationLngInput.length && ( forceRelocation || ( ! destinationLatInput.val().length && ! destinationLngInput.val().length ) || ( destinationLatInput.val() == alopeyk.wcshm.public.vars.maps.defaultCenter.lat && destinationngInput.val() == alopeyk.wcshm.public.vars.maps.defaultCenter.lng ) ) ) {
-console.log('test');
+
 				navigator.geolocation.getCurrentPosition ( function ( position ) {
-console.log('test1');
+
 					if ( alopeyk.wcshm.public.vars.maps.fetchAddressConnection ) {
 						alopeyk.wcshm.public.vars.maps.fetchAddressConnection.abort();
 					}
