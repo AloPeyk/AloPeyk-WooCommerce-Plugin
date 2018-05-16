@@ -5,7 +5,7 @@ Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping metho
 Requires at least: 4.4
 Tested up to: 4.9.5
 Stable tag: 1.3.2
-Requires PHP: 5.4
+Requires PHP: 5.6
 WC requires at least: 2.6
 WC tested up to: 3.3.5
 License: GNU General Public License v3.0
@@ -54,7 +54,7 @@ Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
 
 = Minimum Requirements =
 
-* PHP version 5.4 or greater (PHP 5.6 or greater is recommended)
+* PHP version 5.6 or greater
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 * WordPress 4.4 or greater
 * Interactions with Alopeyk API also need cURL and OpenSSL PHP extensions
