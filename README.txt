@@ -3,8 +3,8 @@
 Contributors: alopeyk, bmoudi
 Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
 Requires at least: 4.4
-Tested up to: 4.9.5
-Stable tag: 1.3.2
+Tested up to: 4.9.6
+Stable tag: 1.3.3
 Requires PHP: 5.6
 WC requires at least: 2.6
 WC tested up to: 3.3.5
@@ -129,3 +129,5 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 *   **Fix** : Current location CTA UI override issue
 = 1.3.2 =
 *   **Fix** : Admin panel origin map visibility
+= 1.3.3 =
+*   **New** : Add new supported cities
