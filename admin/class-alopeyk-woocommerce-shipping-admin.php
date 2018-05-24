@@ -37,6 +37,8 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		$this->set_helpers();
+		//check for update from github @since  1.3.4
+		$this->update_plugin_github();
 
 	}
 
@@ -46,6 +48,31 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function set_helpers() {
 
 		$this->helpers = new Alopeyk_WooCommerce_Shipping_Common();
+
+	}
+	
+	/**
+	 * @since  1.3.4
+	 */
+	public function update_plugin_github() {
+		//config for github updates
+		$github_config = array(
+			'slug' => PLUGIN_BASENAME, // this is the slug of your plugin
+			'proper_folder_name' => basename(PLUGIN_PATH), // this is the name of the folder your plugin lives in
+			'api_url' => 'https://api.github.com/repos/AloPeyk/AloPeyk-WooCommerce-Plugin', // the GitHub API url of your GitHub repo
+			'raw_url' => 'https://raw.github.com/AloPeyk/AloPeyk-WooCommerce-Plugin/master', // the GitHub raw url of your GitHub repo
+			'github_url' => 'https://github.com/AloPeyk/AloPeyk-WooCommerce-Plugin', // the GitHub url of your GitHub repo
+			'zip_url' => 'https://github.com/AloPeyk/AloPeyk-WooCommerce-Plugin/archive/master.zip', // the zip url of the GitHub repo
+			'sslverify' => true, // whether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
+			'requires' => '4.4', // which version of WordPress does your plugin require?
+			'tested' => '4.9.6', // which version of WordPress is your plugin tested up to?
+			'readme' => 'README.md', // which file to use as the readme for the version number
+			'access_token' => '', // Access private repositories by authorizing under Appearance > GitHub Updates when this example plugin is installed
+		);
+		
+		//call a class to check if github new release exists or not
+		require_once PLUGIN_PATH . 'admin/includes/class-alopeyk-woocommerce-shipping-updater.php';
+		new Alopeyk_WooCommerce_Shipping_Updater($github_config);
 
 	}
 
