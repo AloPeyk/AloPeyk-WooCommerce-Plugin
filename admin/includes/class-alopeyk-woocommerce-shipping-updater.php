@@ -24,37 +24,14 @@ if ( class_exists( 'Alopeyk_WooCommerce_Shipping_Updater' ) ) {
  */
 class Alopeyk_WooCommerce_Shipping_Updater {
 
-	/**
-	 * GitHub Updater version
-	 */
 	const VERSION = 1.6;
-
-	/**
-	 * @var $config the config for the updater
-	 * @access public
-	 */
 	var $config;
-
-	/**
-	 * @var $missing_config any config that is missing from the initialization of this instance
-	 * @access public
-	 */
 	var $missing_config;
-
-	/**
-	 * @var $github_data temporiraly store the data fetched from GitHub, allows us to only load the data once per class instance
-	 * @access private
-	 */
 	private $github_data;
 
 
 	/**
-	 * Class Constructor
-	 *
 	 * @since 1.0
-	 * @param array $config the configuration required for the updater to work
-	 * @see has_minimum_config()
-	 * @return void
 	 */
 	public function __construct( $config = array() ) {
 
@@ -67,7 +44,6 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 
 		$this->config = wp_parse_args( $config, $defaults );
 
-		// if the minimum config isn't set, issue a warning and bail
 		if ( ! $this->has_minimum_config() ) {
 			$message = 'The GitHub Updater was initialized without the minimum required configuration, please check the config in your plugin. The following params are missing: ';
 			$message .= implode( ',', $this->missing_config );
@@ -79,17 +55,17 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 
 		add_filter( 'site_transient_update_plugins', array( $this, 'api_check' ) );
 
-		// Hook into the plugin details screen
 		add_filter( 'plugins_api', array( $this, 'get_plugin_info' ), 10, 3 );
 		add_filter( 'upgrader_post_install', array( $this, 'upgrader_post_install' ), 10, 3 );
 
-		// set timeout
 		add_filter( 'http_request_timeout', array( $this, 'http_request_timeout' ) );
 
-		// set sslverify for zip download
 		add_filter( 'http_request_args', array( $this, 'http_request_sslverify' ), 10, 2 );
 	}
 
+	/**
+	 * @since 1.0
+	 */
 	public function has_minimum_config() {
 
 		$this->missing_config = array();
@@ -112,28 +88,20 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 		return ( empty( $this->missing_config ) );
 	}
 
-
 	/**
-	 * Check wether or not the transients need to be overruled and API needs to be called for every single page load
-	 *
-	 * @return bool overrule or not
+	 * @since 1.0
 	 */
 	public function overrule_transients() {
 		return ( defined( 'WP_GITHUB_FORCE_UPDATE' ) && WP_GITHUB_FORCE_UPDATE );
 	}
 
-
 	/**
-	 * Set defaults
-	 *
-	 * @since 1.2
-	 * @return void
+	 * @since 1.0
 	 */
 	public function set_defaults() {
 		if ( !empty( $this->config['access_token'] ) ) {
 
-			// See Downloading a zipball (private repo) https://help.github.com/articles/downloading-files-from-the-command-line
-			extract( parse_url( $this->config['zip_url'] ) ); // $scheme, $host, $path
+			extract( parse_url( $this->config['zip_url'] ) );
 
 			$zip_url = $scheme . '://api.github.com/repos' . $path;
 			$zip_url = add_query_arg( array( 'access_token' => $this->config['access_token'] ), $zip_url );
@@ -169,10 +137,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 
 	}
 
-
 	/**
-	 * Callback fn for the http_request_timeout filter
-	 *
 	 * @since 1.0
 	 * @return int timeout value
 	 */
@@ -181,12 +146,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * Callback fn for the http_request_args filter
-	 *
-	 * @param unknown $args
-	 * @param unknown $url
-	 *
-	 * @return mixed
+	 * @since 1.0
 	 */
 	public function http_request_sslverify( $args, $url ) {
 		if ( $this->config[ 'zip_url' ] == $url )
@@ -197,13 +157,11 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 
 
 	/**
-	 * Get New Version from GitHub
-	 *
 	 * @since 1.0
 	 * @return int $version the version number
 	 */
 	public function get_new_version() {
-		$version = '';
+		$version = get_site_transient( md5($this->config['slug']).'_new_version' );
 
 		if ( $this->overrule_transients() || ( !isset( $version ) || !$version || '' == $version ) ) {
 
@@ -222,8 +180,6 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 			else
 				$version = $matches[1];
 
-			// back compat for older readme version handling
-			// only done when there is no version found in file name
 			if ( false === $version ) {
 				$raw_response = $this->remote_get( trailingslashit( $this->config['raw_url'] ) . $this->config['readme'] );
 
@@ -239,7 +195,6 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 				}
 			}
 
-			// refresh every 6 hours
 			if ( false !== $version )
 				set_site_transient( md5($this->config['slug']).'_new_version', $version, 60*60*6 );
 		}
@@ -247,12 +202,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 		return $version;
 	}
 
-
 	/**
-	 * Interact with GitHub
-	 *
-	 * @param string $query
-	 *
 	 * @since 1.6
 	 * @return mixed
 	 */
@@ -267,10 +217,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 		return $raw_response;
 	}
 
-
 	/**
-	 * Get GitHub Data from the specified repository
-	 *
 	 * @since 1.0
 	 * @return array $github_data the data
 	 */
@@ -288,21 +235,16 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 
 				$github_data = json_decode( $github_data['body'] );
 
-				// refresh every 6 hours
 				set_site_transient( md5($this->config['slug']).'_github_data', $github_data, 60*60*6 );
 			}
 
-			// Store the data in this class instance for future calls
 			$this->github_data = $github_data;
 		}
 
 		return $github_data;
 	}
 
-
 	/**
-	 * Get update date
-	 *
 	 * @since 1.0
 	 * @return string $date the date
 	 */
@@ -311,10 +253,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 		return ( !empty( $_date->updated_at ) ) ? date( 'Y-m-d', strtotime( $_date->updated_at ) ) : false;
 	}
 
-
 	/**
-	 * Get plugin description
-	 *
 	 * @since 1.0
 	 * @return string $description the description
 	 */
@@ -323,10 +262,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 		return ( !empty( $_description->description ) ) ? $_description->description : false;
 	}
 
-
 	/**
-	 * Get Plugin data
-	 *
 	 * @since 1.0
 	 * @return object $data the data
 	 */
@@ -336,22 +272,14 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 		return $data;
 	}
 
-
 	/**
-	 * Hook into the plugin update check and connect to GitHub
-	 *
 	 * @since 1.0
-	 * @param object  $transient the plugin data transient
-	 * @return object $transient updated plugin data transient
 	 */
 	public function api_check( $transient ) {
 
-		// Check if the transient contains the 'checked' information
-		// If not, just return its value without hacking it
 		if ( empty( $transient->checked ) )
 			return $transient;
 
-		// check the version and decide if it's new
 		$update = version_compare( $this->config['new_version'], $this->config['version'] );
 
 		if ( 1 === $update ) {
@@ -361,7 +289,6 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 			$response->url = add_query_arg( array( 'access_token' => $this->config['access_token'] ), $this->config['github_url'] );
 			$response->package = $this->config['zip_url'];
 
-			// If response is false, don't alter the transient
 			if ( false !== $response )
 				$transient->response[ $this->config['slug'] ] = $response;
 		}
@@ -369,19 +296,11 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 		return $transient;
 	}
 
-
 	/**
-	 * Get Plugin info
-	 *
 	 * @since 1.0
-	 * @param bool    $false  always false
-	 * @param string  $action the API function being performed
-	 * @param object  $args   plugin arguments
-	 * @return object $response the plugin info
 	 */
 	public function get_plugin_info( $false, $action, $response ) {
 
-		// Check if this call API is for the right plugin
 		if ( !isset( $response->slug ) || $response->slug != $this->config['slug'] )
 			return false;
 
@@ -400,28 +319,18 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 		return $response;
 	}
 
-
 	/**
-	 * Upgrader/Updater
-	 * Move & activate the plugin, echo the update message
-	 *
 	 * @since 1.0
-	 * @param boolean $true       always true
-	 * @param mixed   $hook_extra not used
-	 * @param array   $result     the result of the move
-	 * @return array $result the result of the move
 	 */
 	public function upgrader_post_install( $true, $hook_extra, $result ) {
 
 		global $wp_filesystem;
 
-		// Move & Activate
 		$proper_destination = WP_PLUGIN_DIR.'/'.$this->config['proper_folder_name'];
 		$wp_filesystem->move( $result['destination'], $proper_destination );
 		$result['destination'] = $proper_destination;
 		$activate = activate_plugin( WP_PLUGIN_DIR.'/'.$this->config['slug'] );
 
-		// Output the update message
 		$fail  = __( 'The plugin has been updated, but could not be reactivated. Please reactivate it manually.', 'github_plugin_updater' );
 		$success = __( 'Plugin reactivated successfully.', 'github_plugin_updater' );
 		echo is_wp_error( $activate ) ? $fail : $success;
