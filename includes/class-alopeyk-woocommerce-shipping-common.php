@@ -2683,7 +2683,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		if ( $this->get_option( 'tehran_timezone', 'yes' ) == 'yes' )
 			return 'Asia/Tehran';
-		elseif()
+		elseif( empty(get_option( 'timezone_string' )) )
 			return 'UTC';
 		else
 			return get_option( 'timezone_string' );
