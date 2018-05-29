@@ -1,4 +1,4 @@
-=== Alopeyk WooCommerce Shipping ===
+﻿=== Alopeyk WooCommerce Shipping ===
 
 Contributors: alopeyk, bmoudi
 Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
@@ -131,3 +131,8 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 *   **Fix** : Admin panel origin map visibility
 = 1.3.3 =
 *   **New** : Add new supported cities
+= 1.3.4 =
+*   **New** : Update plugin from github master source
+= 1.4.0 =
+*   **New** : Check and management tomezone setting
+*   **Fix** : Update source of github updater

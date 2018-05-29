@@ -264,6 +264,13 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 				'default'           => 'yes',
 				'description'       => __( 'Check this checkbox only if you want your customers to be able to track their delivering from their account dashboard.', 'alopeyk-woocommerce-shipping' ),
 			);
+			$form_fields[ 'tehran_timezone' ] = array(
+				'title'             => __( 'Use Tehran TimeZone', 'alopeyk-woocommerce-shipping' ),
+				'label'             => __( 'Enabled', 'alopeyk-woocommerce-shipping' ),
+				'type'              => 'checkbox',
+				'default'           => 'yes',
+				'description'       => __( 'Check this checkbox only if you want to use TEHRAN TIMEZONE otherwise use wordpress setting timezone.', 'alopeyk-woocommerce-shipping' ),
+			);
 			$form_fields['refresh_options_title_spacer'] = array(
 				'type'  => 'title',
 				'title' => '&nbsp;'
@@ -422,7 +429,7 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 			$total_volume = array_sum( array_column( $dimensions, 'volume' ) );
 		}
 		$overflowed = $this->helpers->has_overflow( $weights, $dimensions, get_option( 'woocommerce_weight_unit' ), get_option( 'woocommerce_dimension_unit' ) );
-		$subtotal = $package->cart_subtotal;
+		$subtotal = isset( $package->cart_subtotal ) ? $package->cart_subtotal : 0;
 		$payment_method = $package->active_payment_method;
 		$package = array(
 			'extra'          => $package,
