@@ -4,7 +4,7 @@ Contributors: alopeyk, bmoudi
 Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
 Requires at least: 4.4
 Tested up to: 4.9.6
-Stable tag: 1.3.3
+Stable tag: 1.4.0
 Requires PHP: 5.6
 WC requires at least: 2.6
 WC tested up to: 3.3.5
