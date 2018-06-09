@@ -467,8 +467,12 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 				echo $price ? wc_price( $this->helpers->normalize_price( $price ) ) : '—';
 			break;
 			case 'order_date' :
-				date_default_timezone_set( $this->helpers->check_timezone_setting() );
+				$timezone = get_option( 'timezone_string' );
+				if ( $timezone && ! empty( $timezone ) ) {
+					date_default_timezone_set( $timezone );
+				}
 				$datetime = new DateTime( get_post_time( 'Y-m-d H:i:s', false, $post_id ) );
+				$datetime->setTimezone( new DateTimeZone( 'Asia/Tehran' ) );
 				$post_date = strtotime( $datetime->format( 'Y-m-d H:i:s' ) );
 				echo date_i18n( 'j F Y', $post_date ) . '<br>' . date_i18n( 'g:i A', $post_date );
 			break;
@@ -854,7 +858,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		);
 		
 		require_once PLUGIN_PATH . 'admin/includes/class-alopeyk-woocommerce-shipping-updater.php';
-		new Alopeyk_WooCommerce_Shipping_Updater($github_config);
+		new Alopeyk_WooCommerce_Shipping_Updater( $github_config );
 
 	}
 

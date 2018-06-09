@@ -269,7 +269,7 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 				'label'             => __( 'Enabled', 'alopeyk-woocommerce-shipping' ),
 				'type'              => 'checkbox',
 				'default'           => 'yes',
-				'description'       => __( 'Check this checkbox only if you want to use TEHRAN TIMEZONE otherwise use wordpress setting timezone.', 'alopeyk-woocommerce-shipping' ),
+				'description'       => __( 'Check this checkbox only if you want to use “Tehran TomeZone” for Alopeyk orders, otherwise default Wordpress timezone will be used.', 'alopeyk-woocommerce-shipping' ),
 			);
 			$form_fields['refresh_options_title_spacer'] = array(
 				'type'  => 'title',
