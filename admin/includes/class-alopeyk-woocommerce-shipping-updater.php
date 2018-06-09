@@ -20,18 +20,18 @@ if ( class_exists( 'Alopeyk_WooCommerce_Shipping_Updater' ) ) {
 }
 
 /**
- * @since 1.0.0
+ * @since 1.4.0
  */
 class Alopeyk_WooCommerce_Shipping_Updater {
 
-	const VERSION = 1.6;
+	const VERSION = 1.4.0;
 	var $config;
 	var $missing_config;
 	private $github_data;
 
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 */
 	public function __construct( $config = array() ) {
 
@@ -64,7 +64,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 */
 	public function has_minimum_config() {
 
@@ -89,14 +89,14 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 */
 	public function overrule_transients() {
 		return ( defined( 'WP_GITHUB_FORCE_UPDATE' ) && WP_GITHUB_FORCE_UPDATE );
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 */
 	public function set_defaults() {
 		if ( !empty( $this->config['access_token'] ) ) {
@@ -138,7 +138,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 * @return int timeout value
 	 */
 	public function http_request_timeout() {
@@ -146,7 +146,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 */
 	public function http_request_sslverify( $args, $url ) {
 		if ( $this->config[ 'zip_url' ] == $url )
@@ -157,7 +157,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 * @return int $version the version number
 	 */
 	public function get_new_version() {
@@ -203,7 +203,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.6
+	 * @since 1.4.0
 	 * @return mixed
 	 */
 	public function remote_get( $query ) {
@@ -218,7 +218,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 * @return array $github_data the data
 	 */
 	public function get_github_data() {
@@ -245,7 +245,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 * @return string $date the date
 	 */
 	public function get_date() {
@@ -254,7 +254,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 * @return string $description the description
 	 */
 	public function get_description() {
@@ -263,7 +263,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 * @return object $data the data
 	 */
 	public function get_plugin_data() {
@@ -273,7 +273,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 */
 	public function api_check( $transient ) {
 
@@ -297,7 +297,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 */
 	public function get_plugin_info( $false, $action, $response ) {
 
@@ -320,7 +320,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 1.4.0
 	 */
 	public function upgrader_post_install( $true, $hook_extra, $result ) {
 
