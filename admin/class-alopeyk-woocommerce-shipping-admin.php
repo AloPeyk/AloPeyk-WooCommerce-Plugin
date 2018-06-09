@@ -37,6 +37,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		$this->set_helpers();
+		$this->update_plugin_github();
 
 	}
 
@@ -834,6 +835,30 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			}
 		}
 		$this->helpers->respond_ajax( __( 'Order data not found.', 'alopeyk-woocommerce-shipping' ), false );
+
+	}
+	
+	/**
+	 * @since  1.4.0
+	 */
+	public function update_plugin_github() {
+		
+		$github_config = array(
+			'slug' => PLUGIN_BASENAME,
+			'proper_folder_name' => basename(PLUGIN_PATH),
+			'api_url' => 'https://api.github.com/repos/AloPeyk/AloPeyk-WooCommerce-Plugin',
+			'raw_url' => 'https://raw.github.com/AloPeyk/AloPeyk-WooCommerce-Plugin/master',
+			'github_url' => 'https://github.com/AloPeyk/AloPeyk-WooCommerce-Plugin',
+			'zip_url' => 'https://github.com/AloPeyk/AloPeyk-WooCommerce-Plugin/archive/master.zip',
+			'sslverify' => true,
+			'requires' => '4.4',
+			'tested' => '4.9.6',
+			'readme' => 'README.md',
+			'access_token' => '',
+		);
+		
+		require_once PLUGIN_PATH . 'admin/includes/class-alopeyk-woocommerce-shipping-updater.php';
+		new Alopeyk_WooCommerce_Shipping_Updater( $github_config );
 
 	}
 

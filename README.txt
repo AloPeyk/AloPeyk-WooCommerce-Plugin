@@ -131,3 +131,6 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 *   **Fix** : Admin panel origin map visibility
 = 1.3.3 =
 *   **New** : Add new supported cities
+= 1.4.0 =
+*   **New** : Update plugin from github master source
+*   **New** : Manage timezone setting

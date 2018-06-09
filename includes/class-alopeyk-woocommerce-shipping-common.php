@@ -95,7 +95,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public function add_log( $message = null ) {
 
 		if ( $message ) {
-			date_default_timezone_set( 'Asia/Tehran' );
+			date_default_timezone_set( $this->get_timezone_setting() );
 			error_log( $message, 0 );
 			$logger = new WC_Logger();
 			$logger->add( METHOD_ID, $message );
@@ -345,7 +345,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 */
 	public function get_schedule_dates() {
 
-		date_default_timezone_set( 'Asia/Tehran' );
+		date_default_timezone_set( $this->get_timezone_setting() );
 		$days_count = (float) $this->get_config( 'schedule_days_count' );
 		$time_interval = min( (float) $this->get_config( 'schedule_time_interval' ), 59 );
 		$first_request_delay = (float) $this->get_config( 'schedule_first_request_delay' );
@@ -1626,7 +1626,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( $order && isset( $order->status ) ) {
 			$status = $order->status;
 			if ( $status == 'scheduled' ) {
-				date_default_timezone_set( 'Asia/Tehran' );
+				date_default_timezone_set( $this->get_timezone_setting() );
 				$response = array(
 					'status' => 'wc-on-hold',
 					'note'   => sprintf( __( 'Order scheduled to be shipped via Alopeyk shipping method at %s.', 'alopeyk-woocommerce-shipping' ), date_i18n( 'j F Y (g:i A)', strtotime( $order->scheduled_at ) ) )
@@ -1866,7 +1866,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					$has_penalty = !! $penalty_amount;
 					if ( $has_penalty ) {
 						$free_cancel_deadline = date( 'Y-m-d H:i:s', strtotime( $order->accepted_at . ' +' . $penalty_amount . 'minutes' ) );
-						date_default_timezone_set( 'Asia/Tehran' );
+						date_default_timezone_set( $this->get_timezone_setting() );
 						$now = date( 'Y-m-d H:i:s' );
 						$has_penalty = $now > $free_cancel_deadline;
 					}
@@ -2672,6 +2672,23 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			'9' => '۹'
 		);
 		return strtr( $string, $persian_num_array );
+
+	}
+	
+	/**
+	 * @since  1.4.0
+	 * @return string
+	 */
+	public function get_timezone_setting() {
+
+		$timezonestring = get_option( 'timezone_string' );
+		if ( $this->get_option( 'tehran_timezone', 'yes' ) == 'yes' ) {
+			return 'Asia/Tehran';
+		} elseif( empty( $timezonestring ) ) {
+			return 'UTC';
+		} else {
+			return $timezonestring;
+		}
 
 	}
 
