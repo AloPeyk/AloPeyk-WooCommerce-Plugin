@@ -24,7 +24,7 @@ if ( class_exists( 'Alopeyk_WooCommerce_Shipping_Updater' ) ) {
  */
 class Alopeyk_WooCommerce_Shipping_Updater {
 
-	const VERSION = 1.4.0;
+	const VERSION = '1.4.0';
 	var $config;
 	var $missing_config;
 	private $github_data;
