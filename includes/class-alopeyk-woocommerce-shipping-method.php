@@ -175,25 +175,20 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 				'title' => __( 'Map Options', 'alopeyk-woocommerce-shipping' ),
 				'type'  => 'title',
 			);
-			$form_fields['gmap_api_key'] = array(
-				'title'             => __( 'Google Maps API Key', 'alopeyk-woocommerce-shipping' ),
+			$form_fields['cedarmap_api_key'] = array(
+				'title'             => __( 'Cedar Maps API Key', 'alopeyk-woocommerce-shipping' ),
 				'type'              => 'text',
-				'description'       => __( 'It is highly recommended to get a specific API key from <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">this link</a> for your store to avoid <a href="https://developers.google.com/maps/documentation/geocoding/usage-limits" target="_blank">limitation</a> issues.', 'alopeyk-woocommerce-shipping' ),
+				'description'       => __( 'It is highly recommended to get a specific API key from <a href="https://www.cedarmaps.com/" target="_blank">this link</a> for your store.', 'alopeyk-woocommerce-shipping' ),
 			);
 			$form_fields['map_marker'] = array(
 				'title'             => __( 'Marker Image', 'alopeyk-woocommerce-shipping' ),
 				'type'              => 'hidden',
 				'class'             => 'input-upload',
-				'description'       => __( 'You can upload your desired marker image here to be used instead of Google\'s default marker image on address maps around your store.', 'alopeyk-woocommerce-shipping' ),
+				'description'       => __( 'You can upload your desired marker image here to be used instead of Cedar\'s default marker image on address maps around your store.', 'alopeyk-woocommerce-shipping' ),
 				'custom_attributes' => array(
 					'data-upload-label'   => __( 'Upload', 'alopeyk-woocommerce-shipping' ),
 					'data-remove-label'   => '<i class="dashicons dashicons-trash"></i>',
 				)
-			);
-			$form_fields['map_styles'] = array(
-				'type'  => 'textarea',
-				'title' => __( 'Map Styles', 'alopeyk-woocommerce-shipping' ),
-				'description'       => __( 'You can paste your custom map styles taken from <a href="http://mapstylr.com/" target="_blank">MapStyler</a>, <a href="https://snazzymaps.com/" target="_blank">SnazzyMaps</a> or similar tools and want to be applied to address maps.', 'alopeyk-woocommerce-shipping' ),
 			);
 			$form_fields['cost_options_title_spacer'] = array(
 				'type'  => 'title',

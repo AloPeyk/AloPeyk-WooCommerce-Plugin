@@ -165,7 +165,9 @@ class AloPeykApiHandler
             throw new AloPeykApiException('Location Name can not be empty!');
         }
 
-        curl_setopt_array($curl, self::getCurlOptions("locations?input=$locationName"));
+        $name = urlencode($locationName);
+
+        curl_setopt_array($curl, self::getCurlOptions("locations?input={$name}"));
 
         return self::getApiResponse($curl);
     }
@@ -287,6 +289,15 @@ class AloPeykApiHandler
     public static function getPaymentGateways()
     {
         return array_keys(Configs::PAYMENT_ROUTES);
+    }
+
+    /**
+     * Transport Type List
+     * @return array
+     */
+    public static function getTransportTypes()
+    {
+        return Configs::TRANSPORT_TYPES;
     }
 
     /**

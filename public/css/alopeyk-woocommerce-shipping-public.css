@@ -1,5 +1,27 @@
+
+/**
+ * Global
+ */
+
 .awcshm-hidden {
 	display: none !important;
+}
+.cedarmaps-logo {
+	display: none !important;
+}
+.awcshm-map-marker-icon {
+	z-index: 2;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	max-width: 9em;
+	max-height: 9em;
+	-webkit-transform: translate( -50%, -100% );
+	-moz-transform: translate( -50%, -100% );
+	-ms-transform: translate( -50%, -100% );
+	-o-transform: translate( -50%, -100% );
+	transform: translate( -50%, -100% );
+	pointer-events: none;
 }
 .awcshm-map-container {
 	position: relative;
@@ -10,8 +32,8 @@
 }
 .awcshm-destination-locator-cta {
 	position: absolute !important;
-	bottom: 85px !important;
-	right: 10px !important;
+	bottom: 80px !important;
+	right: 11px !important;
 	display: inline-block !important;
 	width: 28px !important;
 	height: 27px !important;
@@ -31,9 +53,9 @@
 	-webkit-appearance: none !important;
 	-moz-appearance: none !important;
 	appearance: none !important;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px !important;
-	-moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px !important;
-	box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px -1px !important;
+	-webkit-box-shadow: rgba( 0, 0, 0, 0.5 ) 0px 1px 4px -1px !important;
+	-moz-box-shadow: rgba( 0, 0, 0, 0.5 ) 0px 1px 4px -1px !important;
+	box-shadow: rgba( 0, 0, 0, 0.5 ) 0px 1px 4px -1px !important;
 	-webkit-transition: background-color 250ms ease !important;
 	-o-transition: background-color 250ms ease !important;
 	-moz-transition: background-color 250ms ease !important;
@@ -46,10 +68,11 @@
 	background-color: #f2f2f2 !important;
 }
 .awcshm-destination-locator-input-wrapper {
-	z-index: 2;
+	z-index: 1001;
+	position: absolute;
 	top: 0;
 	left: 0;
-	right: 0; 
+	right: 0;
 	margin: 5px;
 }
 .awcshm-destination-locator-input-wrapper::after {
@@ -60,13 +83,13 @@
 	right: 0.375rem;
 	width: 1.5rem;
 	height: 1.25rem;
-	background: url( '/wp-includes/images/spinner.gif' ) center center no-repeat;
+	background: url( '../../../../../wp-includes/images/spinner.gif' ) center center no-repeat;
 	opacity: 0;
-	-webkit-transform: translateY( -50%);
-	-moz-transform: translateY( -50%);
-	-ms-transform: translateY( -50%);
-	-o-transform: translateY( -50%);
-	transform: translateY( -50%);
+	-webkit-transform: translateY( -50% );
+	-moz-transform: translateY( -50% );
+	-ms-transform: translateY( -50% );
+	-o-transform: translateY( -50% );
+	transform: translateY( -50% );
 	-webkit-transition: opacity 250ms ease;
 	-o-transition: opacity 250ms ease;
 	-moz-transition: opacity 250ms ease;
@@ -85,9 +108,9 @@
 	right: 0;
 	margin: 0;
 	background-color: #ffffff;
-	-webkit-box-shadow: 0 0.1875rem 0.3125rem rgba( 0, 0, 0, 0.25);
-	-moz-box-shadow: 0 0.1875rem 0.3125rem rgba( 0, 0, 0, 0.25);
-	box-shadow: 0 0.1875rem 0.3125rem rgba( 0, 0, 0, 0.25);
+	-webkit-box-shadow: 0 0.1875rem 0.3125rem rgba( 0, 0, 0, 0.25 );
+	-moz-box-shadow: 0 0.1875rem 0.3125rem rgba( 0, 0, 0, 0.25 );
+	box-shadow: 0 0.1875rem 0.3125rem rgba( 0, 0, 0, 0.25 );
 	-webkit-transition: visibility 250ms ease, opacity 250ms ease;
 	-o-transition: visibility 250ms ease, opacity 250ms ease;
 	-moz-transition: visibility 250ms ease, opacity 250ms ease;

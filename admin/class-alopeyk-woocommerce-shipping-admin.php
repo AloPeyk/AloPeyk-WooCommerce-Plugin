@@ -64,7 +64,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	/**
 	 * @since 1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles( $hook_suffix ) {
 
 		$screen = get_current_screen();
 		if ( in_array( $screen->id, array( 'edit-shop_order', 'edit-alopeyk_order', 'alopeyk_order', 'shop_order' ) ) || strpos( $screen->id, '_page_alopeyk-credit' ) ) {
@@ -74,6 +74,9 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/alopeyk-woocommerce-shipping-admin' . ( WP_DEBUG ? '' : '.min' ) . '.css', array(), $this->version, 'all' );
 		if ( $this->is_order_edit() ) {
 			wp_enqueue_style( $this->plugin_name . '__front', plugins_url( 'public/css/alopeyk-woocommerce-shipping-public' . ( WP_DEBUG ? '' : '.min' ) . '.css', dirname( __FILE__ ) ), array(), $this->version, 'all' );
+		}
+		if ( strpos( $hook_suffix , 'alopeyk-support' ) !== false ) {
+			wp_enqueue_style( $this->plugin_name . '__help_desk', plugin_dir_url( __FILE__ ) . 'css/alopeyk-woocommerce-shipping-admin-help-desk' . ( WP_DEBUG ? '' : '.min' ) . '.css', array(), $this->version, 'all' );
 		}
 
 	}

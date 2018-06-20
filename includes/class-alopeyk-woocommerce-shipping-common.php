@@ -156,9 +156,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					'name'    => $this->plugin_name,
 					'version' => $this->version,
 					'map'     => array(
-						'marker'  => $this->get_option( 'map_marker' ),
+						'marker'  => $this->get_option( 'map_marker', 'https://api.cedarmaps.com/cedarmaps.js/v1.8.0/images/marker-icon.png', false ),
 						'styles'  => $this->get_option( 'map_styles' ),
-						'api_key' => $this->get_gmap_api_key(),
+						'api_key' => $this->get_cedarmap_api_key(),
 					),
 					'loader'  => $this->get_loader_url(),
 					'scope'   => $data
@@ -384,12 +384,12 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	}
 
 	/**
-	 * @since  1.0.0
+	 * @since  1.5.0
 	 * @return string
 	 */
-	public function get_gmap_api_key() {
+	public function get_cedarmap_api_key() {
 
-		return $this->get_option( 'gmap_api_key', 'AIzaSyBgNlYgCBNDiwArVqJBHJ3RZo4zR3CVYcg', false );
+		return $this->get_option( 'cedarmap_api_key', '997de5d781ae79a8c619e7a25d89442204bee23a', false );
 
 	}
 
@@ -891,17 +891,20 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 	/**
 	 * @since  1.0.0
-	 * @param  float $lat
-	 * @param  float $lng
+	 * @param  float   $lat
+	 * @param  float   $lng
+	 * @param  boolean $array
 	 * @return object
 	 */
-	public function get_location( $lat = null, $lng = null ) {
+	public function get_location( $lat = null, $lng = null, $array = false ) {
 
 		$location = null;
 		if ( ! is_null( $lat ) && ! is_null( $lng ) ) {
-			$location = (object) array(
-				'lat' => number_format( (float) $lat, 6, '.', '' ),
-				'lng' => number_format( (float) $lng, 6, '.', '' )
+			$lat = number_format( (float) $lat, 6, '.', '' );
+			$lng = number_format( (float) $lng, 6, '.', '' );
+			$location = $array ? [ $lat, $lng ] : (object) array(
+				'lat' => $lat,
+				'lng' => $lng
 			);
 		}
 		return $location;
@@ -917,9 +920,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		$data = (object) $data;
 		$lat  = $data->lat;
 		$lng  = $data->lng;
-		$ask_google = isset( $data->ask_google ) ? filter_var( $data->ask_google, FILTER_VALIDATE_BOOLEAN ) : false;
+		$ask_cedar = isset( $data->ask_cedar ) ? filter_var( $data->ask_cedar, FILTER_VALIDATE_BOOLEAN ) : false;
 		$location = $this->get_location( $lat, $lng );
-		$address = $this->get_address( $location, $ask_google );
+		$address = $this->get_address( $location, $ask_cedar );
 
 		if ( $address ) {
 			$this->respond_ajax( $address );
@@ -933,15 +936,15 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	}
 
 	/**
-	 * @since  1.0.0
+	 * @since  1.5.0
 	 * @param  string $url
 	 * @return array
 	 */
-	public function get_google_response( $url = null ) {
+	public function get_cedar_response( $url = null , $multiple = false ) {
 
 		if ( $url ) {
 			$curl_options = array(
-				CURLOPT_URL            => 'https://maps.googleapis.com/maps/api/geocode/json?' . $url . '&language=fa&region=ir&key=' . $this->get_gmap_api_key(),
+				CURLOPT_URL            => 'https://alopeyk.api.cedarmaps.com/v1/geocode/cedarmaps.streets/' . $url . '?limit=5&access_token=' . $this->get_cedarmap_api_key(),
 				CURLOPT_ENCODING       => '',
 				CURLOPT_MAXREDIRS      => 10,
 				CURLOPT_TIMEOUT        => 30,
@@ -961,8 +964,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			curl_close( $curl );
 			if ( ! $err ) {
 				$response = json_decode( $response );
-				if ( $response->status == 'OK' && count( $response->results ) ) {
-					return $response->results;
+				$results  = $multiple ? $response->results : $response->result;
+				if ( $response->status == 'OK' && count( $results ) ) {
+					return $results;
 				}
 			} else {
 				$this->add_log( $err );
@@ -980,8 +984,8 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		$data = (object) $data;
 		$input = $data->input;
-		$ask_google = isset( $data->ask_google ) ? filter_var( $data->ask_google, FILTER_VALIDATE_BOOLEAN ) : true;
-		$addresses = $this->suggest_address( $input, $ask_google );
+		$ask_cedar = isset( $data->ask_cedar ) ? filter_var( $data->ask_cedar, FILTER_VALIDATE_BOOLEAN ) : true;
+		$addresses = $this->suggest_address( $input, $ask_cedar );
 		if ( $addresses ) {
 			$this->respond_ajax( $addresses );
 		} else {
@@ -993,10 +997,10 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	/**
 	 * @since  1.0.0
 	 * @param  object  $location
-	 * @param  boolean $ask_google
+	 * @param  boolean $ask_cedar
 	 * @return array
 	 */
-	public function get_address( $location, $ask_google = false ) {
+	public function get_address( $location, $ask_cedar = false ) {
 
 		if ( ! is_null( $location ) ) {
 			$apiResponse = null;
@@ -1009,22 +1013,14 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$location = $apiResponse->object;
 				return array(
 					'city'    => $location->city,
-					'address' => $location->region . ( isset( $location->address[0] ) ? __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $location->address[0] : '' )
+					'address' => $location->city_fa . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $location->region . ( isset( $location->address[0] ) ? __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $location->address[0] : '' )
 				);
-			} else if ( $ask_google ) {
-				$addresses = $this->get_google_response( 'latlng=' . $location->lat . ',' . $location->lng );
-				if ( $addresses && count( $addresses ) ) {
-					$location = $addresses[0];
-					$city = '__NF__';
-					for ( $i = 0; $i < count ( $location->address_components ); $i++ ) {
-						$component = $location->address_components[$i];
-						if ( in_array( 'locality', $component->types ) ) {
-							$city = $component->long_name;
-						}
-					}
+			} else if ( $ask_cedar ) {
+				$addresses = $this->get_cedar_response( $location->lat . ',' . $location->lng , false );
+				if ( $addresses ) {
 					return array(
-						'city'    => $city,
-						'address' => $location->formatted_address
+						'city'    => $addresses->city,
+						'address' => $addresses->city . ( $addresses->address && ! empty( $addresses->address ) ? __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $addresses->address : '' )
 					);
 				}
 			}
@@ -1036,10 +1032,10 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	/**
 	 * @since  1.0.0
 	 * @param  string  $input
-	 * @param  boolean $ask_google
+	 * @param  boolean $ask_cedar
 	 * @return array
 	 */
-	public function suggest_address( $input, $ask_google = true ) {
+	public function suggest_address( $input, $ask_cedar = true ) {
 
 		if ( ! empty( $input ) ) {
 			$addresses   = array();
@@ -1054,32 +1050,30 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					return array(
 						'lat'     => $location->lat,
 						'lng'     => $location->lng,
+						'latlng'  => $location->lat . ',' . $location->lng,
 						'city'    => $location->city,
-						'address' => $location->region . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $location->title
+						'address' => $location->city_fa . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $location->region . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $location->title
 					);
 				}, $apiResponse->object );
 			}
-			if ( $ask_google ) {
-				$extra_addresses = $this->get_google_response( 'address=' . str_replace( ' ', '+', $input ) );
+			if ( $ask_cedar ) {
+				$extra_addresses = $this->get_cedar_response( str_replace( ' ', '+', $input ) , true );
 				if ( $extra_addresses && count( $extra_addresses ) ) {
 					foreach ( $extra_addresses as $extra_address ) {
-						$city = '__NF__';
-						for ( $i = 0; $i < count ( $extra_address->address_components ); $i++ ) {
-							$component = $extra_address->address_components[$i];
-							if ( in_array( 'locality', $component->types ) ) {
-								$city = $component->long_name;
-							}
-						}
+						$location    = explode( ',', $extra_address->location->center );
 						$addresses[] = array(
-							'lat'     => $extra_address->geometry->location->lat,
-							'lng'     => $extra_address->geometry->location->lng,
-							'city'    => $city,
-							'address' => $extra_address->formatted_address
+							'lat'     => $location[0],
+							'lng'     => $location[1],
+							'latlng'  => $location[0] . ',' . $location[1],
+							'city'    => $extra_address->components->city,
+							'address' => $extra_address->components->city . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $extra_address->name
 						);
 					}
 				}
 			}
-			return $addresses;
+			$unique_addresses = array_unique( array_column( $addresses, 'latlng' ) );
+			$addresses = array_intersect_key( $addresses, $unique_addresses );
+			return array_values( $addresses );
 		}
 		return null;
 

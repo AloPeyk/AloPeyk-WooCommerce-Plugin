@@ -168,6 +168,7 @@ class Alopeyk_WooCommerce_Shipping_Template {
 function get_local_template_part( $slug, array $vars = array(), $echo = false, $scope = 'admin', array $args = array() ) {
 
 	$template = new Alopeyk_WooCommerce_Shipping_Template( $slug, $vars, $args, $scope );
+
 	$output = $template->get_output();
 	if ( $echo ) {
 		echo $output;
