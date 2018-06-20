@@ -1,10 +1,10 @@
 === Alopeyk WooCommerce Shipping ===
 
-Contributors: alopeyk, bmoudi
-Tags: alopeyk, woocommerce, shipping, delivery, e-commerce, shop, shipping method, iran
+Contributors: alopeyk, bmoudi, hormozdi
+Tags: الوپیک, alopeyk, woocommerce, shipping, delivery, e-commerce, shop, iran
 Requires at least: 4.4
 Tested up to: 4.9.6
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 Requires PHP: 5.6
 WC requires at least: 2.6
 WC tested up to: 3.3.5
@@ -73,7 +73,7 @@ The manual installation method involves downloading our plugin and uploading it 
 
 Then you have to enter the API key you've obtained from [Alopeyk](https://alopeyk.com "Alopeyk On-demand Delivery") in the API Key field laid in plugin's settings page. You can access the settings page by clicking the Settings link below Alopeyk item in Dashboard sidebar menu.
 
-It is also highly recommended to enter your specific [Google Maps API Key](https://developers.google.com/maps/documentation/javascript/get-api-key "Get Google Maps API Key") in the relevant field in settings page.
+It is also highly recommended to enter your specific [Cedar Maps API Key](https://www.cedarmaps.com/) in the relevant field in settings page.
 
 
 == Frequently Asked Questions ==
@@ -134,3 +134,8 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 = 1.4.0 =
 *   **New** : Update plugin from github master source
 *   **New** : Manage timezone setting
+= 1.5.0 =
+*   **Edit** : Changing map engine from Google to Cedar
+*   **Edit** : Watching for map movement instead of marker
+*   **Fix** : Fix for using unicode characters while searching addresses
+*   **Fix** : Fixing some RTL support issues

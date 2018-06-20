@@ -1,5 +1,5 @@
 (function( $j ) {
-	
+
 	'use strict';
 
 	var alopeyk = alopeyk || { wcshm : {} };
@@ -43,6 +43,7 @@
 			destinationLocatorMapId                    : 'destination-locator-map',
 			destinationLocatorMapClass                 : 'map-canvas destination-locator-map',
 			destinationLocatorCtaClass                 : 'destination-locator-cta',
+			mapMarkerIconClass                         : 'map-marker-icon',
 			destinationLocatorInputWrapperId           : 'destination-locator-input-wrapper',
 			destinationLocatorInputWrapperClass        : 'destination-locator-input-wrapper',
 			destinationLocatorAutocompleteResultsClass : 'destination-locator-autocomplete-results',
@@ -54,10 +55,14 @@
 			autoCompleteKeyupDelay                     : 500,
 			positionKeyupDelay                         : 500,
 			defaultZoom                                : 15,
+			maxZoom                                    : 17,
 			defaultCenter                              : {
 				lat : 35.744989,
 				lng : 51.375284
-			}
+			},
+			cedarMapJsLib                              : 'https://api.cedarmaps.com/cedarmaps.js/v1.8.0/cedarmaps.js',
+			cedarMapCssLib                             : 'https://api.cedarmaps.com/cedarmaps.js/v1.8.0/cedarmaps.css',
+			cedarMapTilesSource                        : 'https://alopeyk.api.cedarmaps.com/v1/tiles/cedarmaps.streets.json?access_token={{TOKEN}}',
 
 		},
 
@@ -91,17 +96,36 @@
 
 		},
 
-		injectScript : function ( src ) {
+		injectScript : function ( src, callback ) {
 
 			if ( ! $j( '[src="' + src + '"]' ).length ) {
 
 				var s, t;
 
-				s       = document.createElement ( 'script' );
-				s.type  = 'text/javascript';
-				s.async = true;
-				s.src   = src;
-				t       = document.getElementsByTagName ( 'script' )[ 0 ];
+				s        = document.createElement ( 'script' );
+				s.type   = 'text/javascript';
+				s.async  = true;
+				s.src    = src;
+				s.onload = callback ? callback : false;
+				t        = document.getElementsByTagName ( 'script' )[ 0 ];
+
+				t.parentNode.insertBefore ( s, t );
+
+			}
+
+		},
+		
+		injectStylesheet : function ( href ) {
+
+			if ( ! $j( '[href="' + href + '"]' ).length ) {
+
+				var s, t;
+
+				s       = document.createElement ( 'link' );
+				s.type  = 'text/css';
+				s.rel   = "stylesheet";
+				s.href  = href;
+				t       = document.getElementsByTagName ( 'link' )[ 0 ];
 
 				t.parentNode.insertBefore ( s, t );
 
@@ -109,24 +133,24 @@
 
 		},
 
-		loadGoogleMaps : function () {
+		loadCedarMaps : function () {
 
 			window[ 'alopeykHandleMapsPublic' ] = alopeyk.wcshm.public.fn.handleMaps;
 
 			if ( typeof alopeykHandleMapsPublic === 'function' ) {
 
-				if ( typeof window.google != 'undefined' && window.google.maps ) {
+				if ( typeof window.L != 'undefined' ) {
 
-					window.googleMapIsLoading = false;
+					window.cedarMapIsLoading = false;
 					alopeyk.wcshm.public.fn.handleMaps();
 
-				} else if ( window.googleMapIsLoading ) {
+				} else if ( window.cedarMapIsLoading ) {
 
 					alopeyk.wcshm.public.vars.loadingMapInterval = setInterval ( function () {
 
-						if ( window.google && window.google.maps ) {
+						if ( window.L ) {
 
-							window.googleMapIsLoading = false;
+							window.cedarMapIsLoading = false;
 							clearInterval ( alopeyk.wcshm.public.vars.loadingMapInterval );
 							alopeyk.wcshm.public.fn.handleMaps();
 
@@ -136,8 +160,9 @@
 
 				} else {
 
-					window.googleMapIsLoading = true;
-					alopeyk.wcshm.public.fn.injectScript('https://maps.googleapis.com/maps/api/js?key=' + alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.api_key + '&libraries=places&language=fa&region=IR&callback=alopeykHandleMapsPublic');
+					window.cedarMapIsLoading = true;
+					alopeyk.wcshm.public.fn.injectScript ( alopeyk.wcshm.public.vars.maps.cedarMapJsLib, alopeykHandleMapsPublic );
+					alopeyk.wcshm.public.fn.injectStylesheet ( alopeyk.wcshm.public.vars.maps.cedarMapCssLib );
 
 				}
 
@@ -174,7 +199,7 @@
 
 			});
 
-			alopeyk.wcshm.public.fn.loadGoogleMaps();
+			alopeyk.wcshm.public.fn.loadCedarMaps();
 
 		},
 
@@ -182,11 +207,10 @@
 
 			var destinationMap      = alopeyk.wcshm.public.vars.common.destinationMap,
 				map                 = destinationMap ? destinationMap.mapObject : null,
-				marker              = destinationMap ? destinationMap.markerObject : null,
 				destinationLatInput = $j( alopeyk.wcshm.public.vars.maps.destinationLatInput ),
 				destinationLngInput = $j( alopeyk.wcshm.public.vars.maps.destinationLngInput );
 
-			if ( navigator.geolocation && map && marker && destinationLatInput.length && destinationLngInput.length && ( forceRelocation || ( ! destinationLatInput.val().length && ! destinationLngInput.val().length ) || ( destinationLatInput.val() == alopeyk.wcshm.public.vars.maps.defaultCenter.lat && destinationngInput.val() == alopeyk.wcshm.public.vars.maps.defaultCenter.lng ) ) ) {
+			if ( navigator.geolocation && map && destinationLatInput.length && destinationLngInput.length && ( forceRelocation || ( ! destinationLatInput.val().length && ! destinationLngInput.val().length ) || ( destinationLatInput.val() == alopeyk.wcshm.public.vars.maps.defaultCenter.lat && destinationngInput.val() == alopeyk.wcshm.public.vars.maps.defaultCenter.lng ) ) ) {
 
 				navigator.geolocation.getCurrentPosition ( function ( position ) {
 
@@ -194,14 +218,12 @@
 						alopeyk.wcshm.public.vars.maps.fetchAddressConnection.abort();
 					}
 
-					map.setCenter ({
+					map.setView ({
 
 						lat : position.coords.latitude,
 						lng : position.coords.longitude
 
 					});
-
-					marker.setPosition ( new google.maps.LatLng ( position.coords.latitude, position.coords.longitude ) );
 
 					alopeyk.wcshm.public.vars.maps.defaultCenter.lat = position.coords.latitude;
 					alopeyk.wcshm.public.vars.maps.defaultCenter.lng = position.coords.longitude;
@@ -217,15 +239,17 @@
 
 		initDestinationLocator : function ( destinationLatInput, destinationLngInput, destinationCityInput, destinationAddressInput, destinationNumberInput, destinationUnitInput, shippingAddress1Input, shippingAddress2Input, billingAddress1Input, billingAddress2Input, shipToDifferentAddressInput, editAddressButton ) {
 
-			
 			var initialize = function () {
 
-				var mapCanvas = $j('<div/>').attr ({
+				var mapMarkerImageUrl  = alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.marker,
+
+					mapCanvas = $j( '<div/>' ).attr ({
 
 						id    : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.destinationLocatorMapId ),
 						class : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.destinationLocatorMapClass ),
 
 					}),
+
 					destinationAutocompleteInput = destinationAddressInput.clone().attr ({
 
 						id             : destinationAddressInput.attr ( 'id' ) + '_autocomplete',
@@ -240,27 +264,38 @@
 						autocomplete   : 'off'
 
 					}).removeClass ( alopeyk.wcshm.public.vars.common.disabledClass ),
+
 					destinationAutocompleteInputWrapper = $j( '<div>' ).attr ({
 
 						id    : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.destinationLocatorInputWrapperId ),
 						class : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.destinationLocatorInputWrapperClass ),
 
 					}),
-					autoCompleteList = $j( '<ul>' ).attr ({
+
+					autoCompleteList = $j( '<ul/>' ).attr ({
 
 						id    : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.destinationLocatorAutocompleteResultsClass ),
 						class : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.destinationLocatorAutocompleteResultsClass ),
 
 					}),
+
 					mapContainer = $j( '<div/>' ).attr ({
 
 						class : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.mapContainerClass ),
 
 					}),
+
 					destinationLocatorCta = $j( '<button/>' ).attr ({
 
 						type  : 'button',
 						class : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.destinationLocatorCtaClass ),
+
+					}),
+
+					markerImage = $j( '<img/>' ).attr ({
+
+						src   : mapMarkerImageUrl,
+						class : alopeyk.wcshm.public.fn.addPrefix ( alopeyk.wcshm.public.vars.maps.mapMarkerIconClass ),
 
 					});
 
@@ -275,37 +310,27 @@
 				mapContainer
 				.append( mapCanvas )
 				.append( destinationAutocompleteInputWrapper )
-				.append( destinationLocatorCta );
+				.append( destinationLocatorCta )
+				.prepend( markerImage );
 
+				L.cedarmaps.accessToken = alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.api_key;
 
-				var mapMarker  = alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.marker,
-					mapStyles  = alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.styles,
-					mapOptions = {
+				var mapOptions = {
 
-						zoom   : alopeyk.wcshm.public.vars.maps.defaultZoom,
-						styles : mapStyles ? $j.parseJSON ( mapStyles ) : null,
-						center : {
+						zoom    : alopeyk.wcshm.public.vars.maps.defaultZoom,
+						maxZoom : alopeyk.wcshm.public.vars.maps.maxZoom,
+						center  : [
 
-							lat : destinationLatInput.val().length ? parseFloat( destinationLatInput.val() ) : alopeyk.wcshm.public.vars.maps.defaultCenter.lat,
-							lng : destinationLngInput.val().length ? parseFloat( destinationLngInput.val() ) : alopeyk.wcshm.public.vars.maps.defaultCenter.lng,
+							destinationLatInput.val().length ? parseFloat( destinationLatInput.val() ) : alopeyk.wcshm.public.vars.maps.defaultCenter.lat,
+							destinationLngInput.val().length ? parseFloat( destinationLngInput.val() ) : alopeyk.wcshm.public.vars.maps.defaultCenter.lng,
 
-						},
-						mapTypeControl    : false,
-						fullscreenControl : false,
-						streetViewControl : false,
+						],
+						zoomControl     : false,
+						scrollWheelZoom : false
 
 					},
 
-					map    = new google.maps.Map ( mapCanvas.get ( 0 ), mapOptions ),
-
-					marker = new google.maps.Marker ({
-
-								map       : map,
-								draggable : true,
-								position  : mapOptions.center,
-								icon      : mapMarker ? mapMarker : null
-
-							}),
+					map = L.cedarmaps.map ( mapCanvas.get ( 0 ), alopeyk.wcshm.public.vars.maps.cedarMapTilesSource.replace ( '{{TOKEN}}', L.cedarmaps.accessToken ), mapOptions ),
 
 					setActiveAutocompleteItem = function ( index ) {
 
@@ -324,15 +349,16 @@
 						}
 
 						destinationAutocompleteInputWrapper.addClass ( alopeyk.wcshm.public.vars.common.loadingClass );
+
 						alopeyk.wcshm.public.vars.maps.fetchAddressConnection = $j.post ( alopeyk.wcshm.public.vars.common.info.ajaxOptions.url, {
 
 							nonce        : alopeyk.wcshm.public.vars.common.info.ajaxOptions.nonce,
 							action       : alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.id,
 							request      : 'get_address',
 							authenticate : true,
-							ask_google   : true,
-							lat          : marker.getPosition().lat(),
-							lng          : marker.getPosition().lng(),
+							ask_cedar    : true,
+							lat          : map.getCenter().lat,
+							lng          : map.getCenter().lng,
 
 						}, function ( response ) {
 
@@ -388,8 +414,8 @@
 							action         : alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.id,
 							request        : 'set_session',
 							authenticate   : true,
-							lat            : marker.getPosition().lat(),
-							lng            : marker.getPosition().lng(),
+							lat            : map.getCenter().lat,
+							lng            : map.getCenter().lng,
 							city           : destinationCityInput.val(),
 							address        : destinationAddressInput.val(),
 							number         : destinationNumberInput.val(),
@@ -417,10 +443,14 @@
 
 					paymentMethodInputSelector = alopeyk.wcshm.public.vars.common.paymentMethodInput;
 
+				L.control.zoom ({
+					position : 'bottomright'
+				})
+				.addTo ( map );
+
 				alopeyk.wcshm.public.vars.common.destinationMap = {
 
-					mapObject    : map,
-					markerObject : marker
+					mapObject : map
 
 				};
 
@@ -444,14 +474,14 @@
 
 				}
 
-				marker.addListener ( 'drag', function() {
+				map.on ( 'move', function () {
 
-					destinationLatInput.val ( marker.getPosition().lat() );
-					destinationLngInput.val ( marker.getPosition().lng() );
+					destinationLatInput.val ( map.getCenter().lat );
+					destinationLngInput.val ( map.getCenter().lng );
 
 				});
 
-				marker.addListener ( 'dragend', function () {
+				map.on ( 'dragend', function () {
 
 					fetchAddressFromLocation();
 
@@ -471,8 +501,7 @@
 						alopeyk.wcshm.public.vars.maps.positionKeyupTimeout = setTimeout ( function () {
 
 							var location = { lat : parseFloat ( destinationLatInput.val() ), lng : parseFloat ( destinationLngInput.val() ) };
-							map.setCenter ( location );
-							marker.setPosition ( location );
+							map.setView ( location );
 							fetchAddressFromLocation();
 
 						}, alopeyk.wcshm.public.vars.maps.positionKeyupDelay );
@@ -559,6 +588,8 @@
 
 									if ( response && response.success && response.data.length ) {
 
+										destinationAutocompleteInput.focus();
+										
 										for ( var i = 0; i < response.data.length; i++ ) {
 
 											var itemLat      = parseFloat( response.data[i].lat ),
@@ -588,10 +619,8 @@
 														destinationAutocompleteInput.val ( address );
 														destinationAddressInput.val ( address );
 														destinationCityInput.val ( city );
-														map.setCenter ( location );
-														map.setZoom ( 17 );
-														marker.setPosition ( location );
-														marker.setVisible ( true );
+														map.setView ( location );
+														map.setZoom ( alopeyk.wcshm.public.vars.maps.defaultZoom );
 														destinationLatInput.val ( location.lat );
 														destinationLngInput.val ( location.lng );
 														alopeyk.wcshm.public.vars.maps.autocompleteInputValue = address;
@@ -638,25 +667,6 @@
 						}
 
 					}
-
-				});
-
-				google.maps.event.addListenerOnce ( map, 'idle', function () {
-
-					destinationAutocompleteInputWrapper.css ( 'position', 'absolute' );
-
-				});
-
-				google.maps.event.addDomListener ( window, 'resize', function () {
-
-					if ( alopeyk.wcshm.public.vars.maps.centerTimeout )
-						clearTimeout ( alopeyk.wcshm.public.vars.maps.centerTimeout );
-
-					alopeyk.wcshm.public.vars.maps.centerTimeout = setTimeout ( function () {
-
-						map.setCenter ( marker.getPosition() );
-
-					}, 100 );
 
 				});
 

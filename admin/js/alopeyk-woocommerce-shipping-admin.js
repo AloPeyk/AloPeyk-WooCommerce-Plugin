@@ -38,6 +38,7 @@
 			storeLocatorMapClass                 : 'map-canvas store-locator-map',
 			storeLocatorInputWrapperClass        : 'store-locator-input-wrapper',
 			storeLocatorAutocompleteResultsClass : 'store-locator-autocomplete-results',
+			mapMarkerIconClass                   : 'map-marker-icon',
 			storeLocatorAutocompleteResultClass  : 'store-locator-autocomplete-result',
 			storeLocatorHiddenableInput          : '.hide-parent-row',
 			autocompletePlaceholderDataAttr      : 'autocomplete-placeholder',
@@ -46,10 +47,14 @@
 			autoCompleteKeyupDelay               : 500,
 			positionKeyupDelay                   : 500,
 			defaultZoom                          : 15,
+			maxZoom                              : 17,
 			defaultCenter                        : {
 				lat : 35.732466,
 				lng : 51.413811
-			}
+			},
+			cedarMapJsLib                        : 'https://api.cedarmaps.com/cedarmaps.js/v1.8.0/cedarmaps.js',
+			cedarMapCssLib                       : 'https://api.cedarmaps.com/cedarmaps.js/v1.8.0/cedarmaps.css',
+			cedarMapTilesSource                  : 'https://alopeyk.api.cedarmaps.com/v1/tiles/cedarmaps.streets.json?access_token={{TOKEN}}',
 
 		},
 
@@ -266,17 +271,36 @@
 
 		},
 
-		injectScript : function ( src ) {
+		injectScript : function ( src, callback ) {
 
 			if ( ! $j( '[src="' + src + '"]' ).length ) {
 
 				var s, t;
 
-				s       = document.createElement ( 'script' );
-				s.type  = 'text/javascript';
-				s.async = true;
-				s.src   = src;
-				t       = document.getElementsByTagName ( 'script' )[ 0 ];
+				s        = document.createElement ( 'script' );
+				s.type   = 'text/javascript';
+				s.async  = true;
+				s.src    = src;
+				s.onload = callback ? callback : false;
+				t        = document.getElementsByTagName ( 'script' )[ 0 ];
+
+				t.parentNode.insertBefore ( s, t );
+
+			}
+
+		},
+		
+		injectStylesheet : function ( href ) {
+
+			if ( ! $j( '[href="' + href + '"]' ).length ) {
+
+				var s, t;
+
+				s       = document.createElement ( 'link' );
+				s.type  = 'text/css';
+				s.rel   = "stylesheet";
+				s.href  = href;
+				t       = document.getElementsByTagName ( 'link' )[ 0 ];
 
 				t.parentNode.insertBefore ( s, t );
 
@@ -284,24 +308,24 @@
 
 		},
 
-		loadGoogleMaps : function () {
+		loadCedarMaps : function () {
 
 			window[ 'alopeykHandleMapsAdmin' ] = alopeyk.wcshm.admin.fn.handleMaps;
 
 			if ( typeof alopeykHandleMapsAdmin === 'function' ) {
 
-				if ( typeof window.google != 'undefined' && window.google.maps ) {
+				if ( typeof window.L != 'undefined' ) {
 
-					window.googleMapIsLoading = false;
+					window.cedarMapIsLoading = false;
 					alopeyk.wcshm.admin.fn.handleMaps();
 
-				} else if ( window.googleMapIsLoading ) {
+				} else if ( window.cedarMapIsLoading ) {
 
 					alopeyk.wcshm.admin.vars.loadingMapInterval = setInterval ( function () {
 
-						if ( window.google && window.google.maps ) {
+						if ( window.L ) {
 
-							window.googleMapIsLoading = false;
+							window.cedarMapIsLoading = false;
 							clearInterval ( alopeyk.wcshm.admin.vars.loadingMapInterval );
 							alopeyk.wcshm.admin.fn.handleMaps();
 
@@ -311,8 +335,9 @@
 
 				} else {
 
-					window.googleMapIsLoading = true;
-					alopeyk.wcshm.admin.fn.injectScript ( 'https://maps.googleapis.com/maps/api/js?key=' + alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.api_key + '&language=fa&region=IR&callback=alopeykHandleMapsAdmin' );
+					window.cedarMapIsLoading = true;
+					alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.maps.cedarMapJsLib, alopeykHandleMapsAdmin );
+					alopeyk.wcshm.admin.fn.injectStylesheet ( alopeyk.wcshm.admin.vars.maps.cedarMapCssLib );
 
 				}
 
@@ -342,19 +367,22 @@
 
 			});
 
-			alopeyk.wcshm.admin.fn.loadGoogleMaps();
+			alopeyk.wcshm.admin.fn.loadCedarMaps();
 
 
 		},
 
 		initStoreLocator : function ( storeLatInput, storeLngInput, storeCityInput, storeAddressInput ) {
 
-			var mapCanvas = $j( '<div/>' ).attr ({
+			var mapMarkerImageUrl = alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.marker,
+
+				mapCanvas = $j( '<div/>' ).attr ({
 
 					id    : 'store-locator-map',
 					class : alopeyk.wcshm.admin.vars.maps.storeLocatorMapClass,
 
 				}),
+
 				storeAutocompleteInput = storeAddressInput.clone().attr ({
 
 					id             : storeAddressInput.attr ( 'id' ) + '_autocomplete',
@@ -369,17 +397,27 @@
 					autocorrect    : 'off',
 					autocomplete   : 'off'
 
-				}).removeClass ( alopeyk.wcshm.admin.vars.common.disabledClass ),
-				storeAutocompleteInputWrapper = $j( '<div>' ).attr ({
+				})
+				.removeClass ( alopeyk.wcshm.admin.vars.common.disabledClass ),
+
+				storeAutocompleteInputWrapper = $j( '<div/>' ).attr ({
 
 					id    : 'store-locator-input-wrapper',
 					class : alopeyk.wcshm.admin.vars.maps.storeLocatorInputWrapperClass,
 
 				}),
-				autoCompleteList = $j( '<ul>' ).attr ({
+
+				autoCompleteList = $j( '<ul/>' ).attr ({
 
 					id    : 'store-locator-autocomplete-results',
 					class : alopeyk.wcshm.admin.vars.maps.storeLocatorAutocompleteResultsClass,
+
+				}),
+
+				markerImage = $j( '<img/>' ).attr ({
+
+					src   : mapMarkerImageUrl,
+					class : alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.maps.mapMarkerIconClass ),
 
 				});
 
@@ -388,33 +426,28 @@
 			.append ( storeAutocompleteInput )
 			.append ( autoCompleteList );
 
-			mapCanvas.insertAfter( storeAutocompleteInputWrapper );
+			mapCanvas
+			.insertAfter( storeAutocompleteInputWrapper )
+			.prepend( markerImage );
+
+			L.cedarmaps.accessToken = alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.api_key;
 
 			var mapOptions = {
 
-					zoom   : alopeyk.wcshm.admin.vars.maps.defaultZoom,
-					center : {
+					zoom    : alopeyk.wcshm.admin.vars.maps.defaultZoom,
+					maxZoom : alopeyk.wcshm.admin.vars.maps.maxZoom,
+					center  : [
 
-						lat : storeLatInput.val().length ? parseFloat( storeLatInput.val() ) : alopeyk.wcshm.admin.vars.maps.defaultCenter.lat,
-						lng : storeLngInput.val().length ? parseFloat( storeLngInput.val() ) : alopeyk.wcshm.admin.vars.maps.defaultCenter.lng,
+						storeLatInput.val().length ? parseFloat( storeLatInput.val() ) : alopeyk.wcshm.admin.vars.maps.defaultCenter.lat,
+						storeLngInput.val().length ? parseFloat( storeLngInput.val() ) : alopeyk.wcshm.admin.vars.maps.defaultCenter.lng
 
-					},
-					mapTypeControl    : false,
-					streetViewControl : false,
-					fullscreenControl : false,
+					],
+					zoomControl     : false,
+					scrollWheelZoom : false
 
 				},
 
-				map    = new google.maps.Map ( mapCanvas.get ( 0 ), mapOptions ),
-
-				marker = new google.maps.Marker ({
-
-							map         : map,
-							draggable   : true,
-							position    : mapOptions.center,
-							anchorPoint : new google.maps.Point ( 0, -29 ),
-
-						}),
+				map = L.cedarmaps.map ( mapCanvas.get ( 0 ), alopeyk.wcshm.admin.vars.maps.cedarMapTilesSource.replace ( '{{TOKEN}}', L.cedarmaps.accessToken ), mapOptions ),
 
 				setActiveAutocompleteItem = function ( index ) {
 
@@ -447,9 +480,9 @@
 						action       : alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id,
 						request      : 'get_address',
 						authenticate : true,
-						ask_google   : false,
-						lat          : marker.getPosition().lat(),
-						lng          : marker.getPosition().lng(),
+						ask_cedar    : false,
+						lat          : map.getCenter().lat,
+						lng          : map.getCenter().lng,
 
 					}, function ( response ) {
 
@@ -486,14 +519,19 @@
 
 				};
 
-			marker.addListener ( 'drag', function() {
+			L.control.zoom ({
+				position : 'bottomright'
+			})
+			.addTo ( map );
 
-				storeLatInput.val ( marker.getPosition().lat() );
-				storeLngInput.val ( marker.getPosition().lng() );
+			map.on ( 'move', function () {
+
+				storeLatInput.val ( map.getCenter().lat );
+				storeLngInput.val ( map.getCenter().lng );
 
 			});
 
-			marker.addListener ( 'dragend', function () {
+			map.on ( 'dragend', function () {
 
 				fetchAddressFromLocation();
 
@@ -513,8 +551,7 @@
 					alopeyk.wcshm.admin.vars.maps.positionKeyupTimeout = setTimeout ( function () {
 
 						var location = { lat : parseFloat ( storeLatInput.val() ), lng : parseFloat ( storeLngInput.val() ) };
-						map.setCenter ( location );
-						marker.setPosition ( location );
+						map.setView ( location );
 						fetchAddressFromLocation();
 
 					}, alopeyk.wcshm.admin.vars.maps.positionKeyupDelay );
@@ -578,12 +615,14 @@
 								action       : alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id,
 								request      : 'suggest_address',
 								authenticate : true,
-								ask_google   : false,
+								ask_cedar    : false,
 								input        : storeAutocompleteInput.val(),
 
 							}, function ( response ) {
 
 								if ( response && response.success && response.data.length ) {
+
+									storeAutocompleteInput.focus();
 
 									for ( var i = 0; i < response.data.length; i++ ) {
 
@@ -614,10 +653,8 @@
 													storeAutocompleteInput.val ( address );
 													storeAddressInput.val ( address );
 													storeCityInput.val ( city );
-													map.setCenter ( location );
-													map.setZoom ( 17 );
-													marker.setPosition ( location );
-													marker.setVisible ( true );
+													map.setView ( location );
+													map.setZoom ( alopeyk.wcshm.admin.vars.maps.defaultZoom );
 													storeLatInput.val ( location.lat );
 													storeLngInput.val ( location.lng );
 													alopeyk.wcshm.admin.vars.maps.autocompleteInputValue = address;
@@ -650,30 +687,6 @@
 					}
 
 				}
-
-			});
-
-			google.maps.event.addListenerOnce ( map, 'idle', function () {
-
-				storeAutocompleteInputWrapper.css ({
-
-					zIndex   : 2,
-					position : 'absolute'
-
-				});
-
-			});
-
-			google.maps.event.addDomListener ( window, 'resize', function () {
-
-				if ( alopeyk.wcshm.admin.vars.maps.centerTimeout )
-					clearTimeout ( alopeyk.wcshm.admin.vars.maps.centerTimeout );
-
-				alopeyk.wcshm.admin.vars.maps.centerTimeout = setTimeout ( function () {
-
-					map.setCenter ( marker.getPosition() );
-
-				}, 100 );
 
 			});
 

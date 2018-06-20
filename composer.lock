@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AloPeyk/AloPeyk-Api-PHP.git",
-                "reference": "4eb0dd0db2b8a0acc1865d80a34e5bc4f0ba651e"
+                "reference": "6491385db340a9b4baa381475c4082c3abcb5baf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/4eb0dd0db2b8a0acc1865d80a34e5bc4f0ba651e",
-                "reference": "4eb0dd0db2b8a0acc1865d80a34e5bc4f0ba651e",
+                "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/6491385db340a9b4baa381475c4082c3abcb5baf",
+                "reference": "6491385db340a9b4baa381475c4082c3abcb5baf",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +51,7 @@
                 "الوپيك",
                 "الوپیک"
             ],
-            "time": "2018-05-19T14:34:49+00:00"
+            "time": "2018-06-20T13:13:01+00:00"
         }
     ],
     "packages-dev": [],

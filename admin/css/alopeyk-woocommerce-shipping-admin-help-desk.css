@@ -1,0 +1,10 @@
+
+/**
+ * Help Desk
+ */
+@media only screen and (min-width: 783px) {
+	html,
+	body {
+	overflow-y: auto !important;
+	}
+}
