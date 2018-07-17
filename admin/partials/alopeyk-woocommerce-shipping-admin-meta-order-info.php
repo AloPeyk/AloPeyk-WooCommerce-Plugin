@@ -53,7 +53,7 @@ if ( $order_data ) {
 		<?php if ( isset( $order_data->transport_type ) ) { ?>
 		<p>
 			<span><?php echo __( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?>: </span>
-			<strong><?php echo $order_data->transport_type == 'motorbike' ? __( 'Motorbike', 'alopeyk-woocommerce-shipping' ) : ( $order_data->transport_type == 'cargo' ? __( 'Cargo', 'alopeyk-woocommerce-shipping' ) : __( $order_data->transport_type, 'alopeyk-woocommerce-shipping' ) ); ?></strong>
+			<strong><?php echo $order_data->transport_type_name; ?></strong>
 		</p>
 		<?php } ?>
 		<p>

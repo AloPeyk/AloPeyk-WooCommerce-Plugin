@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-14 07:17+0000\n"
+"POT-Creation-Date: 2018-07-10 06:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,80 +14,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:129
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:148
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:340
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:340
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:130
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:149
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:342
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:342
 msgid "Support"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:144
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:336
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:336
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:145
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:338
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:338
 msgid "Settings"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:199
-#: includes/class-alopeyk-woocommerce-shipping-common.php:581
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:200
+#: includes/class-alopeyk-woocommerce-shipping-common.php:629
 #: includes/class-alopeyk-woocommerce-shipping-method.php:162
 msgid "Please enter your address ..."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:203
-#: includes/class-alopeyk-woocommerce-shipping-common.php:587
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:204
+#: includes/class-alopeyk-woocommerce-shipping-common.php:635
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:70
 msgid "Unit"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:207
-#: includes/class-alopeyk-woocommerce-shipping-common.php:595
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:208
+#: includes/class-alopeyk-woocommerce-shipping-common.php:643
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:73
 msgid "Plaque"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:223
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:224
 msgid "Address Description"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:224
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:225
 msgid ""
 "This will be shown on courier device if order is being sent via Alopeyk "
 "shipping method and usually consists of order value, address details or any "
 "other sort of data needed for courier to know."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:268
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:270
 msgid "Courier Information"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:273
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:275
 msgid "No courier assigned to this order yet."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:277
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:279
 msgid "Order Information"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:280
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:282
 msgid "Shipping Details"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:285
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:287
 msgid "Order details not found."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:290
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:585
-#: includes/class-alopeyk-woocommerce-shipping-common.php:195
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:292
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:586
+#: includes/class-alopeyk-woocommerce-shipping-common.php:218
 msgid "Ship via Alopeyk"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:314
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:316
 msgid "Alopeyk Orders History"
 msgstr ""
 
 #. Author of the plugin
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:328
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:330
 #: includes/class-alopeyk-woocommerce-shipping-method.php:33
 #: includes/class-alopeyk-woocommerce-shipping-method.php:46
 #: includes/class-alopeyk-woocommerce-shipping-method.php:85
@@ -97,161 +97,146 @@ msgstr ""
 msgid "Alopeyk"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:329
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:331
 msgid "Credit"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:333
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:335
 #, php-format
 msgid ""
 "User data not found. You have to enter a valid API key in <a href=\"%s\" "
 "target=\"blank\">settings page</a> in order to access this page."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:385
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:60
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:387
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:59
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:36
 msgid "Order"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:386
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:388
 msgid "Type"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:387
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:389
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:60
 msgid "Shop Order(s)"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:388
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:390
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:76
 msgid "Customer(s)"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:389
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:391
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:49
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:50
 msgid "Cost"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:390
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:392
 msgid "Date"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:391
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:393
 msgid "Actions"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:431
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:433
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:43
 msgid "ID"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:435
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:517
-#: includes/class-alopeyk-woocommerce-shipping-method.php:465
-#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:56
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:27
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:24
-msgid "Motorbike"
-msgstr ""
-
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:435
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:516
-#: includes/class-alopeyk-woocommerce-shipping-method.php:465
-#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:56
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:29
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:24
-msgid "Cargo"
-msgstr ""
-
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:450
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:462
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1013
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1020
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1051
-#: includes/class-alopeyk-woocommerce-shipping-method.php:382
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:452
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:464
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1065
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1065
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1072
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1104
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1104
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1118
+#: includes/class-alopeyk-woocommerce-shipping-method.php:405
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:68
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:89
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:21
 msgid ","
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:483
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:485
 msgid "View"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:485
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2585
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:487
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2635
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:105
 msgid "Track"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:488
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:490
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:100
 msgid "Invoice"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:492
-#: includes/class-alopeyk-woocommerce-shipping-common.php:178
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:494
+#: includes/class-alopeyk-woocommerce-shipping-common.php:201
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:112
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:44
 msgid "Cancel"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:495
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:497
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-courier-info.php:31
 msgid "Rate"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:499
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:501
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:121
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:53
 msgid "Ship Again"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:521
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:522
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:55
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:23
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:22
 msgid "Transport Type"
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:634
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:636
 #, php-format
 msgid "Maximum %s orders can be shipped at once."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:638
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2363
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:67
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:640
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2413
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:66
 msgid "No order selected for shipping."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:669
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:788
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:812
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:839
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:672
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:791
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:815
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:842
 msgid "Order data not found."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:717
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:720
 msgid "Coupon data not found."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:740
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:743
 msgid "Order cannot be canceled."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:744
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:747
 msgid "No order is selected to be canceled."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:767
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:770
 msgid "Cancelation data not found."
 msgstr ""
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:808
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:811
 msgid "Courier can not be rated because it is already rated."
 msgstr ""
 
@@ -268,406 +253,438 @@ msgid ""
 "activating Alopeyk WooCommerce Shipping plugin."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:176
+#: includes/class-alopeyk-woocommerce-shipping-common.php:199
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:59
 msgid "Ship"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:177
+#: includes/class-alopeyk-woocommerce-shipping-common.php:200
 msgid "Submit"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:179
+#: includes/class-alopeyk-woocommerce-shipping-common.php:202
 msgid "Close"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:180
+#: includes/class-alopeyk-woocommerce-shipping-common.php:203
 msgid "Add Alopeyk Coupon"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:181
+#: includes/class-alopeyk-woocommerce-shipping-common.php:204
 #: admin/partials/alopeyk-woocommerce-shipping-admin-credit-page.php:30
 msgid "Add Alopeyk Credit"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:182
+#: includes/class-alopeyk-woocommerce-shipping-common.php:205
 msgid "Cancel Alopeyk Order"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:183
+#: includes/class-alopeyk-woocommerce-shipping-common.php:206
 msgid "Rate Alopeyk Courier"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:184
+#: includes/class-alopeyk-woocommerce-shipping-common.php:207
 msgid "Cancel Order"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:185
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1084
+#: includes/class-alopeyk-woocommerce-shipping-common.php:208
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1140
 msgid "Alopeyk Order"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:186
+#: includes/class-alopeyk-woocommerce-shipping-common.php:209
 msgid "Alopeyk Coupon"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:187
+#: includes/class-alopeyk-woocommerce-shipping-common.php:210
 #: admin/partials/alopeyk-woocommerce-shipping-admin-credit-page.php:31
 msgid "Add Coupon"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:188
+#: includes/class-alopeyk-woocommerce-shipping-common.php:211
 msgid "Pay"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:189
+#: includes/class-alopeyk-woocommerce-shipping-common.php:212
 msgid "Apply"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:190
+#: includes/class-alopeyk-woocommerce-shipping-common.php:213
 msgid "Yes"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:191
+#: includes/class-alopeyk-woocommerce-shipping-common.php:214
 msgid "No"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:192
-#: includes/class-alopeyk-woocommerce-shipping-common.php:531
+#: includes/class-alopeyk-woocommerce-shipping-common.php:215
+#: includes/class-alopeyk-woocommerce-shipping-common.php:579
 msgid "Track Order"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:193
+#: includes/class-alopeyk-woocommerce-shipping-common.php:216
 msgid "View Order"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:194
+#: includes/class-alopeyk-woocommerce-shipping-common.php:217
 msgid "View Invoice"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:196
+#: includes/class-alopeyk-woocommerce-shipping-common.php:219
 msgid "Unkown error occurred."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:197
+#: includes/class-alopeyk-woocommerce-shipping-common.php:220
 msgid "Request failed:"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:264
-#: includes/class-alopeyk-woocommerce-shipping-common.php:268
+#: includes/class-alopeyk-woocommerce-shipping-common.php:221
+msgid "Use two fingers to move the map"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:222
+msgid "Use ctrl + scroll to zoom the map"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:223
+msgid "Use ⌘ + scroll to zoom the map"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:294
+#: includes/class-alopeyk-woocommerce-shipping-common.php:298
 msgid "دیر رسیدن به مبدا یا مقصد"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:265
-#: includes/class-alopeyk-woocommerce-shipping-common.php:267
-#: includes/class-alopeyk-woocommerce-shipping-common.php:274
+#: includes/class-alopeyk-woocommerce-shipping-common.php:295
+#: includes/class-alopeyk-woocommerce-shipping-common.php:297
+#: includes/class-alopeyk-woocommerce-shipping-common.php:304
 msgid "برخورد و رفتار بد"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:266
+#: includes/class-alopeyk-woocommerce-shipping-common.php:296
 msgid "ظاهر نامرتب و بی نظم"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:269
+#: includes/class-alopeyk-woocommerce-shipping-common.php:299
 msgid "درخواست هزینه اضافه"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:270
-#: includes/class-alopeyk-woocommerce-shipping-common.php:278
+#: includes/class-alopeyk-woocommerce-shipping-common.php:300
+#: includes/class-alopeyk-woocommerce-shipping-common.php:308
 msgid "عدم تماس با درخواست دهنده"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:271
+#: includes/class-alopeyk-woocommerce-shipping-common.php:301
 msgid "نداشتن باکس حمل مرسوله"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:272
+#: includes/class-alopeyk-woocommerce-shipping-common.php:302
 msgid "عدم تسلط بر مسیر"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:273
-#: includes/class-alopeyk-woocommerce-shipping-common.php:279
+#: includes/class-alopeyk-woocommerce-shipping-common.php:303
+#: includes/class-alopeyk-woocommerce-shipping-common.php:309
 msgid "سایر موارد"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:275
+#: includes/class-alopeyk-woocommerce-shipping-common.php:305
 msgid "پیک تقاضای لغو درخواست نمود"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:276
+#: includes/class-alopeyk-woocommerce-shipping-common.php:306
 msgid "فاصله پیک تا مبدا"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:277
+#: includes/class-alopeyk-woocommerce-shipping-common.php:307
 msgid "سفیر باکس حمل مرسوله به همراه نداشت"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:298
+#: includes/class-alopeyk-woocommerce-shipping-common.php:322
+msgid "Motorbike"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:323
+msgid "Cart Bike"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:324
+msgid "Cargo"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:325
+msgid "Small Cargo"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:326
+msgid "Car"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:346
 msgid "Please wait ..."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:302
+#: includes/class-alopeyk-woocommerce-shipping-common.php:350
 msgid "minute(s)"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:302
+#: includes/class-alopeyk-woocommerce-shipping-common.php:350
 msgid "Less than a minute"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:303
+#: includes/class-alopeyk-woocommerce-shipping-common.php:351
 #, php-format
 msgid "%s left until the courier %s %s."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:303
+#: includes/class-alopeyk-woocommerce-shipping-common.php:351
 msgid "reaches"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:303
+#: includes/class-alopeyk-woocommerce-shipping-common.php:351
 msgid "returns"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:303
-#: includes/class-alopeyk-woocommerce-shipping-common.php:305
-#: includes/class-alopeyk-woocommerce-shipping-common.php:312
+#: includes/class-alopeyk-woocommerce-shipping-common.php:351
+#: includes/class-alopeyk-woocommerce-shipping-common.php:353
+#: includes/class-alopeyk-woocommerce-shipping-common.php:360
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:59
 msgid "origin"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:303
-#: includes/class-alopeyk-woocommerce-shipping-common.php:305
-#: includes/class-alopeyk-woocommerce-shipping-common.php:312
+#: includes/class-alopeyk-woocommerce-shipping-common.php:351
+#: includes/class-alopeyk-woocommerce-shipping-common.php:353
+#: includes/class-alopeyk-woocommerce-shipping-common.php:360
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:59
 msgid "destination"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:305
+#: includes/class-alopeyk-woocommerce-shipping-common.php:353
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56
 #, php-format
 msgid "Courier returned to %s."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:305
+#: includes/class-alopeyk-woocommerce-shipping-common.php:353
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56
 #, php-format
 msgid "Courier reached %s."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:308
+#: includes/class-alopeyk-woocommerce-shipping-common.php:356
 msgid "Searching for closest courier."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:310
-#: includes/class-alopeyk-woocommerce-shipping-common.php:316
+#: includes/class-alopeyk-woocommerce-shipping-common.php:358
+#: includes/class-alopeyk-woocommerce-shipping-common.php:364
 msgid "Courier is driving to origin."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:312
+#: includes/class-alopeyk-woocommerce-shipping-common.php:360
 #, php-format
 msgid "Courier is driving to %s."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:314
+#: includes/class-alopeyk-woocommerce-shipping-common.php:362
 #, php-format
 msgid "Courier arrived at destination%s."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:320
+#: includes/class-alopeyk-woocommerce-shipping-common.php:368
 msgid "Courier arrived at destination."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:357
+#: includes/class-alopeyk-woocommerce-shipping-common.php:405
 msgid ""
 "You have chosen a date which is passed. So your order will be shipped as "
 "soon as being created. Are you sure?"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:551
+#: includes/class-alopeyk-woocommerce-shipping-common.php:599
 msgid "Address Details"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:649
+#: includes/class-alopeyk-woocommerce-shipping-common.php:697
 msgid "Please specify your exact location on the map."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:740
+#: includes/class-alopeyk-woocommerce-shipping-common.php:789
 #, php-format
 msgid "You will be charged %s more by choosing this payment method."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:834
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2045
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2420
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2490
+#: includes/class-alopeyk-woocommerce-shipping-common.php:883
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2091
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2470
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2540
 msgid "Authentication failed."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:834
+#: includes/class-alopeyk-woocommerce-shipping-common.php:883
 #: includes/class-alopeyk-woocommerce-shipping-method.php:72
 msgid "API Key"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:855
+#: includes/class-alopeyk-woocommerce-shipping-common.php:904
 msgid "Authentication failed may be because of wrong API key."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:866
+#: includes/class-alopeyk-woocommerce-shipping-common.php:915
 msgid "No action defined for given request."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:929
+#: includes/class-alopeyk-woocommerce-shipping-common.php:981
 msgid "This address is out of service."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:989
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1041
 msgid "No address found."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1081
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1083
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1137
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1139
 msgid "Alopeyk Orders"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1085
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1141
 msgctxt "Admin menu name"
 msgid "Alopeyk Orders"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1086
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1142
 msgid "No orders found."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1087
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1143
 msgid "No orders found in Trash."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1119
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1175
 msgctxt "Order status"
 msgid "In Progress"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1124
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1180
 #, php-format
 msgid "In Progress <span class=\"count\">(%s)</span>"
 msgid_plural "In Progress <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1127
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1183
 msgctxt "Order status"
 msgid "Pending"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1132
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1188
 #, php-format
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1135
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1191
 msgctxt "Order status"
 msgid "Scheduled"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1140
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1196
 #, php-format
 msgid "Scheduled <span class=\"count\">(%s)</span>"
 msgid_plural "Scheduled <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1143
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1199
 msgctxt "Order status"
 msgid "Failed"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1148
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1204
 #, php-format
 msgid "Failed <span class=\"count\">(%s)</span>"
 msgid_plural "Failed <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1151
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1207
 msgctxt "Order status"
 msgid "Completed"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1156
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1212
 #, php-format
 msgid "Completed <span class=\"count\">(%s)</span>"
 msgid_plural "Completed <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1619
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1665
 #, php-format
 msgid "Order scheduled to be shipped via Alopeyk shipping method at %s."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1624
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1670
 msgid "Searching for the closest courier to assign shipping task."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1627
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1673
 msgid "with the phone number"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1630
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1676
 #, php-format
 msgid ""
 "Courier%s assigned and <a href=\"%s\" target=\"_blank\">shipping proccess</a>"
 " is started. It can be tracked <a href=\"%s\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1635
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1681
 msgid "Order successfully delivered."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1640
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1686
 msgid "Shipping canceled."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:1645
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1691
 msgid "No courier found."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2020
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2066
 msgid "Coupon code is required."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2029
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2075
 msgid "Coupon code successfully applied."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2034
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2080
 msgid "Entered coupon code is not valid."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2039
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2051
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2085
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2097
 msgid "Error occured while trying to apply coupon code."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2039
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2051
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2213
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2403
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2479
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2496
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2085
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2097
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2263
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2453
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2529
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2546
 msgid "Detail:"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2161
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2211
 msgid ""
 "Shipping proccess of one or more selected orders is in progress. Please "
 "cancel them before creating a new order."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2213
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2263
 #, php-format
 msgid ""
 "Error occurred while trying to write order as a Wordpress post. But your "
@@ -676,22 +693,22 @@ msgid ""
 "target=\"_blank\" >contact Alopeyk support</a>."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2245
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2295
 msgid "Your order has been successfully created and is in progress."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2253
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2303
 msgid ""
 "Error occured while trying to fetch Alopeyk order details. Order cancelled "
 "due to security reasons. Please try again later."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2267
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2333
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2317
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2383
 msgid "Unable to get your Alopeyk credit."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2283
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2333
 #, php-format
 msgid ""
 "You are not authenticated. Please recheck your API key entered in <a "
@@ -699,11 +716,11 @@ msgid ""
 "target=\"_blank\">Contact Alopeyk</a>."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2322
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2372
 msgid "Your Alopeyk order is ready to submit."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2327
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2377
 #, php-format
 msgid ""
 "Order price is %s while your credit balance is %s. You need to <a "
@@ -712,86 +729,86 @@ msgid ""
 "selected package(s)."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2339
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2389
 msgid ""
 "One or more order shipping addresses are not supported by Alopeyk shipping "
 "method."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2345
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2395
 msgid ""
 "Order items have a total weight or volume more than maximum allowed for "
 "motorbike."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2351
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2401
 msgid "Alopeyk shipping method is not active."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2357
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2407
 msgid "Error occurred while fetching data for orders."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2398
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2448
 msgid "Your rate successfully submitted."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2403
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2408
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2414
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2453
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2458
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2464
 msgid "Error occured while trying to save your rate."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2432
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2482
 msgid "No reason selected for low score."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2438
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2488
 msgid "Rate is not specified."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2444
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2494
 msgid "Order ID is required for rate submission."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2462
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2512
 msgid "Order should be specified to be canceled."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2474
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2524
 msgid "Order successfully canceled."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2479
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2529
 msgid "Cannot cancel selected order."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2484
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2496
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2534
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2546
 msgid "Error occured while trying to cancel selected order."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2580
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2630
 #, php-format
 msgid "Dear %s,"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2582
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2632
 msgid "Your order is being shipped via Alopeyk"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2583
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2633
 #, php-format
 msgid ""
 "%s is picked up from <a href=\"%s\">%s</a> and is being delivered to you by "
 "<a href=\"%s\">Alopeyk</a> courier."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2583
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2633
 msgid "Your order"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-common.php:2636
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2686
 msgid "Update Active Order Interval"
 msgstr ""
 
@@ -897,7 +914,7 @@ msgid ""
 msgstr ""
 
 #: includes/class-alopeyk-woocommerce-shipping-method.php:166
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:51
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:50
 msgid "Origin Description"
 msgstr ""
 
@@ -935,214 +952,232 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:195
-msgid "Map Styles"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-method.php:196
-msgid ""
-"You can paste your custom map styles taken from <a href=\"http://mapstylr."
-"com/\" target=\"_blank\">MapStyler</a>, <a href=\"https://snazzymaps.com/\" "
-"target=\"_blank\">SnazzyMaps</a> or similar tools and want to be applied to "
-"address maps."
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-method.php:203
+#: includes/class-alopeyk-woocommerce-shipping-method.php:198
 msgid "Cost Options"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:207
+#: includes/class-alopeyk-woocommerce-shipping-method.php:202
 msgid "Cost Type"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:210
+#: includes/class-alopeyk-woocommerce-shipping-method.php:205
 msgid "Dynamic Cost"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:211
+#: includes/class-alopeyk-woocommerce-shipping-method.php:206
 msgid "Static Cost"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:214
+#: includes/class-alopeyk-woocommerce-shipping-method.php:209
 msgid ""
 "This option will specify that whether the shipping cost is a static value or "
 "should be fetched from Alopeyk API."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:217
+#: includes/class-alopeyk-woocommerce-shipping-method.php:212
 msgid "Static Cost Type"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:220
+#: includes/class-alopeyk-woocommerce-shipping-method.php:215
 msgid "Percentage"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:221
+#: includes/class-alopeyk-woocommerce-shipping-method.php:216
 msgid "Fixed"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:224
+#: includes/class-alopeyk-woocommerce-shipping-method.php:219
 msgid ""
 "This option will specify that wether the shipping cost is a fixed value or a "
 "percentage of cart price."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:227
+#: includes/class-alopeyk-woocommerce-shipping-method.php:222
 msgid "Fixed Cost"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:230
+#: includes/class-alopeyk-woocommerce-shipping-method.php:225
 msgid ""
 "This option defines the fixed cost should be added to total cart amount. "
 "(IRR)"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:233
+#: includes/class-alopeyk-woocommerce-shipping-method.php:228
 msgid "Percentage Cost"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:236
+#: includes/class-alopeyk-woocommerce-shipping-method.php:231
 msgid ""
 "This option defines the percentage of cart amount that should be added to "
 "total cart amount."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:239
-msgid "Smart Switch"
+#: includes/class-alopeyk-woocommerce-shipping-method.php:234
+msgid "Transportation Type Settings"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:242
-msgid ""
-"Automatically switch from motorbike to cargo if weight or dimensions exceeds "
-"the limits."
+#: includes/class-alopeyk-woocommerce-shipping-method.php:240
+msgid "Ship via"
 msgstr ""
 
 #: includes/class-alopeyk-woocommerce-shipping-method.php:243
-msgid ""
-"If not checked, Alopeyk will not be visible in frontend if weight or "
-"dimensions of cart content exceeds the limits."
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-method.php:250
-msgid "Order Options"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-method.php:254
-msgid "Status Change"
-msgstr ""
-
-#: includes/class-alopeyk-woocommerce-shipping-method.php:255
-#: includes/class-alopeyk-woocommerce-shipping-method.php:262
-#: includes/class-alopeyk-woocommerce-shipping-method.php:269
+#: includes/class-alopeyk-woocommerce-shipping-method.php:278
+#: includes/class-alopeyk-woocommerce-shipping-method.php:285
+#: includes/class-alopeyk-woocommerce-shipping-method.php:292
 msgid "Enabled"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:258
+#: includes/class-alopeyk-woocommerce-shipping-method.php:244
+#, php-format
+msgid ""
+"Total weight of the package should be up to %s kg and its width, height and "
+"length should be up to %s, %s and %s centimeters respectively to be allowed "
+"to be shipped by this method."
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:249
+msgid "Smart Switch"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:252
+msgid "Show only most optimal shipping method"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:253
+msgid ""
+"If not enabled, all possible shipping methods will be shown in the checkout "
+"page."
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:259
+msgid "&nbsp;"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:262
+msgid "Use default price set for choosing most optimal method"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:263
+msgid ""
+"If not enabled, real-time price will be fetched from Alopeyk’s API for each "
+"shipping method in order to choose the most optimal one. This may make the "
+"process a bit slower."
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:273
+msgid "Order Options"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:277
+msgid "Status Change"
+msgstr ""
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:281
 msgid ""
 "Check this checkbox only if you want WooCommerce orders' status to be "
 "changed based on changes being made in Alopeyk delivery status."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:261
+#: includes/class-alopeyk-woocommerce-shipping-method.php:284
 msgid "Dashboard Tracking"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:265
+#: includes/class-alopeyk-woocommerce-shipping-method.php:288
 msgid ""
 "Check this checkbox only if you want your customers to be able to track "
 "their delivering from their account dashboard."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:268
+#: includes/class-alopeyk-woocommerce-shipping-method.php:291
 msgid "Use Tehran TimeZone"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:272
+#: includes/class-alopeyk-woocommerce-shipping-method.php:295
 msgid ""
 "Check this checkbox only if you want to use “Tehran TomeZone” for Alopeyk "
 "orders, otherwise default Wordpress timezone will be used."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:279
+#: includes/class-alopeyk-woocommerce-shipping-method.php:302
 msgid "Refresh Options"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:283
+#: includes/class-alopeyk-woocommerce-shipping-method.php:306
 msgid "Cron Interval"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:287
+#: includes/class-alopeyk-woocommerce-shipping-method.php:310
 msgid ""
 "The number of seconds between each request for fetching the latest status of "
 "an active order. It is highly recommended to be more than 10."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:294
+#: includes/class-alopeyk-woocommerce-shipping-method.php:317
 msgid "Admin Refresh Interval"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:297
+#: includes/class-alopeyk-woocommerce-shipping-method.php:320
 msgid ""
 "The number of seconds between refreshes in admin panel for bringing latest "
 "order details to the screen. It is highly recommended to be more than 10."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:304
+#: includes/class-alopeyk-woocommerce-shipping-method.php:327
 msgid "Front Refresh Interval"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:307
+#: includes/class-alopeyk-woocommerce-shipping-method.php:330
 msgid ""
 "The number of seconds between refreshes in customer dashboard for bringing "
 "latest order details to the screen. It is highly recommended to be more than "
 "10."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:323
+#: includes/class-alopeyk-woocommerce-shipping-method.php:346
 msgid "Payment Options"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:329
+#: includes/class-alopeyk-woocommerce-shipping-method.php:352
 msgid "Has return"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:332
+#: includes/class-alopeyk-woocommerce-shipping-method.php:355
 msgid ""
 "Check this checkbox only if you need this payment method to have return trip."
 " For example if want the courier to take the money from the customer after "
 "delivering the package and bring it back to your store."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:338
+#: includes/class-alopeyk-woocommerce-shipping-method.php:361
 msgid "Customer should pay for return cost"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:341
+#: includes/class-alopeyk-woocommerce-shipping-method.php:364
 msgid ""
 "Check this checkbox only if you want customers to pay for return costs "
 "whenever this payment method is chosen. If not checked, the cost will be "
 "deducted from your Alopeyk account."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:348
+#: includes/class-alopeyk-woocommerce-shipping-method.php:371
 msgid "Warn customer about price change"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:351
+#: includes/class-alopeyk-woocommerce-shipping-method.php:374
 msgid ""
 "Check this checkbox only if you want inform customers about the return cost "
 "that will be added to total price."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:371
+#: includes/class-alopeyk-woocommerce-shipping-method.php:394
 msgid "The <strong>API key</strong> is not valid."
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:382
+#: includes/class-alopeyk-woocommerce-shipping-method.php:405
 msgid "and"
 msgstr ""
 
-#: includes/class-alopeyk-woocommerce-shipping-method.php:385
+#: includes/class-alopeyk-woocommerce-shipping-method.php:408
 #, php-format
 msgid ""
 "Please fill %s field(s), otherwise Alopeyk shipping method cannot be enabled."
@@ -1266,28 +1301,28 @@ msgstr ""
 msgid "Which of the following reasons make you decide to cancel this request?"
 msgstr ""
 
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:34
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:33
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:28
 msgid "Shipping Time"
 msgstr ""
 
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:36
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:35
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:30
 msgid "Now"
 msgstr ""
 
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:37
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:36
 msgid "Later"
 msgstr ""
 
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:54
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:53
 msgid ""
 "This will be shown on courier device and usually consists of order value, "
 "address details or any other sort of data needed for courier to know about "
 "the origin address or the whole order."
 msgstr ""
 
-#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:60
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:59
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:36
 msgid "Orders"
 msgstr ""

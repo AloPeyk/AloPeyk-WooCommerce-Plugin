@@ -230,12 +230,40 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 				'default'     => '0',
 				'description' => __( 'This option defines the percentage of cart amount that should be added to total cart amount.', 'alopeyk-woocommerce-shipping' ),
 			);
+			$form_fields['transport_types_settings'] = array(
+				'title' => __( 'Transportation Type Settings', 'alopeyk-woocommerce-shipping' ),
+				'type'  => 'title',
+			);
+			foreach ( $this->helpers->get_transport_types( false ) as  $key => $transport_type ) {
+
+				$form_fields['pt_' . $key] = array(
+					'title'       => __( 'Ship via', 'alopeyk-woocommerce-shipping' ) . ' ' . __( $transport_type['label'], 'alopeyk-woocommerce-shipping' ),
+					'type'        => 'checkbox',
+					'default'     => 'yes',
+					'label'       => __( 'Enabled', 'alopeyk-woocommerce-shipping' ),
+					'description' => sprintf( __( 'Total weight of the package should be up to %s kg and its width, height and length should be up to %s, %s and %s centimeters respectively to be allowed to be shipped by this method.', 'alopeyk-woocommerce-shipping' ), $transport_type['limits']['max_weight']/1000, $transport_type['limits']['max_width'], $transport_type['limits']['max_height'], $transport_type['limits']['max_length'] ),
+				);
+
+			}
 			$form_fields['auto_type'] = array(
 				'title'       => __( 'Smart Switch', 'alopeyk-woocommerce-shipping' ),
 				'type'        => 'checkbox',
 				'default'     => 'yes',
-				'label'       => __( 'Automatically switch from motorbike to cargo if weight or dimensions exceeds the limits.', 'alopeyk-woocommerce-shipping' ),
-				'description' => __( 'If not checked, Alopeyk will not be visible in frontend if weight or dimensions of cart content exceeds the limits.', 'alopeyk-woocommerce-shipping' ),
+				'label'       => __( 'Show only most optimal shipping method', 'alopeyk-woocommerce-shipping' ),
+				'description' => __( 'If not enabled, all possible shipping methods will be shown in the checkout page.', 'alopeyk-woocommerce-shipping' ),
+				'custom_attributes' => array(
+					'data-checkbox-toggle-target' => 'toggler-checkbox-id-auto_type_price',
+				),
+			);
+			$form_fields['auto_type_static'] = array(
+				'title'       => __( '&nbsp;', 'alopeyk-woocommerce-shipping' ),
+				'type'        => 'checkbox',
+				'default'     => 'yes',
+				'label'       => __( 'Use default price set for choosing most optimal method', 'alopeyk-woocommerce-shipping' ),
+				'description' => __( 'If not enabled, real-time price will be fetched from Alopeyk’s API for each shipping method in order to choose the most optimal one. This may make the process a bit slower.', 'alopeyk-woocommerce-shipping' ),
+				'custom_attributes' => array(
+					'data-checkbox-toggle-id' => 'toggler-checkbox-id-auto_type_price',
+				),
 			);
 			$form_fields['order_options_title_spacer'] = array(
 				'type'  => 'title',
@@ -423,7 +451,11 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 			}, $contents );
 			$total_volume = array_sum( array_column( $dimensions, 'volume' ) );
 		}
-		$overflowed = $this->helpers->has_overflow( $weights, $dimensions, get_option( 'woocommerce_weight_unit' ), get_option( 'woocommerce_dimension_unit' ) );
+		$transport_types = $this->helpers->get_transport_types();
+		foreach ( $transport_types as $key => $transport_type ) {
+			$overflowed_state = $this->helpers->has_overflow( $weights, $dimensions, get_option( 'woocommerce_weight_unit' ), get_option( 'woocommerce_dimension_unit' ), $key );
+			$overflowed[$key] = $overflowed_state;
+		}
 		$subtotal = isset( $package->cart_subtotal ) ? $package->cart_subtotal : 0;
 		$payment_method = $package->active_payment_method;
 		$package = array(
@@ -431,7 +463,7 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 			'weights'        => $weights,
 			'dimensions'     => $dimensions,
 			'destinations'   => $destinations,
-			'overflowed'     => $overflowed,
+			'overflowed'     => serialize( $overflowed ),
 			'subtotal'       => $subtotal,
 			'payment_method' => $payment_method,
 			'total_volume'   => $total_volume,
@@ -451,19 +483,50 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 		WC()->session->set( 'return_cost', 0 );
 		if ( $package && count( $package ) ) {
 			$package = $this->get_package_data( $package );
-			$shipping = (object) $this->helpers->calculate_shipping( $package );
-			if ( isset( $shipping->cost ) ) {
+			$transport_types = $this->helpers->get_transport_types();
+			$min_price = INF;
+			$rates = array();
+			$shipping_methods = array();
+			$shipping_infos   = array();
+			$selected_type_id = 0;
+			foreach ( $transport_types as $key => $transport_type ) {
+				$shipping = (object) $this->helpers->calculate_shipping( $package, $key, null, null, false, true );
+				if ( isset( $shipping->cost ) ) {
+					$shipping_methods[]   = $key;
+					$shipping_infos[$key] = $shipping;
+					$method_title = $this->title . ' (' . $this->helpers->get_transport_type_name( $shipping->type ) . ')';
+					$rate = array(
+						'id'    => $this->id .'-'. $key,
+						'label' => $method_title,
+						'cost'  => $this->helpers->normalize_price( $shipping->cost ),
+					);
+					if ( $this->helpers->get_option( 'auto_type', 'yes' ) == 'yes' ) {
+						$rates[] = $rate;
+						if ( $this->helpers->get_option( 'auto_type_static', 'yes' ) == 'yes' ) {
+							$selected_type_id = 1;
+							break;
+						} elseif ( $rate['cost'] < $min_price ) {
+							$selected_type_id = count( $rates );
+							$min_price = $rate['cost'];
+						}
+					} else {
+						$selected_type_id = -1;
+						$this->add_rate( $rate );
+					}
+				}
+			}
+			if ( $selected_type_id != 0 ){
+				if ( $selected_type_id == -1 ){
+					$shipping_method = explode( '-', WC()->session->get( 'chosen_shipping_methods' )[0] )[1];
+				} else {
+					$shipping_method = $shipping_methods[ $selected_type_id - 1 ];
+					$this->add_rate( $rates[ $selected_type_id - 1 ] );
+				}
+				$shipping = (object) $this->helpers->calculate_shipping( $package, $shipping_method, null, null, true, $shipping_infos[$shipping_method] );
 				if ( $shipping->cost_type == 'dynamic' ) {
 					$cost_details = (object) $shipping->cost_details;
 					WC()->session->set( 'return_cost', $this->helpers->normalize_price( $cost_details->price_with_return - $cost_details->price ) );
 				}
-				$method_title = $this->title . ' (' . ( $shipping->type == 'motorbike' ? __( 'Motorbike', 'alopeyk-woocommerce-shipping' ) : ( $shipping->type == 'cargo' ? __( 'Cargo', 'alopeyk-woocommerce-shipping' ) : __( $shipping->type, 'alopeyk-woocommerce-shipping' ) ) ) . ')';
-				$rate = array(
-					'id'    => $this->id,
-					'label' => $method_title,
-					'cost'  => $this->helpers->normalize_price( $shipping->cost ),
-				);
-				$this->add_rate( $rate );
 			}
 		}
 
@@ -478,7 +541,12 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 
 		WC()->session->set( 'return_cost', 0 );
 		if ( $package && count( $package ) ) {
-			return $this->helpers->is_available( $this->get_package_data( $package ) );
+			$transport_types = $this->helpers->get_transport_types();
+			foreach ( $transport_types as $key => $transport_type ) {
+				if ( $this->helpers->is_available( $this->get_package_data( $package ), $key ) ) {
+					return true;
+				}
+			}
 		}
 		return false;
 

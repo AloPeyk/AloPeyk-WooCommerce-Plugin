@@ -336,8 +336,13 @@
 				} else {
 
 					window.cedarMapIsLoading = true;
-					alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.maps.cedarMapJsLib, alopeykHandleMapsAdmin );
+					alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.maps.cedarMapJsLib, function () {
+
+						alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.common.info.leaflet_gesture_handling.js, alopeykHandleMapsAdmin );
+
+					});
 					alopeyk.wcshm.admin.fn.injectStylesheet ( alopeyk.wcshm.admin.vars.maps.cedarMapCssLib );
+					alopeyk.wcshm.admin.fn.injectStylesheet ( alopeyk.wcshm.admin.vars.common.info.leaflet_gesture_handling.css );
 
 				}
 
@@ -443,7 +448,15 @@
 
 					],
 					zoomControl     : false,
-					scrollWheelZoom : false
+					gestureHandling : true,
+					gestureHandlingText: {
+
+						touch: alopeyk.wcshm.admin.fn.translate ( 'Use two fingers to move the map' ),
+						scroll: alopeyk.wcshm.admin.fn.translate ( 'Use ctrl + scroll to zoom the map' ),
+						scrollMac: alopeyk.wcshm.admin.fn.translate ( 'Use ⌘ + scroll to zoom the map' ),
+						
+					}
+
 
 				},
 
@@ -617,6 +630,8 @@
 								authenticate : true,
 								ask_cedar    : false,
 								input        : storeAutocompleteInput.val(),
+								lat          : map.getCenter().lat,
+								lng          : map.getCenter().lng,
 
 							}, function ( response ) {
 

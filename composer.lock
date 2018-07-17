@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "fa71deda2da73759e1849829ea4b9eda",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AloPeyk/AloPeyk-Api-PHP.git",
-                "reference": "6491385db340a9b4baa381475c4082c3abcb5baf"
+                "reference": "326e401623ec4e42089d3f27308bf9b2b5256b7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/6491385db340a9b4baa381475c4082c3abcb5baf",
-                "reference": "6491385db340a9b4baa381475c4082c3abcb5baf",
+                "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/326e401623ec4e42089d3f27308bf9b2b5256b7d",
+                "reference": "326e401623ec4e42089d3f27308bf9b2b5256b7d",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +51,7 @@
                 "الوپيك",
                 "الوپیک"
             ],
-            "time": "2018-06-20T13:13:01+00:00"
+            "time": "2018-07-15T12:18:13+00:00"
         }
     ],
     "packages-dev": [],

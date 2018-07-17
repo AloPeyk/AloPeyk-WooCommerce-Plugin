@@ -99,7 +99,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	 * @since 1.4.0
 	 */
 	public function set_defaults() {
-		if ( !empty( $this->config['access_token'] ) ) {
+		if ( ! empty( $this->config['access_token'] ) ) {
 
 			extract( parse_url( $this->config['zip_url'] ) );
 
@@ -163,15 +163,15 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	public function get_new_version() {
 		$version = get_site_transient( md5($this->config['slug']).'_new_version' );
 
-		if ( $this->overrule_transients() || ( !isset( $version ) || !$version || '' == $version ) ) {
+		if ( $this->overrule_transients() || ( ! isset( $version ) || !$version || '' == $version ) ) {
 
 			$raw_response = $this->remote_get( trailingslashit( $this->config['raw_url'] ) . basename( $this->config['slug'] ) );
 
 			if ( is_wp_error( $raw_response ) )
 				$version = false;
 
-			if (is_array($raw_response)) {
-				if (!empty($raw_response['body']))
+			if ( is_array( $raw_response ) ) {
+				if ( ! empty( $raw_response['body'] ) )
 					preg_match( '/.*Version\:\s*(.*)$/mi', $raw_response['body'], $matches );
 			}
 
@@ -259,7 +259,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	 */
 	public function get_description() {
 		$_description = $this->get_github_data();
-		return ( !empty( $_description->description ) ) ? $_description->description : false;
+		return ( ! empty( $_description->description ) ) ? $_description->description : false;
 	}
 
 	/**
@@ -301,7 +301,7 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 	 */
 	public function get_plugin_info( $false, $action, $response ) {
 
-		if ( !isset( $response->slug ) || $response->slug != $this->config['slug'] )
+		if ( ! isset( $response->slug ) || $response->slug != $this->config['slug'] )
 			return false;
 
 		$response->slug = $this->config['slug'];

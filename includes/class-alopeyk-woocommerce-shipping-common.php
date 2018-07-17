@@ -38,10 +38,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public static $order_status_taxonomy_name = 'alopeyk_order_status';
 
 	public static $configs = array(
-		'max_weight'                   => 25000,                                                           // g
-		'max_length'                   => 45,                                                              // cm
-		'max_width'                    => 45,                                                              // cm
-		'max_height'                   => 45,                                                              // cm
 		'addresses_limit'              => 5,
 		'cancel_penalty_delay'         => 5,                                                               // Minutes
 		'cancel_penalty_amount'        => 0,                                                               // Tomans
@@ -51,6 +47,33 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		'credit_amounts'               => array( '10000', '20000', '30000', '50000', '100000', '200000' ), // Tomans
 		'supportTel'                   => '+982141346',
 		'devEmail'                     => 'dev@alopeyk.com',
+		'transport_limits'             => array(
+											'motorbike' => array(
+												'max_weight'                   => 25000,    // g
+												'max_width'                    => 45,       // cm
+												'max_height'                   => 45,       // cm
+												'max_length'                   => 45,       // cm
+											),
+											'car' => array(
+												'max_weight'                   => 100000,   // g
+												'max_width'                    => 50,       // cm
+												'max_height'                   => 50,       // cm
+												'max_length'                   => 100,      // cm
+											),
+											'cargo_s' => array(
+												'max_weight'                   => 500000,   // g
+												'max_width'                    => 150,      // cm
+												'max_height'                   => 150,      // cm
+												'max_length'                   => 150,      // cm
+											),
+											'cargo' => array(
+												'max_weight'                   => 1500000,  // g
+												'max_width'                    => 150,      // cm
+												'max_height'                   => 150,      // cm
+												'max_length'                   => 200,      // cm
+											),
+
+										),
 	);
 
 	/**
@@ -194,11 +217,18 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'View Invoice'           => __( 'View Invoice', 'alopeyk-woocommerce-shipping' ),
 				'Ship via Alopeyk'       => __( 'Ship via Alopeyk', 'alopeyk-woocommerce-shipping' ),
 				'Unkown error occurred.' => __( 'Unkown error occurred.', 'alopeyk-woocommerce-shipping' ),
-				'Request failed:'        => __( 'Request failed:', 'alopeyk-woocommerce-shipping' )
+				'Request failed:'        => __( 'Request failed:', 'alopeyk-woocommerce-shipping' ),
+				'Use two fingers to move the map'     => __( 'Use two fingers to move the map', 'alopeyk-woocommerce-shipping' ),
+				'Use ctrl + scroll to zoom the map'   => __( 'Use ctrl + scroll to zoom the map', 'alopeyk-woocommerce-shipping' ),
+				'Use ⌘ + scroll to zoom the map' => __( 'Use ⌘ + scroll to zoom the map', 'alopeyk-woocommerce-shipping' ),
 			),
 			'dynamic_parts' => $this->get_dynamic_parts( is_admin() ),
 			'refresh_interval' => $this->get_option( ( is_admin() ? 'refresh_admin_interval' : 'refresh_public_interval' ), 10 ),
-			'time' => (int) $this->get_now_in_milliseconds()
+			'time' => (int) $this->get_now_in_milliseconds(),
+			'leaflet_gesture_handling' => array(
+				'css' => plugin_dir_url( __FILE__ ) . '../public/css/leaflet-gesture-handling' . ( WP_DEBUG ? '' : '.min' ) . '.css',
+				'js'  => plugin_dir_url( __FILE__ ) . '../public/js/leaflet-gesture-handling' . ( WP_DEBUG ? '' : '.min' ) . '.js',
+			),
 		);
 
 	}
@@ -277,6 +307,24 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			__( 'سفیر باکس حمل مرسوله به همراه نداشت', 'alopeyk-woocommerce-shipping' ),
 			__( 'عدم تماس با درخواست دهنده', 'alopeyk-woocommerce-shipping' ),
 			__( 'سایر موارد', 'alopeyk-woocommerce-shipping' )
+		);
+		return $clauses;
+
+	}
+
+	/**
+	 * @since  1.5.1
+	 * @return array
+	 */
+	public function index_transport_types_translation() {
+
+		$clauses = array(
+			__( 'Motorbike', 'alopeyk-woocommerce-shipping' ),
+			__( 'Cart Bike', 'alopeyk-woocommerce-shipping' ),
+			__( 'Cargo', 'alopeyk-woocommerce-shipping' ),
+			__( 'Small Cargo', 'alopeyk-woocommerce-shipping' ),
+			__( 'Car', 'alopeyk-woocommerce-shipping' ),
+
 		);
 		return $clauses;
 
@@ -536,12 +584,34 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	}
 
 	/**
+	* @since 1.6.0
+	*/
+	public function has_virtual_product() {
+
+		global $woocommerce;
+		$has_virtual_products = false;
+		$virtual_products = 0;
+		$products = $woocommerce->cart->get_cart();
+		foreach ( $products as $product ) {
+			$product_id = $product['product_id'];
+			$is_virtual = get_post_meta( $product_id, '_virtual', true );
+			if ( $is_virtual == 'yes' ) {
+				$virtual_products += 1;
+			}
+		}
+		if ( count( $products ) == $virtual_products ) {
+			$has_virtual_products = true;
+		}
+		return $has_virtual_products;
+	}
+
+	/**
 	 * @since 1.0.0
 	 * @param array $checkout
 	 */
 	public function add_address_fields( $checkout = null ) {
 
-		if ( $this->is_enabled() ) {
+		if ( $this->is_enabled() && ! ( $checkout && $this->has_virtual_product() ) ) {
 			$shipping_address_latitude  = $checkout ? WC()->session->get( 'destination_latitude' )  : null;
 			$shipping_address_longitude = $checkout ? WC()->session->get( 'destination_longitude' ) : null;
 			$shipping_address_city      = $checkout ? WC()->session->get( 'destination_city' )      : null;
@@ -660,7 +730,10 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		if ( $this->is_enabled() ) {
 			$data = (object) $_POST;
-			if ( in_array( METHOD_ID, $data->shipping_method ) ) {
+			$matched_methods = array_filter( $data->shipping_method, function( $var ) {
+				return (bool) ( METHOD_ID == explode( '-', $var )[0] );
+			});
+			if ( count( $matched_methods ) ) {
 				$create_account = isset( $data->createaccount ) && $data->createaccount;
 				$user_id = $create_account ? wc_get_order( $order_id )->get_user_id() : null;
 				$order = wc_get_order( $order_id );
@@ -940,11 +1013,11 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @param  string $url
 	 * @return array
 	 */
-	public function get_cedar_response( $url = null , $multiple = false ) {
+	public function get_cedar_response( $url = null , $multiple = false, $latlng = '' ) {
 
 		if ( $url ) {
 			$curl_options = array(
-				CURLOPT_URL            => 'https://alopeyk.api.cedarmaps.com/v1/geocode/cedarmaps.streets/' . $url . '?limit=5&access_token=' . $this->get_cedarmap_api_key(),
+				CURLOPT_URL            => 'https://alopeyk.api.cedarmaps.com/v1/geocode/cedarmaps.streets/' . $url . '?limit=5&access_token=' . $this->get_cedarmap_api_key() . '&location=' . $latlng,
 				CURLOPT_ENCODING       => '',
 				CURLOPT_MAXREDIRS      => 10,
 				CURLOPT_TIMEOUT        => 30,
@@ -982,10 +1055,14 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 */
 	public function ajax_suggest_address( $data ) {
 
-		$data = (object) $data;
-		$input = $data->input;
+		$data   = (object) $data;
+		$input  = $data->input;
+		$latlng = '';
+		$lat = isset( $data->lat ) ? $data->lat : null;
+		$lng = isset( $data->lng ) ? $data->lng : null;
+		$latlng = $lat && $lng ? ( $lat . ',' . $lng ) : '';
 		$ask_cedar = isset( $data->ask_cedar ) ? filter_var( $data->ask_cedar, FILTER_VALIDATE_BOOLEAN ) : true;
-		$addresses = $this->suggest_address( $input, $ask_cedar );
+		$addresses = $this->suggest_address( $input, $ask_cedar, $latlng );
 		if ( $addresses ) {
 			$this->respond_ajax( $addresses );
 		} else {
@@ -1035,13 +1112,13 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @param  boolean $ask_cedar
 	 * @return array
 	 */
-	public function suggest_address( $input, $ask_cedar = true ) {
+	public function suggest_address( $input, $ask_cedar = true, $latlng = '' ) {
 
 		if ( ! empty( $input ) ) {
 			$addresses   = array();
 			$apiResponse = null;
 			try {
-				$apiResponse = AloPeykApiHandler::getLocationSuggestion( $input );
+				$apiResponse = AloPeykApiHandler::getLocationSuggestion( $input, $latlng );
 			} catch (Exception $e) {
 				$this->add_log( $e->getMessage() );
 			}
@@ -1057,7 +1134,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				}, $apiResponse->object );
 			}
 			if ( $ask_cedar ) {
-				$extra_addresses = $this->get_cedar_response( str_replace( ' ', '+', $input ) , true );
+				$extra_addresses = $this->get_cedar_response( str_replace( ' ', '+', $input ) , true, $latlng );
 				if ( $extra_addresses && count( $extra_addresses ) ) {
 					foreach ( $extra_addresses as $extra_address ) {
 						$location    = explode( ',', $extra_address->location->center );
@@ -1171,34 +1248,20 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 	/**
 	 * @since  1.0.0
-	 * @return boolean
-	 */
-	public function smart_switch_enabled() {
-
-		$smart_switch = $this->get_option( 'auto_type' );
-		return $smart_switch && $smart_switch == 'yes';
-
-	}
-
-	/**
-	 * @since  1.0.0
 	 * @param  array   $weights
-	 * @param  string  $unit               
-	 * @param  boolean $check_smart_switch 
+	 * @param  string  $unit
 	 * @param  string  $type               
 	 * @return boolean                     
 	 */
-	public function is_available_for_weights( $weights = array(), $unit = null, $check_smart_switch = true, $type = 'motorbike' ) {
+	public function is_available_for_weights( $weights = array(), $unit = null, $type = 'motorbike' ) {
 
-		if ( ( $check_smart_switch && $this->smart_switch_enabled() ) || $type != 'motorbike' ) {
-			return true;	
-		}
+		$transport_types = $this->get_transport_types();
 		if ( $weights && $unit ) {
 			$total_weight = 0;
 			foreach ( $weights as $weight ) {
 				$weight = wc_get_weight( (float) $weight, 'g', $unit );
 				$total_weight += $weight;
-				if ( $total_weight > $this->get_config( 'max_weight' ) ) {
+				if ( isset( $transport_types[$type] ) && $total_weight > $transport_types[$type]['limits']['max_weight'] ) {
 					return false;
 				}
 			}
@@ -1212,18 +1275,19 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @since  1.0.0
 	 * @param  array   $dimensions
 	 * @param  string  $unit
-	 * @param  boolean $check_smart_switch
 	 * @param  string  $type
 	 * @return boolean
 	 */
-	public function is_available_for_dimensions( $dimensions = array(), $unit = null, $check_smart_switch = true, $type = 'motorbike' ) {
+	public function is_available_for_dimensions( $dimensions = array(), $unit = null, $type = 'motorbike' ) {
 
-		if ( ( $check_smart_switch && $this->smart_switch_enabled() ) || $type != 'motorbike' ) {
-			return true;	
-		}
-		if ( $dimensions && $unit ) {
-			$total_volume = 0;
-			$max_volume = $this->get_config( 'max_width' ) * $this->get_config( 'max_height' ) * $this->get_config( 'max_length' );
+		$total_volume    = 0;
+		$transport_types = $this->get_transport_types();
+
+		if ( isset( $transport_types[$type] ) && $dimensions && $unit ) {
+			$max_width  = $transport_types[$type]['limits']['max_width'];
+			$max_height = $transport_types[$type]['limits']['max_height'];
+			$max_length = $transport_types[$type]['limits']['max_length'];
+			$max_volume = $max_width * $max_height * $max_length;
 			foreach ( $dimensions as $dimension ) {
 				$dimension = (object) $dimension;
 				$width    = wc_get_dimension( (float) $dimension->width,  'cm', $unit );
@@ -1232,9 +1296,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$volume   = isset( $dimension->volume ) ? wc_get_dimension( (float) $dimension->volume, 'cm', $unit ) : null;
 				$quantity = isset( $dimension->quantity ) ? $dimension->quantity : 1;
 				$total_volume += $volume ? $volume : ( $width * $height * $length * $quantity );
-				$is_large = $width        > $this->get_config( 'max_width'  ) ||
-							$height       > $this->get_config( 'max_height' ) ||
-							$length       > $this->get_config( 'max_length' ) ||
+				$is_large = $width        > $max_width  ||
+							$height       > $max_height ||
+							$length       > $max_length ||
 							$total_volume > $max_volume;
 				if ( $is_large ) {
 					return false;
@@ -1300,13 +1364,13 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @param  string  $dimension_unit
 	 * @return boolean
 	 */
-	public function has_overflow( $weights = array(), $dimensions = array(), $weight_unit = null, $dimension_unit = null ) {
+	public function has_overflow( $weights = array(), $dimensions = array(), $weight_unit = null, $dimension_unit = null, $type = 'motorbike' ) {
 
 		if ( $weights && $dimensions && $weight_unit && $dimension_unit ) {
-			if ( ! $this->is_available_for_weights( $weights, $weight_unit, false ) ) {
+			if ( ! $this->is_available_for_weights( $weights, $weight_unit, $type ) ) {
 				return true;
 			}
-			if ( ! $this->is_available_for_dimensions( $dimensions, $dimension_unit, false ) ) {
+			if ( ! $this->is_available_for_dimensions( $dimensions, $dimension_unit, $type ) ) {
 				return true;
 			}
 			return false;
@@ -1328,10 +1392,10 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			$package = (object) $package;
 			$available = $this->is_available_for_currency( get_woocommerce_currency() );
 			if ( $available ) {
-				$available = $this->is_available_for_weights( $package->weights, get_option( 'woocommerce_weight_unit' ), true, $type );
+				$available = $this->is_available_for_weights( $package->weights, get_option( 'woocommerce_weight_unit' ), $type );
 			}
 			if ( $available ) {
-				$available = $this->is_available_for_dimensions( $package->dimensions, get_option( 'woocommerce_dimension_unit' ), true, $type );
+				$available = $this->is_available_for_dimensions( $package->dimensions, get_option( 'woocommerce_dimension_unit' ), $type );
 			}
 			if ( $available ) {
 				$available = $this->is_available_for_destinations( $package->destinations );
@@ -1348,69 +1412,72 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @param  string  $cost_type
 	 * @return array
 	 */
-	public function calculate_shipping( $package = null, $type = 'motorbike', $has_return = null, $cost_type = null, $override = true ) {
-
-		$cost         = null;
-		$cost_details = null;
-		if ( $package ) {
-			$package = (object) $package;
-			$cost_type = $cost_type ? $cost_type : $this->get_option( 'cost_type' );
-			if ( $cost_type == 'static' ) {
-				$static_cost_type = $this->get_option( 'static_cost_type' );
-				if ( $static_cost_type == 'fixed' ) {
-					$static_cost_fixed = $this->get_option( 'static_cost_fixed' );
-					$cost = $this->normalize_price( $this->get_option( 'static_cost_fixed' ) ) * count( $package->destinations );
-					$cost_details = array(
-						'type'   => 'fixed',
-						'amount' => $static_cost_fixed
-					);
-				} else if ( $static_cost_type == 'percentage' ) {
-					$static_cost_percentage = $this->get_option( 'static_cost_percentage' );
-					$cost = (float) $static_cost_percentage * count( $package->destinations ) * $package->subtotal / 10;
-					$cost_details = array(
-						'type'   => 'percentage',
-						'amount' => $static_cost_percentage
-					);
-				}
-			} else if ( $cost_type == 'dynamic' ) {
-				try {
-					$type = $this->get_transport_type( $package->overflowed, $type );
-					if ( $type ) {
-						$destinations    = array();
-						$origin_location = $this->get_location( $this->get_option( 'store_lat' ), $this->get_option( 'store_lng' ) );
-						$origin          = new Address( 'origin', $this->get_option( 'store_city' ), $origin_location->lat, $origin_location->lng );
-						if ( is_null( $has_return ) ) {
-							$has_return = $this->has_return( $package->payment_method );
-						}
-						foreach ( $package->destinations as $dest ) {
-							$dest                 = (object) $dest;
-							$destination_location = $this->get_location( $dest->latitude, $dest->longitude );
-							$destination          = new Address( 'destination', $dest->location_city, $destination_location->lat, $destination_location->lng );
-							$destinations[]       = $destination;
-						}
-						$order = new Order( $type, $origin, $destinations );
-						$order->setHasReturn( false );
-						$apiResponse       = $order->getPrice();
-						$price             = 10 * $apiResponse->object->price;
-						$price_with_return = 10 * $apiResponse->object->price_with_return;
-						$cost              = $has_return ? $price_with_return : $price;
+	public function calculate_shipping( $package = null, $type = 'motorbike', $has_return = null, $cost_type = null, $override = true, $shipping_info = true ) {
+		
+		if ( ! is_array( $shipping_info ) ) {
+			$cost         = null;
+			$cost_details = null;
+			if ( $package ) {
+				$package   = (object) $package;
+				$cost_type = $cost_type ? $cost_type : $this->get_option( 'cost_type' );
+				if ( $cost_type == 'static' ) {
+					$static_cost_type = $this->get_option( 'static_cost_type' );
+					if ( $static_cost_type == 'fixed' ) {
+						$static_cost_fixed = $this->get_option( 'static_cost_fixed' );
+						$cost = $this->normalize_price( $this->get_option( 'static_cost_fixed' ) ) * count( $package->destinations );
 						$cost_details = array(
-							'price'             => $price,
-							'price_with_return' => $price_with_return
+							'type'   => 'fixed',
+							'amount' => $static_cost_fixed
+						);
+					} else if ( $static_cost_type == 'percentage' ) {
+						$static_cost_percentage = $this->get_option( 'static_cost_percentage' );
+						$cost = (float) $static_cost_percentage * count( $package->destinations ) * $package->subtotal / 10;
+						$cost_details = array(
+							'type'   => 'percentage',
+							'amount' => $static_cost_percentage
 						);
 					}
-				} catch ( Exception $e ) {
-					$this->add_log( $e->getMessage() );
+				} else if ( $cost_type == 'dynamic' ) {
+					try {
+						$type = $this->get_transport_type( $package->overflowed, $type );
+						if ( $type ) {
+							$destinations    = array();
+							$origin_location = $this->get_location( $this->get_option( 'store_lat' ), $this->get_option( 'store_lng' ) );
+							$origin          = new Address( 'origin', $this->get_option( 'store_city' ), $origin_location->lat, $origin_location->lng );
+							if ( is_null( $has_return ) ) {
+								$has_return  = $this->has_return( $package->payment_method );
+							}
+							foreach ( $package->destinations as $dest ) {
+								$dest                 = (object) $dest;
+								$destination_location = $this->get_location( $dest->latitude, $dest->longitude );
+								$destination          = new Address( 'destination', $dest->location_city, $destination_location->lat, $destination_location->lng );
+								$destinations[]       = $destination;
+							}
+							$order = new Order( $type, $origin, $destinations );
+							$order->setHasReturn( false );
+							$apiResponse       = $order->getPrice();
+							$price             = 10 * $apiResponse->object->price;
+							$price_with_return = 10 * $apiResponse->object->price_with_return;
+							$cost              = $has_return ? $price_with_return : $price;
+							$cost_details = array(
+								'price'             => $price,
+								'price_with_return' => $price_with_return
+							);
+						}
+					} catch ( Exception $e ) {
+						$this->add_log( $e->getMessage() );
+					}
 				}
 			}
+			$shipping_info = array(
+				'type'         => $type,
+				'cost'         => $cost,
+				'cost_type'    => $cost_type,
+				'has_return'   => $has_return,
+				'cost_details' => $cost_details,
+			);
 		}
-		$shipping_info = array(
-			'type'         => $type,
-			'cost'         => $cost,
-			'cost_type'    => $cost_type,
-			'has_return'   => $has_return,
-			'cost_details' => $cost_details,
-		);
+
 		if ( $override ) {
 			$shipping_info = apply_filters( METHOD_ID . '/shipping_info', $shipping_info, $package );
 		}
@@ -1444,15 +1511,18 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	/**
 	 * @since  1.0.0
 	 * @param  boolean $overflowed        
-	 * @param  string  $type              
-	 * @param  boolean $check_smart_switch
+	 * @param  string  $type
 	 * @return string
 	 */
-	public function get_transport_type( $overflowed = false, $type = 'motorbike', $check_smart_switch = true ) {
+	public function get_transport_type( $overflowed = false, $type = 'motorbike' ) {
 
-		if ( ! $type || $type != 'cargo' ) {
-			$type = $overflowed ? ( $check_smart_switch && $this->smart_switch_enabled() ? 'cargo' : null ) : 'motorbike';
+		if ( is_serialized( $overflowed ) ) {
+			$overflowed = unserialize( $overflowed );
+			if ( isset( $overflowed[$type] ) && $overflowed[$type] ) {
+				return false;
+			}
 		}
+		
 		return $type;
 
 	}
@@ -2103,11 +2173,11 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public function get_orders_package( $wc_order_ids = array() ) {
 
 		if ( $wc_order_ids && count( $wc_order_ids ) ) {
-			$weights = array();
-			$dimensions = array();
+			$weights      = array();
+			$dimensions   = array();
 			$destinations = array();
-			$overflowed = false;
-			$has_return = false;
+			$overflowed   = array();
+			$has_return   = false;
 			foreach ( $wc_order_ids as $order_id ) {
 				$order = new WC_Order( $order_id );
 				$weights[] = $order->get_meta( '_total_weight' );
@@ -2140,12 +2210,16 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					$has_return = true;
 				}
 			}
-			$overflowed = $this->has_overflow( $weights, $dimensions, get_option( 'woocommerce_weight_unit' ), get_option( 'woocommerce_dimension_unit' ) );
+			$transport_types = $this->get_transport_types();
+			foreach ( $transport_types as $key => $transport_type ) {
+				$overflowed_state = $this->has_overflow( $weights, $dimensions, get_option( 'woocommerce_weight_unit' ), get_option( 'woocommerce_dimension_unit' ), $key );
+				$overflowed[$key] = $overflowed_state;
+			}
 			return $package = array(
 				'weights'      => $weights,
 				'dimensions'   => $dimensions,
 				'destinations' => $destinations,
-				'overflowed'   => $overflowed,
+				'overflowed'   => serialize( $overflowed ),
 				'has_return'   => $has_return
 			);
 		}
@@ -2318,7 +2392,8 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					$package->type = $type;
 					if ( $type ) {
 						if ( $this->is_available_for_destinations( $package->destinations ) ) {
-							if ( $credit = $this->get_user_data( 'credit' ) * 10 ) {
+							$credit = $this->get_user_data( 'credit' ) * 10;
+							if ( $credit >= 0 ) {
 								$shipping = (object) $this->calculate_shipping( $package, $type, $package->has_return, 'dynamic', false );
 								$package->shipping = $shipping;
 								$cost = $shipping->cost;
@@ -2683,6 +2758,57 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		} else {
 			return $timezonestring;
 		}
+
+	}
+
+	/**
+	 * @since  1.5.1
+	 * @return array
+	 */
+	public function get_transport_types( $apply_admin_filter = true ) {
+
+		$transport_types = Configs::TRANSPORT_TYPES;
+
+		foreach ( $transport_types as $key => $transport_type ) {
+
+			if ( ! $transport_type['delivery'] || ( $apply_admin_filter && $this->get_option( 'pt_' . $key, 'yes' ) != 'yes' ) ) {
+				unset( $transport_types[$key] );
+				continue;
+			}
+			$transport_limits = $this->get_config( 'transport_limits' );
+			$transport_types[$key]['limits'] = $transport_limits[$key];
+			$transport_types[$key]['label']  = $this->get_transport_type_name( $transport_types[$key]['label'], false );
+
+		}
+		uasort( $transport_types, array( $this, 'sort_transport_types' ) );
+		return $transport_types;
+
+	}
+
+	/**
+	 * @since  1.5.1
+	 * @return string
+	 */
+	public function get_transport_type_name( $name, $recheck = true ) {
+
+		if ( $recheck ) {
+			$transport_types = Configs::TRANSPORT_TYPES;
+			$name = $transport_types[$name]['label'];
+		}
+		return __( $name, 'alopeyk-woocommerce-shipping' );
+
+	}
+
+	/**
+	 * @since  1.5.1
+	 * @return boolean
+	 */
+	public function sort_transport_types( $a, $b ) {
+
+		if ( $a['limits']['max_weight'] == $b['limits']['max_weight'] ) {
+			return 0;
+		}
+		return $a['limits']['max_weight'] > $b['limits']['max_weight'];
 
 	}
 
