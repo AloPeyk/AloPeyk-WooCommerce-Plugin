@@ -266,6 +266,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 					remove_meta_box( 'submitdiv', $screen, 'side' );
 					$order_data = get_post_meta( $post->ID, '_awcshm_order_data', true );
 					if ( $order_data ) {
+						$order_data->transport_type_name = $this->helpers->get_transport_type_name( $order_data->transport_type );
 						add_meta_box( METHOD_ID . '-order-courier-actions', __( 'Courier Information', 'alopeyk-woocommerce-shipping' ), function () use ( $order_data ) {
 							$courier_info = isset( $order_data->courier_info ) && $order_data->courier_info ? $order_data->courier_info : null;
 							if ( $courier_info ) {
@@ -433,7 +434,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			break;
 			case 'order_type' :
 				$type = get_post_meta( $post_id, '_awcshm_order_type' );
-				$type_label = $type ? ( $type[0] == 'motorbike' ? __( 'Motorbike', 'alopeyk-woocommerce-shipping' ) : ( $type[0] == 'cargo' ? __( 'Cargo', 'alopeyk-woocommerce-shipping' ) : $type[0] ) ) : null;
+				$type_label = $type ? $this->helpers->get_transport_type_name( $type[0] ) : null;
 				echo $type_label ? '<a href="' . admin_url( 'edit.php?post_type=alopeyk_order&transport_type=' . $type[0] ) . '">' . $type_label . '</a>' : '—';
 			break;
 			case 'customer' :
@@ -513,10 +514,9 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		$common = $this->helpers;
 		$post_type = $common::$order_post_type_name;
 		if ( $post_type == $current_post_type ) {
-			$types = array(
-				'cargo'     => __( 'Cargo', 'alopeyk-woocommerce-shipping' ),
-				'motorbike' => __( 'Motorbike', 'alopeyk-woocommerce-shipping' )
-			);
+			foreach ( $this->helpers->get_transport_types() as $key => $transport_type ) {
+				$types[$key] = $transport_type['label'];
+			}
 			?>
 			<select name="transport_type">
 				<option value=""><?php _e( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?>&nbsp;</option>
@@ -626,6 +626,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 
 		if ( isset( $data['data'] ) && $data['data'] ) {
 			$data = $data['data'];
+			$data['all_transport_types'] = $this->helpers->get_transport_types();
 			if ( $data && isset( $data['orders'] ) && count( $data['orders'] ) ) {
 				$max_destination = $this->helpers->get_max_destination();
 				if ( $max_destination >= count( $data['orders'] ) ) {
@@ -662,6 +663,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 				$message = $response['message'];
 				$package = (array) $response['package'];
 				if ( $success ) {
+					$package['type_name'] = $this->helpers->get_transport_type_name( $package['type'] );
 					$message = get_local_template_part( 'alopeyk-woocommerce-shipping-admin-order-review', $package );
 				}
 				$this->helpers->respond_ajax( $message, $success, $package );

@@ -1,13 +1,13 @@
-=== Alopeyk WooCommerce Shipping ===
+﻿=== Alopeyk WooCommerce Shipping ===
 
 Contributors: alopeyk, bmoudi, hormozdi
 Tags: الوپیک, alopeyk, woocommerce, shipping, delivery, e-commerce, shop, iran
 Requires at least: 4.4
-Tested up to: 4.9.6
-Stable tag: 1.5.0
+Tested up to: 4.9.7
+Stable tag: 1.6.0
 Requires PHP: 5.6
 WC requires at least: 2.6
-WC tested up to: 3.3.5
+WC tested up to: 3.4.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -139,3 +139,9 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 *   **Edit** : Watching for map movement instead of marker
 *   **Fix** : Fix for using unicode characters while searching addresses
 *   **Fix** : Fixing some RTL support issues
+= 1.6.0 =
+*   **New** : Adding new transport types
+*   **New** : Preventing address map from being shown for virtual products
+*   **Edit** : Improving autocomplete functionality
+*   **Edit** : Improving map functionality
+*   **Fix** : Fixing UI bugs

@@ -23,10 +23,15 @@ $data = $this->vars;
 				<th valign="middle"><?php echo __( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?></th>
 				<td valign="middle">
 					<select name="type">
-						<?php if ( ! isset( $data['type'] ) || $data['type'] != 'cargo' ) { ?>
-						<option value="motorbike"<?php if ( isset( $data['type'] ) && $data['type'] == 'motorbike' ) { ?> selected="selected"<?php } ?>><?php echo __( 'Motorbike', 'alopeyk-woocommerce-shipping' ); ?></option>
-						<?php } ?>
-						<option value="cargo"<?php if ( isset( $data['type'] ) && $data['type'] == 'cargo' ) { ?> selected="selected"<?php } ?>><?php echo __( 'Cargo', 'alopeyk-woocommerce-shipping' ); ?></option>
+						<?php
+							$selected_type_index = isset( $data['type'] ) ? array_search( $data['type'], array_keys( $data['all_transport_types'] ) ) : 0;
+							foreach ( $data['all_transport_types'] as $key => $transport_type ) :
+								if ( array_search( $key, array_keys( $data['all_transport_types'] ) ) < $selected_type_index ) {
+									continue;
+								}
+						?>
+								<option value="<?=$key ?>"<?php if ( isset( $data['type'] ) && $data['type'] == $key ) { ?> selected="selected"<?php } ?>><?php echo $transport_type['label']; ?></option>
+						<?php endforeach; ?>
 					</select>
 				</td>
 			</tr>

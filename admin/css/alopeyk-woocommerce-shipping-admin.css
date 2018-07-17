@@ -87,7 +87,7 @@
 	right: 0.375rem;
 	width: 1.5rem;
 	height: 1.25rem;
-	background: #ffffff url( '../../../../../wp-includes/images/spinner.gif' ) center center no-repeat;
+	background: #ffffff url( '/wp-includes/images/spinner.gif' ) center center no-repeat;
 	opacity: 0;
 	-webkit-transform: translateY( -50% );
 	-moz-transform: translateY( -50% );
@@ -249,7 +249,7 @@
 .awcshm-status.type--awcshm-progress .awcshm-status-icon {
 	width: 1em;
 	height: 1em;
-	background: transparent url( '../../../../../wp-includes/images/spinner.gif' ) center center no-repeat;
+	background: transparent url( '/wp-includes/images/spinner.gif' ) center center no-repeat;
 }
 .awcshm-meta {
 	display: block;

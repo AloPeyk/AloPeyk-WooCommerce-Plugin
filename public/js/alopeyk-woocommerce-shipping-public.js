@@ -95,6 +95,13 @@
 			return prefixedClasses.join ( ' ' );
 
 		},
+		
+		translate : function ( term ) {
+
+			var translation = alopeyk.wcshm.public.vars.common.info.translations[ term ];
+			return translation ? translation : term;
+
+		},
 
 		injectScript : function ( src, callback ) {
 
@@ -161,8 +168,13 @@
 				} else {
 
 					window.cedarMapIsLoading = true;
-					alopeyk.wcshm.public.fn.injectScript ( alopeyk.wcshm.public.vars.maps.cedarMapJsLib, alopeykHandleMapsPublic );
+					alopeyk.wcshm.public.fn.injectScript ( alopeyk.wcshm.public.vars.maps.cedarMapJsLib, function () {
+
+						alopeyk.wcshm.public.fn.injectScript ( alopeyk.wcshm.public.vars.common.info.leaflet_gesture_handling.js, alopeykHandleMapsPublic );
+
+					});
 					alopeyk.wcshm.public.fn.injectStylesheet ( alopeyk.wcshm.public.vars.maps.cedarMapCssLib );
+					alopeyk.wcshm.public.fn.injectStylesheet ( alopeyk.wcshm.public.vars.common.info.leaflet_gesture_handling.css );
 
 				}
 
@@ -326,7 +338,14 @@
 
 						],
 						zoomControl     : false,
-						scrollWheelZoom : false
+						gestureHandling : true,
+						gestureHandlingText: {
+
+							touch: alopeyk.wcshm.public.fn.translate ( 'Use two fingers to move the map' ),
+							scroll: alopeyk.wcshm.public.fn.translate ( 'Use ctrl + scroll to zoom the map' ),
+							scrollMac: alopeyk.wcshm.public.fn.translate ( 'Use ⌘ + scroll to zoom the map' ),
+							
+						}
 
 					},
 
@@ -583,6 +602,8 @@
 									request      : 'suggest_address',
 									authenticate : true,
 									input        : destinationAutocompleteInput.val(),
+									lat          : map.getCenter().lat,
+									lng          : map.getCenter().lng,
 
 								}, function ( response ) {
 
@@ -699,6 +720,8 @@
 			
 
 		},
+
+		
 
 	};
 

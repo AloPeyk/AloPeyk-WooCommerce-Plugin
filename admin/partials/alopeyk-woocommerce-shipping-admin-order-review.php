@@ -21,7 +21,7 @@ $data = $this->vars;
 		<tr>
 			<th width="130" valign="middle"><?php echo __( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?></th>
 			<td valign="middle">
-				<?php echo isset( $data['type'] ) ? ( $data['type'] == 'cargo' ? __( 'Cargo', 'alopeyk-woocommerce-shipping' ) : ( $data['type'] == 'motorbike' ? __( 'Motorbike', 'alopeyk-woocommerce-shipping' ) : __( $data['type'], 'alopeyk-woocommerce-shipping' ) ) ) : '—'; ?>
+				<?php echo isset( $data['type'] ) ? ( $data['type_name'] ) : '—'; ?>
 			</td>
 		</tr>
 		<tr>
