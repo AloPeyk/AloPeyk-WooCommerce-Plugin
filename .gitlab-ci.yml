@@ -1,0 +1,142 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  EXCLUDE_PATHS: (.git $WP_FOLDER build_scripts compiled_build_job node_modules .gitignore .gitlab-ci.yml .wpenv .wpenv.template alopeyk.build.json composer.build.json composer.template.json composer.lock gulpfile.js package-lock.json package.json)
+
+############ build ###########
+
+build_staging:
+  stage: build
+  variables:
+    ENVIRONMENT: STAGING
+    WP_CONFIG_ENV: stg
+    WP_CONFIG_DEBUG: 'true'
+    API_BRANCH: 'dev-develop'
+  script:
+    - echo "Building staging version..."
+    - sh build_scripts/build.sh
+  artifacts:
+    paths:
+    - compiled_build_job/
+  only:
+  - develop
+
+build_pre:
+  stage: build
+  variables:
+    ENVIRONMENT: PRE
+    WP_CONFIG_ENV: pre
+    WP_CONFIG_DEBUG: 'true'
+    API_BRANCH: 'dev-develop'
+  script:
+    - echo "Building pre version..."
+    - sh build_scripts/build.sh
+  artifacts:
+    paths:
+    - compiled_build_job/
+  only:
+  - pre
+
+build_rc:
+  stage: build
+  variables:
+    ENVIRONMENT: RC
+    WP_CONFIG_ENV: rc
+    WP_CONFIG_DEBUG: 'false'
+    API_BRANCH: 'dev-master'
+  script:
+    - echo "Building rc version..."
+    - sh build_scripts/build.sh
+  artifacts:
+    paths:
+    - compiled_build_job/
+  only:
+  - rc
+
+build_production:
+  stage: build
+  variables:
+    ENVIRONMENT: PRODUCTION
+    WP_CONFIG_ENV: production
+    WP_CONFIG_DEBUG: 'false'
+    API_BRANCH: 'dev-master'
+  script:
+    - echo "Building production version..."
+    - sh build_scripts/build.sh
+  artifacts:
+    paths:
+    - compiled_build_job/
+  only:
+  - master
+
+############ test ###########
+
+test:
+  stage: test
+  script: echo "Running tests. No test to run here"
+
+############ deploy ###########
+
+deploy_staging:
+  stage: deploy
+  variables:
+    ENVIRONMENT: STAGING
+    DEPLOY_DIR: /home/gitlab/builds/staging
+    WEB_ROOT_DIR: /var/www
+    WEB_ROOT_FOLDER: wordpress-plugin-stg.alopeyk.com
+  script:
+    - echo "Deploy to staging server..."
+    - sh build_scripts/github-push.sh
+  environment:
+    name: staging
+    url: https://wordpress-plugin-stg.alopeyk.com/
+  only:
+  - develop
+
+deploy_pre:
+  stage: deploy
+  variables:
+    ENVIRONMENT: PRE
+    DEPLOY_DIR: /home/gitlab/builds/pre
+    WEB_ROOT_DIR: /var/www
+    WEB_ROOT_FOLDER: wordpress-plugin-pre.alopeyk.com
+  script:
+    - echo "Deploy to pre server..."
+    - sh build_scripts/deploy.sh
+  environment:
+    name: pre
+    url: https://wordpress-plugin-pre.alopeyk.com/
+  only:
+  - pre
+
+deploy_rc:
+  stage: deploy
+  variables:
+    ENVIRONMENT: RC
+    DEPLOY_DIR: /home/gitlab/builds/rc
+    WEB_ROOT_DIR: /var/www
+    WEB_ROOT_FOLDER: wordpress-plugin-rc.alopeyk.com
+  script:
+    - echo "Deploy to rc server..."
+    - sh build_scripts/deploy.sh
+  environment:
+    name: rc
+    url: https://wordpress-plugin-rc.alopeyk.com/
+  only:
+  - rc
+
+deploy_production:
+  stage: deploy
+  variables:
+    ENVIRONMENT: PRODUCTION
+  script:
+    - echo "Deploy production"
+    - sh build_scripts/github-push.sh
+  environment:
+    name: production
+  only:
+    - master
+  when: manual

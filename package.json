@@ -1,0 +1,18 @@
+{
+  "name": "alopeyk-wordpress-plugin",
+  "version": "1.0.0",
+  "description": "Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.4.0"
+  },
+  "devDependencies": {
+    "gulp-clean-css": "^4.0.0",
+    "gulp-uglify": "^3.0.1"
+  },
+  "scripts": {
+    "build": "gulp"
+  },
+  "author": "AloPeyk Dev Team",
+  "license": "MIT"
+}

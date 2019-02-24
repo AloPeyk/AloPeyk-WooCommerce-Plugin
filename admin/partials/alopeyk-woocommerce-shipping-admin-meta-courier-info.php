@@ -43,8 +43,8 @@ if ( $courier_info ) {
 							$pa = substr( $plate_number, 0, 3 );
 							$pb = substr( $plate_number, 3, 5 );
 					?>
-					<span class="awcshm-courier-plate-component component--a"><?php echo $helpers->convert_numbers_to_persion( $pa ); ?></span>
-					<span class="awcshm-courier-plate-component component--b"><?php echo $helpers->convert_numbers_to_persion( $pb ); ?></span>
+					<span class="awcshm-courier-plate-component component--a"><?php echo $helpers->convert_numbers( $pa ); ?></span>
+					<span class="awcshm-courier-plate-component component--b"><?php echo $helpers->convert_numbers( $pb ); ?></span>
 					<?php
 						} else {
 							$pa = mb_substr( $plate_number, 0, 2 );
@@ -52,10 +52,10 @@ if ( $courier_info ) {
 							$pc = mb_substr( $plate_number, 3, 3 );
 							$pd = mb_substr( $plate_number, 6, 2 );
 					?>
-					<span class="awcshm-courier-plate-component component--a"><?php echo $helpers->convert_numbers_to_persion( $pa ); ?></span>
+					<span class="awcshm-courier-plate-component component--a"><?php echo $helpers->convert_numbers( $pa ); ?></span>
 					<span class="awcshm-courier-plate-component component--b"><?php echo $pb; ?></span>
-					<span class="awcshm-courier-plate-component component--c"><?php echo $helpers->convert_numbers_to_persion( $pc ); ?></span>
-					<span class="awcshm-courier-plate-component component--d"><?php echo $helpers->convert_numbers_to_persion( $pd ); ?></span>
+					<span class="awcshm-courier-plate-component component--c"><?php echo $helpers->convert_numbers( $pc ); ?></span>
+					<span class="awcshm-courier-plate-component component--d"><?php echo $helpers->convert_numbers( $pd ); ?></span>
 					<?php
 						}
 					?>

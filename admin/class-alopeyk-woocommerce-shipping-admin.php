@@ -37,7 +37,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		$this->set_helpers();
-		$this->update_plugin_github();
+		$this->set_schedule_event();
 
 	}
 
@@ -47,6 +47,19 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function set_helpers() {
 
 		$this->helpers = new Alopeyk_WooCommerce_Shipping_Common();
+
+	}
+
+	/**
+	 * set scheduled event such as check all active orders status
+	 * @since 1.7.0
+	 */
+	public function set_schedule_event() {
+
+		$schedule_name = METHOD_ID . '_active_orders_update';
+		if ( ! wp_next_scheduled( $schedule_name ) ) {
+			wp_schedule_event( time(), 'hourly', $schedule_name );
+		}
 
 	}
 
@@ -161,6 +174,21 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function get_settings_url() {
 
 		return admin_url( 'admin.php?page=' . $this->get_wc_settings_url() . '&tab=shipping&section=' . METHOD_ID );
+
+	}
+
+	/**
+	 * @since  1.7.0
+	 * @return string
+	 */
+	public function get_orders_list_url( $post_status = false ) {
+
+		$sub_ids = array( 'post_type' => 'alopeyk_order' );
+		if ( $post_status ) {
+			$sub_ids['post_status'] = $post_status;
+		}
+		$sub_ids = http_build_query( $sub_ids );
+		return admin_url( 'edit.php?' . $sub_ids );
 
 	}
 
@@ -328,9 +356,14 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function admin_menu_items() {
 
 		add_menu_page( __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ), __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ), 'manage_options', 'alopeyk', null, plugins_url( 'admin/img/icon.svg', dirname( __FILE__ ) ), '55.7' );
-		add_submenu_page( 'alopeyk', __( 'Credit', 'alopeyk-woocommerce-shipping' ), __( 'Credit', 'alopeyk-woocommerce-shipping' ), 'manage_options', 'alopeyk-credit', function () {
-			if ( $user_data = $this->helpers->get_user_data() ) {
-				echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-credit-page', array( 'user_data' => $user_data, 'user_credit' => $this->helpers->normalize_price( $this->helpers->get_user_data( 'credit' ) * 10 ) ) );
+		add_submenu_page( 'alopeyk', __( 'Profile', 'alopeyk-woocommerce-shipping' ), __( 'Profile', 'alopeyk-woocommerce-shipping' ), 'manage_options', 'alopeyk-credit', function () {
+			if ( $user_data = $this->helpers->get_user_data( null, null, true, [ 'with' => [ 'credit', 'score' ] ] ) ) {
+				$endpoint = $this->helpers->get_api_endpoint();
+				echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-credit-page', array( 
+							'user_data'   => $user_data,
+							'user_credit' => $this->helpers->normalize_price( $this->helpers->get_user_data( 'credit' ) * 10 ),
+							'api_url'     => $endpoint['url'],
+				) );
 			} else {
 				echo '<div class="error notice awcshm-credit-widget-wrapper"><p>' . sprintf( __( 'User data not found. You have to enter a valid API key in <a href="%s" target="blank">settings page</a> in order to access this page.', 'alopeyk-woocommerce-shipping' ), $this->get_settings_url() ) . '</p></div>';
 			}
@@ -345,6 +378,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 				'chat_url'    => $this->helpers->get_chat_url(),
 				'dev_email'   => $this->helpers->get_config( 'devEmail' ),
 				'support_tel' => $this->helpers->get_support_tel(),
+				'is_api_user' => $this->helpers->is_api_user(),
 			));
 		});
 
@@ -368,7 +402,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function remove_admin_notices() {
 
 		$screen = get_current_screen();
-		if ( strpos( $screen->id, '_page_alopeyk-support' ) ) {
+		if ( isset( $screen->id ) && strpos( $screen->id, '_page_alopeyk-support' ) ) {
 			remove_all_actions( 'admin_notices' );
 		}
 
@@ -484,17 +518,17 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 				$order_data = get_post_meta( $post_id, '_awcshm_order_data', true );
 				echo '<a class="awcshm-tooltip button awcshm-icon-button" href="' . get_edit_post_link( $post_id ) . '"><i class="awcshm-icon-button-icon dashicons dashicons-visibility"></i><span class="awcshm-tooltip-label">' . __( 'View', 'alopeyk-woocommerce-shipping' ) . '</span></a>';
 				if ( $this->helpers->can_be_tracked( $order_data ) ) {
-					echo '<a class="awcshm-tooltip button awcshm-icon-button" target="_blank" href="' . $this->helpers->get_tracking_url( $order_data ) . '"><i class="awcshm-icon-button-icon dashicons dashicons-location"></i><span class="awcshm-tooltip-label">' . __( 'Track', 'alopeyk-woocommerce-shipping' ) . '</span></a>';
+					echo '<a class="awcshm-tooltip button awcshm-icon-button" target="_blank" href="' . $this->helpers->get_tracking_url( $order_data ) . '"><i class="awcshm-icon-button-icon dashicons dashicons-welcome-view-site"></i><span class="awcshm-tooltip-label">' . __( 'Track', 'alopeyk-woocommerce-shipping' ) . '</span></a>';
 				}
 				if ( $this->helpers->can_be_invoiced( $order_data ) ) {
-					echo '<a class="awcshm-tooltip button awcshm-icon-button" target="_blank" href="' . $this->helpers->get_invoice_url( $order_data ) . '"><i class="awcshm-icon-button-icon dashicons dashicons-info"></i><span class="awcshm-tooltip-label">' . __( 'Invoice', 'alopeyk-woocommerce-shipping' ) . '</span></a>';
+					echo '<a class="awcshm-tooltip button awcshm-icon-button" target="_blank" href="' . $this->helpers->get_invoice_url( $order_data ) . '"><i class="awcshm-icon-button-icon dashicons dashicons-format-aside"></i><span class="awcshm-tooltip-label">' . __( 'Invoice', 'alopeyk-woocommerce-shipping' ) . '</span></a>';
 				}
 				$cancel = $this->helpers->can_be_canceled( $order_data );
 				if ( $cancel['enabled'] ) {
-					echo '<a class="awcshm-tooltip button awcshm-icon-button awcshm-cancel-modal-toggler" data-order-id="' . $post_id . '" href="#"><i class="awcshm-icon-button-icon dashicons dashicons-no"></i><span class="awcshm-tooltip-label">' . __( 'Cancel', 'alopeyk-woocommerce-shipping' ) . '</span></a>';
+					echo '<a class="awcshm-tooltip button awcshm-icon-button awcshm-cancel-modal-toggler" data-order-id="' . $post_id . '" href="#"><i class="awcshm-icon-button-icon dashicons dashicons-no"></i><span class="awcshm-tooltip-label">' . __( 'Cancel Order', 'alopeyk-woocommerce-shipping' ) . '</span></a>';
 				}
 				if ( $this->helpers->can_be_rated( $order_data ) ) {
-					echo '<a class="awcshm-tooltip button awcshm-icon-button awcshm-rate-modal-toggler" data-order-id="' . $post_id . '" href="#"><i class="awcshm-icon-button-icon dashicons dashicons-thumbs-up"></i><span class="awcshm-tooltip-label">' . __( 'Rate', 'alopeyk-woocommerce-shipping' ) . '</span></a>';
+					echo '<a class="awcshm-tooltip button awcshm-icon-button awcshm-rate-modal-toggler" data-order-id="' . $post_id . '" href="#"><i class="awcshm-icon-button-icon dashicons dashicons-star-filled"></i><span class="awcshm-tooltip-label">' . __( 'Rate', 'alopeyk-woocommerce-shipping' ) . '</span></a>';
 				}
 				$order_ids = get_post_meta( $post_id, '_awcshm_wc_order_id' );
 				if ( $this->helpers->can_be_repeated( $order_data ) && $order_ids && count( $order_ids ) ) {
@@ -519,7 +553,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			}
 			?>
 			<select name="transport_type">
-				<option value=""><?php _e( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?>&nbsp;</option>
+				<option value=""><?php echo __( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?>&nbsp;</option>
 			<?php
 				$selected = isset( $_GET['transport_type'] ) ? $_GET['transport_type'] : '';
 				foreach ( $types as $type => $label ) {
@@ -647,29 +681,15 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	 */
 	public function ajax_check_order_modal( $data ) {
 
-		if ( isset( $data['data'] ) && $data['data'] ) {
-			parse_str( $data['data'], $data );
-			if ( $data ) {
-				$orders       = isset( $data['orders'] )      ? $data['orders']        : array();
-				$type         = isset( $data['type'] )        ? $data['type']          : null;
-				$description  = isset( $data['description'] ) ? $data['description']   : null;
-				$ship_now     = isset( $data['ship_now'] )    ? $data['ship_now']      : null;
-				$ship_date    = isset( $data['ship_date'] )   ? $data['ship_date']     : null;
-				$ship_hour    = isset( $data['ship_hour'] )   ? $data['ship_hour']     : null;
-				$ship_minute  = isset( $data['ship_minute'] )   ? $data['ship_minute'] : null;
-				$scheduled_at = ( $ship_date && $ship_hour && $ship_minute && $ship_now !== 'true' ) ? ( $ship_date . ' ' . $ship_hour . ':' . $ship_minute . ':00' ) : null;
-				$response = $this->helpers->check_order( $orders, $type, $scheduled_at, $description );
-				$success = $response['success'];
-				$message = $response['message'];
-				$package = (array) $response['package'];
-				if ( $success ) {
-					$package['type_name'] = $this->helpers->get_transport_type_name( $package['type'] );
-					$message = get_local_template_part( 'alopeyk-woocommerce-shipping-admin-order-review', $package );
-				}
-				$this->helpers->respond_ajax( $message, $success, $package );
-			}
+		$response = $this->check_order_data( $data );
+		$success  = $response['success'];
+		$message  = $response['message'];
+		$package  = (array) $response['package'];
+		if ( $success ) {
+			$package['type_name'] = $this->helpers->get_transport_type_name( $package['type'] );
+			$message = get_local_template_part( 'alopeyk-woocommerce-shipping-admin-order-review', $package );
 		}
-		$this->helpers->respond_ajax( __( 'Order data not found.', 'alopeyk-woocommerce-shipping' ), false );
+		$this->helpers->respond_ajax( $message, $success, $package );
 
 	}
 
@@ -785,7 +805,12 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			$message = $response['message'];
 			if ( $success ) {
 				$message = '<div class="updated notice"><p>' . $message . '</p></div>';
+				$is_api_user = $this->helpers->is_api_user();
+				if ( $is_api_user !== true ) {
+					$message .= '<br /><div class="error notice"><p>' . $is_api_user . '</p></div>';
+				}
 			}
+			
 			$this->helpers->respond_ajax( $message, $success, $data );
 		}
 		$this->helpers->respond_ajax( __( 'Order data not found.', 'alopeyk-woocommerce-shipping' ), false );
@@ -842,29 +867,256 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		$this->helpers->respond_ajax( __( 'Order data not found.', 'alopeyk-woocommerce-shipping' ), false );
 
 	}
-	
-	/**
-	 * @since  1.4.0
-	 */
-	public function update_plugin_github() {
-		
-		$github_config = array(
-			'slug' => PLUGIN_BASENAME,
-			'proper_folder_name' => basename(PLUGIN_PATH),
-			'api_url' => 'https://api.github.com/repos/AloPeyk/AloPeyk-WooCommerce-Plugin',
-			'raw_url' => 'https://raw.github.com/AloPeyk/AloPeyk-WooCommerce-Plugin/master',
-			'github_url' => 'https://github.com/AloPeyk/AloPeyk-WooCommerce-Plugin',
-			'zip_url' => 'https://github.com/AloPeyk/AloPeyk-WooCommerce-Plugin/archive/master.zip',
-			'sslverify' => true,
-			'requires' => '4.4',
-			'tested' => '4.9.6',
-			'readme' => 'README.md',
-			'access_token' => '',
-		);
-		
-		require_once PLUGIN_PATH . 'admin/includes/class-alopeyk-woocommerce-shipping-updater.php';
-		new Alopeyk_WooCommerce_Shipping_Updater( $github_config );
 
+	/**
+	 * @since 1.7.0
+	 * @param array $data
+	 */
+	public function ajax_discount_coupon_modal() {
+
+		$this->helpers->respond_ajax( get_local_template_part( 'alopeyk-woocommerce-shipping-admin-discount-coupon' ) );
+
+	}
+
+
+	/**
+	 * @since 1.7.0
+	 */
+	public function ajax_create_customer_score_exchange_modal() {
+
+		$products = (object) $this->helpers->get_customer_loyalty_products();
+		if ( $products->status ) {
+			$credit_cards = array();
+			foreach ( $products->object->items as $product ) {
+				if ( $product->delivery_type == 'alopeyk_credit_card' ) {
+					$credit_cards[] = $product;
+				}
+			}
+			$this->helpers->respond_ajax( get_local_template_part( 'alopeyk-woocommerce-shipping-admin-customer-score-exchange', $credit_cards ) );
+		} else {
+			$this->helpers->respond_ajax( __( $products->message, 'alopeyk-woocommerce-shipping' ), false );
+		}
+
+	}
+
+	/**
+	 * @since 1.7.0
+	 * @param array $data
+	 */
+	public function ajax_submit_customer_score_exchange_modal( $data ) {
+
+		$card_data = (array) $this->helpers->get_customer_loyalty_products( $data['data'] );
+		$this->helpers->respond_ajax( get_local_template_part( 'alopeyk-woocommerce-shipping-admin-customer-score-exchange-submit', $card_data ) );
+
+	}
+
+	/**
+	 * @since 1.7.0
+	 * @param array $data
+	 */
+	public function ajax_add_customer_score_exchange_modal( $data ) {
+
+		if ( isset( $data['data'] ) && $data['data'] ) {
+			parse_str( $data['data'], $data );
+			if ( $data ) {
+				$product_id = isset( $data['product-id'] ) ? $data['product-id'] : '';
+				if ( is_numeric( $product_id ) ) {
+					$response = $this->helpers->get_customer_loyalty_products( $product_id, true );
+					$success  = $response['success'];
+					$message  = $response['message'];
+					if ( $success ) {
+						$this->helpers->respond_ajax( $message, true );
+					} else {
+						$this->helpers->respond_ajax( __( $message, 'alopeyk-woocommerce-shipping' ), false );
+					}
+				} else {
+					$this->helpers->respond_ajax( __( 'An error occurred while loading card data.', 'alopeyk-woocommerce-shipping' ), false );
+				}
+			}
+		}
+
+	}
+
+	/**
+	 * @since 1.7.0
+	 * @param array $data
+	 */
+	public function ajax_discount_coupon_submit_modal( $data ) {
+
+		$response = $this->check_order_data( $data );
+		$success  = $response['success'];
+		$message  = $response['message'];
+		$package  = (array) $response['package'];
+		if ( isset( $package['shipping']->discount ) && $package['shipping']->discount >= 0 ) {
+			$this->helpers->respond_ajax( '', true );
+		} elseif ( isset( $package['shipping']->discount_coupons_error_msg ) ) {
+			$this->helpers->respond_ajax( $package['shipping']->discount_coupons_error_msg, false );
+		} else {
+			$this->helpers->respond_ajax( __( 'An error occurred while trying to apply entered discount coupon.', 'alopeyk-woocommerce-shipping' ), false );
+		}
+
+	}
+
+	/**
+	 * @since 1.7.0
+	 * @param array $data
+	 */
+	public function ajax_get_address( $data ) {
+
+		$data            = (object) $data;
+		$lat             = $data->lat;
+		$lng             = $data->lng;
+		$location        = $this->helpers->get_location( $lat, $lng );
+		$address         = $this->helpers->get_address( $location, true );
+		if ( $address ) {
+			$this->helpers->respond_ajax( $address );
+		} else {
+			$this->helpers->respond_ajax( array(
+				'city'    => null,
+				'address' => __( 'This address is out of service.', 'alopeyk-woocommerce-shipping' )
+			), false );
+		}
+
+	}
+
+	/**
+	 * @since 1.7.0
+	 * @param array $data
+	 */
+	public function check_order_data( $data ) {
+
+		if ( isset( $data['data'] ) && $data['data'] ) {
+			parse_str( $data['data'], $data );
+			if ( $data ) {
+				$orders       = isset( $data['orders'] )      ? $data['orders']        : array();
+				$type         = isset( $data['type'] )        ? $data['type']          : null;
+				$description  = isset( $data['description'] ) ? $data['description']   : null;
+				$ship_now     = isset( $data['ship_now'] )    ? $data['ship_now']      : null;
+				$ship_date    = isset( $data['ship_date'] )   ? $data['ship_date']     : null;
+				$ship_hour    = isset( $data['ship_hour'] )   ? $data['ship_hour']     : null;
+				$ship_minute  = isset( $data['ship_minute'] ) ? $data['ship_minute']   : null;
+				$scheduled_at = ( $ship_date && $ship_hour && $ship_minute && $ship_now !== 'true' ) ? ( $ship_date . ' ' . $ship_hour . ':' . $ship_minute . ':00' ) : null;
+				$discount_coupon = isset( $data['discount_coupon'] ) ? $data['discount_coupon'] : null;
+				return $this->helpers->check_order( $orders, $type, $scheduled_at, $description, $discount_coupon );
+			}
+		}
+		$this->helpers->respond_ajax( __( 'Order data not found.', 'alopeyk-woocommerce-shipping' ), false );
+
+	}
+
+	/**
+	 * @since 1.7.0
+	 * @param array $data
+	 */
+	public function dashboard_widget() {
+
+		$wrong_key = $this->helpers->get_option( 'wrong_key', true );
+		$wrong_key_state = $wrong_key == 'yes' ? true : false;
+		if ( ! $this->helpers->is_enabled() && $wrong_key_state ) {
+			$dashboard_widget_callback = 'dashboard_widget_enter_api';
+		} elseif ( ! $this->helpers->is_enabled() && ! $wrong_key_state ) {
+			$dashboard_widget_callback = 'dashboard_widget_enable_awcshm';
+		} else {
+			$dashboard_widget_callback = 'dashboard_widget_summary';
+		}
+		wp_add_dashboard_widget( 'awcshm_admin_widget', __( 'Alopeyk Woocommerce Shipping', 'alopeyk-woocommerce-shipping' ), array( $this, $dashboard_widget_callback ) );
+		global $wp_meta_boxes;
+	 	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+	 	$widget_backup    = array( 'awcshm_admin_widget' => $normal_dashboard['awcshm_admin_widget'] );
+	 	$sorted_dashboard = array_merge( $widget_backup, $normal_dashboard );
+	 	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+
+	}
+
+	public function dashboard_widget_enter_api() {
+		?>
+		<div class="awcshm-dashboard-widget" >
+			<p><img class="awcshm-dashboard-widget-logo" src="<?php echo $this->helpers->get_logo_url(); ?>"></p>
+			<p><?php echo __( 'In order to manage shipping your store orders, activate Alopeyk Woocommerce plugin by entering API Key.', 'alopeyk-woocommerce-shipping' ); ?></p>
+			<p>&nbsp;</p>
+			<p><a href="<?php echo esc_url( $this->get_settings_url() ); ?>" class="button button-primary" title="<?php echo __( 'Enter API key', 'alopeyk-woocommerce-shipping' ); ?>"><?php echo __( 'Enter API key', 'alopeyk-woocommerce-shipping' ); ?></a></p>
+			<p><a href="<?php echo $this->helpers->get_support_url();?>" title="<?php echo __( 'I have no API key', 'alopeyk-woocommerce-shipping' ); ?>"><u><?php echo __( 'I have no API key', 'alopeyk-woocommerce-shipping' ); ?></u></a></p>
+		</div>
+		<?php
+	}
+
+	public function dashboard_widget_enable_awcshm() {
+		?>
+		<div class="awcshm-dashboard-widget">
+			<p><img class="awcshm-dashboard-widget-logo" src="<?php echo $this->helpers->get_logo_url(); ?>"></p>
+			<p><?php echo __( 'Alopeyk shipping method is not activated for your store. You can activate it by enabling the method via Settings page.', 'alopeyk-woocommerce-shipping' ); ?></p>
+			<p>&nbsp;</p>
+			<p><a href="<?php echo esc_url( $this->get_settings_url() ); ?>" class="button button-primary" title="<?php echo __( 'Settings', 'alopeyk-woocommerce-shipping' ); ?>"><?php echo __( 'Settings', 'alopeyk-woocommerce-shipping' ); ?></a></p>
+			<p><a href="<?php echo $this->helpers->get_support_url();?>" title="<?php echo __( 'I have problem with my API key', 'alopeyk-woocommerce-shipping' ); ?>"><u><?php echo __( 'I have problem with my API key', 'alopeyk-woocommerce-shipping' ); ?></u></a></p>
+		</div>
+		<?php
+	}
+
+	public function dashboard_widget_summary() {
+		
+		$common      = $this->helpers;
+		$post_type   = $common::$order_post_type_name;
+		$orders_list = wp_count_posts( $post_type );
+		$scheduled   = $orders_list->{'awcshm-scheduled'};
+		$progress    = $orders_list->{'awcshm-progress' };
+		$pending     = $orders_list->{'awcshm-pending'  };
+		$failed      = $orders_list->{'awcshm-failed'   };
+		$done        = $orders_list->{'awcshm-done'     };
+		$total       = $scheduled + $progress + $pending + $failed + $done;
+		?>
+		<div id="awcshm_dashboard_status">
+			<ul class="wc_status_list">
+				<li class="all-orders">
+					<a href="<?php echo $this->get_orders_list_url(); ?>">
+						<strong>
+							<?php echo $total; ?> <?php echo __( 'Order', 'alopeyk-woocommerce-shipping' )?>
+						</strong><?php echo __( 'Order Created', 'alopeyk-woocommerce-shipping' )?>
+					</a>
+				</li>
+				<li class="failed-orders">
+					<a href="<?php echo $this->get_orders_list_url( 'awcshm-failed' ); ?>">
+						<strong>
+							<?php echo $failed; ?> <?php echo __( 'Order', 'alopeyk-woocommerce-shipping' )?>
+						</strong><?php echo __( 'unsuccessful sending', 'alopeyk-woocommerce-shipping' )?>
+					</a>
+				</li>
+				<li class="progress-orders">
+					<a href="<?php echo $this->get_orders_list_url( 'awcshm-progress' ); ?>">
+						<strong>
+							<?php echo $progress; ?> <?php echo __( 'Order', 'alopeyk-woocommerce-shipping' )?>
+						</strong><?php echo __( 'sending', 'alopeyk-woocommerce-shipping' )?>
+					</a>
+				</li>
+				<li class="done-orders">
+					<a href="<?php echo $this->get_orders_list_url( 'awcshm-done' ); ?>">
+						<strong><?php echo $done; ?>
+							<?php echo __( 'Order', 'alopeyk-woocommerce-shipping' )?>
+						</strong><?php echo __( 'delivered', 'alopeyk-woocommerce-shipping' )?>
+					</a>
+				</li>
+				<li class="pending-orders">
+					<a href="<?php echo $this->get_orders_list_url( 'awcshm-pending' ); ?>">
+						<strong>
+							<?php echo $pending; ?> <?php echo __( 'Order', 'alopeyk-woocommerce-shipping' )?>
+						</strong><?php echo __( 'finding', 'alopeyk-woocommerce-shipping' )?>
+					</a>
+				</li>
+				<li class="scheduled-orders">
+					<a href="<?php echo $this->get_orders_list_url( 'awcshm-scheduled' ); ?>">
+						<strong>
+							<?php echo $scheduled; ?> <?php echo __( 'Order', 'alopeyk-woocommerce-shipping' )?>
+						</strong><?php echo __( 'scheduled for sending', 'alopeyk-woocommerce-shipping' )?>
+					</a>
+				</li>
+		<?php
+				$is_api_user = $this->helpers->is_api_user();
+				if ( $is_api_user !== true ) {
+					echo '<li class="check-api-fault"><p>' . $is_api_user . '</p></li>';
+				}
+		?>
+			</ul>
+		</div>
+		<?php
 	}
 
 }

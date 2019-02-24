@@ -46,6 +46,7 @@ $data = $this->vars;
 					<div class="awcshm-support-content-item-body">
 						<div class="awcshm-support-content-item-body-inner">
 							<p><?php echo __( 'You can call our support team to get your questions answered just in time.', 'alopeyk-woocommerce-shipping' ); ?></p>
+							<?php echo isset( $data['is_api_user'] ) && $data['is_api_user'] !== true ? '<p>' . $data['is_api_user'] . '</p>' : ''; ?>
 						</div>
 					</div>
 					<div class="awcshm-support-content-item-footer">

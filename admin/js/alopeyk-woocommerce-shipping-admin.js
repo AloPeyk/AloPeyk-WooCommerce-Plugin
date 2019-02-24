@@ -1,4 +1,4 @@
-(function( $j ) {
+(function ( $j ) {
 	
 	'use strict';
 
@@ -54,7 +54,6 @@
 			},
 			cedarMapJsLib                        : 'https://api.cedarmaps.com/cedarmaps.js/v1.8.0/cedarmaps.js',
 			cedarMapCssLib                       : 'https://api.cedarmaps.com/cedarmaps.js/v1.8.0/cedarmaps.css',
-			cedarMapTilesSource                  : 'https://alopeyk.api.cedarmaps.com/v1/tiles/cedarmaps.streets.json?access_token={{TOKEN}}',
 
 		},
 
@@ -108,41 +107,60 @@
 
 		forms : {
 
-			priceInputsClass           : 'price-input',
-			dateDropdownElement        : '[name="ship_date"]',
-			hourDropdownElement        : '[name="ship_hour"]',
-			minuteDropdownElement      : '[name="ship_minute"]',
-			shipNowTogglerElement      : '[name="ship_now"]',
-			createOrderFormClass       : 'create-order-form',
-			creditButtonElementClass   : 'amount-button',
-			creditButtonAmountDataAttr : 'credit-amount',
-			creditButtonTargetDataAttr : 'credit-target',
-			addCouponFormClass         : 'add-coupon-form',
-			cancelOrderFormClass       : 'cancel-order-form',
-			rateOrderFormClass         : 'rate-order-form',
+			priceInputsClass                  : 'price-input',
+			dateDropdownElement               : '[name="ship_date"]',
+			hourDropdownElement               : '[name="ship_hour"]',
+			minuteDropdownElement             : '[name="ship_minute"]',
+			shipNowTogglerElement             : '[name="ship_now"]',
+			createOrderFormClass              : 'create-order-form',
+			customerScoreExchangeCardClass    : 'customer-score-exchange-card',
+			discountCopunFormClass            : 'add-discount-coupon-form',
+			creditButtonElementClass          : 'amount-button',
+			creditButtonAmountDataAttr        : 'credit-amount',
+			creditButtonTargetDataAttr        : 'credit-target',
+			addCouponFormClass                : 'add-coupon-form',
+			cancelOrderFormClass              : 'cancel-order-form',
+			rateOrderFormClass                : 'rate-order-form',
+			addCustomerScoreExchangeFormClass : 'add-customer-score-exchange-form',
 
 		},
 
 		modals : {
 
-			creditModalTogglerClass       : 'credit-modal-toggler',
-			creditModalAmountDataAttr     : 'credit-amount',
-			orderModalTogglerClass        : 'order-modal-toggler',
-			orderModalTypeDataAttr        : 'order-types',
-			orderModalOrdersDataAttr      : 'order-ids',
-			orderModalDescriptionDataAttr : 'order-description',
-			orderModalOrdersDelimiter     : ',',
-			couponModalTogglerClass       : 'coupon-modal-toggler',
-			cancelModalTogglerClass       : 'cancel-modal-toggler',
-			cancelModalOrderDataAttr      : 'order-id',
-			rateModalTogglerClass         : 'rate-modal-toggler',
-			rateModalOrderDataAttr        : 'order-id',
+			creditModalTogglerClass                : 'credit-modal-toggler',
+			creditModalAmountDataAttr              : 'credit-amount',
+			orderModalTogglerClass                 : 'order-modal-toggler',
+			orderModalTypeDataAttr                 : 'order-types',
+			orderModalOrdersDataAttr               : 'order-ids',
+			orderModalDescriptionDataAttr          : 'order-description',
+			orderModalOrdersDelimiter              : ',',
+			couponModalTogglerClass                : 'coupon-modal-toggler',
+			customerScoreExchangeModalTogglerClass : 'customer-score-exchange-modal-toggler',
+			cancelModalTogglerClass                : 'cancel-modal-toggler',
+			cancelModalOrderDataAttr               : 'order-id',
+			rateModalTogglerClass                  : 'rate-modal-toggler',
+			rateModalOrderDataAttr                 : 'order-id',
+			uiWidgetOverlay                        : '.ui-widget-overlay',
+			orderFormData                          : '',
+			oldOrderFormData                       : '',
+			removeDiscountCouponClass              : 'remove-discount-coupon',
+			cancelButtonClass                      : 'modal-cancel-button',
 
 		},
 
 		chat : {
 
-			togglerInput : '#awcshm-support-chat-toggler'
+			togglerInput : '#awcshm-support-chat-toggler',
+
+		},
+
+		endpoint : {
+
+			environmentInputName     : 'environment',
+			endpointUrl              : 'endpoint_url',
+			endpointApiUrl           : 'endpoint_api_url',
+			endpointTrackingUrl      : 'endpoint_tracking_url',
+			environmentTypeCustomVal : 'custom',
 
 		}
 
@@ -338,11 +356,11 @@
 					window.cedarMapIsLoading = true;
 					alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.maps.cedarMapJsLib, function () {
 
-						alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.common.info.leaflet_gesture_handling.js, alopeykHandleMapsAdmin );
+						alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.leaflet_gesture_handling.js, alopeykHandleMapsAdmin );
 
 					});
 					alopeyk.wcshm.admin.fn.injectStylesheet ( alopeyk.wcshm.admin.vars.maps.cedarMapCssLib );
-					alopeyk.wcshm.admin.fn.injectStylesheet ( alopeyk.wcshm.admin.vars.common.info.leaflet_gesture_handling.css );
+					alopeyk.wcshm.admin.fn.injectStylesheet ( alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.leaflet_gesture_handling.css );
 
 				}
 
@@ -460,7 +478,7 @@
 
 				},
 
-				map = L.cedarmaps.map ( mapCanvas.get ( 0 ), alopeyk.wcshm.admin.vars.maps.cedarMapTilesSource.replace ( '{{TOKEN}}', L.cedarmaps.accessToken ), mapOptions ),
+				map = L.cedarmaps.map ( mapCanvas.get ( 0 ), alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.api_url.replace ( '{{TOKEN}}', L.cedarmaps.accessToken ), mapOptions ),
 
 				setActiveAutocompleteItem = function ( index ) {
 
@@ -492,8 +510,8 @@
 						nonce        : alopeyk.wcshm.admin.vars.common.info.ajaxOptions.nonce,
 						action       : alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id,
 						request      : 'get_address',
+						scope        : 'admin',
 						authenticate : true,
-						ask_cedar    : false,
 						lat          : map.getCenter().lat,
 						lng          : map.getCenter().lng,
 
@@ -628,7 +646,6 @@
 								action       : alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id,
 								request      : 'suggest_address',
 								authenticate : true,
-								ask_cedar    : false,
 								input        : storeAutocompleteInput.val(),
 								lat          : map.getCenter().lat,
 								lng          : map.getCenter().lng,
@@ -714,6 +731,10 @@
 				staticCostTypeInput    = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.cost.staticCostTypeInputName + "']" ),
 				fixedCostInput         = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.cost.fixedCostInputName + "']" ),
 				percentageCostInput    = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.cost.percentageCostInputName + "']" ),
+				environmentInput       = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.endpoint.environmentInputName + "']" ),
+				endpointUrl            = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.endpoint.endpointUrl + "']" ),
+				endpointApiUrl         = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.endpoint.endpointApiUrl + "']" ),
+				endpointTrackingUrl    = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.endpoint.endpointTrackingUrl + "']" ),
 				checkboxTargetDataAttr = alopeyk.wcshm.admin.vars.common.checkboxToggleTargetDataAttr,
 				checkboxIdDataAttr     = alopeyk.wcshm.admin.vars.common.checkboxToggleIdDataAttr,
 				uploadInputs           = alopeyk.wcshm.admin.vars.upload.inputSelector,
@@ -743,10 +764,29 @@
 
 					}
 
+				},
+				setEnvironmentInputVisibility = function () {
+
+					if ( environmentInput.val() == alopeyk.wcshm.admin.vars.endpoint.environmentTypeCustomVal ) {
+
+						endpointUrl.parents ( 'tr' ).css ( 'display', '' );
+						endpointApiUrl.parents ( 'tr' ).css ( 'display', '' );
+						endpointTrackingUrl.parents ( 'tr' ).css ( 'display', '' );
+
+					} else {
+
+						endpointUrl.parents ( 'tr' ).css ( 'display', 'none' );
+						endpointApiUrl.parents ( 'tr' ).css ( 'display', 'none' );
+						endpointTrackingUrl.parents ( 'tr' ).css ( 'display', 'none' );
+
+					}
+
 				};
 
 			$j.merge ( costTypeInput, staticCostTypeInput ).on ( 'change', setCostInputVisibility );
 			setCostInputVisibility();
+			environmentInput.on ( 'change', setEnvironmentInputVisibility );
+			setEnvironmentInputVisibility();
 
 			$j( 'input:checkbox[data-' + checkboxTargetDataAttr + ']' ).on ( 'change', function () {
 
@@ -908,7 +948,7 @@
 						e.preventDefault();
 
 						var orders = [];
-						jQuery.each ( $j( alopeyk.wcshm.admin.vars.bulkAction.actionInputs ), function () { orders.push ( $j( this ).val() ); });
+						$j.each ( $j( alopeyk.wcshm.admin.vars.bulkAction.actionInputs ), function () { orders.push ( $j( this ).val() ); });
 						alopeyk.wcshm.admin.fn.createOrderModal ( orders );
 
 					}
@@ -978,6 +1018,12 @@
 
 					}
 
+					$j( alopeyk.wcshm.admin.vars.modals.uiWidgetOverlay ).on( 'click', function () {
+
+						dialogElement.dialog ( 'destroy' );
+
+					} );
+
 				},
 
 				close         : function () {
@@ -1022,6 +1068,7 @@
 			var buttons = [{
 
 					text  : alopeyk.wcshm.admin.fn.translate ( 'Cancel' ),
+					class : alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.modals.cancelButtonClass ),
 					click : function () {
 
 						$j( this ).dialog ( 'destroy' );
@@ -1069,7 +1116,7 @@
 
 				}, {
 
-					text  : alopeyk.wcshm.admin.fn.translate ( 'Add Coupon' ),
+					text  : alopeyk.wcshm.admin.fn.translate ( 'Charge account with gift card' ),
 					click : function () {
 
 						alopeyk.wcshm.admin.fn.createCouponModal();
@@ -1103,7 +1150,7 @@
 
 				}
 
-			alopeyk.wcshm.admin.fn.showModal ( 'create-credit', alopeyk.wcshm.admin.fn.translate ( 'Add Alopeyk Credit' ), 'create_credit_modal', data, buttons, null );
+			alopeyk.wcshm.admin.fn.showModal ( 'create-credit', alopeyk.wcshm.admin.fn.translate ( 'Increase credit' ), 'create_credit_modal', data, buttons, null );
 
 		},
 
@@ -1112,6 +1159,7 @@
 			var buttons = [{
 
 					text  : alopeyk.wcshm.admin.fn.translate ( 'Cancel' ),
+					class : alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.modals.cancelButtonClass ),
 					click : function () {
 
 						$j( this ).dialog ( 'destroy' );
@@ -1132,15 +1180,47 @@
 
 				data = null;
 
-			alopeyk.wcshm.admin.fn.showModal ( 'create-coupon', alopeyk.wcshm.admin.fn.translate ( 'Add Alopeyk Coupon' ), 'create_coupon_modal', data, buttons, null );
+			alopeyk.wcshm.admin.fn.showModal ( 'create-coupon', alopeyk.wcshm.admin.fn.translate ( 'Charge account with gift card' ), 'create_coupon_modal', data, buttons, null );
 
 		},
 
-		createCancelModal : function ( order ) {
+		createCustomerScoreExchangeModal : function () {
 
 			var buttons = [{
 
-					text  : alopeyk.wcshm.admin.fn.translate ( 'Close' ),
+					text  : alopeyk.wcshm.admin.fn.translate ( 'Cancel' ),
+					class : alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.modals.cancelButtonClass ),
+					click : function () {
+
+						$j( this ).dialog ( 'destroy' );
+
+					}
+
+				}],
+
+				data = null;
+
+			alopeyk.wcshm.admin.fn.showModal ( 'create-customer-score-exchange', alopeyk.wcshm.admin.fn.translate ( 'Convert Alopeyk Scores to Credit' ), 'create_customer_score_exchange_modal', data, buttons, null, function () {}, {width : 610});
+
+		},
+
+		createCheckCustomerScoreExchangeModalPre : function () {
+
+			$j( document ).on ( 'click', '.' + alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.forms.customerScoreExchangeCardClass ), function ( e ) {
+
+				e.preventDefault();
+				alopeyk.wcshm.admin.fn.createCheckCustomerScoreExchangeModal ( $j( this ).data( 'id' ) );
+
+			});
+
+		},
+
+		createCheckCustomerScoreExchangeModal : function ( productId ) {
+
+			var buttons = [{
+
+					text  : alopeyk.wcshm.admin.fn.translate ( 'Cancel' ),
+					class : alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.modals.cancelButtonClass ),
 					click : function () {
 
 						$j( this ).dialog ( 'destroy' );
@@ -1149,7 +1229,54 @@
 
 				}, {
 
-					text  : alopeyk.wcshm.admin.fn.translate ( 'Cancel' ),
+					text  : alopeyk.wcshm.admin.fn.translate ( 'Submit' ),
+					class : 'button-primary',
+					click : function () {
+
+						$j( this ).find ( '[type="submit"]' ).trigger ( 'click' );
+
+					}
+
+				}];
+
+			alopeyk.wcshm.admin.fn.showModal ( 'submit-customer-score-exchange', alopeyk.wcshm.admin.fn.translate ( 'Submit Order' ), 'submit_customer_score_exchange_modal', productId, buttons, null);
+
+		},
+
+		handleAddCustomerScoreExchangeForm : function () {
+
+			$j( document ).on ( 'submit', '.' + alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.forms.addCustomerScoreExchangeFormClass ), function ( e ) {
+
+				e.preventDefault();
+
+				var data = $j( this ).serialize();
+
+				alopeyk.wcshm.admin.fn.showModal ( 'add-customer-score-exchange', alopeyk.wcshm.admin.fn.translate ( 'Order Status' ), 'add_customer_score_exchange_modal', data, null, null, function () {
+
+					var customerScoreExchangeModal       = $j( '#' + alopeyk.wcshm.admin.fn.addPrefix ( 'modal-submit-customer-score-exchange' ) ),
+						createCustomerScoreExchangeModal = $j( '#' + alopeyk.wcshm.admin.fn.addPrefix ( 'modal-create-customer-score-exchange' ) );
+
+					if ( customerScoreExchangeModal.length ) {
+						customerScoreExchangeModal.dialog ( 'destroy' );
+					}
+
+					if ( createCustomerScoreExchangeModal.length ) {
+						createCustomerScoreExchangeModal.dialog ( 'destroy' );
+					}
+
+					$j( document ).trigger ( 'awcshm:credit:add' );
+
+				});
+
+			});
+
+		},
+
+		createCancelModal : function ( order ) {
+
+			var buttons = [{
+
+					text  : alopeyk.wcshm.admin.fn.translate ( 'Cancel Order' ),
 					class : 'button-primary',
 					click : function () {
 
@@ -1299,12 +1426,6 @@
 
 				});
 
-				shipMinuteDropdown.children().remove().end().on ( 'change', function () {
-
-					lastActiveMinute = parseInt ( $j( this ).find ( ':selected' ).val() );
-
-				});
-
 				for ( var date in schedule_dates ) {
 
 					if ( schedule_dates.hasOwnProperty ( date ) ) {
@@ -1336,15 +1457,151 @@
 
 		},
 
-		handleCheckOrderForm : function () {
+		handleCheckOrderFormPre : function () {
 
 			$j( document ).on ( 'submit', '.' + alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.forms.createOrderFormClass ), function ( e ) {
 
 				e.preventDefault();
+				alopeyk.wcshm.admin.vars.modals.orderFormData = $j( this );
+				alopeyk.wcshm.admin.fn.handleCheckOrderForm();
 
-				var buttons = [{
+			});
+
+		},
+
+		handleCheckOrderForm : function ( disableDiscountButton ) {
+
+			var buttons = [{
 
 					text  : alopeyk.wcshm.admin.fn.translate ( 'Cancel' ),
+					class : alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.modals.cancelButtonClass ),
+					click : function () {
+
+						$j( this ).dialog ( 'destroy' );
+
+					}
+
+				}],
+				checkOrderForm = alopeyk.wcshm.admin.vars.modals.orderFormData,
+				data = $j.type(checkOrderForm) == 'string' ? checkOrderForm : checkOrderForm.serialize(),
+				dataObject = alopeyk.wcshm.admin.fn.getUrlVars ( '#?' + data );
+			if( ! disableDiscountButton ) {
+
+				buttons.push({
+
+					text  : alopeyk.wcshm.admin.fn.translate ( 'Add Discount Coupon' ),
+					click : function () {
+
+						alopeyk.wcshm.admin.fn.handleDiscountCopunForm ();
+
+					}
+
+				});
+
+			}
+
+			buttons.push({
+
+				text  : alopeyk.wcshm.admin.fn.translate ( 'Submit' ),
+				class : 'button-primary',
+				click : function () {
+
+					var buttons = [{
+
+							text  : alopeyk.wcshm.admin.fn.translate ( 'Track Order' ),
+							click : function () {
+
+								var tracking_url = alopeyk.wcshm.admin.fn.decodeToHtml ( $j( this ).data ( 'response' ).tracking_url );
+								alopeyk.wcshm.admin.fn.openTab ( tracking_url );
+
+							}
+
+						}, {
+
+							text  : alopeyk.wcshm.admin.fn.translate ( 'View Order' ),
+							class : 'button-primary',
+							click : function () {
+
+								var view_url = alopeyk.wcshm.admin.fn.decodeToHtml ( $j( this ).data ( 'response' ).edit_url );
+								alopeyk.wcshm.admin.fn.openTab ( view_url );
+
+							}
+
+						}],
+
+						dialogElement = $j( this );
+
+					dialogElement.dialog ( 'destroy' );
+					alopeyk.wcshm.admin.fn.showModal ( 'submit-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'submit_order_modal', dialogElement.data ( 'response' ), buttons, null, function () {
+
+						var orderCreateModal = $j( '#' + alopeyk.wcshm.admin.fn.addPrefix ( 'modal-create-order' ) );
+
+						if ( orderCreateModal.length ) {
+							orderCreateModal.dialog ( 'destroy' );
+						}
+
+						$j( document ).trigger ( 'awcshm:order:create' );
+
+					});
+
+				}
+
+			});
+
+			if ( dataObject.ship_now == 'false' && dataObject.ship_date && dataObject.ship_date.length && dataObject.ship_hour && dataObject.ship_hour.length && dataObject.ship_minute && dataObject.ship_minute.length && alopeyk.wcshm.admin.vars.common.time && alopeyk.wcshm.admin.vars.common.info.time ) {
+
+				var timeDiff = new Date ( parseInt ( ( '' + alopeyk.wcshm.admin.vars.common.info.time ).replace ( /-/g, '/' ) ) ) - new Date ( parseInt ( ( '' + alopeyk.wcshm.admin.vars.common.time ).replace ( /-/g, '/' ) ) ),
+					shipDate = ( new Date ( dataObject.ship_date + ' ' + dataObject.ship_hour + ':' + dataObject.ship_minute + ':00' ) ).getTime() + timeDiff;
+
+				if ( shipDate > Date.now() ) {
+
+					alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
+
+				} else {
+
+					var confirm_buttons = [{
+
+						text  : alopeyk.wcshm.admin.fn.translate ( 'No' ),
+						click : function () {
+
+							$j( this ).dialog ( 'destroy' );
+
+						}
+
+					}, {
+
+						text  : alopeyk.wcshm.admin.fn.translate ( 'Yes' ),
+						class : 'button-primary',
+						click : function () {
+
+							$j( alopeyk.wcshm.admin.vars.forms.shipNowTogglerElement ).val ( [ 'true' ] );
+							data = $j.type(checkOrderForm) == 'string' ? checkOrderForm : checkOrderForm.serialize();
+							$j( this ).dialog ( 'destroy' );
+
+							alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
+
+						}
+
+					}];
+
+					alopeyk.wcshm.admin.fn.showModal ( 'check-order-time', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), null, null, confirm_buttons, alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.scope.schedule_dates.error );
+
+				}
+
+			} else {
+
+				alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
+
+			}
+
+		},
+
+		handleDiscountCopunForm : function () {
+		
+			var buttons = [{
+
+					text  : alopeyk.wcshm.admin.fn.translate ( 'Cancel' ),
+					class : alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.modals.cancelButtonClass ),
 					click : function () {
 
 						$j( this ).dialog ( 'destroy' );
@@ -1357,97 +1614,60 @@
 					class : 'button-primary',
 					click : function () {
 
-						var buttons = [{
-
-								text  : alopeyk.wcshm.admin.fn.translate ( 'Track Order' ),
-								click : function () {
-
-									var tracking_url = alopeyk.wcshm.admin.fn.decodeToHtml ( $j( this ).data ( 'response' ).tracking_url );
-									alopeyk.wcshm.admin.fn.openTab ( tracking_url );
-
-								}
-
-							}, {
-
-								text  : alopeyk.wcshm.admin.fn.translate ( 'View Order' ),
-								class : 'button-primary',
-								click : function () {
-
-									var view_url = alopeyk.wcshm.admin.fn.decodeToHtml ( $j( this ).data ( 'response' ).edit_url );
-									alopeyk.wcshm.admin.fn.openTab ( view_url );
-
-								}
-
-							}],
-
-							dialogElement = $j( this );
-
-						dialogElement.dialog ( 'destroy' );
-						alopeyk.wcshm.admin.fn.showModal ( 'submit-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'submit_order_modal', dialogElement.data ( 'response' ), buttons, null, function () {
-
-							var orderCreateModal = $j( '#' + alopeyk.wcshm.admin.fn.addPrefix ( 'modal-create-order' ) );
-
-							if ( orderCreateModal.length ) {
-								orderCreateModal.dialog ( 'destroy' );
-							}
-
-							$j( document ).trigger ( 'awcshm:order:create' );
-
-						});
+						$j( this ).find ( '[type="submit"]' ).trigger ( 'click' );
 
 					}
 
 				}],
+				checkOrderForm = alopeyk.wcshm.admin.vars.modals.orderFormData,
+				dialogElement = $j( this ),
+				data = $j.type(checkOrderForm) == 'string' ? checkOrderForm : checkOrderForm.serialize();
+			alopeyk.wcshm.admin.fn.showModal ( 'discount-coupon', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'discount_coupon_modal', data, buttons);
 
-				checkOrderForm = $j( this ),
-				data = checkOrderForm.serialize(),
-				dataObject = alopeyk.wcshm.admin.fn.getUrlVars ( '#?' + data );
+		},
 
-				if ( dataObject.ship_now == 'false' && dataObject.ship_date && dataObject.ship_date.length && dataObject.ship_hour && dataObject.ship_hour.length && dataObject.ship_minute && dataObject.ship_minute.length && alopeyk.wcshm.admin.vars.common.time && alopeyk.wcshm.admin.vars.common.info.time ) {
+		handleDiscountCopunFormSubmitPre : function () {
 
-					var timeDiff = new Date ( parseInt ( ( '' + alopeyk.wcshm.admin.vars.common.info.time ).replace ( /-/g, '/' ) ) ) - new Date ( parseInt ( ( '' + alopeyk.wcshm.admin.vars.common.time ).replace ( /-/g, '/' ) ) ),
-						shipDate = ( new Date ( dataObject.ship_date + ' ' + dataObject.ship_hour + ':' + dataObject.ship_minute + ':00' ) ).getTime() + timeDiff;
+			$j( document ).on ( 'submit', '.' + alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.forms.discountCopunFormClass ), function ( e ) {
 
-					if ( shipDate > Date.now() ) {
+				e.preventDefault();
+				alopeyk.wcshm.admin.fn.handleDiscountCopunFormSubmit ( $j( this ) );
 
-						alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
+			});
 
-					} else {
+		},
 
-						var confirm_buttons = [{
+		handleDiscountCopunFormSubmit : function ( form ) {
 
-							text  : alopeyk.wcshm.admin.fn.translate ( 'No' ),
-							click : function () {
+			var preData = alopeyk.wcshm.admin.vars.modals.oldOrderFormData != '' ? alopeyk.wcshm.admin.vars.modals.oldOrderFormData : alopeyk.wcshm.admin.vars.modals.orderFormData,
+				data    = $j.type( preData ) == 'string' ? preData : preData.serialize() + '&' + form.serialize();
+			alopeyk.wcshm.admin.fn.showModal ( 'discount-coupon-submit', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'discount_coupon_submit_modal', data, null, null, function () {
 
-								$j( this ).dialog ( 'destroy' );
+				var checkOrderModal           = $j( '#' + alopeyk.wcshm.admin.fn.addPrefix ( 'modal-check-order'            ) ),
+					discountCouponModal       = $j( '#' + alopeyk.wcshm.admin.fn.addPrefix ( 'modal-discount-coupon'        ) ),
+					discountCouponSubmitModal = $j( '#' + alopeyk.wcshm.admin.fn.addPrefix ( 'modal-discount-coupon-submit' ) );
 
-							}
+				if ( discountCouponModal.length ) {
 
-						}, {
-
-							text  : alopeyk.wcshm.admin.fn.translate ( 'Yes' ),
-							class : 'button-primary',
-							click : function () {
-
-								$j( alopeyk.wcshm.admin.vars.forms.shipNowTogglerElement ).val ( [ 'true' ] );
-								data = checkOrderForm.serialize();
-								$j( this ).dialog ( 'destroy' );
-
-								alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
-
-							}
-
-						}];
-
-						alopeyk.wcshm.admin.fn.showModal ( 'check-order-time', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), null, null, confirm_buttons, alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.scope.schedule_dates.error );
-
-					}
-
-				} else {
-
-					alopeyk.wcshm.admin.fn.showModal ( 'check-order', alopeyk.wcshm.admin.fn.translate ( 'Alopeyk Order' ), 'check_order_modal', data, buttons );
+					discountCouponModal.dialog ( 'destroy' );
 
 				}
+
+				if ( discountCouponSubmitModal.length ) {
+
+					discountCouponSubmitModal.dialog ( 'destroy' );
+
+				}
+
+				if ( checkOrderModal.length ) {
+
+					checkOrderModal.dialog ( 'destroy' );
+
+				}
+
+				alopeyk.wcshm.admin.vars.modals.oldOrderFormData = alopeyk.wcshm.admin.vars.modals.orderFormData;
+				alopeyk.wcshm.admin.vars.modals.orderFormData    = data; 
+				alopeyk.wcshm.admin.fn.handleCheckOrderForm( true );
 
 			});
 
@@ -1481,6 +1701,24 @@
 					$j( document ).trigger ( 'awcshm:credit:add' );
 
 				});
+
+			});
+
+		},
+
+		handleRemoveDiscountCoupon : function () {
+
+			$j( document ).on ( 'click', '.' + alopeyk.wcshm.admin.vars.modals.removeDiscountCouponClass, function ( e ) {
+
+				var orderCheckModal = $j( '#' + alopeyk.wcshm.admin.fn.addPrefix ( 'modal-check-order' ) );
+				if ( orderCheckModal.length ) {
+
+					orderCheckModal.dialog ( 'destroy' );
+
+				}
+				alopeyk.wcshm.admin.vars.modals.orderFormData    = alopeyk.wcshm.admin.vars.modals.oldOrderFormData;
+				alopeyk.wcshm.admin.vars.modals.oldOrderFormData = '';
+				alopeyk.wcshm.admin.fn.handleCheckOrderForm();
 
 			});
 
@@ -1577,6 +1815,17 @@
 
 		},
 
+		setupCustomerScoreExchangeModalTrigger : function () {
+
+			$j( document ).on ( 'click', '.' + alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.modals.customerScoreExchangeModalTogglerClass ), function ( e ) {
+
+				e.preventDefault();
+				alopeyk.wcshm.admin.fn.createCustomerScoreExchangeModal ();
+
+			});
+
+		},
+
 		setupCancelModalTrigger : function () {
 
 			$j( document ).on ( 'click', '.' + alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.modals.cancelModalTogglerClass ), function ( e ) {
@@ -1610,7 +1859,10 @@
 				target = target && target.length ? target : $j( '.' + alopeyk.wcshm.admin.fn.addPrefix ( alopeyk.wcshm.admin.vars.forms.priceInputsClass ) );
 
 				if ( target.length ) {
-					target.val ( amount ? amount : '' );
+
+					amount = amount ? amount : 0;
+					target.val ( amount );
+
 				}
 
 			});
@@ -1668,13 +1920,13 @@
 
 								$j.each ( dynamic_parts, function ( index, selector ) {
 
-									var part = $j( selector ),
-										content = response.find ( selector ).html();
+									var part    = $j( selector ),
+										content = response.find ( selector );
 
-									if ( part.html() != content ) {
+									if ( $j( part ).text() != $j( content ).text() ) {
 
-										part.html ( content );
-										
+										part.html ( content.html() );
+
 									}
 
 								});
@@ -1727,7 +1979,9 @@
 			alopeyk.wcshm.admin.fn.handleSettingFields();
 			alopeyk.wcshm.admin.fn.handleBulkAction();
 			alopeyk.wcshm.admin.fn.handleDateTimeFilters();
-			alopeyk.wcshm.admin.fn.handleCheckOrderForm();
+			alopeyk.wcshm.admin.fn.handleCheckOrderFormPre();
+			alopeyk.wcshm.admin.fn.handleDiscountCopunFormSubmitPre();
+			alopeyk.wcshm.admin.fn.handleRemoveDiscountCoupon();
 			alopeyk.wcshm.admin.fn.handleCancelOrderForm();
 			alopeyk.wcshm.admin.fn.handleRateOrderForm();
 			alopeyk.wcshm.admin.fn.handleAddCouponForm();
@@ -1735,12 +1989,16 @@
 			alopeyk.wcshm.admin.fn.setupOrderModalTrigger();
 			alopeyk.wcshm.admin.fn.setupCancelModalTrigger();
 			alopeyk.wcshm.admin.fn.setupCouponModalTrigger();
+			alopeyk.wcshm.admin.fn.setupCustomerScoreExchangeModalTrigger();
+			alopeyk.wcshm.admin.fn.createCheckCustomerScoreExchangeModalPre();
+			alopeyk.wcshm.admin.fn.handleAddCustomerScoreExchangeForm();
 			alopeyk.wcshm.admin.fn.setupRateModalTrigger();
 			alopeyk.wcshm.admin.fn.handleBelowHeadingElements();
 
 		},
 
 	};
+
 
 
 
@@ -1772,6 +2030,16 @@
 
 		},
 
-	});
+	}).resize(function() {
+
+		$j( '.ui-dialog-content' ).dialog( 'option', 'position', {
+
+			my: "center",
+			at: "center",
+			of: window
+
+		} );
+
+	});;
 
 })( jQuery );

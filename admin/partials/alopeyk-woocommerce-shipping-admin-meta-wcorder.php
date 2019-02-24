@@ -41,7 +41,7 @@ $last_status = isset( $data['last_status'] ) ? $data['last_status'] : null;
 				if ( in_array( $last_status['status'], array( 'awcshm-progress', 'awcshm-pending', 'awcshm-scheduled' ) ) ) {
 					if ( isset( $last_status['actions']['cancel'] ) && $last_status['actions']['cancel'] ) {
 		?>
-		<button type="button" class="button button-primary awcshm-cancel-modal-toggler" data-order-id="<?php echo $last_status['id']; ?>"><?php echo __( 'Cancel', 'alopeyk-woocommerce-shipping' ); ?></button>
+		<button type="button" class="button button-primary awcshm-cancel-modal-toggler" data-order-id="<?php echo $last_status['id']; ?>"><?php echo __( 'Cancel Order', 'alopeyk-woocommerce-shipping' ); ?></button>
 		<?php
 					} else {
 		?>

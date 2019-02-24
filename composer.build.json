@@ -1,0 +1,8 @@
+{
+  "variables": [
+    "API_BRANCH"
+  ],
+  "templates": {
+    "composer.template.json": "composer.json"
+  }
+}

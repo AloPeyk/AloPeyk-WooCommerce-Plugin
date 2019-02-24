@@ -50,6 +50,12 @@ if ( $order_data ) {
 			<strong><?php echo wc_price( $helpers->normalize_price( $order_data->price * 10 ) ); ?></strong>
 		</p>
 		<?php } ?>
+		<?php if ( isset( $order_data->order_discount ) && $order_data->order_discount ) { ?>
+				<p>
+					<span><?php echo __( 'Discount Code Value', 'alopeyk-woocommerce-shipping' ); ?>: </span>
+					<strong><?php echo ( isset( $order_data->order_discount->discount ) && ! is_null( $order_data->order_discount->discount ) ) ? wc_price( $helpers->normalize_price( $order_data->order_discount->discount * 10 ) ) : '—'; ?></strong>
+				</p>
+		<?php } ?>
 		<?php if ( isset( $order_data->transport_type ) ) { ?>
 		<p>
 			<span><?php echo __( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?>: </span>
@@ -109,7 +115,7 @@ if ( $order_data ) {
 				$can_be_canceled = $helpers->can_be_canceled( $order_data );
 				if ( $can_be_canceled['enabled'] ) {
 		?>
-		<button type="button" class="button button-primary awcshm-cancel-modal-toggler" data-order-id="<?php echo $post->ID; ?>"><?php echo __( 'Cancel', 'alopeyk-woocommerce-shipping' ); ?></button>
+		<button type="button" class="button button-primary awcshm-cancel-modal-toggler" data-order-id="<?php echo $post->ID; ?>"><?php echo __( 'Cancel Order', 'alopeyk-woocommerce-shipping' ); ?></button>
 		<?php
 				} else {
 		?>

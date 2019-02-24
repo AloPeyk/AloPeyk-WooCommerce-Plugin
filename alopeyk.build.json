@@ -1,0 +1,10 @@
+{
+  "variables": [
+    "DB_NAME",
+    "DB_USER",
+    "DB_PASS"
+  ],
+  "templates": {
+    ".wpenv.template": ".wpenv"
+  }
+}

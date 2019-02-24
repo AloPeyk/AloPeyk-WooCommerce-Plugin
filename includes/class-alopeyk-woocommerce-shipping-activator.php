@@ -38,7 +38,16 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 			deactivate_plugins( plugin_basename( __FILE__ ) );
 			wp_die( __( 'Sorry, WooCommerce plugin should be installed and activated before activating Alopeyk WooCommerce Shipping plugin.', 'alopeyk-woocommerce-shipping' ) );
 		}
+
+		self::change_store_city();
 		
+	}
+
+	public static function change_store_city() {
+
+		$schedule_name = METHOD_ID . '_update_city_cedar_token';
+		wp_schedule_event( time(), $schedule_name . '_interval', $schedule_name );
+
 	}
 
 }

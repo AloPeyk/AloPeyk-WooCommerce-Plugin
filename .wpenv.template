@@ -1,0 +1,8 @@
+DB_NAME=<DB_NAME>
+DB_USER=<DB_USER>
+DB_PASS=<DB_PASS>
+WP_VERSION=4.9.8
+DB_PREFIX=wp_
+WP_THEMES=storefront
+WP_PLUGINS=woocommerce persian-woocommerce
+ALOPEYK_PLUGIN_NAME=alopeyk-woocommerce-shipping

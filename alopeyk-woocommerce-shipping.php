@@ -24,12 +24,13 @@
  */
 
 /**
+ * @TODO : Create method to generate css and js files url by WP_DEBUG
  * @TODO : Install more filters and actions to make plugin more extensible for developers
  * @TODO : Using more comments to make code more readable
  * @TODO : Recheck function types
  * @TODO : Move public-only functions from Common class to Public class
  * @TODO : Use Transients API where possible
- * @TODO : Detect initial map address based on province, city and address inputs
+ * @TODO : Add php function to add prefix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
