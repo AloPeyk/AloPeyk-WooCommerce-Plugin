@@ -29,17 +29,19 @@
 .awcshm-destination-locator-map {
 	width: 100%;
 	height: 25rem;
+	direction: ltr;
+	position: sticky !important;
 }
 .awcshm-destination-locator-cta {
 	position: absolute !important;
-	bottom: 80px !important;
-	right: 11px !important;
+	bottom: 5rem !important;
+	right: 0.68rem !important;
 	display: inline-block !important;
-	width: 28px !important;
-	height: 27px !important;
-	margin: 0px !important;
-	padding: 0px !important;
-	border: 0px !important;
+	width: 1.75rem !important;
+	height: 1.68rem !important;
+	margin: 0rem !important;
+	padding: 0rem !important;
+	border: 0rem !important;
 	-webkit-border-radius: 2px !important;
 	-moz-border-radius: 2px !important;
 	border-radius: 2px !important;
@@ -67,6 +69,28 @@
 .awcshm-destination-locator-cta:active {
 	background-color: #f2f2f2 !important;
 }
+.awcshm-loading-field {
+    background: url( '/wp-includes/images/spinner.gif' );
+    background-size: 1.25rem 1.25rem;
+    background-position:left center;
+    background-repeat: no-repeat;
+}
+
+.awcshm-map-visible #billing_address_1_field,
+.awcshm-map-visible #billing_address_2_field,
+.awcshm-map-visible #shipping_address_1_field,
+.awcshm-map-visible #shipping_address_2_field {
+	display: none !important;
+}
+.woocommerce-checkout #awcshm-address-details {
+	height: 0rem;
+	overflow: hidden;
+}
+.awcshm-map-visible #awcshm-address-details {
+	height: unset;
+	overflow: unset;
+}
+
 .awcshm-destination-locator-input-wrapper {
 	z-index: 2;
 	position: absolute;
@@ -81,8 +105,8 @@
 	position: absolute;
 	top: 50%;
 	right: 0.375rem;
-	width: 20px;
-	height: 20px;
+	width: 1.25rem;
+	height: 1.25rem;
 	background: url( '/wp-includes/images/spinner.gif' ) center center no-repeat;
 	opacity: 0;
 	-webkit-transform: translateY( -50% );
@@ -131,8 +155,8 @@
 	content: '';
 	display: inline-block;
 	vertical-align: middle;
-	width: 16px;
-	height: 16px;
+	width: 1rem;
+	height: 1rem;
 	margin: 0 0.1875rem;
 	background-image: url( '../img/marker-small.png' );
 }
@@ -163,7 +187,7 @@
 #shipping_address_2_field,
 ._shipping_address_1_field,
 ._shipping_address_2_field {
-	display: none !important;
+	display: none;
 }
 #order_data .order_data_column .form-field._shipping_address_number_field {
 	float: right;
@@ -180,4 +204,7 @@
 [dir="rtl"] #order_data .order_data_column .form-field._shipping_address_number_field {
 	float: left;
 	clear: left;
+}
+[dir="rtl"] #destination_address_autocomplete {
+	direction: rtl;
 }

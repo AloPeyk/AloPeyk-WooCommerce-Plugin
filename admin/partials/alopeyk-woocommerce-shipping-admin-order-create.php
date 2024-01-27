@@ -30,7 +30,7 @@ $data = $this->vars;
 									continue;
 								}
 						?>
-								<option value="<?=$key ?>"<?php if ( isset( $data['type'] ) && $data['type'] == $key ) { ?> selected="selected"<?php } ?>><?php echo $transport_type['label']; ?></option>
+								<option value="<?php echo $key; ?>"<?php if ( isset( $data['type'] ) && $data['type'] == $key ) { ?> selected="selected"<?php } ?>><?php echo $transport_type['label']; ?></option>
 						<?php endforeach; ?>
 					</select>
 				</td>
@@ -45,9 +45,9 @@ $data = $this->vars;
 							<select name="ship_date"></select>						
 						</div>
 						<div class="awcshm-shipping-time-container">
-							<select name="ship_minute"></select>
+							<select name="ship_hour" class="ship-hour"></select>
 							<span class="awcshm-shipping-time-delimiter">:</span>
-							<select name="ship_hour"></select>
+							<select name="ship_minute" class="ship-minute"></select>
 						</div>
 					</div>
 				</td>

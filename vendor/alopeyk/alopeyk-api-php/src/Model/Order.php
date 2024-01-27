@@ -12,14 +12,14 @@ class Order
     // Attributes ------------------------------------------------------------------------------------------------------
 
     private $transportType;
-    private $city;
     private $originAddress;
     private $destinationsAddress;
     private $hasReturn;
     private $cashed;
     private $scheduled_at;
+    private $discount_coupon;
 
-    public function __construct($transportType, $originAddress, $destinationsAddress, $scheduled_at = null)
+    public function __construct($transportType, $originAddress, $destinationsAddress, $scheduled_at = null, $discount_coupon=null)
     {
         $this->setTransportType($transportType);
         $this->addOriginAddress($originAddress);
@@ -29,6 +29,11 @@ class Order
         if($scheduled_at)
         {
             $this->setScheduledAt($scheduled_at);
+        }
+
+        if($discount_coupon)
+        {
+            $this->setDiscountCoupon($discount_coupon);
         }
 
         $this->destinationsAddress = [];
@@ -67,6 +72,15 @@ class Order
     }
 
     /**
+     * Set discount_coupon attribute
+     * @param $discountCoupon
+     */
+    public function setDiscountCoupon($discount_coupon)
+    {
+        $this->discount_coupon = $discount_coupon;
+    }
+
+    /**
      * @param $originAddress
      * @throws AloPeykApiException
      */
@@ -81,7 +95,6 @@ class Order
         }
 
         $this->originAddress = $originAddress;
-        $this->city = $originAddress->getCity();
     }
 
     /**
@@ -194,6 +207,11 @@ class Order
         return $this->scheduled_at;
     }
 
+    public function getDiscountCoupon()
+    {
+        return $this->discount_coupon;
+    }
+
     /**
      * @param $orderID
      * @return mixed
@@ -232,11 +250,11 @@ class Order
         $this->isValid();
 
         $orderArray = [
-            'city' => $this->city,
             'transport_type' => $this->getTransportType(),
             'has_return' => $this->getHasReturn(),
             'cashed' => $this->getCashed(),
-            'scheduled_at' => $this->getScheduledAt()
+            'scheduled_at' => $this->getScheduledAt(),
+            'discount_coupon' => $this->getDiscountCoupon()
         ];
 
         $orderArray['addresses'] = array_merge(
@@ -253,10 +271,6 @@ class Order
      */
     private function isValid()
     {
-        // CHECK CITY
-        if (AloPeykValidator::sanitize($this->city) != $this->getOriginAddress()->getCity()) {
-            throw new AloPeykApiException('Origin Address is not valid!');
-        }
 
         // CHECK TRANSPORT_TYPE
         if (!in_array($this->getTransportType(), array_keys(Configs::TRANSPORT_TYPES))) {

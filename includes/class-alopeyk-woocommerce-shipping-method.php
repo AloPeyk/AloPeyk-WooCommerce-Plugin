@@ -24,6 +24,8 @@ if ( class_exists( METHOD_ID ) ) {
  */
 class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 
+	public $package = null;
+
 	/**
 	 * @since 1.0.0
 	 */
@@ -61,22 +63,61 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 	 */
 	public function init_form_fields() {
 
+		$api_user_notice = '';
+		$is_api_user = $this->helpers->is_api_user();
+		if ( $is_api_user !== true ) {
+			$api_user_notice = $is_api_user;
+		}
+
 		$form_fields = array(
 			'enabled' => array(
 				'title'   => __( 'Enable/Disable', 'alopeyk-woocommerce-shipping' ),
 				'type'    => 'checkbox',
 				'label'   => __( 'Enable Alopeyk shipping', 'alopeyk-woocommerce-shipping' ),
 				'default' => 'no',
-			),      
+			),
 			'api_key' => array(
 				'title'       => __( 'API Key', 'alopeyk-woocommerce-shipping' ),
 				'type'        => 'text',
 				'default'     => '',
-				'description' => sprintf( __( 'Please <a href="%s">contact Alopeyk</a> to get one.', 'alopeyk-woocommerce-shipping' ), $this->helpers->get_support_url() ),
+				'description' => $api_user_notice,
 				'custom_attributes' => array(
 					'required' => 'required'
-				)
+				),
+				'class'       => 'awcshm-ltr'
 			),
+		);
+		$env_option = [];
+		foreach ( $this->helpers->get_endpoints_pack() as  $key => $urls_pack ) {
+			$env_option[$key] = __( $key, 'alopeyk-woocommerce-shipping' );
+			if ( $key == 'production' ) {
+				$production_env = $urls_pack;
+			}
+		}
+		$form_fields['environment'] = array(
+			'title'       => __( 'Environment', 'alopeyk-woocommerce-shipping' ),
+			'type'        => 'select',
+			'options'     => $env_option,
+			'default'     => 'product',
+			'description' => __( 'Please select the appropriate plugin environment in consultation with the Alopeyk sales team.', 'alopeyk-woocommerce-shipping' ),
+		);
+		$form_fields['endpoint_url'] = array(
+			'title'       => __( 'Endpoint Url', 'alopeyk-woocommerce-shipping' ),
+			'type'        => 'text',
+			'default'     => $production_env['url'],
+			'class'       => 'awcshm-ltr'
+		);
+		$form_fields['endpoint_api_url'] = array(
+			'title'       => __( 'Endpoint API Url', 'alopeyk-woocommerce-shipping' ),
+			'type'        => 'text',
+			'default'     => $production_env['api_url'],
+			'class'       => 'awcshm-ltr'
+		);
+		$form_fields['endpoint_tracking_url'] = array(
+			'title'       => __( 'Endpoint Tracking Url', 'alopeyk-woocommerce-shipping' ),
+			'type'        => 'text',
+			'default'     => $production_env['tracking_url'],
+			'class'       => 'awcshm-ltr'
 		);
 		if ( ! empty( $this->api_key ) && $this->wrong_key != 'yes' ) {
 			$form_fields['title'] = array(
@@ -175,11 +216,6 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 				'title' => __( 'Map Options', 'alopeyk-woocommerce-shipping' ),
 				'type'  => 'title',
 			);
-			$form_fields['cedarmap_api_key'] = array(
-				'title'             => __( 'Cedar Maps API Key', 'alopeyk-woocommerce-shipping' ),
-				'type'              => 'text',
-				'description'       => __( 'It is highly recommended to get a specific API key from <a href="https://www.cedarmaps.com/" target="_blank">this link</a> for your store.', 'alopeyk-woocommerce-shipping' ),
-			);
 			$form_fields['map_marker'] = array(
 				'title'             => __( 'Marker Image', 'alopeyk-woocommerce-shipping' ),
 				'type'              => 'hidden',
@@ -234,6 +270,20 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 				'title' => __( 'Transportation Type Settings', 'alopeyk-woocommerce-shipping' ),
 				'type'  => 'title',
 			);
+			$form_fields['map_always_visible'] = array(
+				'title'       => __( 'Always show map', 'alopeyk-woocommerce-shipping' ),
+				'type'        => 'checkbox',
+				'default'     => 'yes',
+				'label'       => __( 'Enabled', 'alopeyk-woocommerce-shipping' ),
+				'description' => __( 'Map and address detail fields will be shown in checkout page whether chosen address is supported by Alopeyk services or not.', 'alopeyk-woocommerce-shipping' ),
+			);
+			$form_fields['intercity'] = array(
+				'title'       => __( 'intercity transportations', 'alopeyk-woocommerce-shipping' ),
+				'type'        => 'checkbox',
+				'default'     => 'yes',
+				'label'       => __( 'Enabled', 'alopeyk-woocommerce-shipping' ),
+				'description' => __( 'If enabled, Alopeyk shipping method will be shown in the list of shipping methods even if store address city and customer address city are different.', 'alopeyk-woocommerce-shipping' ),
+			);
 			foreach ( $this->helpers->get_transport_types( false ) as  $key => $transport_type ) {
 
 				$form_fields['pt_' . $key] = array(
@@ -241,8 +291,8 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 					'type'        => 'checkbox',
 					'default'     => 'yes',
 					'label'       => __( 'Enabled', 'alopeyk-woocommerce-shipping' ),
-					'description' => sprintf( __( 'Total weight of the package should be up to %s kg and its width, height and length should be up to %s, %s and %s centimeters respectively to be allowed to be shipped by this method.', 'alopeyk-woocommerce-shipping' ), $transport_type['limits']['max_weight']/1000, $transport_type['limits']['max_width'], $transport_type['limits']['max_height'], $transport_type['limits']['max_length'] ),
-				);
+					'description' => sprintf( __( 'Total weight of the package should be up to %s kg and its dimensions in centimeters should be up to %s for width, %s for height and %s for length to be allowed to be shipped by this method.', 'alopeyk-woocommerce-shipping' ), $transport_type['limits']['max_weight']/1000, $transport_type['limits']['max_width'], $transport_type['limits']['max_height'], $transport_type['limits']['max_length'] ),
+                );
 
 			}
 			$form_fields['auto_type'] = array(
@@ -430,6 +480,9 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 	 */
 	public function get_package_data( $package ) {
 
+		if ( $this->package ) {
+			return $this->package;
+		}
 		$package = (object) $package;
 		$weights = array( WC()->cart->cart_contents_weight );
 		$destinations = array( $package->destination );
@@ -452,9 +505,10 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 			$total_volume = array_sum( array_column( $dimensions, 'volume' ) );
 		}
 		$transport_types = $this->helpers->get_transport_types();
+		$weight_unit = get_option( 'woocommerce_weight_unit' );
+		$dimension_unit = get_option( 'woocommerce_dimension_unit' );
 		foreach ( $transport_types as $key => $transport_type ) {
-			$overflowed_state = $this->helpers->has_overflow( $weights, $dimensions, get_option( 'woocommerce_weight_unit' ), get_option( 'woocommerce_dimension_unit' ), $key );
-			$overflowed[$key] = $overflowed_state;
+			$overflowed[$key] = $this->helpers->has_overflow( $weights, $dimensions, $weight_unit, $dimension_unit, $key );
 		}
 		$subtotal = isset( $package->cart_subtotal ) ? $package->cart_subtotal : 0;
 		$payment_method = $package->active_payment_method;
@@ -463,13 +517,14 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 			'weights'        => $weights,
 			'dimensions'     => $dimensions,
 			'destinations'   => $destinations,
-			'overflowed'     => serialize( $overflowed ),
+			'overflowed'     => $overflowed,
 			'subtotal'       => $subtotal,
 			'payment_method' => $payment_method,
 			'total_volume'   => $total_volume,
 			'total_weight'   => $weights[0],
 		);
 		WC()->session->set( 'package_data', $package );
+		$this->package = $package;
 		return $package;
 
 	}
@@ -483,28 +538,26 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 		WC()->session->set( 'return_cost', 0 );
 		if ( $package && count( $package ) ) {
 			$package = $this->get_package_data( $package );
-			$transport_types = $this->helpers->get_transport_types();
 			$min_price = INF;
 			$rates = array();
-			$shipping_methods = array();
-			$shipping_infos   = array();
+			$shipping_methods = [];
+			$shipping_infos   = [];
 			$selected_type_id = 0;
-			foreach ( $transport_types as $key => $transport_type ) {
-				$shipping = (object) $this->helpers->calculate_shipping( $package, $key, null, null, false, true );
-				if ( isset( $shipping->cost ) ) {
+			$shippings = (object) $this->helpers->calculate_shipping( $package );
+			foreach ( $shippings as $key => $shipping ) {
+				if ( ! is_null( $shipping['cost'] ) ) {
 					$shipping_methods[]   = $key;
 					$shipping_infos[$key] = $shipping;
-					$method_title = $this->title . ' (' . $this->helpers->get_transport_type_name( $shipping->type ) . ')';
+					$method_title = $this->title . ' (' . $this->helpers->get_transport_type_name( $shipping['type'] ) . ')';
 					$rate = array(
 						'id'    => $this->id .'-'. $key,
 						'label' => $method_title,
-						'cost'  => $this->helpers->normalize_price( $shipping->cost ),
+						'cost'  => $this->helpers->normalize_price( $shipping['cost'] ),
 					);
 					if ( $this->helpers->get_option( 'auto_type', 'yes' ) == 'yes' ) {
 						$rates[] = $rate;
 						if ( $this->helpers->get_option( 'auto_type_static', 'yes' ) == 'yes' ) {
 							$selected_type_id = 1;
-							break;
 						} elseif ( $rate['cost'] < $min_price ) {
 							$selected_type_id = count( $rates );
 							$min_price = $rate['cost'];
@@ -517,15 +570,22 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 			}
 			if ( $selected_type_id != 0 ){
 				if ( $selected_type_id == -1 ){
-					$shipping_method = explode( '-', WC()->session->get( 'chosen_shipping_methods' )[0] )[1];
+					$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+					if ( is_array( $chosen_shipping_methods ) ) {
+						$method_name = explode( '-', $chosen_shipping_methods[0] );
+						$shipping_method = isset( $method_name[1] ) ? $method_name[1] : '';
+					} else {
+						$shipping_method = '';
+					}
 				} else {
 					$shipping_method = $shipping_methods[ $selected_type_id - 1 ];
 					$this->add_rate( $rates[ $selected_type_id - 1 ] );
 				}
-				$shipping = (object) $this->helpers->calculate_shipping( $package, $shipping_method, null, null, true, $shipping_infos[$shipping_method] );
-				if ( $shipping->cost_type == 'dynamic' ) {
-					$cost_details = (object) $shipping->cost_details;
-					WC()->session->set( 'return_cost', $this->helpers->normalize_price( $cost_details->price_with_return - $cost_details->price ) );
+				if ( isset( $shipping_infos[$shipping_method] ) ) {
+					if ( $shippings->{$shipping_method}['cost_type'] == 'dynamic' ) {
+						$cost_details = (object) $shippings->{$shipping_method}['cost_details'];
+						WC()->session->set( 'return_cost', $this->helpers->normalize_price( $cost_details->price_with_return - $cost_details->price ) );
+					}
 				}
 			}
 		}
@@ -540,7 +600,13 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 	public function is_available( $package = array() ){
 
 		WC()->session->set( 'return_cost', 0 );
-		if ( $package && count( $package ) ) {
+		if (
+			$package &&
+			count( $package ) &&
+			$this->helpers->is_enabled() &&
+			$this->helpers->is_available_for_currency( get_woocommerce_currency() ) &&
+			$this->helpers->is_available_for_destination_city( $package ) 
+		) {
 			$transport_types = $this->helpers->get_transport_types();
 			foreach ( $transport_types as $key => $transport_type ) {
 				if ( $this->helpers->is_available( $this->get_package_data( $package ), $key ) ) {
@@ -570,11 +636,15 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 				}
 			}
 		}
-		$api_key = $this->get_field_value( 'api_key', $fields['api_key'], $post_data );
-		if ( ! empty( $api_key ) ) {
-			if ( $this->helpers->authenticate( true, $api_key, true ) && $user_data = $this->helpers->get_user_data() ) {
+		$api_key                  = $this->get_field_value( 'api_key',               $fields['api_key'],               $post_data );
+		$environment              = $this->get_field_value( 'environment',           $fields['environment'],           $post_data );
+		$endpoint['url']          = $this->get_field_value( 'endpoint_url',          $fields['endpoint_url'],          $post_data );
+		$endpoint['api_url']      = $this->get_field_value( 'endpoint_api_url',      $fields['endpoint_api_url'],      $post_data );
+		$endpoint['tracking_url'] = $this->get_field_value( 'endpoint_tracking_url', $fields['endpoint_tracking_url'], $post_data );
+		if ( ! ( empty( $api_key ) ) ) {
+			if ( $this->helpers->authenticate( true, $api_key, true, $environment, $endpoint ) && $user_data = $this->helpers->get_user_data() ) {
 				$phone = isset( $fields['store_phone'] ) ? $this->get_field_value( 'store_phone', $fields['store_phone'], $post_data ) : '';
-				$name  = isset( $fields['store_name'] ) ? $this->get_field_value( 'store_name', $fields['store_name'], $post_data ) : '';
+				$name  = isset( $fields['store_name'] )  ? $this->get_field_value( 'store_name',  $fields['store_name'],  $post_data ) : '';
 				if ( empty( $phone ) ) {
 					$this->settings[ 'store_phone' ] = $user_data->phone;
 				}
@@ -583,7 +653,7 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 				}
 				$this->settings[ 'wrong_key' ] = 'no';
 			} else {
-				$this->settings[ 'enabled' ] = 'no';
+				$this->settings[ 'enabled' ]   = 'no';
 				$this->settings[ 'wrong_key' ] = 'yes';
 			}
 		}

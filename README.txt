@@ -1,13 +1,13 @@
-﻿=== Alopeyk WooCommerce Shipping ===
+=== Alopeyk WooCommerce Shipping ===
 
 Contributors: alopeyk, bmoudi, hormozdi
 Tags: الوپیک, alopeyk, woocommerce, shipping, delivery, e-commerce, shop, iran
 Requires at least: 4.4
-Tested up to: 4.9.7
-Stable tag: 1.6.0
+Tested up to: 5.3.2
+Stable tag: 2.0.0
 Requires PHP: 5.6
 WC requires at least: 2.6
-WC tested up to: 3.4.3
+WC tested up to: 3.8.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -145,3 +145,11 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 *   **Edit** : Improving autocomplete functionality
 *   **Edit** : Improving map functionality
 *   **Fix** : Fixing UI bugs
+= 2.0.0 =
+*   **Edit:** Changing the map engine from CedarMap to ParsiMap
+*   **New:** Importing cities and provinces in address forms if not included already
+*   **New:** Adding new development environments to dashboard settings
+*   **New:** Adding AloPeyk summary widget to the admin dashboard
+*   **Fix:** Fixing mobile-related issues of the maps
+*   **Edit:** Adding more detailed information in AloPeyk's Profile page
+*   **New:** Adding the ability to apply a discount coupon at the time of submitting orders
