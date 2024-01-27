@@ -41,14 +41,12 @@ class Alopeyk_WooCommerce_Shipping {
 		} else {
 			$this->version = '1.0.0';
 		}
-
 		$this->plugin_name = 'alopeyk-woocommerce-shipping';
-
-			$this->load_dependencies();
-			$this->set_locale();
-			$this->define_admin_hooks();
-			$this->define_public_hooks();
-			$this->define_common_hooks();
+		$this->load_dependencies();
+		$this->set_locale();
+		$this->define_admin_hooks();
+		$this->define_public_hooks();
+		$this->define_common_hooks();
 
 	}
 
@@ -107,6 +105,8 @@ class Alopeyk_WooCommerce_Shipping {
 		$this->loader->add_filter( 'admin_footer_text', $plugin_admin, 'remove_footer_content', 1000 );
 		$this->loader->add_filter( 'update_footer', $plugin_admin, 'remove_footer_content', 1000 );
 		$this->loader->add_action( 'admin_head', $plugin_admin, 'remove_admin_notices', 1000 );
+		$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'dashboard_widget' );
+		$this->loader->add_action( 'admin_notices', $plugin_admin, 'awcshm_admin_notice' );
 
 	}
 
@@ -129,8 +129,11 @@ class Alopeyk_WooCommerce_Shipping {
 		$plugin_common = new Alopeyk_WooCommerce_Shipping_Common( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'cron_schedules', $plugin_common, 'add_cron_schedule' );
 		$this->loader->add_action( METHOD_ID . '_active_order_update', $plugin_common, 'update_active_order' );
+		$this->loader->add_action( METHOD_ID . '_active_orders_update', $plugin_common, 'update_active_orders' );
+		$this->loader->add_action( METHOD_ID . '_check_mandatory_options', $plugin_common, 'check_mandatory_options' );
 		$this->loader->add_action( 'init', $plugin_common, 'create_post_type' );
 		$this->loader->add_action( 'init', $plugin_common, 'create_order_statuses' );
+		$this->loader->add_action( 'wc_order_statuses', $plugin_common, 'add_awcshm_order_statuses' );
 		$this->loader->add_action( 'plugins_loaded', $plugin_common, 'plugin_override' );
 		$this->loader->add_action( 'woocommerce_shipping_init', $plugin_common, 'shipping_init' );
 		$this->loader->add_filter( 'woocommerce_shipping_methods', $plugin_common, 'add_method' );
@@ -144,11 +147,16 @@ class Alopeyk_WooCommerce_Shipping {
 		$this->loader->add_action( 'woocommerce_checkout_process', $plugin_common, 'check_checkout_fields' );
 		$this->loader->add_action( 'woocommerce_cart_shipping_packages', $plugin_common, 'add_fields_to_packages' );
 		$this->loader->add_action( 'woocommerce_checkout_update_order_review', $plugin_common, 'recalculate_shipping' );
-		$this->loader->add_action( 'woocommerce_cart_needs_shipping', $plugin_common, 'show_shipping' );
+		$this->loader->add_action( 'woocommerce_cart_needs_shipping', $plugin_common, 'show_shipping', 1000 );
 		$this->loader->add_action( 'woocommerce_checkout_update_order_meta', $plugin_common, 'update_order_meta' );
 		$this->loader->add_filter( 'woocommerce_gateway_description', $plugin_common, 'update_method_description', 10, 2 );
 		$this->loader->add_action( 'woocommerce_order_details_after_order_table', $plugin_common, 'add_tracking_button' );
 		$this->loader->add_action( 'woocommerce_my_account_my_orders_actions', $plugin_common, 'add_tracking_button_caller', 10, 2 );
+		$this->loader->add_action( 'woocommerce_states', $plugin_common, 'update_iran_province', 1000, 1 );
+		$this->loader->add_filter( 'default_checkout_billing_city', $plugin_common, 'process_city', 10 , 2 );
+		$this->loader->add_filter( 'default_checkout_shipping_city', $plugin_common, 'process_city', 10 , 2 );
+		$this->loader->add_filter( 'woocommerce_get_country_locale_base', $plugin_common, 'unset_checkout_fields_priority' );
+		$this->loader->add_filter( 'woocommerce_checkout_fields', $plugin_common, 'override_checkout_fields_priority', 10000 );
 
 	}
 
