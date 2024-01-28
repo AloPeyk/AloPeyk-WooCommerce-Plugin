@@ -76,12 +76,12 @@
     background-repeat: no-repeat;
 }
 
-.awcshm-map-visible #billing_address_1_field,
+/* .awcshm-map-visible #billing_address_1_field,
 .awcshm-map-visible #billing_address_2_field,
 .awcshm-map-visible #shipping_address_1_field,
 .awcshm-map-visible #shipping_address_2_field {
 	display: none !important;
-}
+} */
 .woocommerce-checkout #awcshm-address-details {
 	height: 0rem;
 	overflow: hidden;

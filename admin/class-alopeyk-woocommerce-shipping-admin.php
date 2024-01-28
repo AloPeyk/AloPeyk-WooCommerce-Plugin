@@ -173,7 +173,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	 */
 	public function get_settings_url() {
 
-		return admin_url( 'admin.php?page=' . $this->get_wc_settings_url() . '&tab=shipping&section=' . METHOD_ID );
+		return admin_url( 'admin.php?page=' . $this->get_wc_settings_url() . '&tab=' . METHOD_ID );
 
 	}
 

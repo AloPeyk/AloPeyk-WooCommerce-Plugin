@@ -376,12 +376,13 @@
 		initMaps : function () {
 
 			$j( document ).on ( 'alopeyk:admin:map:loaded', function () {
-
-				var inputIdPrefix     = alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id + '_',
-					storeLatInput     = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.maps.storeLatInputName + "']" ),
-					storeLngInput     = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.maps.storeLngInputName + "']" ),
-					storeCityInput    = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.maps.storeCityInputName + "']" ),
-					storeAddressInput = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.maps.storeAddressInputName + "']" );
+				if ( !$j( "[id$='" + alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id + "_tab_parent']" ) ) {
+					return;
+				}
+				var storeLatInput     = $j( "[id$='" + alopeyk.wcshm.admin.vars.maps.storeLatInputName + "']" ),
+					storeLngInput     = $j( "[id$='" + alopeyk.wcshm.admin.vars.maps.storeLngInputName + "']" ),
+					storeCityInput    = $j( "[id$='" + alopeyk.wcshm.admin.vars.maps.storeCityInputName + "']" ),
+					storeAddressInput = $j( "[id$='" + alopeyk.wcshm.admin.vars.maps.storeAddressInputName + "']" );
 
 				if ( storeLatInput.length && storeLngInput.length && storeCityInput.length && storeAddressInput.length ) {
 					alopeyk.wcshm.admin.fn.initStoreLocator( storeLatInput.first(), storeLngInput.first(), storeCityInput.first(), storeAddressInput.first() );
@@ -408,7 +409,7 @@
 				storeAutocompleteInput = storeAddressInput.clone().attr ({
 
 					id             : storeAddressInput.attr ( 'id' ) + '_autocomplete',
-					class          : storeAddressInput.attr ( 'class' ),
+					class          : storeAddressInput.attr ( 'class' ).replace('hidden', ''),
 					placeholder    : storeAddressInput.data ( alopeyk.wcshm.admin.vars.maps.autocompletePlaceholderDataAttr ),
 					name           : '',
 					style          : '',
@@ -725,16 +726,17 @@
 		},
 
 		handleSettingFields : function () {
-
-			var inputIdPrefix          = alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id + '_',
-				costTypeInput          = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.cost.costTypeInputName + "']" ),
-				staticCostTypeInput    = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.cost.staticCostTypeInputName + "']" ),
-				fixedCostInput         = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.cost.fixedCostInputName + "']" ),
-				percentageCostInput    = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.cost.percentageCostInputName + "']" ),
-				environmentInput       = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.endpoint.environmentInputName + "']" ),
-				endpointUrl            = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.endpoint.endpointUrl + "']" ),
-				endpointApiUrl         = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.endpoint.endpointApiUrl + "']" ),
-				endpointTrackingUrl    = $j( "[id$='" + inputIdPrefix + alopeyk.wcshm.admin.vars.endpoint.endpointTrackingUrl + "']" ),
+			if ( !$j( "[id$='" + alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.id + "_tab_parent']" ) ) {
+				return;
+			}
+			var costTypeInput          = $j( "[id$='" + alopeyk.wcshm.admin.vars.cost.costTypeInputName + "']" ),
+				staticCostTypeInput    = $j( "[id$='" + alopeyk.wcshm.admin.vars.cost.staticCostTypeInputName + "']" ),
+				fixedCostInput         = $j( "[id$='" + alopeyk.wcshm.admin.vars.cost.fixedCostInputName + "']" ),
+				percentageCostInput    = $j( "[id$='" + alopeyk.wcshm.admin.vars.cost.percentageCostInputName + "']" ),
+				environmentInput       = $j( "[id$='" + alopeyk.wcshm.admin.vars.endpoint.environmentInputName + "']" ),
+				endpointUrl            = $j( "[id$='" + alopeyk.wcshm.admin.vars.endpoint.endpointUrl + "']" ),
+				endpointApiUrl         = $j( "[id$='" + alopeyk.wcshm.admin.vars.endpoint.endpointApiUrl + "']" ),
+				endpointTrackingUrl    = $j( "[id$='" + alopeyk.wcshm.admin.vars.endpoint.endpointTrackingUrl + "']" ),
 				checkboxTargetDataAttr = alopeyk.wcshm.admin.vars.common.checkboxToggleTargetDataAttr,
 				checkboxIdDataAttr     = alopeyk.wcshm.admin.vars.common.checkboxToggleIdDataAttr,
 				uploadInputs           = alopeyk.wcshm.admin.vars.upload.inputSelector,

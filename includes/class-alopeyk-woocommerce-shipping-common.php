@@ -113,6 +113,17 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	}
 
 	/**
+	 * @since 2.0.0
+	 */
+	public function woocommerce_tab_init( $settings ) {
+		
+		include_once( 'class-alopeyk-woocommerce-shipping-tab.php' );
+		$settings[] = new Alopeyk_WooCommerce_Shipping_Common_Settings();
+		return $settings;
+
+	}
+
+	/**
 	 * @since 1.0.0
 	 * @param string $message
 	 */
@@ -149,7 +160,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 */
 	public function add_method( $methods ) {
 
-		$methods[] = METHOD_ID;
+		$methods[METHOD_ID] = METHOD_ID;
 		return $methods;
 
 	}
@@ -191,8 +202,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					),
 					'config'  => array(
 						'store_city'         => strtolower( $this->get_option( 'store_city', 'tehran' ) ),
-						'intercity'          => $this->get_option( 'intercity', 'yes' ),
-						'map_always_visible' => $this->get_option( 'map_always_visible', 'yes' ),
 					),
 					'loader'  => $this->get_loader_url(),
 					'scope'   => $data
@@ -912,7 +921,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		$location = (object) array(
 			'lat'     => $data->lat,
 			'lng'     => $data->lng,
-			'city'    => $data->city,
+			// 'city'    => $data->city,
 			'address' => $data->address,
 			'number'  => $data->number,
 			'unit'    => $data->unit,
@@ -1105,47 +1114,47 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @since 1.7.0
 	 * @param array $data
 	 */
-	public function ajax_get_iran_cities( $data ) {
+	// public function ajax_get_iran_cities( $data ) {
 
-		$data = (object) $data;
-		if ( isset( $data->selected_state) ) {
-			$cities = $this->get_iran_province_cities_data($data->selected_state);
-			$this->respond_ajax( array(
-				'cities'            => $cities,
-				'pre_billing_city'  => get_user_meta( get_current_user_id(), 'billing_city',  true ),
-				'pre_shipping_city' => get_user_meta( get_current_user_id(), 'shipping_city', true ),
-			), false );
-		}
+	// 	$data = (object) $data;
+	// 	if ( isset( $data->selected_state) ) {
+	// 		$cities = $this->get_iran_province_cities_data($data->selected_state);
+	// 		$this->respond_ajax( array(
+	// 			'cities'            => $cities,
+	// 			'pre_billing_city'  => get_user_meta( get_current_user_id(), 'billing_city',  true ),
+	// 			'pre_shipping_city' => get_user_meta( get_current_user_id(), 'shipping_city', true ),
+	// 		), false );
+	// 	}
 
-	}
+	// }
 
 	/**
 	 * @since  2.0.0
 	 * @return mixed
 	 */
-	public function get_iran_province_cities_data($province) {
+	// public function get_iran_province_cities_data($province) {
 
-		$data = json_decode(file_get_contents($this->get_partials_data('iranـprovinces_cities.json')));
+	// 	$data = json_decode(file_get_contents($this->get_partials_data('iranـprovinces_cities.json')));
 
-		foreach ($data->provinces as $dProvince) {
-			$provinceName = null;
-			if($dProvince->name == $province) {
-				$provinceName = strtolower($dProvince->name_en);
-				break;
-			}
-		}
+	// 	foreach ($data->provinces as $dProvince) {
+	// 		$provinceName = null;
+	// 		if($dProvince->name == $province) {
+	// 			$provinceName = strtolower($dProvince->name_en);
+	// 			break;
+	// 		}
+	// 	}
 
-		if($provinceName) {
-			foreach ($data->cities as $key => $cityList) {
-				if($key == $provinceName) {
-					return $cityList;
-				}
-			}
-		}
+	// 	if($provinceName) {
+	// 		foreach ($data->cities as $key => $cityList) {
+	// 			if($key == $provinceName) {
+	// 				return $cityList;
+	// 			}
+	// 		}
+	// 	}
 
-		return $data->provinces;
+	// 	return $data->provinces;
 
-	}
+	// }
 
 	/**
 	 * @since  1.0.0
@@ -1536,24 +1545,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			}
 		}
 		return apply_filters( METHOD_ID . '/is_available', $available, $package );
-
-	}
-
-	/**
-	 * @since  1.7.0
-	 * @param  array   $package
-	 * @param  string  $type
-	 * @return boolean
-	 */
-	public function is_available_for_destination_city( $package = null ) {
-
-		$package_address          = new stdClass();
-		$package_address->country = strtolower( $package['destination']['country'] );
-		$package_address->city    = is_null( $package['destination']['city'] ) ? null : strtolower( $package['destination']['city'] );
-		if ( ! $this->is_intercity_available( $package_address ) ) {
-			return false;
-		}
-		return true;
 
 	}
 
@@ -3075,132 +3066,15 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	}
 
 	/**
-	 * @since  1.7.0
-	 * @return array
-	 */
-	public function update_iran_province( $states ) {
-
-		$provinces = $this->get_iran_provinces_data();
-		$ir_states = array();
-		foreach ( $provinces as $key => $province ) {
-			$ir_states[ $province->name ] = $province->name;
-		}
-		$states['IR'] = $ir_states;
-		return $states;
-
-	}
-
-	/**
 	 * @since  2.0.0
 	 * @return mixed
 	 */
-	public function get_iran_provinces_data() {
+	// public function get_iran_provinces_data() {
 
-		$data = json_decode(file_get_contents($this->get_partials_data('iranـprovinces_cities.json')));
-		return $data->provinces;
+	// 	$data = json_decode(file_get_contents($this->get_partials_data('iranـprovinces_cities.json')));
+	// 	return $data->provinces;
 
-	}
-
-	/**
-	 * @since  1.7.0
-	 * @return array
-	 */
-	public function unset_checkout_fields_priority( $fields ) {
-
-		if( $this->is_enabled() ) {
-			if( is_array( $fields ) ) {
-				foreach( $fields as $key => $props ) {
-					unset( $fields[$key]['priority'] );
-				}
-			}
-		}
-		return $fields;
-
-	}
-
-	/**
-	 * @since  1.7.0
-	 * @return array
-	 */
-	public function override_checkout_fields_priority( $fields ) {
-
-		if( $this->is_enabled() ) {
-			$city_type          = 'state';
-			$state_priority     = 50;
-			$city_priority      = 60;
-			$address_1_priority = 70;
-			$address_2_priority = 80;
-			$city_class         = array();
-			$city_attributes    = array( 'disabled' => 'true' );
-
-			if ( isset( $fields['billing']['billing_city'] ) ) {
-				$fields['billing']['billing_city']['type']                = $city_type;
-				$fields['billing']['billing_city']['priority']            = $city_priority;
-				$fields['billing']['billing_city']['class']               = $city_class;
-				$fields['billing']['billing_city']['custom_attributes']   = $city_attributes;
-			}
-			if ( isset( $fields['shipping']['shipping_city'] ) ) {
-				$fields['shipping']['shipping_city']['type']              = $city_type;
-				$fields['shipping']['shipping_city']['priority']          = $city_priority;
-				$fields['shipping']['shipping_city']['class']             = $city_class;
-				$fields['shipping']['shipping_city']['custom_attributes'] = $city_attributes;
-			}
-			if ( isset( $fields['billing']['billing_state'] ) ) {
-				$fields['billing']['billing_state']['priority']   = $state_priority;
-				$fields['billing']['billing_state']['class']      = $city_class;
-			}
-			if ( isset( $fields['shipping']['shipping_state'] ) ) {
-				$fields['shipping']['shipping_state']['priority'] = $state_priority;
-				$fields['shipping']['shipping_state']['class']    = $city_class;
-			}
-			if ( isset( $fields['billing']['billing_address_1'] ) ) {
-				$fields['billing']['billing_address_1']['priority']   = $address_1_priority;
-			}
-			if ( isset( $fields['shipping']['shipping_address_1'] ) ) {
-				$fields['shipping']['shipping_address_1']['priority'] = $address_1_priority;
-			}
-			if ( isset( $fields['billing']['billing_address_2'] ) ) {
-				$fields['billing']['billing_address_2']['priority']   = $address_2_priority;
-			}
-			if ( isset( $fields['shipping']['shipping_address_2'] ) ) {
-				$fields['shipping']['shipping_address_2']['priority'] = $address_2_priority;
-			}
-		}
-		return $fields;
-
-	}
-
-	/**
-	 * @since  1.7.0
-	 * @param string $value
-	 * @param string $input
-	 */
-	public function process_city( $value, $input ) {
-
-		WC()->session->set( 'pre_user_' . $input, $value );
-
-	}
-
-	/**
-	 * @since 1.7.0
-	 * @param array $data
-	 * @return boolean
-	 */
-	public function is_intercity_available( $data ) {
-
-		if ( $this->get_option( 'intercity', 'yes' ) == 'no' ) {
-			$store_city = strtolower( $this->get_option( 'store_city', 'تهران' ) );
-			$selected_city = isset( $data->city ) ? $data->city : null;
-			$selected_country = isset( $data->country ) ? $data->country : null;
-			if( isset( $selected_country ) && isset( $selected_city ) ) {
-				if ( strtolower( $selected_country ) != 'ir' || strtolower( $selected_city ) != $store_city ) {
-					return false;
-				}
-			}
-		}
-		return true;
-
-	}
+	// }
 
 	/**
 	 * @since  1.7.0
@@ -3293,4 +3167,31 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		return plugins_url( 'admin/img/logo.png', dirname( __FILE__ ) );
 
 	}
+
+	/**
+	 * @since 2.0.0
+	 * @param array $data
+	 */
+	public function ajax_check_shipping_rates( $data ) {
+
+		$data = (object) $data;
+
+		$isOk = false;
+		foreach (WC()->cart->get_shipping_packages() as $package_id => $package) {
+			if (WC()->session->__isset('shipping_for_package_' . $package_id)) {
+				foreach (WC()->session->get('shipping_for_package_' . $package_id)['rates'] as $shipping_rate) {
+					$rate_id = $shipping_rate->get_id();
+					$parts = explode('-', $rate_id);
+					if ($parts[0] == METHOD_ID) {
+						$isOk = true;
+						break;
+					}
+				}
+			}
+		}
+
+		$this->respond_ajax( ["showMap" => $isOk] );
+
+	}
+
 }
