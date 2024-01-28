@@ -155,7 +155,7 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 *   **New:** Adding the ability to apply a discount coupon at the time of submitting orders
 = 3.0.0 =
 *   **Fix:** Add Alopeyk to shipping methods in settings
-*   **Edit:** Move Alopeyk from shipping menu to Woocommerce main setting
+*   **Edit:** Move Alopeyk from the shipping menu to Woocommerce main setting
 *   **Edit:** Map improvements
-*   **New:** add Iran province and cities to woocommerce shipping
+*   **New:** Add Iran province and cities to Woocommerce shipping
 *   **Edit:** UI improvements
