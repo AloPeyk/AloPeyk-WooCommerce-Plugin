@@ -152,11 +152,8 @@ class Alopeyk_WooCommerce_Shipping {
 		$this->loader->add_filter( 'woocommerce_gateway_description', $plugin_common, 'update_method_description', 10, 2 );
 		$this->loader->add_action( 'woocommerce_order_details_after_order_table', $plugin_common, 'add_tracking_button' );
 		$this->loader->add_action( 'woocommerce_my_account_my_orders_actions', $plugin_common, 'add_tracking_button_caller', 10, 2 );
-		$this->loader->add_action( 'woocommerce_states', $plugin_common, 'update_iran_province', 1000, 1 );
-		$this->loader->add_filter( 'default_checkout_billing_city', $plugin_common, 'process_city', 10 , 2 );
-		$this->loader->add_filter( 'default_checkout_shipping_city', $plugin_common, 'process_city', 10 , 2 );
-		$this->loader->add_filter( 'woocommerce_get_country_locale_base', $plugin_common, 'unset_checkout_fields_priority' );
-		$this->loader->add_filter( 'woocommerce_checkout_fields', $plugin_common, 'override_checkout_fields_priority', 10000 );
+		//new alopeyk woocommerce settings tabs
+		$this->loader->add_filter( 'woocommerce_get_settings_pages', $plugin_common, 'woocommerce_tab_init' );
 
 	}
 
