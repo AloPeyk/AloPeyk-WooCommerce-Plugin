@@ -1636,37 +1636,40 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				);
 			} else {
 				foreach ( $apiResponses as $apiResponse ) {
-					if ( ! isset( $apiResponse->error ) ) {
-						$price             = isset( $apiResponse->price )             ? is_null( $apiResponse->price )             ? null : 10 * $apiResponse->price             : null;
-						$price_with_return = isset( $apiResponse->price_with_return ) ? is_null( $apiResponse->price_with_return ) ? null : 10 * $apiResponse->price_with_return : null;
-						$final_price       = isset( $apiResponse->final_price )       ? is_null( $apiResponse->final_price )       ? null : 10 * $apiResponse->final_price       : null;
-						$discount          = ( isset( $apiResponse->discount ) && ! is_null( $apiResponse->discount ) ) ? ( $apiResponse->discount > 0 ? 10 * $apiResponse->discount : null ) : null;
-						$score             = $is_frontend ? null : isset( $apiResponse->score ) ? is_null( $apiResponse->score )   ? null :      $apiResponse->score             : null;
-						$cost              = $is_frontend ? ( $has_return ? $price_with_return : $price ) : $price;
-						$invalid_discount  = isset( $apiResponse->invalid_discount_coupons ) ? is_null( $apiResponse->invalid_discount_coupons ) ? null : $apiResponse->invalid_discount_coupons : null;
-						$cost_details = array(
-							'price'             => $price,
-							'price_with_return' => $price_with_return,
-							'final_price'       => $final_price,
-							'discount'          => $discount,
-						);
-						$shipping_info[$apiResponse->transport_type] = array(
-							'type'         => $apiResponse->transport_type,
-							'cost'         => $cost,
-							'cost_type'    => $cost_type,
-							'has_return'   => $has_return,
-							'cost_details' => $cost_details,
-						);
-						if ( $is_frontend ) {
-							$shipping_info[$apiResponse->transport_type] = apply_filters( METHOD_ID . '/shipping_info', $shipping_info[$apiResponse->transport_type], $package );
-						} else {
-							$shipping_info[$apiResponse->transport_type]['score']       = $score;
-							$shipping_info[$apiResponse->transport_type]['final_price'] = $final_price;
-							$shipping_info[$apiResponse->transport_type]['discount']    = $discount;
-							if ( isset( $discount ) && ! $discount && isset( $invalid_discount ) && $invalid_discount ) {
-								if( isset( $$invalid_discount[0]->error_msg ) )
+					if ( isset( $apiResponse->error ) ) {
+						// Todo store error log
+						continue;
+					}
+
+					$price             = isset( $apiResponse->price )             ? is_null( $apiResponse->price )             ? null : 10 * $apiResponse->price             : null;
+					$price_with_return = isset( $apiResponse->price_with_return ) ? is_null( $apiResponse->price_with_return ) ? null : 10 * $apiResponse->price_with_return : null;
+					$final_price       = isset( $apiResponse->final_price )       ? is_null( $apiResponse->final_price )       ? null : 10 * $apiResponse->final_price       : null;
+					$discount          = ( isset( $apiResponse->discount ) && ! is_null( $apiResponse->discount ) ) ? ( $apiResponse->discount > 0 ? 10 * $apiResponse->discount : null ) : null;
+					$score             = $is_frontend ? null : (isset( $apiResponse->score ) ? $apiResponse->score : null);
+					$cost              = $is_frontend ? ( $has_return ? $price_with_return : $price ) : $price;
+					$invalid_discount  = isset( $apiResponse->invalid_discount_coupons ) ? is_null( $apiResponse->invalid_discount_coupons ) ? null : $apiResponse->invalid_discount_coupons : null;
+					$cost_details = array(
+						'price'             => $price,
+						'price_with_return' => $price_with_return,
+						'final_price'       => $final_price,
+						'discount'          => $discount,
+					);
+					$shipping_info[$apiResponse->transport_type] = array(
+						'type'         => $apiResponse->transport_type,
+						'cost'         => $cost,
+						'cost_type'    => $cost_type,
+						'has_return'   => $has_return,
+						'cost_details' => $cost_details,
+					);
+					if ( $is_frontend ) {
+						$shipping_info[$apiResponse->transport_type] = apply_filters( METHOD_ID . '/shipping_info', $shipping_info[$apiResponse->transport_type], $package );
+					} else {
+						$shipping_info[$apiResponse->transport_type]['score']       = $score;
+						$shipping_info[$apiResponse->transport_type]['final_price'] = $final_price;
+						$shipping_info[$apiResponse->transport_type]['discount']    = $discount;
+						if ( isset( $discount ) && ! $discount && isset( $invalid_discount ) && $invalid_discount ) {
+							if( isset( $$invalid_discount[0]->error_msg ) )
 								$shipping_info[$apiResponse->transport_type]['discount_coupons_error_msg'] = $$invalid_discount[0]->error_msg;
-							}
 						}
 					}
 				}
@@ -2425,136 +2428,148 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public function create_order( $package ) {
 
 		$order_data = null;
-		$wc_orders = $package->orders;
+		$wc_orders  = $package->orders;
 		if ( $this->is_in_progress( $wc_orders ) ) {
-			$response = array(
+			return array(
 				'success' => false,
 				'message' => __( 'Shipping proccess of one or more selected orders is in progress. Please cancel them before creating a new order.', 'alopeyk-woocommerce-shipping' ),
 				'data'    => $order_data,
 			);
-		} else {
-			if ( $this->authenticate() ) {
-				$destinations = array();
-				$origin_location = $this->get_location( $this->get_option( 'store_lat' ), $this->get_option( 'store_lng' ) );
-				$origin = new Address( 'origin', $origin_location->lat, $origin_location->lng );
-				$origin->setDescription( $package->description );
-				$origin->setUnit( $this->get_option( 'store_unit' ) );
-				$origin->setNumber( $this->get_option( 'store_number' ) );
-				$origin->setPersonFullname( $this->get_option( 'store_name' ) );
-				$origin->setPersonPhone( $this->get_option( 'store_phone' ) );
-				foreach ( $package->destinations as $dest ) {
-					$dest = (object) $dest;
-					$destination_location = $this->get_location( $dest->latitude, $dest->longitude );
-					$destination = new Address( 'destination', $destination_location->lat, $destination_location->lng );
-					$destination->setDescription( $dest->description );
-					$destination->setUnit( $dest->unit );
-					$destination->setNumber( $dest->number );
-					$destination->setPersonFullname( $dest->fullname );
-					$destination->setPersonPhone( $dest->phone );
-					$destinations[] = $destination;
-				}
-				$new_order_id = null;
-				try {
-					$order = new Order( $package->type, $origin, $destinations, null, $package->discount_coupon );
-					$order->setHasReturn( $package->has_return );
-					$order->setCashed( false );
-					if ( $package->scheduled_at ) {
-						$order->setScheduledAt( $package->scheduled_at );
-					}
-					if ( $credit = $this->get_user_data( 'credit' ) * 10 ) {
-						$order_data = $order->create( $order );
-						if ( $order_data->status == 'success' ) {
-							$order_data = $order_data->object;
-							$new_order_id = $order_data->id;
-							$tracking_url = $this->get_tracking_url( $order_data );
-							$detailed_order_data = Order::getDetails( $order_data->id );
-							if ( $detailed_order_data && isset( $detailed_order_data->status ) && $detailed_order_data->status == 'success' && isset( $detailed_order_data->object ) ) {
-								$order_data = $detailed_order_data->object;
-								$result = wp_insert_post( array(
-									'post_title'  => $order_data->invoice_number,
-									'post_type'   => self::$order_post_type_name,
-									'post_status' => $this->get_order_status( $order_data ),
-								), true );
-								if ( is_wp_error( $result ) ) {
-									$response = array(
-										'success' => false,
-										'message' => sprintf( __( 'Error occurred while trying to write order as a Wordpress post. But your Alopeyk order is created and is in progress. You can <a href="%s" target="_blank">track your order here</a> or <a href="%s" target="_blank" >contact Alopeyk support</a>.', 'alopeyk-woocommerce-shipping' ), $tracking_url, $this->get_support_url() ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $result->get_error_message(),
-										'data'    => $order_data,
-									);
-									$this->add_log( $result->get_error_message() );
-								} else {
-									$order_id = $result;
-									update_post_meta( $order_id, '_awcshm_order_id', $order_data->id );
-									update_post_meta( $order_id, '_awcshm_order_data', $order_data );
-									if ( isset( $order_data->transport_type ) ) {
-										update_post_meta( $order_id, '_awcshm_order_type', $order_data->transport_type );
-									}
-									if ( isset( $order_data->price ) ) {
-										update_post_meta( $order_id, '_awcshm_order_price', $order_data->price * 10 );
-									}
-									if ( $wc_orders && count( $wc_orders ) ) {
-										foreach ( $wc_orders as $wc_order ) {
-											add_post_meta( $order_id, '_awcshm_wc_order_id', $wc_order );
-											add_post_meta( $order_id, '_awcshm_user_id', get_post_meta( $wc_order, '_customer_user', true ) );
-											$order = new WC_Order( $wc_order );
-											$status_details = $this->get_wc_order_status( $order_data, $order_id );
-											if ( $status_details && count( $status_details ) && $status_details['status'] != get_post_status( $wc_order ) && $this->get_option('status_change', 'yes') == 'yes' ) {
-												$order->update_status( $status_details['status'], $status_details['note'] );
-											}
-										}
-									}
-									$this->update_active_order( $order_id );
-									$schedule_name = METHOD_ID . '_active_order_update';
-									wp_schedule_event( time(), $schedule_name . '_interval', $schedule_name, array( 'order_id' => $order_id ) );
-									$order_data->tracking_url = $tracking_url;
-									$order_data->edit_url = get_edit_post_link( $order_id );
-									$response = array(
-										'success' => true,
-										'message' => __( 'Your order has been successfully created and is in progress.', 'alopeyk-woocommerce-shipping' ),
-										'data'    => $order_data,
-									);
-								}
-							} else {
-								$this->cancel_order( $order_data->id, '', $order_id );
-								$response = array(
-									'success' => true,
-									'message' => __( 'Error occured while trying to fetch Alopeyk order details. Order cancelled due to security reasons. Please try again later.', 'alopeyk-woocommerce-shipping' ),
-									'data'    => $order_data,
-								);
-							}
-						} else {
-							$response = array(
-								'success' => false,
-								'message' => __( $order->message, 'alopeyk-woocommerce-shipping' ),
-								'data'    => $order_data,
-							);
-						}
-					} else {
-						$response = array(
-							'success' => false,
-							'message' => __( 'Unable to get your Alopeyk credit.', 'alopeyk-woocommerce-shipping' )
-						);
-					}
-				} catch ( Exception $e ) {
-					if ( $new_order_id ) {
-						$this->cancel_order( $new_order_id, '' );
-					}
-					$response = array(
-						'success' => false,
-						'message' => __( $e->getMessage(), 'alopeyk-woocommerce-shipping' ),
-						'data'    => $order_data,
-					);
-				}
-			} else {
-				$response = array(
+		}
+
+		if ( ! $this->authenticate() ) {
+			return array(
+				'success' => false,
+				'message' => sprintf( __( 'You are not authenticated. Please recheck your API key entered in <a href="%s" target="_blank">Settings</a> page or <a href="%s" target="_blank">Contact Alopeyk</a>.', 'alopeyk-woocommerce-shipping' ), $this->get_settings_url(), $this->get_support_url() ),
+				'data'    => $order_data,
+			);
+		}
+
+		$origin_location = $this->get_location( $this->get_option( 'store_lat' ), $this->get_option( 'store_lng' ) );
+		$origin          = new Address( 'origin', $origin_location->lat, $origin_location->lng );
+		$origin->setDescription( $package->description );
+		$origin->setUnit( $this->get_option( 'store_unit' ) );
+		$origin->setNumber( $this->get_option( 'store_number' ) );
+		$origin->setPersonFullname( $this->get_option( 'store_name' ) );
+		$origin->setPersonPhone( $this->get_option( 'store_phone' ) );
+
+		$destinations = array();
+		foreach ( $package->destinations as $dest ) {
+			$dest                 = (object) $dest;
+			$destination_location = $this->get_location( $dest->latitude, $dest->longitude );
+			$destination          = new Address( 'destination', $destination_location->lat, $destination_location->lng );
+			$destination->setDescription( $dest->description );
+			$destination->setUnit( $dest->unit );
+			$destination->setNumber( $dest->number );
+			$destination->setPersonFullname( $dest->fullname );
+			$destination->setPersonPhone( $dest->phone );
+			$destinations[] = $destination;
+		}
+
+		$new_order_id = null;
+		try {
+			$order = new Order( $package->type, $origin, $destinations, null, $package->discount_coupon );
+			$order->setHasReturn( $package->has_return );
+			$order->setCashed( false );
+			if ( $package->scheduled_at ) {
+				$order->setScheduledAt( $package->scheduled_at );
+			}
+
+			$credit = $this->get_user_data( 'credit' ) * 10;
+			if ( ! $credit ) {
+				return array(
 					'success' => false,
-					'message' => sprintf( __( 'You are not authenticated. Please recheck your API key entered in <a href="%s" target="_blank">Settings</a> page or <a href="%s" target="_blank">Contact Alopeyk</a>.', 'alopeyk-woocommerce-shipping' ), $this->get_settings_url(), $this->get_support_url() ),
+					'message' => __( 'Unable to get your Alopeyk credit.', 'alopeyk-woocommerce-shipping' )
+				);
+			}
+
+
+			$order_data = $order->create();
+			if ( $order_data->status != 'success' ) {
+				return array(
+					'success' => false,
+					'message' => __( $order->message, 'alopeyk-woocommerce-shipping' ),
 					'data'    => $order_data,
 				);
 			}
-		}
-		return $response;
 
+			$order_data          = $order_data->object;
+			$new_order_id        = $order_data->id;
+			$tracking_url        = $this->get_tracking_url( $order_data );
+			$detailed_order_data = Order::getDetails( $order_data->id );
+
+			if ( empty( $detailed_order_data ) or ! isset( $detailed_order_data->status ) or $detailed_order_data->status != 'success' or ! isset( $detailed_order_data->object ) ) {
+				if ( $new_order_id ) {
+					$this->cancel_order( $new_order_id, '' );
+				}
+
+				return array(
+					'success' => true,
+					'message' => __( 'Error occured while trying to fetch Alopeyk order details. Order cancelled due to security reasons. Please try again later.', 'alopeyk-woocommerce-shipping' ),
+					'data'    => $order_data,
+				);
+			}
+
+
+			$order_data = $detailed_order_data->object;
+			$result     = wp_insert_post( array(
+				'post_title'  => $order_data->invoice_number,
+				'post_type'   => self::$order_post_type_name,
+				'post_status' => $this->get_order_status( $order_data ),
+			), true );
+
+			if ( is_wp_error( $result ) ) {
+				$this->add_log( $result->get_error_message() );
+
+				return array(
+					'success' => false,
+					'message' => sprintf( __( 'Error occurred while trying to write order as a Wordpress post. But your Alopeyk order is created and is in progress. You can <a href="%s" target="_blank">track your order here</a> or <a href="%s" target="_blank" >contact Alopeyk support</a>.', 'alopeyk-woocommerce-shipping' ), $tracking_url, $this->get_support_url() ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $result->get_error_message(),
+					'data'    => $order_data,
+				);
+			}
+
+			$order_id = $result;
+			update_post_meta( $order_id, '_awcshm_order_id', $order_data->id );
+			update_post_meta( $order_id, '_awcshm_order_data', $order_data );
+			if ( isset( $order_data->transport_type ) ) {
+				update_post_meta( $order_id, '_awcshm_order_type', $order_data->transport_type );
+			}
+			if ( isset( $order_data->price ) ) {
+				update_post_meta( $order_id, '_awcshm_order_price', $order_data->price * 10 );
+			}
+			if ( $wc_orders && count( $wc_orders ) ) {
+				foreach ( $wc_orders as $wc_order ) {
+					add_post_meta( $order_id, '_awcshm_wc_order_id', $wc_order );
+					add_post_meta( $order_id, '_awcshm_user_id', get_post_meta( $wc_order, '_customer_user', true ) );
+					$order          = new WC_Order( $wc_order );
+					$status_details = $this->get_wc_order_status( $order_data, $order_id );
+					if ( $status_details && count( $status_details ) && $status_details['status'] != get_post_status( $wc_order ) && $this->get_option( 'status_change', 'yes' ) == 'yes' ) {
+						$order->update_status( $status_details['status'], $status_details['note'] );
+					}
+				}
+			}
+			$this->update_active_order( $order_id );
+			$schedule_name = METHOD_ID . '_active_order_update';
+			wp_schedule_event( time(), $schedule_name . '_interval', $schedule_name, array( 'order_id' => $order_id ) );
+			$order_data->tracking_url = $tracking_url;
+			$order_data->edit_url     = get_edit_post_link( $order_id );
+
+			return array(
+				'success' => true,
+				'message' => __( 'Your order has been successfully created and is in progress.', 'alopeyk-woocommerce-shipping' ),
+				'data'    => $order_data,
+			);
+		} catch ( Exception $e ) {
+			if ( $new_order_id ) {
+				$this->cancel_order( $new_order_id, '' );
+			}
+
+			return array(
+				'success' => false,
+				'message' => __( $e->getMessage(), 'alopeyk-woocommerce-shipping' ),
+				'data'    => $order_data,
+			);
+		}
 	}
 
 	/**
@@ -3167,31 +3182,4 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		return plugins_url( 'admin/img/logo.png', dirname( __FILE__ ) );
 
 	}
-
-	/**
-	 * @since 2.0.0
-	 * @param array $data
-	 */
-	public function ajax_check_shipping_rates( $data ) {
-
-		$data = (object) $data;
-
-		$isOk = false;
-		foreach (WC()->cart->get_shipping_packages() as $package_id => $package) {
-			if (WC()->session->__isset('shipping_for_package_' . $package_id)) {
-				foreach (WC()->session->get('shipping_for_package_' . $package_id)['rates'] as $shipping_rate) {
-					$rate_id = $shipping_rate->get_id();
-					$parts = explode('-', $rate_id);
-					if ($parts[0] == METHOD_ID) {
-						$isOk = true;
-						break;
-					}
-				}
-			}
-		}
-
-		$this->respond_ajax( ["showMap" => $isOk] );
-
-	}
-
 }
