@@ -3182,4 +3182,30 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		return plugins_url( 'admin/img/logo.png', dirname( __FILE__ ) );
 
 	}
+
+	/**
+	 * @since 2.0.0
+	 * @param array $data
+	 */
+	public function ajax_check_shipping_rates( $data ) {
+
+		$data = (object) $data;
+
+		$isOk = false;
+		foreach (WC()->cart->get_shipping_packages() as $package_id => $package) {
+			if (WC()->session->__isset('shipping_for_package_' . $package_id)) {
+				$shipping_zone = WC_Shipping_Zones::get_zone_matching_package( $package );
+				foreach($shipping_zone->get_shipping_methods() as $method) {
+					if(get_class($method) == METHOD_ID) {
+						$isOk = true;
+						break;
+					}
+				}
+			}
+		}
+
+		$this->respond_ajax( ["showMap" => $isOk] );
+
+	}
+
 }

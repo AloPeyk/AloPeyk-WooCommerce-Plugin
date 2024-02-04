@@ -161,4 +161,5 @@ Sure, will be. Currently we are working on it and will be released as soon as it
 *   **Edit:** UI improvements
 = 3.1.0 =
 *   **Edit:** Refactor new order function
-*   **Fix:** Fix nested condition syntax
+*   **Fix:** nested condition syntax
+*   **Fix:** Show shipping rates and map
