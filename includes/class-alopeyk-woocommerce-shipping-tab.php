@@ -14,11 +14,18 @@
 class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 {
 	public $form_fields = [];
+
 	public $settings = [];
+
 	public $required_fields = [];
+
 	public $parentId = "";
 
-	/**
+    private $errors;
+
+    private $helpers;
+
+    /**
 	 * @since 2.0.0
 	 */
 	public function __construct()

@@ -25,7 +25,10 @@ if ( class_exists( 'Alopeyk_WooCommerce_Shipping_Admin' ) ) {
 class Alopeyk_WooCommerce_Shipping_Admin {
 
 	private $plugin_name;
+
 	private $version;
+
+	private $helpers;
 
 	/**
 	 * @since 1.0.0

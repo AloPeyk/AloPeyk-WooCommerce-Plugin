@@ -26,7 +26,9 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 
 	public $package = null;
 
-	/**
+    private $helpers;
+
+    /**
 	 * @since 1.0.0
 	 */
 	public function __construct( $instance_id = 0 ) {
