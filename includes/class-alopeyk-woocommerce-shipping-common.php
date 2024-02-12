@@ -477,6 +477,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		$parsimap_api_key = null;
 		$response = wp_remote_get( self::$parsimap_base_url . 'login/www.parsimap.com/39/0/b3031348-7334-4fbf-ae8c-eedf7de0f905/1' );
+		// Todo remove api keu
 		if( $response ) {
 			$responseBody = json_decode(wp_remote_retrieve_body($response));
 			$parsimap_api_key = $responseBody->user_token;
@@ -3076,7 +3077,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( $a['limits']['max_weight'] == $b['limits']['max_weight'] ) {
 			return 0;
 		}
-		return $a['limits']['max_weight'] > $b['limits']['max_weight'];
+		return $a['limits']['max_weight'] > $b['limits']['max_weight'] ? 1 : -1;
 
 	}
 

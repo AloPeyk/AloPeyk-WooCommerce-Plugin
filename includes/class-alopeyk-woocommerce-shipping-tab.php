@@ -21,9 +21,17 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 
 	public $parentId = "";
 
-    private $errors;
+	private $errors;
 
-    private $helpers;
+	private $helpers;
+
+	private $empty_fields_string;
+
+	private $api_key;
+
+	private $wrong_key;
+
+	private $enabled, $environment, $endpoint_url, $endpoint_api_url, $endpoint_tracking_url, $store_name, $store_phone, $store_lat, $store_lng, $store_address, $store_city, $store_unit, $map_marker, $store_description, $store_number, $title, $cost_type, $static_cost_type, $static_cost_fixed, $static_cost_percentage, $pt_motorbike, $pt_car, $pt_cargo, $pt_cargo_s, $auto_type, $auto_type_static, $status_change, $customer_dashboard, $tehran_timezone, $refresh_cron_interval, $refresh_admin_interval, $refresh_public_interval, $return_cod, $return_cod_customer, $return_cod_customer_alert;
 
     /**
 	 * @since 2.0.0
@@ -183,8 +191,6 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	 */
 	public function save()
 	{
-		global $current_section;
-
 		$this->init_settings();
 		$post_data = $this->get_post_data();
 		$fields = $this->form_fields;
@@ -226,7 +232,6 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 				$this->settings['wrong_key'] = 'yes';
 			}
 		}
-		$empty_fields = array();
 		foreach ($this->required_fields as $required_field) {
 			if (!isset($this->settings[$required_field]) || empty($this->settings[$required_field])) {
 				$this->settings['enabled'] = 'no';
@@ -234,10 +239,6 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			}
 		}
 		return update_option($this->get_option_key(), apply_filters('woocommerce_settings_api_sanitized_fields_' . $this->id, $this->settings));
-
-		if ($current_section) {
-			do_action('woocommerce_update_options_' . $this->id . '_' . $current_section);
-		}
 	}
 
 	/**
