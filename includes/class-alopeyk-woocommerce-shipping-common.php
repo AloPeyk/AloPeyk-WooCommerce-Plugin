@@ -30,11 +30,12 @@ use AloPeyk\Config\Configs;
 class Alopeyk_WooCommerce_Shipping_Common {
 
 	private $plugin_name;
+
 	private $version;
+
 	private $config;
 
 	public static $order_post_type_name = 'alopeyk_order';
-	public static $order_status_taxonomy_name = 'alopeyk_order_status';
 
 	public static $configs = array(
 		'addresses_limit'              => 5,
@@ -194,7 +195,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 						'marker'  => $this->get_option( 'map_marker', 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png', false ),
 						'styles'  => $this->get_option( 'map_styles' ),
 						'api_url' => 'https://alopeyk.parsimap.com/comapi.svc/tile/googlemap/{x}/{y}/{z}/{{TOKEN}}',
-						'api_key' => 'ALo575W-53FG6cv8-OPw330-kmA99q',
+						'api_key' => 'ALo575W-53FG6cv8-OPw330-kmA99q', // TODO remove api key
 						'leaflet_gesture_handling' => array(
 							'css' => plugin_dir_url( __FILE__ ) . '../public/css/leaflet-gesture-handling' . ( WP_DEBUG ? '' : '.min' ) . '.css',
 							'js'  => plugin_dir_url( __FILE__ ) . '../public/js/leaflet-gesture-handling'  . ( WP_DEBUG ? '' : '.min' ) . '.js',
@@ -477,7 +478,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		$parsimap_api_key = null;
 		$response = wp_remote_get( self::$parsimap_base_url . 'login/www.parsimap.com/39/0/b3031348-7334-4fbf-ae8c-eedf7de0f905/1' );
-		// Todo remove api keu
+		// TODO remove api key
 		if( $response ) {
 			$responseBody = json_decode(wp_remote_retrieve_body($response));
 			$parsimap_api_key = $responseBody->user_token;
@@ -793,7 +794,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( $this->is_enabled() ) {
 			$data = (object) $_POST;
 			$matched_methods = array_filter( $data->shipping_method, function( $var ) {
-				return (bool) ( METHOD_ID == explode( '-', $var )[0] );
+				return METHOD_ID == explode( '-', $var )[0];
 			});
 			if ( count( $matched_methods ) ) {
 				$create_account = isset( $data->createaccount ) && $data->createaccount;
@@ -1098,7 +1099,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		$data   = (object) $data;
 		$input  = $data->input;
-		$latlng = '';
 		$lat = isset( $data->lat ) ? $data->lat : null;
 		$lng = isset( $data->lng ) ? $data->lng : null;
 		$latlng = $lat && $lng ? ( $lat . ',' . $lng ) : '';
@@ -2195,47 +2195,50 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public function get_order_history( $wc_order = null, $args = array() ) {
 
 		$history = null;
-		if ( $wc_order ) {
-			$args = array_merge( array (
-				'post_type'      => self::$order_post_type_name,
-				'meta_query'     => array(    
-					array(
-						'key'     => '_awcshm_wc_order_id',
-						'value'   => $wc_order,
-						'compare' => '=',
-					)
-				),
-				'posts_per_page' => -1
-			), $args );
-			$history_query = new WP_Query( $args );
-			if ( $history_query->have_posts() ) {
-				$orders = $history_query->posts;
-				foreach ( $orders as $order ) {
-					$order_id = $order->ID;
-					$order_data = get_post_meta( $order_id, '_awcshm_order_data', true );
-					$order_status = get_post_status( $order_id );
-					$order_status_label = $this->get_order_status_label( $order_status );
-					$order_actions = array();
-					$order_actions['view'] = get_edit_post_link( $order_id );
-					$can_be_canceled = $this->can_be_canceled( $order_data );
-					$order_actions['cancel'] = $can_be_canceled['enabled'];
-					if ( $this->can_be_tracked( $order_data ) ) {
-						$order_actions['track'] = $this->get_tracking_url( $order_data );
-					}
-					if ( $this->can_be_invoiced( $order_data ) ) {
-						$order_actions['invoice'] = $this->get_invoice_url( $order_data );
-					}
-					$history[] = array(
-						'id'           => $order_id,
-						'status'       => $order_status,
-						'actions'      => $order_actions,
-						'status_label' => $order_status_label
-					);
+		if ( !$wc_order ) {
+			return $history;
+		}
+
+		$args = array_merge( array (
+			'post_type'      => self::$order_post_type_name,
+			'meta_query'     => array(
+				array(
+					'key'     => '_awcshm_wc_order_id',
+					'value'   => $wc_order,
+					'compare' => '=',
+				)
+			),
+			'posts_per_page' => -1
+		), $args );
+
+		$history_query = new WP_Query( $args );
+		if ( $history_query->have_posts() ) {
+			$orders = $history_query->posts;
+			foreach ( $orders as $order ) {
+				$order_id = $order->ID;
+				$order_data = get_post_meta( $order_id, '_awcshm_order_data', true );
+				$order_status = get_post_status( $order_id );
+				$order_status_label = $this->get_order_status_label( $order_status );
+				$order_actions = array();
+				$order_actions['view'] = get_edit_post_link( $order_id );
+				$can_be_canceled = $this->can_be_canceled( $order_data );
+				$order_actions['cancel'] = $can_be_canceled['enabled'];
+				if ( $this->can_be_tracked( $order_data ) ) {
+					$order_actions['track'] = $this->get_tracking_url( $order_data );
 				}
+				if ( $this->can_be_invoiced( $order_data ) ) {
+					$order_actions['invoice'] = $this->get_invoice_url( $order_data );
+				}
+				$history[] = array(
+					'id'           => $order_id,
+					'status'       => $order_status,
+					'actions'      => $order_actions,
+					'status_label' => $order_status_label
+				);
 			}
 		}
-		return $history;
 
+		return $history;
 	}
 
 	/**
@@ -2349,6 +2352,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				if ( ! class_exists( 'Emogrifier' ) && class_exists( 'DOMDocument' ) ) {
 					include_once( ABSPATH . '/wp-content/plugins/woocommerce/includes/libraries/class-emogrifier.php' );
 				}
+				// TODO replace class
 				$emogrifier = new Emogrifier( $content, $css );
 				$content    = $emogrifier->emogrify();
 			} catch ( Exception $e ) {
@@ -2393,7 +2397,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					'fullname'      => $order->get_shipping_first_name() . ' ' . $order->get_shipping_last_name(),
 				);
 				$shipping = (object) $order->get_meta( '_awcshm_shipping' );
-				$_has_return = false;
 				if ( $shipping && isset( $shipping->has_return ) ) {
 					$_has_return = $shipping->has_return;
 				} else {
@@ -2843,7 +2846,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				update_post_meta( $order_id, '_awcshm_order_type', $new_order_data->transport_type );
 				update_post_meta( $order_id, '_awcshm_order_price', $new_order_data->price * 10 );
 				$wc_orders = get_post_meta( $order_id, '_awcshm_wc_order_id' );
-				$status = $new_order_data->status;
 				if ( $wc_orders ) {
 					foreach ( $wc_orders as $wc_order ) {
 						$order = new WC_Order( $wc_order );
