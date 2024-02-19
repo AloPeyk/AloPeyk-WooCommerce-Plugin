@@ -73,7 +73,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function is_order_edit() {
 
 		$screen = get_current_screen();
-		return $screen->id == 'shop_order';
+		return $screen->id == 'woocommerce_page_wc-orders';
 
 	}
 
@@ -83,7 +83,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function enqueue_styles( $hook_suffix ) {
 
 		$screen = get_current_screen();
-		if ( in_array( $screen->id, array( 'edit-shop_order', 'edit-alopeyk_order', 'alopeyk_order', 'shop_order' ) ) || strpos( $screen->id, '_page_alopeyk-credit' ) ) {
+		if ( in_array( $screen->id, array( 'edit-shop_order', 'edit-alopeyk_order', 'alopeyk_order', 'woocommerce_page_wc-orders' ) ) || strpos( $screen->id, '_page_alopeyk-credit' ) ) {
 			wp_deregister_style( 'jquery-ui-style' );
 			wp_enqueue_style( 'wp-jquery-ui-dialog' );
 		}
@@ -267,7 +267,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function save_address_description_field( $post_id ) {
 
 		$shipping_address_description_field = '_shipping_address_description';
-		if ( get_post_type( $post_id ) == 'shop_order' && isset( $_POST[$shipping_address_description_field] ) ) {
+		if ( get_post_type( $post_id ) == 'woocommerce_page_wc-orders' && isset( $_POST[$shipping_address_description_field] ) ) {
 			update_post_meta( $post_id, $shipping_address_description_field, $_POST[$shipping_address_description_field] );
 		}
 
