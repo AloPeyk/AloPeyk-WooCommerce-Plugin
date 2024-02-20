@@ -1638,7 +1638,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			} else {
 				foreach ( $apiResponses as $apiResponse ) {
 					if ( isset( $apiResponse->error ) ) {
-						// Todo store error log
+						$this->add_log('Failed to load alopeyk shipping method, error: ' . $apiResponse->error);
 						continue;
 					}
 
