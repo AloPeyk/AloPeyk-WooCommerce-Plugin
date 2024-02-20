@@ -40,7 +40,7 @@ Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
 
 # Installation
 ## Automatic installation
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of Alopeyk WooCommerce Shipping, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and, you don’t need to leave your web browser. To do an automatic installation of Alopeyk WooCommerce Shipping, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 
 In the search field type “Alopeyk WooCommerce Shipping” and click Search Plugins. Once you’ve found our plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
 
@@ -80,7 +80,7 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 10. Credit can be added whenever there is not enough credit to create the order.
 11. Coupons can also be applied to increase Alopeyk credit.
 12. List of all Alopeyk orders and their details, actions and statuses.
-13. Alopeyk order detail page can be used to track shipping proccess.
+13. Alopeyk order detail page can be used to track shipping process.
 14. Alopeyk order can be evaluated whenever it is finished.
 15. Online tracking link will be added to customers' order list page if allowed by shop admin.
 16. Online tracking link will be added to customers' order detail page if allowed by shop admin.
@@ -115,7 +115,7 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 ##### 1.3.3
 *   **New** : Add new supported cities
 ##### 1.4.0
-*   **New** : Update plugin from github master source
+*   **New** : Update plugin from GitHub master source
 *   **New** : Manage timezone setting
 ##### 1.5.0
 *   **Edit** : Changing map engine from Google to Cedar
