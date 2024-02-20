@@ -963,8 +963,6 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function ajax_discount_coupon_submit_modal( $data ) {
 
 		$response = $this->check_order_data( $data );
-		$success  = $response['success'];
-		$message  = $response['message'];
 		$package  = (array) $response['package'];
 		if ( isset( $package['shipping']->discount ) && $package['shipping']->discount >= 0 ) {
 			$this->helpers->respond_ajax( '', true );

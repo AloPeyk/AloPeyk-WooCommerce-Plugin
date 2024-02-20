@@ -2412,7 +2412,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			foreach ( $transport_types as $key => $transport_type ) {
 				$overflowed[$key] = $this->has_overflow( $weights, $dimensions, $weight_unit, $dimension_unit, $key );
 			}
-			return $package = array(
+			return array(
 				'weights'      => $weights,
 				'dimensions'   => $dimensions,
 				'destinations' => $destinations,
@@ -2420,8 +2420,8 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'has_return'   => $has_return
 			);
 		}
-		return null;
 
+		return null;
 	}
 
 	/**
@@ -2754,48 +2754,53 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 */
 	public function cancel_order( $order_id = null, $reason = '', $local_order_id = null ) {
 
-		$response = array(
-			'success' => false,
-			'message' => __( 'Order should be specified to be canceled.', 'alopeyk-woocommerce-shipping' ),
-		);
-		if ( $order_id ) {
-			try {
-				if ( $this->authenticate() ) {
-					$apiResponse = Order::cancel( $order_id, $reason );
-					if ( isset( $apiResponse->status ) && $apiResponse->status == 'success' ) {
-						if ( $local_order_id ) {
-							$this->update_active_order( $local_order_id, 'cancelled' );
-						}
-						$response = array(
-							'success' => true,
-							'message' => __( 'Order successfully canceled.', 'alopeyk-woocommerce-shipping' ),
-						);
-					} else if ( isset( $apiResponse->status ) && $apiResponse->status == 'fail' && isset( $apiResponse->object ) && isset( $apiResponse->object->error_msg ) ) {
-						$response = array(
-							'success' => false,
-							'message' => __( 'Cannot cancel selected order.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $apiResponse->object->error_msg,
-						);
-					} else {
-						$response = array(
-							'success' => false,
-							'message' => __( 'Error occured while trying to cancel selected order.', 'alopeyk-woocommerce-shipping' )
-						);
-					}
-				} else {
-					$response = array(
-						'success' => false,
-						'message' => __( 'Authentication failed.', 'alopeyk-woocommerce-shipping' )
-					);
-				}
-			} catch ( Exception $e ) {
-				$response = array(
+		if ( !$order_id ) {
+			return array(
+				'success' => false,
+				'message' => __( 'Order should be specified to be canceled.', 'alopeyk-woocommerce-shipping' ),
+			);
+		}
+
+
+		try {
+			if ( !$this->authenticate() ) {
+				return array(
 					'success' => false,
-					'message' => __( 'Error occured while trying to cancel selected order.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $e->getMessage(),
+					'message' => __( 'Authentication failed.', 'alopeyk-woocommerce-shipping' )
 				);
 			}
-		}
-		return $response;
 
+			$apiResponse = Order::cancel( $order_id, $reason );
+			if ( isset( $apiResponse->status ) && $apiResponse->status == 'success' ) {
+				if ( $local_order_id ) {
+					$this->update_active_order( $local_order_id, 'cancelled' );
+				}
+
+				return array(
+					'success' => true,
+					'message' => __( 'Order successfully canceled.', 'alopeyk-woocommerce-shipping' ),
+				);
+			} else if ( isset( $apiResponse->status ) && $apiResponse->status == 'fail' && isset( $apiResponse->object ) && isset( $apiResponse->object->error_msg ) ) {
+				if ( $local_order_id ) {
+					$this->update_active_order( $local_order_id );
+				}
+
+				return array(
+					'success' => false,
+					'message' => __( 'Cannot cancel selected order.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $apiResponse->object->error_msg,
+				);
+			} else {
+				return array(
+					'success' => false,
+					'message' => __( 'Error occurred while trying to cancel selected order.', 'alopeyk-woocommerce-shipping' )
+				);
+			}
+		} catch ( Exception $e ) {
+			return array(
+				'success' => false,
+				'message' => __( 'Error occurred while trying to cancel selected order.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $e->getMessage(),
+			);
+		}
 	}
 
 	/**
