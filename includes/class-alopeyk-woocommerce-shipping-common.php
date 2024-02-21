@@ -2332,35 +2332,20 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 	/**
 	 * @since  1.0.0
-	 * @param  array  $recipient
+	 * @param  array  $recipients
 	 * @param  string $subject
 	 * @param  string $message
 	 * @param  string $email_id
 	 */
-	public function send_email( $recipient = array(), $subject = '', $message = '', $email_id = '' ) {
-
-		if ( $recipient && count( $recipient ) ) {
-			$content = get_local_template_part( 'alopeyk-woocommerce-shipping-public-email', array(
-				'title'        => $subject,
-				'tel'          => $this->get_support_tel(),
-				'extra'        => $this->get_config( 'targeted_ads' ),
-				'message'      => $message,
-				'campaign_url' => $this->get_campaign_url( $email_id )
-			), false, 'public' );
-			$css = get_local_template_part( 'alopeyk-woocommerce-shipping-public-email-styles', array(), false, 'public' );
-			try {
-				if ( ! class_exists( 'Emogrifier' ) && class_exists( 'DOMDocument' ) ) {
-					include_once( ABSPATH . '/wp-content/plugins/woocommerce/includes/libraries/class-emogrifier.php' );
-				}
-				// TODO replace class
-				$emogrifier = new Emogrifier( $content, $css );
-				$content    = $emogrifier->emogrify();
-			} catch ( Exception $e ) {
-				$this->add_log( $e->getMessage() );
-			}
-			wc_mail( $recipient, $subject, $content );
-		}
-
+	public function send_email( $recipients = array(), $subject = '', $message = '', $email_id = '' ) {
+		$content = get_local_template_part( 'alopeyk-woocommerce-shipping-public-email', array(
+			'title'        => $subject,
+			'tel'          => $this->get_support_tel(),
+			'extra'        => $this->get_config( 'targeted_ads' ),
+			'message'      => $message,
+			'campaign_url' => $this->get_campaign_url( $email_id )
+		), false, 'public' );
+		wc_mail( $recipients, $subject, $content );
 	}
 
 	/**
@@ -2760,7 +2745,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'message' => __( 'Order should be specified to be canceled.', 'alopeyk-woocommerce-shipping' ),
 			);
 		}
-
 
 		try {
 			if ( !$this->authenticate() ) {
