@@ -2754,6 +2754,17 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				);
 			}
 
+			$orderDetails = Order::getDetails( $order_id );
+			$orderStatus = $orderDetails->object->status;
+
+			if ($orderStatus != 'success' and $local_order_id) {
+				$this->update_active_order( $local_order_id );
+				return array(
+					'success' => true,
+					'message' => __( 'You can not cancel this order, we update your order status with our data, current status: ' . $orderStatus, 'alopeyk-woocommerce-shipping'),
+				);
+			}
+
 			$apiResponse = Order::cancel( $order_id, $reason );
 			if ( isset( $apiResponse->status ) && $apiResponse->status == 'success' ) {
 				if ( $local_order_id ) {
@@ -2765,10 +2776,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					'message' => __( 'Order successfully canceled.', 'alopeyk-woocommerce-shipping' ),
 				);
 			} else if ( isset( $apiResponse->status ) && $apiResponse->status == 'fail' && isset( $apiResponse->object ) && isset( $apiResponse->object->error_msg ) ) {
-				if ( $local_order_id ) {
-					$this->update_active_order( $local_order_id );
-				}
-
 				return array(
 					'success' => false,
 					'message' => __( 'Cannot cancel selected order.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $apiResponse->object->error_msg,
