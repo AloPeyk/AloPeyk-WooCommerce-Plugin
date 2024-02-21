@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa71deda2da73759e1849829ea4b9eda",
+    "content-hash": "de75c3a3e59ec62f0e58da19358d3084",
     "packages": [
         {
             "name": "alopeyk/alopeyk-api-php",
-            "version": "dev-master",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AloPeyk/AloPeyk-Api-PHP.git",
-                "reference": "3b08d1b20e5e45842ff792b7c40682d8555f5781"
+                "reference": "3483020696d988ec1d008254efad0aa00444a05a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/3b08d1b20e5e45842ff792b7c40682d8555f5781",
-                "reference": "3b08d1b20e5e45842ff792b7c40682d8555f5781",
+                "url": "https://api.github.com/repos/AloPeyk/AloPeyk-Api-PHP/zipball/3483020696d988ec1d008254efad0aa00444a05a",
+                "reference": "3483020696d988ec1d008254efad0aa00444a05a",
                 "shasum": ""
             },
             "require": {
@@ -51,18 +51,21 @@
                 "الوپيك",
                 "الوپیک"
             ],
+            "support": {
+                "issues": "https://github.com/AloPeyk/AloPeyk-Api-PHP/issues",
+                "source": "https://github.com/AloPeyk/AloPeyk-Api-PHP/tree/v1.4.0"
+            },
             "abandoned": true,
-            "time": "2019-02-25T15:25:00+00:00"
+            "time": "2024-02-20T08:33:12+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "alopeyk/alopeyk-api-php": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
 }
