@@ -2761,7 +2761,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$this->update_active_order( $local_order_id );
 				return array(
 					'success' => true,
-					'message' => __( 'You can not cancel this order, we update your order status with our data, current status: ' . $orderStatus, 'alopeyk-woocommerce-shipping'),
+					'message' => __( 'We can not cancel this order, but we update your order status with our data, current status: ' . $this->get_order_status_label( $orderStatus ), 'alopeyk-woocommerce-shipping'),
 				);
 			}
 
