@@ -2757,7 +2757,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			$orderDetails = Order::getDetails( $order_id );
 			$orderStatus = $orderDetails->object->status;
 
-			if ($orderStatus != 'success' and $local_order_id) {
+			if ( ! in_array( $orderStatus, [ 'success', 'searching', 'new', 'scheduled'] ) and $local_order_id ) {
 				$this->update_active_order( $local_order_id );
 				return array(
 					'success' => true,
