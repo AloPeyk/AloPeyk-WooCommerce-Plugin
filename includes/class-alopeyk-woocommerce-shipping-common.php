@@ -2528,10 +2528,13 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			}
 			if ( $wc_orders && count( $wc_orders ) ) {
 				foreach ( $wc_orders as $wc_order ) {
+					$order = new WC_Order( $wc_order );
 					add_post_meta( $order_id, '_awcshm_wc_order_id', $wc_order );
-					add_post_meta( $order_id, '_awcshm_user_id', get_post_meta( $wc_order, '_customer_user', true ) );
+					add_post_meta( $order_id, '_awcshm_user_id',  $order->get_customer_id());
+
 					$order          = new WC_Order( $wc_order );
 					$status_details = $this->get_wc_order_status( $order_data, $order_id );
+
 					if ( $status_details && count( $status_details ) && $status_details['status'] != get_post_status( $wc_order ) && $this->get_option( 'status_change', 'yes' ) == 'yes' ) {
 						$order->update_status( $status_details['status'], $status_details['note'] );
 					}
