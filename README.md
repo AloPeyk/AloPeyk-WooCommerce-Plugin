@@ -146,3 +146,15 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Edit:** Refactor new order function
 *   **Fix:** nested condition syntax
 *   **Fix:** Show shipping rates and map
+* ##### 4.0
+*   **Edit:** Compatible plugin with WordPress 6.x and Woocommerce 8.x
+*   **Edit:** Compatible plugin with PHP 8.x
+*   **Edit:** Improvements in code quality
+*   **Fix:** Update order on Alopeyk order list and Alopeyk order details
+*   **Edit:** Add some logs on errors
+*   **Fix:** Add log level
+*   **Fix:** Remove old woocommerce emogrifier and use built-in woocommerce mail function
+*   **Fix:** Remove unused variables
+*   **Fix:** Add missed admin class properties
+*   **Edit:** Update alopeyk api php package
+*   **Edit:** Move contents of README.txt to README.md and add more details to it
