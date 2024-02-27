@@ -298,6 +298,8 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		$screen = $screen->id;
 
         if ($post and $post->post_type == $common::$order_post_type_name ) {
+            $this->check_and_update_active_order_status($post);
+
             remove_meta_box( 'submitdiv', $screen, 'side' );
             $order_data = get_post_meta( $post->ID, '_awcshm_order_data', true );
 
@@ -472,8 +474,12 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function set_custom_column_content( $column, $post_id ) {
 
 		$post = get_post( $post_id );
-		$post_type = $post->post_type;
-		$post_status = $post->post_status;
+        if ($this->check_and_update_active_order_status($post)) {
+            $post = get_post( $post_id );
+        }
+
+        $post_status = $post->post_status;
+        $post_type = $post->post_type;
 		$post_status_label = $this->helpers->get_order_status_label( $post_status );
 		$alopeyk_order_id = get_post_meta( $post_id, '_awcshm_order_id' );
 		switch ( $column ) {
@@ -1172,4 +1178,12 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	
 	}
 
+    public function check_and_update_active_order_status($alopeyk_order){
+        if (in_array($alopeyk_order->post_status, array( 'awcshm-progress', 'awcshm-pending', 'awcshm-scheduled' ))) {
+            $this->helpers->update_active_order( $alopeyk_order->ID );
+            return true;
+        }
+
+        return false;
+    }
 }

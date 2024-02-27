@@ -128,13 +128,13 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @since 1.0.0
 	 * @param string $message
 	 */
-	public function add_log( $message = null ) {
+	public function add_log( $message = null, $level = WC_Log_Levels::NOTICE) {
 
 		if ( $message ) {
 			date_default_timezone_set( $this->get_timezone_setting() );
 			error_log( $message, 0 );
 			$logger = new WC_Logger();
-			$logger->add( METHOD_ID, $message );
+			$logger->add( METHOD_ID, $message, $level);
 		}
 
 	}
@@ -1638,7 +1638,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			} else {
 				foreach ( $apiResponses as $apiResponse ) {
 					if ( isset( $apiResponse->error ) ) {
-						$this->add_log('Failed to load alopeyk shipping method, error: ' . $apiResponse->error);
+						$this->add_log('error in calculate shipping, error: ' . json_encode($apiResponse), WC_Log_Levels::ERROR);
 						continue;
 					}
 
@@ -2517,34 +2517,34 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				);
 			}
 
-			$order_id = $result;
-			update_post_meta( $order_id, '_awcshm_order_id', $order_data->id );
-			update_post_meta( $order_id, '_awcshm_order_data', $order_data );
+			$local_order_id = $result;
+			update_post_meta( $local_order_id, '_awcshm_order_id', $order_data->id );
+			update_post_meta( $local_order_id, '_awcshm_order_data', $order_data );
 			if ( isset( $order_data->transport_type ) ) {
-				update_post_meta( $order_id, '_awcshm_order_type', $order_data->transport_type );
+				update_post_meta( $local_order_id, '_awcshm_order_type', $order_data->transport_type );
 			}
 			if ( isset( $order_data->price ) ) {
-				update_post_meta( $order_id, '_awcshm_order_price', $order_data->price * 10 );
+				update_post_meta( $local_order_id, '_awcshm_order_price', $order_data->price * 10 );
 			}
 			if ( $wc_orders && count( $wc_orders ) ) {
 				foreach ( $wc_orders as $wc_order ) {
 					$order = new WC_Order( $wc_order );
-					add_post_meta( $order_id, '_awcshm_wc_order_id', $wc_order );
-					add_post_meta( $order_id, '_awcshm_user_id',  $order->get_customer_id());
+					add_post_meta( $local_order_id, '_awcshm_wc_order_id', $wc_order );
+					add_post_meta( $local_order_id, '_awcshm_user_id',  $order->get_customer_id());
 
 					$order          = new WC_Order( $wc_order );
-					$status_details = $this->get_wc_order_status( $order_data, $order_id );
+					$status_details = $this->get_wc_order_status( $order_data, $local_order_id );
 
 					if ( $status_details && count( $status_details ) && $status_details['status'] != get_post_status( $wc_order ) && $this->get_option( 'status_change', 'yes' ) == 'yes' ) {
 						$order->update_status( $status_details['status'], $status_details['note'] );
 					}
 				}
 			}
-			$this->update_active_order( $order_id );
+			$this->update_active_order( $local_order_id );
 			$schedule_name = METHOD_ID . '_active_order_update';
-			wp_schedule_event( time(), $schedule_name . '_interval', $schedule_name, array( 'order_id' => $order_id ) );
+			wp_schedule_event( time(), $schedule_name . '_interval', $schedule_name, array( 'order_id' => $local_order_id ) );
 			$order_data->tracking_url = $tracking_url;
-			$order_data->edit_url     = get_edit_post_link( $order_id );
+			$order_data->edit_url     = get_edit_post_link( $local_order_id );
 
 			return array(
 				'success' => true,
@@ -2764,7 +2764,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$this->update_active_order( $local_order_id );
 				return array(
 					'success' => true,
-					'message' => __( 'We can not cancel this order, but we update your order status with our data, current status: ' . $this->get_order_status_label( $orderStatus ), 'alopeyk-woocommerce-shipping'),
+					'message' => __( 'We can not cancel this order, but we update your order status with our data, current status: ' . $orderStatus, 'alopeyk-woocommerce-shipping'),
 				);
 			}
 
@@ -2887,27 +2887,27 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	}
 
 	/**
-	 * @since 1.0.0
-	 * @param integer $order_id
-	 * @param string  $status
+	 * @param integer $local_order_id
+	 * @param string $status
+	 *
+	 *@since 1.0.0
 	 */
-	public function update_active_order( $order_id = null, $status = null ) {
-
-		if ( $order_id ) {
-			$alopeyk_order_id = get_post_meta( $order_id, '_awcshm_order_id', true );
+	public function update_active_order( $local_order_id = null, $status = null ) {
+		if ( $local_order_id ) {
+			$alopeyk_order_id = get_post_meta( $local_order_id, '_awcshm_order_id', true );
 			if ( $alopeyk_order_id ) {
-				$old_order_data = get_post_meta( $order_id, '_awcshm_order_data', true );
+				$old_order_data = get_post_meta( $local_order_id, '_awcshm_order_data', true );
 				if ( ! $old_order_data ) {
 					$old_order_data = (object) array( 'updated_at' => '0000-00-00 00:00:00' );
 				}
 				if ( $status ) {
 					$new_order_data = (object) array( 'status' => 'manual' );
-					$this->update_order( $order_id, $old_order_data, $new_order_data, $status );
+					$this->update_order( $local_order_id, $old_order_data, $new_order_data, $status );
 				} else {
 					try {
 						if ( $this->authenticate() ) {
 							$new_order_data = Order::getDetails( $alopeyk_order_id );
-							$this->update_order( $order_id, $old_order_data, $new_order_data );
+							$this->update_order( $local_order_id, $old_order_data, $new_order_data );
 						}
 					} catch ( Exception $e ) {
 						$this->add_log( $e->getMessage() );
