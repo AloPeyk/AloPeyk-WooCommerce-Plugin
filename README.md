@@ -158,3 +158,4 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Fix:** Add missed admin class properties
 *   **Edit:** Update alopeyk api php package
 *   **Edit:** Move contents of README.txt to README.md and add more details to it
+*   **Edit:** Use a constant value for refresh intervals and cron job
