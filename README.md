@@ -44,7 +44,7 @@ Automatic installation is the easiest option as WordPress handles the file trans
 
 In the search field type “Alopeyk WooCommerce Shipping” and click Search Plugins. Once you’ve found our plugin you can view details about it such as the point release, rating, and description. Most importantly of course, you can install it by simply clicking “Install Now”.
 
-##Manual installation
+## Manual installation
 The manual installation method involves downloading our plugin and uploading it to your webserver via your favorite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
 ## Setup WordPress and Alopeyk plugin with docker
