@@ -26,7 +26,7 @@ Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
 *   Change default map marker
 *   Detect default transport type based on cart contents
 *   Define custom shipping cost (fixed amount or a percentage of cart total price) or fetch the real shipping cost based on distance and transport type via Alopeyk API
-*   Options for payment methods (methods like **“Cash on Delivery”** can be marked as **“has returned”** to notify Alopeyk courier to return back to the origin address and bring the money taken from the customer back)
+*   Options for payment methods (methods like **“Cash on Delivery”** can be marked as **“has returned”** to notify Alopeyk courier to return to the origin address and bring the money taken from the customer back)
 *   Show Alopeyk shipping method, its type, and its cost in the list of shipping methods in front if available
 *   Add a map and address detail fields anywhere an address is being entered or edited both in admin and frontend
 *   Inline chat with Alopeyk support
@@ -49,6 +49,7 @@ The manual installation method involves downloading our plugin and uploading it 
 
 ## Setup WordPress and Alopeyk plugin with docker
 You can install WordPress which is compatible with this version of the plugin within docker containers using the below command:
+( It is useful for testing purposes )
 
 ```
 docker-compose up -d
