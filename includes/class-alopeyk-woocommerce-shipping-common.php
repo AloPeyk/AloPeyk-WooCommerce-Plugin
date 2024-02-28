@@ -78,6 +78,12 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public $transport_types = null;
 	private static $parsimap_base_url = "https://pm2.parsimap.com/webapi.svc/";
 
+	const ADMIN_REFRESH_INTERVAL = 10;
+
+	const FRONT_REFRESH_INTERVAL = 30;
+
+	const CRON_INTERVAL = 10;
+
 	/**
 	 * @since 1.0.0
 	 * @param string $plugin_name
@@ -250,7 +256,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'Use ⌘ + scroll to zoom the map'      => __( 'Use ⌘ + scroll to zoom the map',    'alopeyk-woocommerce-shipping' ),
 			),
 			'dynamic_parts' => $this->get_dynamic_parts( is_admin() ),
-			'refresh_interval' => $this->get_option( ( is_admin() ? 'refresh_admin_interval' : 'refresh_public_interval' ), 10 ),
+			'refresh_interval' => is_admin() ? self::ADMIN_REFRESH_INTERVAL : self::FRONT_REFRESH_INTERVAL,
 			'time' => (int) $this->get_now_in_milliseconds(),
 		);
 
@@ -2968,9 +2974,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 */
 	public function add_cron_schedule( $schedules ) {
 
-		$interval = (int) $this->get_option( 'refresh_cron_interval', 10 );
+		$interval = self::CRON_INTERVAL;
 		$schedules[ METHOD_ID . '_active_order_update_interval' ] = array(
-			'interval' => $interval > 1 ? $interval : 1,
+			'interval' => $interval < 10 ? 10 : $interval,
 			'display'  => __( 'Update Active Order Interval', 'alopeyk-woocommerce-shipping' ),
 		);
 		$schedules[ METHOD_ID . '_check_mandatory_options_interval' ] = array(

@@ -31,7 +31,9 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 
 	private $wrong_key;
 
-	private $enabled, $environment, $endpoint_url, $endpoint_api_url, $endpoint_tracking_url, $store_name, $store_phone, $store_lat, $store_lng, $store_address, $store_city, $store_unit, $map_marker, $store_description, $store_number, $title, $cost_type, $static_cost_type, $static_cost_fixed, $static_cost_percentage, $pt_motorbike, $pt_car, $pt_cargo, $pt_cargo_s, $auto_type, $auto_type_static, $status_change, $customer_dashboard, $tehran_timezone, $refresh_cron_interval, $refresh_admin_interval, $refresh_public_interval, $return_cod, $return_cod_customer, $return_cod_customer_alert;
+	private $enabled, $environment, $endpoint_url, $endpoint_api_url, $endpoint_tracking_url, $store_name, $store_phone, $store_lat, $store_lng, $store_address, $store_city, $store_unit, $map_marker, $store_description, $store_number, $title, $cost_type, $static_cost_type, $static_cost_fixed, $static_cost_percentage, $pt_motorbike, $pt_car, $pt_cargo, $pt_cargo_s, $auto_type, $auto_type_static, $status_change, $customer_dashboard, $tehran_timezone, $return_cod, $return_cod_customer, $return_cod_customer_alert;
+
+//    private $refresh_cron_interval, $refresh_admin_interval, $refresh_public_interval;
 
     /**
 	 * @since 2.0.0
@@ -536,45 +538,45 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 				'default'           => 'yes',
 				'desc_tip'          => __('Check this checkbox only if you want to use “Tehran TomeZone” for Alopeyk orders, otherwise default Wordpress timezone will be used.', 'alopeyk-woocommerce-shipping'),
 			);
-			$form_fields['refresh_options_title_spacer'] = array(
-				'type'  => 'title',
-				'title' => '&nbsp;'
-			);
-			$form_fields['refresh_options_title'] = array(
-				'title' => __('Refresh Options', 'alopeyk-woocommerce-shipping'),
-				'type'  => 'title',
-			);
-			$form_fields['refresh_cron_interval'] = array(
-				'title'       => __('Cron Interval', 'alopeyk-woocommerce-shipping'),
-				'label'       => __('Enabled'),
-				'type'        => 'text',
-				'default'     => '10',
-				'desc'        => __('The number of seconds between each request for fetching the latest status of an active order. It is highly recommended to be more than 10.', 'alopeyk-woocommerce-shipping'),
-				'placeholder' => '10',
-				'custom_attributes' => array(
-					'pattern' => '\d*'
-				)
-			);
-			$form_fields['refresh_admin_interval'] = array(
-				'title'       => __('Admin Refresh Interval', 'alopeyk-woocommerce-shipping'),
-				'type'        => 'text',
-				'default'     => '10',
-				'desc'        => __('The number of seconds between refreshes in admin panel for bringing latest order details to the screen. It is highly recommended to be more than 10.', 'alopeyk-woocommerce-shipping'),
-				'placeholder' => '10',
-				'custom_attributes' => array(
-					'pattern' => '\d*'
-				)
-			);
-			$form_fields['refresh_public_interval'] = array(
-				'title'       => __('Front Refresh Interval', 'alopeyk-woocommerce-shipping'),
-				'type'        => 'text',
-				'default'     => '10',
-				'desc'        => __('The number of seconds between refreshes in customer dashboard for bringing latest order details to the screen. It is highly recommended to be more than 10.', 'alopeyk-woocommerce-shipping'),
-				'placeholder' => '10',
-				'custom_attributes' => array(
-					'pattern' => '\d*'
-				)
-			);
+//			$form_fields['refresh_options_title_spacer'] = array(
+//				'type'  => 'title',
+//				'title' => '&nbsp;'
+//			);
+//			$form_fields['refresh_options_title'] = array(
+//				'title' => __('Refresh Options', 'alopeyk-woocommerce-shipping'),
+//				'type'  => 'title',
+//			);
+//			$form_fields['refresh_cron_interval'] = array(
+//				'title'       => __('Cron Interval', 'alopeyk-woocommerce-shipping'),
+//				'label'       => __('Enabled'),
+//				'type'        => 'text',
+//				'default'     => '10',
+//				'desc'        => __('The number of seconds between each request for fetching the latest status of an active order. It is highly recommended to be more than 10.', 'alopeyk-woocommerce-shipping'),
+//				'placeholder' => '10',
+//				'custom_attributes' => array(
+//					'pattern' => '\d*'
+//				)
+//			);
+//			$form_fields['refresh_admin_interval'] = array(
+//				'title'       => __('Admin Refresh Interval', 'alopeyk-woocommerce-shipping'),
+//				'type'        => 'text',
+//				'default'     => '10',
+//				'desc'        => __('The number of seconds between refreshes in admin panel for bringing latest order details to the screen. It is highly recommended to be more than 10.', 'alopeyk-woocommerce-shipping'),
+//				'placeholder' => '10',
+//				'custom_attributes' => array(
+//					'pattern' => '\d*'
+//				)
+//			);
+//			$form_fields['refresh_public_interval'] = array(
+//				'title'       => __('Front Refresh Interval', 'alopeyk-woocommerce-shipping'),
+//				'type'        => 'text',
+//				'default'     => '10',
+//				'desc'        => __('The number of seconds between refreshes in customer dashboard for bringing latest order details to the screen. It is highly recommended to be more than 10.', 'alopeyk-woocommerce-shipping'),
+//				'placeholder' => '10',
+//				'custom_attributes' => array(
+//					'pattern' => '\d*'
+//				)
+//			);
 			if (is_admin()) {
 				$wc_payment_gateways = @WC()->payment_gateways;
 				if ($wc_payment_gateways) {
