@@ -1,6 +1,6 @@
 # Alopeyk WooCommerce Shipping Method
 Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
-**[Alopeyk](https://alopeyk.com "Alopeyk On-demand Delivery")** is Iran’s leading on-demand urban logistics platform bringing instant delivery within anyone's reach. It uses an extensive network of motorcycle and pickup couriers to form a logistics network that's fast, cheap and reliable. This plugin will include **Alopeyk** in WooCommerce shop shipping methods.
+**[Alopeyk](https://alopeyk.com "Alopeyk On-demand Delivery")** is Iran’s leading on-demand urban logistics platform bringing instant delivery within anyone's reach. It uses an extensive network of motorcycle and pickup couriers to form a logistics network that's fast, cheap, and reliable. This plugin will include **Alopeyk** in WooCommerce shop shipping methods.
 
 **Here is the list of features you may look for:**
 
@@ -13,22 +13,22 @@ Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
 *   Cancel order
 *   Reorder
 *   Rate Alopeyk courier
-*   View invoice
+*   View Invoice
 *   Real-time tracking both for the shop owner and the customer
 *   View Alopeyk order history per WooCommerce order
 *   View the list of all Alopeyk orders
 *   View Alopeyk order details
 *   View courier information
-*   Filter Alopeyk orders based on date, transport type and status
-*   Sort Alopeyk orders based on invoice number, transport type, WooCommerce order id, customer, cost and date
+*   Filter Alopeyk orders based on date, transport type, and status
+*   Sort Alopeyk orders based on invoice number, transport type, WooCommerce order ID, customer, cost, and date
 *   Edit store information and address as the origin address
 *   Change map styles
 *   Change default map marker
 *   Detect default transport type based on cart contents
 *   Define custom shipping cost (fixed amount or a percentage of cart total price) or fetch the real shipping cost based on distance and transport type via Alopeyk API
-*   Options for payment methods (methods like **“Cash on Delivery”** can be marked as **“has return”** to notify Alopeyk courier to return back to the origin address and bring the money taken from customer back)
-*   Show Alopeyk shipping method, its type and its cost in the list of shipping methods in frontend if available
-*   Add map and address detail fields anywhere an address is being entered or edited both in admin and frontend
+*   Options for payment methods (methods like **“Cash on Delivery”** can be marked as **“has returned”** to notify Alopeyk courier to return back to the origin address and bring the money taken from the customer back)
+*   Show Alopeyk shipping method, its type, and its cost in the list of shipping methods in front if available
+*   Add a map and address detail fields anywhere an address is being entered or edited both in admin and frontend
 *   Inline chat with Alopeyk support
 *   Lots of more handy features
 
@@ -40,12 +40,12 @@ Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
 
 # Installation
 ## Automatic installation
-Automatic installation is the easiest option as WordPress handles the file transfers itself and, you don’t need to leave your web browser. To do an automatic installation of Alopeyk WooCommerce Shipping, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and, you don’t need to leave your web browser. To do an automatic installation of Alopeyk WooCommerce Shipping, log in to your WordPress dashboard, navigate to the Plugins menu, and click Add New.
 
-In the search field type “Alopeyk WooCommerce Shipping” and click Search Plugins. Once you’ve found our plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
+In the search field type “Alopeyk WooCommerce Shipping” and click Search Plugins. Once you’ve found our plugin you can view details about it such as the point release, rating, and description. Most importantly of course, you can install it by simply clicking “Install Now”.
 
 ##Manual installation
-The manual installation method involves downloading our plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+The manual installation method involves downloading our plugin and uploading it to your webserver via your favorite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
 ## Setup WordPress and Alopeyk plugin with docker
 You can install WordPress which is compatible with this version of the plugin within docker containers using the below command:
@@ -63,28 +63,28 @@ docker-compose up -d
 
 # After installation
 
-Then you have to enter the API key you've obtained from [Alopeyk](https://alopeyk.com "Alopeyk On-demand Delivery") in the API Key field laid in plugin's settings page. You can access the settings page by clicking the Settings link below Alopeyk item in Dashboard sidebar menu.
+Then you have to enter the API key you've obtained from [Alopeyk](https://alopeyk.com "Alopeyk On-demand Delivery") in the API Key field laid in the plugin's settings page. You can access the settings page by clicking the Settings link below the Alopeyk item in the Dashboard sidebar menu.
 
-It is also highly recommended to enter your specific [Cedar Maps API Key](https://www.cedarmaps.com/) in the relevant field in settings page.
+It is also highly recommended to enter your specific [Cedar Maps API Key](https://www.cedarmaps.com/) in the relevant field on the settings page.
 
 # Plugin actions
-1. API key is required to unlock all options and activate the plugin.
-2. Address detail fields, transportation type and possible extra cost hit for courier return will be shown in checkout page.
-3. Address detail fields will be shown in address edit page.
-4. Address detail and description fields, Alopeyk order actions, Alopeyk orders history and detailed shipping log will be shown in dashboard order edit page.
-5. Alopeyk bulk shipping action added in WooCommerce orders list.
+1. An API key is required to unlock all options and activate the plugin.
+2. Address detail fields, transportation type, and possible extra cost hit for courier return will be shown on the checkout page.
+3. Address detail fields will be shown on the address edit page.
+4. Address detail and description fields, Alopeyk order actions, Alopeyk orders history, and detailed shipping log will be shown on the dashboard order edit page.
+5. Alopeyk bulk shipping action added to WooCommerce orders list.
 6. Create Alopeyk order modal is accessible from Woocommerce orders list and edit order pages.
-7. Alert will be shown, if Alopeyk credit is not enough to create the order.
-8. Alert will be shown, if origin address or one of destination addresses is not supported by Alopeyk.
-9. Alert will be shown, if weight or dimensions exceed their corresponding Alopeyk limits. It is highly recommended to enter weight and dimensions for all products to make this check functional.
+7. An alert will be shown if Alopeyk credit is not enough to create the order.
+8. Alert will be shown if the origin address or one of the destination addresses is not supported by Alopeyk.
+9. Alert will be shown if weight or dimensions exceed their corresponding Alopeyk limits. It is highly recommended to enter weight and dimensions for all products to make this check functional.
 10. Credit can be added whenever there is not enough credit to create the order.
-11. Coupons can also be applied to increase Alopeyk credit.
-12. List of all Alopeyk orders and their details, actions and statuses.
-13. Alopeyk order detail page can be used to track shipping process.
+11. Coupons can also be applied to increase Alopeyk's credit.
+12. List all Alopeyk orders and their details, actions, and statuses.
+13. The Alopeyk order detail page can be used to track the shipping process.
 14. Alopeyk order can be evaluated whenever it is finished.
-15. Online tracking link will be added to customers' order list page if allowed by shop admin.
-16. Online tracking link will be added to customers' order detail page if allowed by shop admin.
-17. Current Alopeyk credit and methods to increase it is available in credit page.
+15. An online tracking link will be added to the customers' order list page if allowed by the shop admin.
+16. An online tracking link will be added to customers' order detail page if allowed by the shop admin.
+17. Current Alopeyk credit and methods to increase it is available on the credit page.
 18. You can have an online chat with Alopeyk support directly from your shop dashboard.
 
 
@@ -120,7 +120,7 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 ##### 1.5.0
 *   **Edit** : Changing map engine from Google to Cedar
 *   **Edit** : Watching for map movement instead of marker
-*   **Fix** : Fix for using unicode characters while searching addresses
+*   **Fix** : Fix for using Unicode characters while searching addresses
 *   **Fix** : Fixing some RTL support issues
 ##### 1.6.0
 *   **New** : Adding new transport types
@@ -132,9 +132,9 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Edit:** Changing the map engine from CedarMap to ParsiMap
 *   **New:** Importing cities and provinces in address forms if not included already
 *   **New:** Adding new development environments to dashboard settings
-*   **New:** Adding AloPeyk summary widget to the admin dashboard
+*   **New:** Adding the AloPeyk summary widget to the admin dashboard
 *   **Fix:** Fixing mobile-related issues of the maps
-*   **Edit:** Adding more detailed information in AloPeyk's Profile page
+*   **Edit:** Adding more detailed information to AloPeyk's Profile page
 *   **New:** Adding the ability to apply a discount coupon at the time of submitting orders
 ##### 3.0.0
 *   **Fix:** Add Alopeyk to shipping methods in settings
@@ -153,9 +153,9 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Fix:** Update order on Alopeyk order list and Alopeyk order details
 *   **Edit:** Add some logs on errors
 *   **Fix:** Add log level
-*   **Fix:** Remove old woocommerce emogrifier and use built-in woocommerce mail function
+*   **Fix:** Remove the old Woocommerce Emogrifier and use the built-in Woocommerce mail function
 *   **Fix:** Remove unused variables
 *   **Fix:** Add missed admin class properties
-*   **Edit:** Update alopeyk api php package
+*   **Edit:** Update Alopeyk API php package
 *   **Edit:** Move contents of README.txt to README.md and add more details to it
 *   **Edit:** Use a constant value for refresh intervals and cron job
