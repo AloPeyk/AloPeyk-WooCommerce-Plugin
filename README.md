@@ -161,3 +161,5 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Edit:** Update Alopeyk API php package
 *   **Edit:** Move contents of README.txt to README.md and add more details to it
 *   **Edit:** Use a constant value for refresh intervals and cron job
+*   **Edit:** Update logo and menu icon
+*   **Fix:** Add details in Alopeyk shipping modal

@@ -1831,3 +1831,6 @@ msgstr "https://alopeyk.com/#section-services"
 #. Author URI of the plugin
 msgid "https://alopeyk.com/"
 msgstr "https://alopeyk.com/"
+
+msgid "You can change the settings in the 'Alopeyk' tab in the Woocommerce settings"
+msgstr "برای تغییر تنظیمات به تب 'الوپیک' در تنظیمات ووکامرس مراجعه کنید."
