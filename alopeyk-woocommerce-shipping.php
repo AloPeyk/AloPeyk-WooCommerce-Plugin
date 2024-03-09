@@ -15,8 +15,8 @@
  * Text Domain:           alopeyk-woocommerce-shipping
  * Domain Path:           /languages
  *
- * WC requires at least:  2.6
- * WC tested up to:       4.6.1
+ * WC requires at least:  3.9
+ * WC tested up to:       8.5
  * 
  * Copyright:             © 2017-2018 Alopeyk.
  * License:               GNU General Public License v3.0

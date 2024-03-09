@@ -35,7 +35,8 @@ Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
 ## Minimum Requirements
 * PHP version 5.6 or greater
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
-* WordPress 4.4 or greater
+* WordPress 5 or greater
+* Woocommerce 3.9 or greater
 * Interactions with Alopeyk API also need cURL and OpenSSL PHP extensions
 
 # Installation
