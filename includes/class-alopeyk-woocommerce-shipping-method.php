@@ -54,10 +54,9 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 	public function init_form_fields() {
 		$this->instance_form_fields = [
 			'title' => array(
-				'type' => 'button',
-				'default' => __("You can change the settings in the 'Alopeyk' tab in the Woocommerce settings", 'alopeyk-woocommerce-shipping'),
-				'disabled' => true
-			)
+				'type' => 'title',
+				'title' => __("You can customize the plugin in the 'Alopeyk' tab in the Woocommerce settings", 'alopeyk-woocommerce-shipping'),
+            )
 		];
 	}
 
