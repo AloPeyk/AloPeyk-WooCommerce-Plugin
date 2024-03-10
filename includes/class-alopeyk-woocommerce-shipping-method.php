@@ -55,7 +55,7 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 		$this->instance_form_fields = [
 			'title' => array(
 				'type' => 'title',
-				'title' => __("You can customize the plugin in the 'Alopeyk' tab in the Woocommerce settings", 'alopeyk-woocommerce-shipping'),
+				'title' => __("You can customize the shipping method in the 'Alopeyk' tab in the Woocommerce settings", 'alopeyk-woocommerce-shipping'),
             )
 		];
 	}

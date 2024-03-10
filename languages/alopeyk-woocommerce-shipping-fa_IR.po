@@ -1832,5 +1832,5 @@ msgstr "https://alopeyk.com/#section-services"
 msgid "https://alopeyk.com/"
 msgstr "https://alopeyk.com/"
 
-msgid "You can change the settings in the 'Alopeyk' tab in the Woocommerce settings"
-msgstr "برای تغییر تنظیمات به تب 'الوپیک' در تنظیمات ووکامرس مراجعه کنید."
+msgid "You can customize the shipping method in the 'Alopeyk' tab in the Woocommerce settings"
+msgstr "برای تغییر تنظیمات شیوه ارسال به تب 'الوپیک' در تنظیمات ووکامرس مراجعه کنید."
