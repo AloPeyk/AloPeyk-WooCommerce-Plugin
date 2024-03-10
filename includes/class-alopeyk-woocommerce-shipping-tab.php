@@ -325,7 +325,6 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			'default'     => $production_env['tracking_url'],
 			'class'       => 'awcshm-ltr'
 		);
-        dd($this->wrong_key);
 		if (!empty($this->api_key) and $this->wrong_key != 'yes') {
 			$form_fields['title'] = array(
 				'title'       => __('Method Title', 'alopeyk-woocommerce-shipping'),
