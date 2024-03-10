@@ -1057,7 +1057,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function dashboard_widget() {
 
 		$wrong_key = $this->helpers->get_option( 'wrong_key', true );
-		$wrong_key_state = $wrong_key == 'yes' ? true : false;
+		$wrong_key_state = $wrong_key == 'yes';
 		if ( ! $this->helpers->is_enabled() && $wrong_key_state ) {
 			$dashboard_widget_callback = 'dashboard_widget_enter_api';
 		} elseif ( ! $this->helpers->is_enabled() && ! $wrong_key_state ) {
@@ -1078,7 +1078,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		?>
 		<div class="awcshm-dashboard-widget" >
 			<p><img class="awcshm-dashboard-widget-logo" src="<?php echo $this->helpers->get_logo_url(); ?>"></p>
-			<p><?php echo __( 'In order to manage shipping your store orders, activate Alopeyk Woocommerce plugin by entering API Key.', 'alopeyk-woocommerce-shipping' ); ?></p>
+			<p><?php echo __( 'In order to active Alopeyk shipping method, enter Alopeyk API Key in the woocommerce settings.', 'alopeyk-woocommerce-shipping' ); ?></p>
 			<p>&nbsp;</p>
 			<p><a href="<?php echo esc_url( $this->get_settings_url() ); ?>" class="button button-primary" title="<?php echo __( 'Enter API key', 'alopeyk-woocommerce-shipping' ); ?>"><?php echo __( 'Enter API key', 'alopeyk-woocommerce-shipping' ); ?></a></p>
 			<p><a href="<?php echo $this->helpers->get_support_url();?>" title="<?php echo __( 'I have no API key', 'alopeyk-woocommerce-shipping' ); ?>"><u><?php echo __( 'I have no API key', 'alopeyk-woocommerce-shipping' ); ?></u></a></p>
@@ -1166,18 +1166,13 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	}
 
 	public function awcshm_admin_notice() {
-
 		$wrong_key = $this->helpers->get_option( 'wrong_key', true );
-		$wrong_key_state = $wrong_key == 'yes' ? true : false;
 		$class = 'notice notice-error is-dismissible';
-		if ( ! $this->helpers->is_enabled() && $wrong_key_state ) {
-			$message = __( 'In order to manage shipping your store orders, activate Alopeyk Woocommerce plugin by entering API Key.', 'alopeyk-woocommerce-shipping' );
-			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
-		} elseif ( ! $this->helpers->is_enabled() && ! $wrong_key_state ) {
-			$message = __( 'Alopeyk shipping method is not activated for your store. You can activate it by enabling the method via Settings page.', 'alopeyk-woocommerce-shipping' );
-			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
-		}
-	
+
+        if($wrong_key == 'yes') {
+            $message = __('The API key is not valid.', 'alopeyk-woocommerce-shipping');
+            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+        }
 	}
 
     public function check_and_update_active_order_status($alopeyk_order){

@@ -27,11 +27,9 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 
 	private $empty_fields_string;
 
-	private $api_key;
-
 	private $wrong_key;
 
-	private $enabled, $environment, $endpoint_url, $endpoint_api_url, $endpoint_tracking_url, $store_name, $store_phone, $store_lat, $store_lng, $store_address, $store_city, $store_unit, $map_marker, $store_description, $store_number, $title, $cost_type, $static_cost_type, $static_cost_fixed, $static_cost_percentage, $pt_motorbike, $pt_car, $pt_cargo, $pt_cargo_s, $auto_type, $auto_type_static, $status_change, $customer_dashboard, $tehran_timezone, $return_cod, $return_cod_customer, $return_cod_customer_alert;
+	private $api_key, $enabled, $environment, $endpoint_url, $endpoint_api_url, $endpoint_tracking_url, $store_name, $store_phone, $store_lat, $store_lng, $store_address, $store_city, $store_unit, $map_marker, $store_description, $store_number, $title, $cost_type, $static_cost_type, $static_cost_fixed, $static_cost_percentage, $pt_motorbike, $pt_car, $pt_cargo, $pt_cargo_s, $auto_type, $auto_type_static, $status_change, $customer_dashboard, $tehran_timezone, $return_cod, $return_cod_customer, $return_cod_customer_alert;
 
     /**
 	 * @since 2.0.0
@@ -67,9 +65,6 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	 */
 	public function before_settings()
 	{
-		if ($this->wrong_key == 'yes' && !empty($this->api_key)) {
-			$this->errors->add('wrong_key', __('The <strong>API key</strong> is not valid.', 'alopeyk-woocommerce-shipping'));
-		}
 		$empty_fields = array();
 		foreach ($this->required_fields as $required_field) {
 			if (isset($this->form_fields[$required_field]) && empty($this->{$required_field})) {
@@ -238,7 +233,9 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 				break;
 			}
 		}
-		return update_option($this->get_option_key(), apply_filters('woocommerce_settings_api_sanitized_fields_' . $this->id, $this->settings));
+
+        update_option($this->get_option_key(), apply_filters('woocommerce_settings_api_sanitized_fields_' . $this->id, $this->settings));
+        return wp_redirect( (new Alopeyk_WooCommerce_Shipping_Admin())->get_settings_url(), 301 );
 	}
 
 	/**
@@ -325,7 +322,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			'default'     => $production_env['tracking_url'],
 			'class'       => 'awcshm-ltr'
 		);
-		if (!empty($this->api_key) and $this->wrong_key != 'yes') {
+		if (!empty($this->helpers->get_option('api_key')) and $this->wrong_key != 'yes') {
 			$form_fields['title'] = array(
 				'title'       => __('Method Title', 'alopeyk-woocommerce-shipping'),
 				'type'        => 'text',
