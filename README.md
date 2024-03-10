@@ -163,3 +163,5 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Edit:** Use a constant value for refresh intervals and cron job
 *   **Edit:** Update logo and menu icon
 *   **Fix:** Add details in Alopeyk shipping modal
+*   **Fix:** Setting page errors
+*   **Edit:** Change default center in map
