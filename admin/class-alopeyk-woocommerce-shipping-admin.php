@@ -25,7 +25,10 @@ if ( class_exists( 'Alopeyk_WooCommerce_Shipping_Admin' ) ) {
 class Alopeyk_WooCommerce_Shipping_Admin {
 
 	private $plugin_name;
+
 	private $version;
+
+	private $helpers;
 
 	/**
 	 * @since 1.0.0
@@ -69,8 +72,10 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	 */
 	public function is_order_edit() {
 
+        // wordpress 5 -> shop_order
+        // wordpress 6 -> woocommerce_page_wc
 		$screen = get_current_screen();
-		return $screen->id == 'shop_order';
+		return in_array($screen->id, ['woocommerce_page_wc-orders', 'shop_order']);
 
 	}
 
@@ -80,7 +85,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function enqueue_styles( $hook_suffix ) {
 
 		$screen = get_current_screen();
-		if ( in_array( $screen->id, array( 'edit-shop_order', 'edit-alopeyk_order', 'alopeyk_order', 'shop_order' ) ) || strpos( $screen->id, '_page_alopeyk-credit' ) ) {
+		if ( in_array( $screen->id, array( 'edit-shop_order', 'edit-alopeyk_order', 'alopeyk_order', 'shop_order','woocommerce_page_wc-orders' ) ) || strpos( $screen->id, '_page_alopeyk-credit' ) ) {
 			wp_deregister_style( 'jquery-ui-style' );
 			wp_enqueue_style( 'wp-jquery-ui-dialog' );
 		}
@@ -199,7 +204,6 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	 */
 	public function add_address_fields( $fields ) {
 
-		global $post;
 		$extra_fields = array(
 			'address_latitude' => array(
 				'label'         => null,
@@ -247,11 +251,12 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function add_address_description_field() {
 
 		if ( $this->helpers->is_enabled() ) {
-			global $post;
+            $order = wc_get_order();
+            $description = $order->get_meta('_shipping_address_description');
 			echo '<p id="_shipping_address_description_field" class="form-field form-field-wide">' .
 					'<label for="_shipping_address_description"><strong>' . __( 'Address Description', 'alopeyk-woocommerce-shipping' ) . '</strong></label>' .
 					'<span class="awcshm-meta">' . __( 'This will be shown on courier device if order is being sent via Alopeyk shipping method and usually consists of order value, address details or any other sort of data needed for courier to know.', 'alopeyk-woocommerce-shipping' ) . '</span>' .
-					'<textarea id="_shipping_address_description" name="_shipping_address_description" rows="3">' . get_post_meta( $post->ID, '_shipping_address_description', true ) . '</textarea>' .
+					'<textarea id="_shipping_address_description" name="_shipping_address_description" rows="3">' . $description . '</textarea>' .
 				'</p>';
 		}
 
@@ -264,7 +269,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function save_address_description_field( $post_id ) {
 
 		$shipping_address_description_field = '_shipping_address_description';
-		if ( get_post_type( $post_id ) == 'shop_order' && isset( $_POST[$shipping_address_description_field] ) ) {
+		if ( in_array(get_post_type( $post_id ), ['woocommerce_page_wc-orders', 'shop_order']) && isset( $_POST[$shipping_address_description_field] ) ) {
 			update_post_meta( $post_id, $shipping_address_description_field, $_POST[$shipping_address_description_field] );
 		}
 
@@ -285,69 +290,85 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function handle_meta_boxes() {
 
 		global $post;
-		if ( $post && $common = $this->helpers ) {
-			if ( $common->is_enabled() ) {
-				$screen = get_current_screen();
-				$screen = $screen->id;
-				if ( $post->post_type == $common::$order_post_type_name ) {
-					$post_title = $post->post_title;
-					remove_meta_box( 'submitdiv', $screen, 'side' );
-					$order_data = get_post_meta( $post->ID, '_awcshm_order_data', true );
-					if ( $order_data ) {
-						$order_data->transport_type_name = $this->helpers->get_transport_type_name( $order_data->transport_type );
-						add_meta_box( METHOD_ID . '-order-courier-actions', __( 'Courier Information', 'alopeyk-woocommerce-shipping' ), function () use ( $order_data ) {
-							$courier_info = isset( $order_data->courier_info ) && $order_data->courier_info ? $order_data->courier_info : null;
-							if ( $courier_info ) {
-								$content = get_local_template_part( 'alopeyk-woocommerce-shipping-admin-meta-courier-info', array ( 'order_data' => $order_data ) );
-							} else {
-								$content = '<ul><li class="wide awcshm-meta-box-content-container">' . __( 'No courier assigned to this order yet.', 'alopeyk-woocommerce-shipping' ) . '</li></ul>';
-							}
-							echo $content;
-						}, $screen, 'side', 'default' );
-						add_meta_box( METHOD_ID . '-order-info-actions', __( 'Order Information', 'alopeyk-woocommerce-shipping' ), function () use ( $order_data ) {
-							echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-meta-order-info', array ( 'order_data' => $order_data ) );
-						}, $screen, 'side', 'default' );
-						add_meta_box( METHOD_ID . '-order-shipping-actions', __( 'Shipping Details', 'alopeyk-woocommerce-shipping' ), function () use ( $order_data ) {
-							echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-meta-shipping-info', array ( 'order_data' => $order_data ) );
-						}, $screen, 'normal', 'high' );
-					} else {
-						add_action( 'admin_notices', function () {
-							echo '<div class="notice error"><p>' . __( 'Order details not found.', 'alopeyk-woocommerce-shipping' ) . '</p></div>';
-						});
-					}
-				} else if ( $post->post_type == 'shop_order' ) {
-					$last_status = $common->get_order_history( $post->ID, array( 'posts_per_page' => 1 ) );
-					add_meta_box( METHOD_ID . '-wcorder-actions', __( 'Ship via Alopeyk', 'alopeyk-woocommerce-shipping' ), function () use ( $last_status ) {
-						echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-meta-wcorder', array ( 'last_status' => $last_status ? $last_status[0] : null ) );
-					}, $screen, 'side', 'default' );
-					$args = array();
-					$orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
-					$order = isset( $_GET['order'] ) ? $_GET['order'] : null;
-					if ( $order ) {
-						$args['order'] = $order;
-					}
-					if ( $orderby ) {
-						if ( in_array( $orderby, array( 'date', 'title' ) ) ) {
-							$args['orderby'] = $orderby;
-						} else if ( $orderby == 'customer' ) {
-							$args['orderby'] = 'meta_value_num';
-							$args['meta_key'] = '_awcshm_user_id';
-						} else if ( $orderby == 'wc_order' ) {
-							$args['orderby'] = 'meta_value_num';
-							$args['meta_key'] = '_awcshm_wc_order_id';
-						} else {
-							$args['orderby'] = 'meta_value_num';
-							$args['meta_key'] = '_awcshm_' . $orderby;
-						}
-					}
-					$last_status = $common->get_order_history( $post->ID, $args );
-					add_meta_box( METHOD_ID . '-wcorder-history', __( 'Alopeyk Orders History', 'alopeyk-woocommerce-shipping' ), function () use ( $last_status ) {
-						echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-order-history', array ( 'history' => $last_status ) );
-					}, $screen, 'normal', 'high' );
-				}
-			}
-		}
+        $common = $this->helpers;
 
+        if (!$common->is_enabled()) {
+            return;
+        }
+
+        $screen = get_current_screen();
+		$screen = $screen->id;
+
+        if ($post and $post->post_type == $common::$order_post_type_name ) {
+            $this->check_and_update_active_order_status($post);
+
+            remove_meta_box( 'submitdiv', $screen, 'side' );
+            $order_data = get_post_meta( $post->ID, '_awcshm_order_data', true );
+
+            if (!$order_data) {
+                add_action( 'admin_notices', function () {
+                    echo '<div class="notice error"><p>' . __( 'Order details not found.', 'alopeyk-woocommerce-shipping' ) . '</p></div>';
+                });
+                return;
+            }
+
+            $order_data->transport_type_name = $this->helpers->get_transport_type_name( $order_data->transport_type );
+            add_meta_box( METHOD_ID . '-order-courier-actions', __( 'Courier Information', 'alopeyk-woocommerce-shipping' ), function () use ( $order_data ) {
+                $courier_info = isset( $order_data->courier_info ) && $order_data->courier_info ? $order_data->courier_info : null;
+                if ( $courier_info ) {
+                    $content = get_local_template_part( 'alopeyk-woocommerce-shipping-admin-meta-courier-info', array ( 'order_data' => $order_data ) );
+                } else {
+                    $content = '<ul><li class="wide awcshm-meta-box-content-container">' . __( 'No courier assigned to this order yet.', 'alopeyk-woocommerce-shipping' ) . '</li></ul>';
+                }
+                echo $content;
+            }, $screen, 'side' );
+
+            add_meta_box( METHOD_ID . '-order-info-actions', __( 'Order Information', 'alopeyk-woocommerce-shipping' ), function () use ( $order_data ) {
+                echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-meta-order-info', array ( 'order_data' => $order_data ) );
+            }, $screen, 'side' );
+
+            add_meta_box( METHOD_ID . '-order-shipping-actions', __( 'Shipping Details', 'alopeyk-woocommerce-shipping' ), function () use ( $order_data ) {
+                echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-meta-shipping-info', array ( 'order_data' => $order_data ) );
+            }, $screen, 'normal', 'high' );
+        } else {
+            $order = wc_get_order();
+
+            if (!$order) {
+                return;
+            }
+
+            $last_status = $common->get_order_history( $order->get_id(), array( 'posts_per_page' => 1 ) );
+            add_meta_box( METHOD_ID . '-wcorder-actions', __( 'Ship via Alopeyk', 'alopeyk-woocommerce-shipping' ), function () use ( $last_status ) {
+                echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-meta-wcorder', array ( 'last_status' => $last_status ? $last_status[0] : null ) );
+			}, $screen, 'side' );
+
+            $args = array();
+            $requestOrder = isset( $_GET['order'] ) ? $_GET['order'] : null;
+            if ( $requestOrder ) {
+                $args['order'] = $requestOrder;
+            }
+
+            $orderby = isset( $_GET['orderby'] ) ? $_GET['orderby'] : null;
+            if ( $orderby ) {
+                if ( in_array( $orderby, array( 'date', 'title' ) ) ) {
+                    $args['orderby'] = $orderby;
+                } else if ( $orderby == 'customer' ) {
+                    $args['orderby'] = 'meta_value_num';
+                    $args['meta_key'] = '_awcshm_user_id';
+                } else if ( $orderby == 'wc_order' ) {
+                    $args['orderby'] = 'meta_value_num';
+                    $args['meta_key'] = '_awcshm_wc_order_id';
+                } else {
+                    $args['orderby'] = 'meta_value_num';
+                    $args['meta_key'] = '_awcshm_' . $orderby;
+                }
+            }
+
+            $last_status = $common->get_order_history( $order->get_id(), $args );
+            add_meta_box( METHOD_ID . '-wcorder-history', __( 'Alopeyk Orders History', 'alopeyk-woocommerce-shipping' ), function () use ( $last_status ) {
+                echo get_local_template_part( 'alopeyk-woocommerce-shipping-admin-order-history', array ( 'history' => $last_status ) );
+            }, $screen, 'normal', 'high' );
+        }
 	}
 
 	/**
@@ -455,8 +476,12 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function set_custom_column_content( $column, $post_id ) {
 
 		$post = get_post( $post_id );
-		$post_type = $post->post_type;
-		$post_status = $post->post_status;
+        if ($this->check_and_update_active_order_status($post)) {
+            $post = get_post( $post_id );
+        }
+
+        $post_status = $post->post_status;
+        $post_type = $post->post_type;
 		$post_status_label = $this->helpers->get_order_status_label( $post_status );
 		$alopeyk_order_id = get_post_meta( $post_id, '_awcshm_order_id' );
 		switch ( $column ) {
@@ -629,8 +654,10 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	 */
 	public function sort_meta_columns( $query ) {
 
-		if ( ! is_admin() )
-			return;  
+		if ( ! is_admin() ){
+            return;
+        }
+
 		$orderby = $query->get( 'orderby' );
 		if ( 'order_type' == $orderby ) {  
 			$query->set( 'meta_key','_awcshm_order_type' );  
@@ -648,6 +675,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			$query->set( 'meta_key','_awcshm_order_price' );  
 			$query->set( 'orderby','meta_value_num' );
 		}
+
 		return $query;
 
 	}
@@ -943,8 +971,6 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function ajax_discount_coupon_submit_modal( $data ) {
 
 		$response = $this->check_order_data( $data );
-		$success  = $response['success'];
-		$message  = $response['message'];
 		$package  = (array) $response['package'];
 		if ( isset( $package['shipping']->discount ) && $package['shipping']->discount >= 0 ) {
 			$this->helpers->respond_ajax( '', true );
@@ -1009,7 +1035,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			parse_str( $data['data'], $data );
 			if ( $data ) {
 				$orders       = isset( $data['orders'] )      ? $data['orders']        : array();
-				$type         = isset( $data['type'] )        ? $data['type']          : null;
+                $type         = isset( $data['type'] )        ? $data['type']          : null;
 				$description  = isset( $data['description'] ) ? $data['description']   : null;
 				$ship_now     = isset( $data['ship_now'] )    ? $data['ship_now']      : null;
 				$ship_date    = isset( $data['ship_date'] )   ? $data['ship_date']     : null;
@@ -1031,7 +1057,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function dashboard_widget() {
 
 		$wrong_key = $this->helpers->get_option( 'wrong_key', true );
-		$wrong_key_state = $wrong_key == 'yes' ? true : false;
+		$wrong_key_state = $wrong_key == 'yes';
 		if ( ! $this->helpers->is_enabled() && $wrong_key_state ) {
 			$dashboard_widget_callback = 'dashboard_widget_enter_api';
 		} elseif ( ! $this->helpers->is_enabled() && ! $wrong_key_state ) {
@@ -1052,7 +1078,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		?>
 		<div class="awcshm-dashboard-widget" >
 			<p><img class="awcshm-dashboard-widget-logo" src="<?php echo $this->helpers->get_logo_url(); ?>"></p>
-			<p><?php echo __( 'In order to manage shipping your store orders, activate Alopeyk Woocommerce plugin by entering API Key.', 'alopeyk-woocommerce-shipping' ); ?></p>
+			<p><?php echo __( 'In order to active Alopeyk shipping method, enter Alopeyk API Key in the woocommerce settings.', 'alopeyk-woocommerce-shipping' ); ?></p>
 			<p>&nbsp;</p>
 			<p><a href="<?php echo esc_url( $this->get_settings_url() ); ?>" class="button button-primary" title="<?php echo __( 'Enter API key', 'alopeyk-woocommerce-shipping' ); ?>"><?php echo __( 'Enter API key', 'alopeyk-woocommerce-shipping' ); ?></a></p>
 			<p><a href="<?php echo $this->helpers->get_support_url();?>" title="<?php echo __( 'I have no API key', 'alopeyk-woocommerce-shipping' ); ?>"><u><?php echo __( 'I have no API key', 'alopeyk-woocommerce-shipping' ); ?></u></a></p>
@@ -1140,18 +1166,21 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	}
 
 	public function awcshm_admin_notice() {
-
 		$wrong_key = $this->helpers->get_option( 'wrong_key', true );
-		$wrong_key_state = $wrong_key == 'yes' ? true : false;
 		$class = 'notice notice-error is-dismissible';
-		if ( ! $this->helpers->is_enabled() && $wrong_key_state ) {
-			$message = __( 'In order to manage shipping your store orders, activate Alopeyk Woocommerce plugin by entering API Key.', 'alopeyk-woocommerce-shipping' );
-			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
-		} elseif ( ! $this->helpers->is_enabled() && ! $wrong_key_state ) {
-			$message = __( 'Alopeyk shipping method is not activated for your store. You can activate it by enabling the method via Settings page.', 'alopeyk-woocommerce-shipping' );
-			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
-		}
-	
+
+        if($wrong_key == 'yes') {
+            $message = __('The API key is not valid.', 'alopeyk-woocommerce-shipping');
+            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+        }
 	}
 
+    public function check_and_update_active_order_status($alopeyk_order){
+        if (in_array($alopeyk_order->post_status, array( 'awcshm-progress', 'awcshm-pending', 'awcshm-scheduled' ))) {
+            $this->helpers->update_active_order( $alopeyk_order->ID );
+            return true;
+        }
+
+        return false;
+    }
 }
