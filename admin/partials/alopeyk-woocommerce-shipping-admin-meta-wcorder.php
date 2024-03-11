@@ -29,8 +29,8 @@ $last_status = isset( $data['last_status'] ) ? $data['last_status'] : null;
 	</li>
 	<li class="wide awcshm-meta-box-actions-container">
 		<?php
-			global $post;
-			$order_shipping = get_post_meta( $post->ID, '_awcshm_shipping', true );
+            $order = wc_get_order();
+		    $order_shipping = $order->get_meta('_awcshm_shipping');
 			$transport_type = $order_shipping && isset( $order_shipping['type'] ) ? $order_shipping['type'] : null;
 			if ( $last_status ) {
 				if ( isset( $last_status['actions']['view'] ) ) {
@@ -50,13 +50,13 @@ $last_status = isset( $data['last_status'] ) ? $data['last_status'] : null;
 					}
 				} else {
 		?>
-		<button type="button" class="button button-primary awcshm-order-modal-toggler" data-order-ids="<?php echo $post->ID; ?>"<?php if ( $transport_type ) { ?> data-order-types="<?php echo $transport_type ?>"<?php } ?>><?php echo __( 'Ship Again', 'alopeyk-woocommerce-shipping' ); ?></button>
+		<button type="button" class="button button-primary awcshm-order-modal-toggler" data-order-ids="<?php echo wc_get_order()->get_id(); ?>"<?php if ( $transport_type ) { ?> data-order-types="<?php echo $transport_type ?>"<?php } ?>><?php echo __( 'Ship Again', 'alopeyk-woocommerce-shipping' ); ?></button>
 		<?php
 				}
 			} else {
 		?>
 		<div class="awcshm-single-action-container">
-			<button type="button" class="button button-primary awcshm-order-modal-toggler" data-order-ids="<?php echo $post->ID; ?>"<?php if ( $transport_type ) { ?> data-order-types="<?php echo $transport_type ?>"<?php } ?>><?php echo __( 'Ship', 'alopeyk-woocommerce-shipping' ); ?></button>
+			<button type="button" class="button button-primary awcshm-order-modal-toggler" data-order-ids="<?php echo wc_get_order()->get_id(); ?>"<?php if ( $transport_type ) { ?> data-order-types="<?php echo $transport_type ?>"<?php } ?>><?php echo __( 'Ship', 'alopeyk-woocommerce-shipping' ); ?></button>
 		</div>
 		<?php
 			}

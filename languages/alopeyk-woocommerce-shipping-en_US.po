@@ -278,11 +278,9 @@ msgstr "Alopeyk Woocommerce Shipping"
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1055
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1148
 msgid ""
-"In order to manage shipping your store orders, activate Alopeyk Woocommerce "
-"plugin by entering API Key."
+"In order to active Alopeyk shipping method, enter Alopeyk API Key in the woocommerce settings."
 msgstr ""
-"In order to manage shipping your store orders, activate Alopeyk Woocommerce "
-"plugin by entering API Key."
+"In order to active Alopeyk shipping method, enter Alopeyk API Key in the woocommerce settings."
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1057
 msgid "Enter API key"
