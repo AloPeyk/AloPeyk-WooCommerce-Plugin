@@ -1,5 +1,5 @@
 {
     "require": {
-        "alopeyk/alopeyk-api-php": "@dev"
+        "alopeyk/alopeyk-api-php": "^1.4"
     }
 }
