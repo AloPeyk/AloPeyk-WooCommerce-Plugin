@@ -26,7 +26,11 @@ class Alopeyk_WooCommerce_Shipping_Public {
 
 	private $plugin_name;
 
-	/**
+    private $version;
+
+    private $helpers;
+
+    /**
 	 * @since 1.0.0
 	 * @param string $plugin_name
 	 * @param string $version

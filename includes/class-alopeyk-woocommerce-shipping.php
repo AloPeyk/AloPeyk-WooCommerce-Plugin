@@ -141,7 +141,7 @@ class Alopeyk_WooCommerce_Shipping {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_common, 'localize_scripts' );
 		$this->loader->add_action( 'wp_ajax_' . METHOD_ID, $plugin_common, 'dispatch_requests' );
 		$this->loader->add_action( 'wp_ajax_nopriv_' . METHOD_ID, $plugin_common, 'dispatch_requests' );
-		$this->loader->add_action( 'woocommerce_before_order_notes', $plugin_common, 'add_address_fields' );
+		$this->loader->add_action( 'woocommerce_after_checkout_billing_form', $plugin_common, 'add_address_fields' );
 		$this->loader->add_action( 'woocommerce_after_edit_address_form_shipping', $plugin_common, 'add_address_fields' );
 		$this->loader->add_action( 'woocommerce_customer_save_address', $plugin_common, 'save_address_fields', 10, 2 );
 		$this->loader->add_action( 'woocommerce_checkout_process', $plugin_common, 'check_checkout_fields' );

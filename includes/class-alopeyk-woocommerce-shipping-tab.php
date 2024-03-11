@@ -14,11 +14,24 @@
 class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 {
 	public $form_fields = [];
+
 	public $settings = [];
+
 	public $required_fields = [];
+
 	public $parentId = "";
 
-	/**
+	private $errors;
+
+	private $helpers;
+
+	private $empty_fields_string;
+
+	private $wrong_key;
+
+	private $api_key, $enabled, $environment, $endpoint_url, $endpoint_api_url, $endpoint_tracking_url, $store_name, $store_phone, $store_lat, $store_lng, $store_address, $store_city, $store_unit, $map_marker, $store_description, $store_number, $title, $cost_type, $static_cost_type, $static_cost_fixed, $static_cost_percentage, $pt_motorbike, $pt_car, $pt_cargo, $pt_cargo_s, $auto_type, $auto_type_static, $status_change, $customer_dashboard, $tehran_timezone, $return_cod, $return_cod_customer, $return_cod_customer_alert;
+
+    /**
 	 * @since 2.0.0
 	 */
 	public function __construct()
@@ -52,9 +65,6 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	 */
 	public function before_settings()
 	{
-		if ($this->wrong_key == 'yes' && !empty($this->api_key)) {
-			$this->errors->add('wrong_key', __('The <strong>API key</strong> is not valid.', 'alopeyk-woocommerce-shipping'));
-		}
 		$empty_fields = array();
 		foreach ($this->required_fields as $required_field) {
 			if (isset($this->form_fields[$required_field]) && empty($this->{$required_field})) {
@@ -176,8 +186,6 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	 */
 	public function save()
 	{
-		global $current_section;
-
 		$this->init_settings();
 		$post_data = $this->get_post_data();
 		$fields = $this->form_fields;
@@ -219,18 +227,15 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 				$this->settings['wrong_key'] = 'yes';
 			}
 		}
-		$empty_fields = array();
 		foreach ($this->required_fields as $required_field) {
 			if (!isset($this->settings[$required_field]) || empty($this->settings[$required_field])) {
 				$this->settings['enabled'] = 'no';
 				break;
 			}
 		}
-		return update_option($this->get_option_key(), apply_filters('woocommerce_settings_api_sanitized_fields_' . $this->id, $this->settings));
 
-		if ($current_section) {
-			do_action('woocommerce_update_options_' . $this->id . '_' . $current_section);
-		}
+        update_option($this->get_option_key(), apply_filters('woocommerce_settings_api_sanitized_fields_' . $this->id, $this->settings));
+        return wp_redirect( (new Alopeyk_WooCommerce_Shipping_Admin())->get_settings_url(), 301 );
 	}
 
 	/**
@@ -317,7 +322,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			'default'     => $production_env['tracking_url'],
 			'class'       => 'awcshm-ltr'
 		);
-		if (!empty($this->api_key) && $this->wrong_key != 'yes') {
+		if (!empty($this->helpers->get_option('api_key')) and $this->wrong_key != 'yes') {
 			$form_fields['title'] = array(
 				'title'       => __('Method Title', 'alopeyk-woocommerce-shipping'),
 				'type'        => 'text',
@@ -527,45 +532,6 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 				'type'              => 'checkbox',
 				'default'           => 'yes',
 				'desc_tip'          => __('Check this checkbox only if you want to use “Tehran TomeZone” for Alopeyk orders, otherwise default Wordpress timezone will be used.', 'alopeyk-woocommerce-shipping'),
-			);
-			$form_fields['refresh_options_title_spacer'] = array(
-				'type'  => 'title',
-				'title' => '&nbsp;'
-			);
-			$form_fields['refresh_options_title'] = array(
-				'title' => __('Refresh Options', 'alopeyk-woocommerce-shipping'),
-				'type'  => 'title',
-			);
-			$form_fields['refresh_cron_interval'] = array(
-				'title'       => __('Cron Interval', 'alopeyk-woocommerce-shipping'),
-				'label'       => __('Enabled'),
-				'type'        => 'text',
-				'default'     => '10',
-				'desc'        => __('The number of seconds between each request for fetching the latest status of an active order. It is highly recommended to be more than 10.', 'alopeyk-woocommerce-shipping'),
-				'placeholder' => '10',
-				'custom_attributes' => array(
-					'pattern' => '\d*'
-				)
-			);
-			$form_fields['refresh_admin_interval'] = array(
-				'title'       => __('Admin Refresh Interval', 'alopeyk-woocommerce-shipping'),
-				'type'        => 'text',
-				'default'     => '10',
-				'desc'        => __('The number of seconds between refreshes in admin panel for bringing latest order details to the screen. It is highly recommended to be more than 10.', 'alopeyk-woocommerce-shipping'),
-				'placeholder' => '10',
-				'custom_attributes' => array(
-					'pattern' => '\d*'
-				)
-			);
-			$form_fields['refresh_public_interval'] = array(
-				'title'       => __('Front Refresh Interval', 'alopeyk-woocommerce-shipping'),
-				'type'        => 'text',
-				'default'     => '10',
-				'desc'        => __('The number of seconds between refreshes in customer dashboard for bringing latest order details to the screen. It is highly recommended to be more than 10.', 'alopeyk-woocommerce-shipping'),
-				'placeholder' => '10',
-				'custom_attributes' => array(
-					'pattern' => '\d*'
-				)
 			);
 			if (is_admin()) {
 				$wc_payment_gateways = @WC()->payment_gateways;

@@ -49,8 +49,8 @@
 			defaultZoom                          : 15,
 			maxZoom                              : 17,
 			defaultCenter                        : {
-				lat : 35.732466,
-				lng : 51.413811
+				lat : 35.6996468,
+				lng : 51.3377773
 			},
 			parsiMapJsLib                        : 'https://www.parsimap.com/docs/leaflet/v1.5.1/leaflet.js',
 			parsiMapCssLib                       : 'https://www.parsimap.com/docs/leaflet/v1.5.1/leaflet.css',

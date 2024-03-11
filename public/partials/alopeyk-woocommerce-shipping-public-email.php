@@ -13,12 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$data = $this->vars;
-$tel = isset( $data['tel'] ) ? $data['tel'] : null;
-$extra = isset( $data['extra'] ) ? $data['extra'] : null;
-$message = isset( $data['message'] ) ? $data['message'] : '';
-$direction = is_rtl() ? 'rtl' : 'ltr';
+$data         = $this->vars;
+$tel          = isset( $data['tel'] ) ? $data['tel'] : null;
+$extra        = isset( $data['extra'] ) ? $data['extra'] : null;
+$message      = isset( $data['message'] ) ? $data['message'] : '';
+$direction    = is_rtl() ? 'rtl' : 'ltr';
 $campaign_url = isset( $data['campaign_url'] ) ? $data['campaign_url'] : 'https://alopeyk.com';
+
+// Load colors
+$color_blue       = '#1da5e1';
+$color_blue_dark  = '#2f3742';
+$color_gray       = '#95a5a6';
+$color_gray_light = '#ECF0F1';
+$color_white      = '#ffffff';
+$text_color       = $color_gray;
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +39,97 @@ $campaign_url = isset( $data['campaign_url'] ) ? $data['campaign_url'] : 'https:
 		<meta name="format-detection" content="date=no">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="viewport" content="width=device-width" initial-scale="1.0" user-scalable="yes">
-		<link href="https://1160650779.rsc.cdn77.org/assets/css/iransans.css" rel="stylesheet" type="text/css">
+        <style>
+            * {
+                direction: <?php echo is_rtl() ? 'rtl' : 'ltr' ?>;
+                color: <?php echo $color_gray ?>;
+                font-size: 13px;
+                line-height: 1.7;
+                text-rendering: optimizeLegibility !important;
+                -webkit-font-smoothing: antialiased !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                -ms-text-size-adjust: 100% !important;
+                -webkit-text-size-adjust: 100% !important;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            a {
+                display: inline-block;
+                vertical-align: middle;
+                text-decoration: none;
+                font-family: inherit !important;
+                font-size: inherit !important;
+                font-style: inherit !important;
+                font-variant-caps: inherit !important;
+                line-height: inherit !important;
+                font-weight: 600 !important;
+            }
+            p {
+                margin-top: 13px;
+                margin-bottom: 13px;
+                text-align: <?php echo is_rtl() ? 'right' : 'left' ?>;
+            }
+            img {
+                margin: 0 !important;
+                color: inherit !important;
+                font: inherit !important;
+                border: 0 none !important;
+                white-space: nowrap;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            a img {
+                display: block;
+            }
+            a, b, strong {
+                font-weight: 600;
+            }
+            .ltr {
+                direction: ltr !important;
+            }
+            .wrapper-inner {
+                padding-top: 16px;
+                padding-bottom: 16px;
+            }
+            .content-inner {
+                padding: 40px;
+            }
+            .footer-inner {
+                padding: 30px 50px 30px 50px;
+            }
+            .footer-inner * {
+                margin: 0;
+                padding: 0;
+                color: <?php echo $color_white ?>;
+                text-align: center;
+                font-size: 11px;
+                line-height: 150%;
+            }
+            .footer-data > *,
+            .footer-inner  > * {
+                margin: 0 0 5px;
+            }
+            .footer-data > *:last-child,
+            .footer-inner  > *:last-child {
+                margin: 0 0 0 0;
+            }
+            .footer-copyright {
+                margin: 10px 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .logo {
+                margin-top: 50px;
+                font-size: 48px !important;
+                color: <?php echo $color_blue ?> !important;
+            }
+            .social-link {
+                margin: 0 4px;
+            }
+        </style>
 	</head>
 	<body bgcolor="#ECF0F1" leftmargin="0" marginheight="0" marginwidth="0" style="background:#ECF0F1;">
 		<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" align="center" style="min-width:680px;width:680px;background:#ffffff;" width="680">
