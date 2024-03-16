@@ -1169,7 +1169,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		$wrong_key = $this->helpers->get_option( 'wrong_key', true );
 		$class = 'notice notice-error is-dismissible';
 
-        if($wrong_key == 'yes') {
+        if($wrong_key == 'yes' and $this->helpers->get_option('api_key')) {
             $message = __('The API key is not valid.', 'alopeyk-woocommerce-shipping');
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
         }

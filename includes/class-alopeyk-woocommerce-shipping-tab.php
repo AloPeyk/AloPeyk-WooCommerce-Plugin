@@ -275,12 +275,14 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 
 			'enabled' => array(
 				'title'   => __('Enable/Disable', 'alopeyk-woocommerce-shipping'),
+				'id' => 'enabled',
 				'type'    => 'checkbox',
 				'desc'    => __('Enable Alopeyk shipping', 'alopeyk-woocommerce-shipping'),
 				'default' => 'no',
 			),
 			'api_key' => array(
 				'title'       => __('API Key', 'alopeyk-woocommerce-shipping'),
+				'id' => 'api_key',
 				'type'        => 'text',
 				'default'     => '',
 				'desc'        => $api_user_notice,
@@ -300,24 +302,28 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 		$form_fields['environment'] = array(
 			'title'       => __('Environment', 'alopeyk-woocommerce-shipping'),
 			'type'        => 'select',
+			'id' => 'environment',
 			'options'     => $env_option,
-			'default'     => 'product',
+			'default'     => 'production',
 			'desc'        => __('Please select the appropriate plugin environment in consultation with the Alopeyk sales team.', 'alopeyk-woocommerce-shipping'),
 		);
 		$form_fields['endpoint_url'] = array(
 			'title'       => __('Endpoint Url', 'alopeyk-woocommerce-shipping'),
+			'id' => 'endpoint_url',
 			'type'        => 'text',
 			'default'     => $production_env['url'],
 			'class'       => 'awcshm-ltr'
 		);
 		$form_fields['endpoint_api_url'] = array(
 			'title'       => __('Endpoint API Url', 'alopeyk-woocommerce-shipping'),
+			'id' => 'endpoint_api_url',
 			'type'        => 'text',
 			'default'     => $production_env['api_url'],
 			'class'       => 'awcshm-ltr'
 		);
 		$form_fields['endpoint_tracking_url'] = array(
 			'title'       => __('Endpoint Tracking Url', 'alopeyk-woocommerce-shipping'),
+			'id' => 'endpoint_tracking_url',
 			'type'        => 'text',
 			'default'     => $production_env['tracking_url'],
 			'class'       => 'awcshm-ltr'
@@ -325,6 +331,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 		if (!empty($this->helpers->get_option('api_key')) and $this->wrong_key != 'yes') {
 			$form_fields['title'] = array(
 				'title'       => __('Method Title', 'alopeyk-woocommerce-shipping'),
+				'id' => 'title',
 				'type'        => 'text',
 				'default'     => __('Alopeyk', 'alopeyk-woocommerce-shipping'),
 				'desc'        => __('This controls the title which the user will see during checkout proccess.', 'alopeyk-woocommerce-shipping'),
@@ -334,11 +341,13 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 				'title' => '&nbsp;'
 			);
 			$form_fields['store_options_title'] = array(
+				'id' => 'store_options_title',
 				'title'       => __('Store Details', 'alopeyk-woocommerce-shipping'),
 				'type'        => 'title',
 			);
 			$form_fields['store_name'] = array(
 				'title'             => __('Store Name', 'alopeyk-woocommerce-shipping'),
+				'id' => 'store_name',
 				'type'              => 'text',
 				'desc'              => __('This is your store\'s name.', 'alopeyk-woocommerce-shipping'),
 				'custom_attributes' => array(
@@ -347,6 +356,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['store_number'] = array(
 				'title'             =>  __('Store Number', 'alopeyk-woocommerce-shipping'),
+				'id' => 'store_number',
 				'type'              => 'text',
 				'desc'              => __('This is your store\'s number.', 'alopeyk-woocommerce-shipping'),
 				'custom_attributes' => array(
@@ -355,6 +365,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['store_unit'] = array(
 				'title'             => __('Store Unit', 'alopeyk-woocommerce-shipping'),
+				'id' => 'store_unit',
 				'type'              => 'text',
 				'desc'              => __('This is your store\'s unit.', 'alopeyk-woocommerce-shipping'),
 				'custom_attributes' => array(
@@ -363,6 +374,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['store_phone'] = array(
 				'title'             => __('Store Phone', 'alopeyk-woocommerce-shipping'),
+				'id' => 'store_phone',
 				'type'              => 'text',
 				'desc'              => __('This is your store\'s phone.', 'alopeyk-woocommerce-shipping'),
 				'custom_attributes' => array(
@@ -373,6 +385,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['store_lat'] = array(
 				'title'             => __('Store Latitude', 'alopeyk-woocommerce-shipping'),
+				'id' => 'store_lat',
 				'type'              => 'text',
 				'desc'              => __('Latitude for specified store address.', 'alopeyk-woocommerce-shipping'),
 				'custom_attributes' => array(
@@ -381,6 +394,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['store_lng'] = array(
 				'title'             => __('Store Longitude', 'alopeyk-woocommerce-shipping'),
+				'id' => 'store_lng',
 				'type'              => 'text',
 				'desc'              => __('Longitude for specified store address.', 'alopeyk-woocommerce-shipping'),
 				'custom_attributes' => array(
@@ -389,6 +403,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['store_city'] = array(
 				'title'             => __('Store City', 'alopeyk-woocommerce-shipping'),
+				'id' => 'store_city',
 				'type'              => 'text',
 				'class'             => 'disabled hide-parent-row',
 				'default'           => '',
@@ -397,6 +412,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['store_address'] = array(
 				'title'             => __('Store Address', 'alopeyk-woocommerce-shipping'),
+				'id' => 'store_address',
 				'type'              => 'text',
 				'class'             => 'disabled hidden',
 				'default'           => '',
@@ -408,6 +424,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['store_description'] = array(
 				'title'       => __('Origin Description', 'alopeyk-woocommerce-shipping'),
+				'id' => 'store_description',
 				'type'        => 'textarea',
 				'desc_tip'    => __('This will be used as origin description shown on couriers device. In most cases it consists of store address details.', 'alopeyk-woocommerce-shipping'),
 			);
@@ -417,10 +434,12 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['map_options_title'] = array(
 				'title' => __('Map Options', 'alopeyk-woocommerce-shipping'),
+				'id' => 'map_options_title',
 				'type'  => 'title',
 			);
 			$form_fields['map_marker'] = array(
 				'title'             => __('Marker Image', 'alopeyk-woocommerce-shipping'),
+				'id' => 'map_marker',
 				'type'              => 'text',
 				'class'             => 'input-upload hidden',
 				'desc_tip'          => __('You can upload your desired marker image here to be used instead of Cedar\'s default marker image on address maps around your store.', 'alopeyk-woocommerce-shipping'),
@@ -435,10 +454,12 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['cost_options_title'] = array(
 				'title' => __('Cost Options', 'alopeyk-woocommerce-shipping'),
+				'id' => 'cost_options_title',
 				'type'  => 'title',
 			);
 			$form_fields['cost_type'] = array(
 				'title'       => __('Cost Type', 'alopeyk-woocommerce-shipping'),
+				'id' => 'cost_type',
 				'type'        => 'select',
 				'options'     => array(
 					'dynamic' => __('Dynamic Cost', 'alopeyk-woocommerce-shipping'),
@@ -449,6 +470,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['static_cost_type'] = array(
 				'title'       => __('Static Cost Type', 'alopeyk-woocommerce-shipping'),
+				'id' => 'static_cost_type',
 				'type'        => 'select',
 				'options'     => array(
 					'percentage' => __('Percentage', 'alopeyk-woocommerce-shipping'),
@@ -459,25 +481,27 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['static_cost_fixed'] = array(
 				'title'       => __('Fixed Cost', 'alopeyk-woocommerce-shipping'),
+				'id' => 'static_cost_fixed',
 				'type'        => 'text',
 				'default'     => '0',
 				'desc'        => __('This option defines the fixed cost should be added to total cart amount. (IRR)', 'alopeyk-woocommerce-shipping'),
 			);
 			$form_fields['static_cost_percentage'] = array(
 				'title'       => __('Percentage Cost', 'alopeyk-woocommerce-shipping'),
+				'id' => 'static_cost_percentage',
 				'type'        => 'text',
 				'default'     => '0',
 				'desc'        => __('This option defines the percentage of cart amount that should be added to total cart amount.', 'alopeyk-woocommerce-shipping'),
 			);
 			$form_fields['transport_types_settings'] = array(
 				'title' => __('Transportation Type Settings', 'alopeyk-woocommerce-shipping'),
-				'id'    => '',
+				'id'    => 'transport_types_settings',
 				'type'  => 'title',
 			);
 			foreach ($this->helpers->get_transport_types(false) as  $key => $transport_type) {
-
 				$form_fields['pt_' . $key] = array(
 					'title'       => __('Ship via', 'alopeyk-woocommerce-shipping') . ' ' . __($transport_type['label'], 'alopeyk-woocommerce-shipping'),
+					'id' => 'pt_' . $key,
 					'type'        => 'checkbox',
 					'default'     => 'yes',
 					'desc'        => __('Enabled', 'alopeyk-woocommerce-shipping'),
@@ -486,6 +510,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			}
 			$form_fields['auto_type'] = array(
 				'title'       => __('Smart Switch', 'alopeyk-woocommerce-shipping'),
+				'id' => 'auto_type',
 				'type'        => 'checkbox',
 				'default'     => 'yes',
 				'desc'        => __('Show only most optimal shipping method', 'alopeyk-woocommerce-shipping'),
@@ -496,6 +521,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['auto_type_static'] = array(
 				'title'       => __('&nbsp;', 'alopeyk-woocommerce-shipping'),
+				'id' => 'auto_type_static',
 				'type'        => 'checkbox',
 				'default'     => 'yes',
 				'desc'        => __('Use default price set for choosing most optimal method', 'alopeyk-woocommerce-shipping'),
@@ -510,10 +536,12 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['order_options_title'] = array(
 				'title' => __('Order Options', 'alopeyk-woocommerce-shipping'),
+				'id' => 'order_options_title',
 				'type'  => 'title',
 			);
 			$form_fields['status_change'] = array(
 				'title'             => __('Status Change', 'alopeyk-woocommerce-shipping'),
+				'id' => 'status_change',
 				'desc'              => __('Enabled', 'alopeyk-woocommerce-shipping'),
 				'type'              => 'checkbox',
 				'default'           => 'yes',
@@ -521,6 +549,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['customer_dashboard'] = array(
 				'title'             => __('Dashboard Tracking', 'alopeyk-woocommerce-shipping'),
+				'id' => 'customer_dashboard',
 				'desc'              => __('Enabled', 'alopeyk-woocommerce-shipping'),
 				'type'              => 'checkbox',
 				'default'           => 'yes',
@@ -528,6 +557,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			);
 			$form_fields['tehran_timezone'] = array(
 				'title'             => __('Use Tehran TimeZone', 'alopeyk-woocommerce-shipping'),
+				'id' => 'tehran_timezone',
 				'desc'              => __('Enabled', 'alopeyk-woocommerce-shipping'),
 				'type'              => 'checkbox',
 				'default'           => 'yes',
@@ -544,11 +574,13 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 						);
 						$form_fields['payment_options_title'] = array(
 							'title' => __('Payment Options', 'alopeyk-woocommerce-shipping'),
+							'id' => 'payment_options_title',
 							'type'  => 'title',
 						);
 						foreach ($gateways as $gateway) {
 							$form_fields['return_' . $gateway->id] = array(
 								'title'             => $gateway->title,
+								'id' => 'return_' . $gateway->id,
 								'desc'              => __('Has return', 'alopeyk-woocommerce-shipping'),
 								'type'              => 'checkbox',
 								'default'           => $gateway->id == 'cod' ? 'yes' : 'no',
@@ -559,6 +591,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 							);
 							$form_fields['return_' . $gateway->id . '_customer'] = array(
 								'desc'              => __('Customer should pay for return cost', 'alopeyk-woocommerce-shipping'),
+								'id' => 'return_' . $gateway->id . '_customer',
 								'type'              => 'checkbox',
 								'default'           => 'no',
 								'desc_tip'          => __('Check this checkbox only if you want customers to pay for return costs whenever this payment method is chosen. If not checked, the cost will be deducted from your Alopeyk account.', 'alopeyk-woocommerce-shipping'),
@@ -569,6 +602,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 							);
 							$form_fields['return_' . $gateway->id . '_customer_alert'] = array(
 								'desc'              => __('Warn customer about price change', 'alopeyk-woocommerce-shipping'),
+								'id' => 'return_' . $gateway->id . '_customer_alert',
 								'type'              => 'checkbox',
 								'default'           => 'yes',
 								'desc_tip'          => __('Check this checkbox only if you want inform customers about the return cost that will be added to total price.', 'alopeyk-woocommerce-shipping'),

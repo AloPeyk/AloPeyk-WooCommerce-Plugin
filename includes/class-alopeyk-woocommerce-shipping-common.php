@@ -45,7 +45,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		'schedule_time_interval'       => 1,                                                               // Minutes
 		'schedule_first_request_delay' => 1,                                                               // Minutes
 		'credit_amounts'               => array( '10000', '20000', '30000', '50000', '100000', '200000' ), // Tomans
-		'supportTel'                   => '+982141346',
+		'supportTel'                   => '+982151797000',
 		'devEmail'                     => 'dev@alopeyk.com',
 		'transport_limits'             => array(
 			'motorbike' => array(

@@ -33,7 +33,7 @@ $data = $this->vars;
 						</div>
 					</div>
 					<div class="awcshm-support-content-item-footer">
-						<a href="https://dashboard.alopeyk.com" target="_blank" class="button button-primary"><?php echo __( 'Go to my dashboard', 'alopeyk-woocommerce-shipping' ); ?></a>
+						<a href="https://app.alopeyk.com" target="_blank" class="button button-primary"><?php echo __( 'Go to my dashboard', 'alopeyk-woocommerce-shipping' ); ?></a>
 					</div>
 				</div>
 			</div>
