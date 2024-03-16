@@ -148,7 +148,7 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Edit:** Refactor new order function
 *   **Fix:** nested condition syntax
 *   **Fix:** Show shipping rates and map
-##### 4.0
+##### 4.0.0
 *   **Edit:** Compatible plugin with WordPress 6.x and Woocommerce 8.x
 *   **Edit:** Compatible plugin with PHP 8.x
 *   **Edit:** Improvements in code quality
@@ -165,3 +165,9 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Fix:** Add details in Alopeyk shipping modal
 *   **Fix:** Setting page errors
 *   **Edit:** Change default center in map
+##### 4.1.0
+*   **Edit:** Support details
+*   **Fix:** Invalid api error on after fresh install
+*   **Fix:** Set Default environment to production
+*   **Fix:** Hide environment url fields
+
