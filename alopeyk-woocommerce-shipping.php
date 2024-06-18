@@ -3,13 +3,13 @@
 /**
  * @link                  https://alopeyk.com
  * @since                 1.0.0
- * @package               Alopeyk_WooCommerce_Shipping
+ * @package               Alopeyk_Shipping_Method
  *
  * @wordpress-plugin
- * Plugin Name:           Alopeyk WooCommerce Shipping
+ * Plugin Name:           Alopeyk Shipping Method
  * Plugin URI:            https://alopeyk.com/#section-services
  * Description:           Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
- * Version:               4.2.0
+ * Version:               4.2.1
  * Author:                Alopeyk
  * Author URI:            https://alopeyk.com/
  * Text Domain:           alopeyk-woocommerce-shipping
@@ -38,7 +38,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('PLUGIN_VERSION', '4.2.0');
+define('PLUGIN_VERSION', '4.2.1');
 define('METHOD_ID', 'alopeyk_woocommerce_shipping_method');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));

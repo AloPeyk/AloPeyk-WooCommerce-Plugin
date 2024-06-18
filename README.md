@@ -174,4 +174,5 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Fix:** Check woocommerce activation
 *   **Fix:** Show credit in Tomans
 *   **Fix:** Showing map in flex templates
-
+##### 4.2.1
+*   **Edit:** Change title
