@@ -170,4 +170,8 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Fix:** Invalid api error on after fresh install
 *   **Fix:** Set Default environment to production
 *   **Fix:** Hide environment url fields
+##### 4.2.0
+*   **Fix:** Check woocommerce activation
+*   **Fix:** Show credit in Tomans
+*   **Fix:** Showing map in flex templates
 

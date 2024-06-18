@@ -1083,7 +1083,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		if ( $url ) {
 			if ( $multiple ) {
-				$latlng = $latlng ? $latlng : '35.744989,51.375284';
+				$latlng = $latlng ? $latlng : '35.6996468,51.3377773';
 				$response = $this->get_parsimap_api_response(self::$parsimap_base_url . 'geocode/' . urlencode( $url ) . '/5/' . str_replace(',', '/', $latlng ) . '/%token%/' . time() )->result;
 			} else {
 				$response = $this->get_parsimap_api_response(self::$parsimap_base_url . 'areaInfo/' . str_replace(',', '/', $url ) . '/18/1/' . '%token%/1' );
