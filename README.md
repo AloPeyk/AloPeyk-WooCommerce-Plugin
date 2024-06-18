@@ -1,5 +1,4 @@
-# Alopeyk Shipping Method
-
+# Alopeyk WooCommerce Shipping Method
 Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
 **[Alopeyk](https://alopeyk.com "Alopeyk On-demand Delivery")** is Iran’s leading on-demand urban logistics platform bringing instant delivery within anyone's reach. It uses an extensive network of motorcycle and pickup couriers to form a logistics network that's fast, cheap, and reliable. This plugin will include **Alopeyk** in WooCommerce shop shipping methods.
 
@@ -171,4 +170,8 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Fix:** Invalid api error on after fresh install
 *   **Fix:** Set Default environment to production
 *   **Fix:** Hide environment url fields
+##### 4.2.0
+*   **Fix:** Check woocommerce activation
+*   **Fix:** Show credit in Tomans
+*   **Fix:** Showing map in flex templates
 
