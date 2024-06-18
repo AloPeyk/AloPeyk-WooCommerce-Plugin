@@ -37,7 +37,7 @@ if ( $user_data ) {
 	<hr />
 	<?php if ( isset( $data['user_credit'] ) && ! is_null( $data['user_credit'] ) ) { ?>
 		<span class="awcshm-credit-widget-credit">
-			<?php echo __( 'My Credit', 'alopeyk-woocommerce-shipping' ) . ' : <span class="awcshm-credit-widget-number">' . wc_price( $data['user_credit'] ); ?></span>
+			<?php echo __( 'My Credit', 'alopeyk-woocommerce-shipping' ) . ' : <span class="awcshm-credit-widget-number">' . number_format($data['user_credit'] / 10) . ' ' . __('Tomans', 'alopeyk-woocommerce-shipping') ?></span>
 		</span>
 	<?php } ?>
 	<div class="awcshm-credit-widget-actions">
