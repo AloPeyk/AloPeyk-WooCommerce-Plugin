@@ -1,5 +1,5 @@
 (function( $j ) {
-	
+
 	'use strict';
 
 	var alopeyk = alopeyk || { wcshm : {} };
@@ -768,21 +768,15 @@
 
 				},
 				setEnvironmentInputVisibility = function () {
-
 					if ( environmentInput.val() == alopeyk.wcshm.admin.vars.endpoint.environmentTypeCustomVal ) {
-
 						endpointUrl.parents ( 'tr' ).css ( 'display', '' );
 						endpointApiUrl.parents ( 'tr' ).css ( 'display', '' );
 						endpointTrackingUrl.parents ( 'tr' ).css ( 'display', '' );
-
 					} else {
-
 						endpointUrl.parents ( 'tr' ).css ( 'display', 'none' );
 						endpointApiUrl.parents ( 'tr' ).css ( 'display', 'none' );
 						endpointTrackingUrl.parents ( 'tr' ).css ( 'display', 'none' );
-
 					}
-
 				};
 
 			$j.merge ( costTypeInput, staticCostTypeInput ).on ( 'change', setCostInputVisibility );
@@ -807,7 +801,6 @@
 			$j( alopeyk.wcshm.admin.vars.maps.storeLocatorHiddenableInput ).parents ( 'tr' ).first().css ( 'display', 'none' );
 
 			$j.each ( $j( uploadInputs ), function ( index, uploadInput ) {
-
 				uploadInput = $j( uploadInput );
 
 				var inputUploadValue      = uploadInput.val(),
@@ -1973,7 +1966,6 @@
 		},
 
 		init : function () {
-
 			alopeyk.wcshm.admin.fn.handlePageUpdates();
 			alopeyk.wcshm.admin.fn.handleChatToggler();
 			alopeyk.wcshm.admin.fn.handlePriceInputs();
@@ -2014,34 +2006,19 @@
 	 *
 	 **/
 
-	$j( document ).on ({
-
-		'ready' : function ( e ) {
-
-			alopeyk.wcshm.admin.fn.init();
-
-		}
-
+	jQuery(function(){
+		alopeyk.wcshm.admin.fn.init();
 	});
 
 	$j( window ).on ({
-
 		'load' : function ( e ) {
-
 			alopeyk.wcshm.admin.fn.initMaps();
-
 		},
-
 	}).resize(function() {
-
 		$j( '.ui-dialog-content' ).dialog( 'option', 'position', {
-
 			my: "center",
 			at: "center",
 			of: window
-
-		} );
-
-	});;
-
+		});
+	});
 })( jQuery );

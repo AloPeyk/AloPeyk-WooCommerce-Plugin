@@ -267,7 +267,7 @@ msgid "No address found."
 msgstr ""
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1042
-msgid "Alopeyk Woocommerce Shipping"
+msgid "Alopeyk WooCommerce Shipping Method"
 msgstr ""
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1055
@@ -330,7 +330,7 @@ msgstr ""
 #: includes/class-alopeyk-woocommerce-shipping-activator.php:39
 msgid ""
 "Sorry, WooCommerce plugin should be installed and activated before "
-"activating Alopeyk WooCommerce Shipping plugin."
+"activating Alopeyk WooCommerce Shipping Method plugin."
 msgstr ""
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:219
@@ -1691,7 +1691,7 @@ msgid ""
 msgstr ""
 
 #. Name of the plugin
-msgid "Alopeyk WooCommerce Shipping"
+msgid "Alopeyk WooCommerce Shipping Method"
 msgstr ""
 
 #. Description of the plugin

@@ -842,26 +842,15 @@
 	 *
 	 **/
 
-	$j( document ).on ({
-
-		'ready' : function ( e ) {
-
-			alopeyk.wcshm.public.fn.init();
-
-		}
-
+	jQuery(function(){
+		alopeyk.wcshm.public.fn.init();
 	});
 
 	$j( window ).on ({
-
 		'load' : function ( e ) {
-
 			alopeyk.wcshm.public.fn.initMaps();
-
 		},
-
 	});
-
 })( jQuery );
 
 var cedarmap_data = {

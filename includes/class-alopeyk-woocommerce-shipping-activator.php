@@ -36,7 +36,7 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 
 		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 			deactivate_plugins( plugin_basename( __FILE__ ) );
-			wp_die( __( 'Sorry, WooCommerce plugin should be installed and activated before activating Alopeyk WooCommerce Shipping plugin.', 'alopeyk-woocommerce-shipping' ) );
+			wp_die( __( 'Sorry, WooCommerce plugin should be installed and activated before activating Alopeyk WooCommerce Shipping Method plugin.', 'alopeyk-woocommerce-shipping' ) );
 		}
 
 		self::change_store_city();
