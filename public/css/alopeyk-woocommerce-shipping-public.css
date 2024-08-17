@@ -11,7 +11,7 @@
 }
 
 .awcshm-map-marker-icon {
-    z-index: 2;
+    z-index: 500;
     position: absolute;
     top: 50%;
     left: 50%;
