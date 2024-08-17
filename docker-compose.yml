@@ -4,7 +4,7 @@ services:
   app:
     depends_on:
       - db
-    image: "wordpress:${WORDPRESS_VERSION:-6.4}"
+    image: "wordpress:${WORDPRESS_VERSION:-6.6}"
     ports:
       - "${APP_PORT:-8000}:80"
     restart: always

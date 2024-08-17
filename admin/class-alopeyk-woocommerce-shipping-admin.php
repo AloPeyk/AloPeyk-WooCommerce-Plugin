@@ -1065,7 +1065,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 		} else {
 			$dashboard_widget_callback = 'dashboard_widget_summary';
 		}
-		wp_add_dashboard_widget( 'awcshm_admin_widget', __( 'Alopeyk Woocommerce Shipping', 'alopeyk-woocommerce-shipping' ), array( $this, $dashboard_widget_callback ) );
+		wp_add_dashboard_widget( 'awcshm_admin_widget', __( 'Alopeyk WooCommerce Shipping Method', 'alopeyk-woocommerce-shipping' ), array( $this, $dashboard_widget_callback ) );
 		global $wp_meta_boxes;
 	 	$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
 	 	$widget_backup    = array( 'awcshm_admin_widget' => $normal_dashboard['awcshm_admin_widget'] );
