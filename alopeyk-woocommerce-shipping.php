@@ -3,25 +3,26 @@
 /**
  * @link                  https://alopeyk.com
  * @since                 1.0.0
- * @package               Alopeyk_Shipping_Method
+ * @package               Alopeyk_WooCommerce_Shipping_Method
  *
  * @wordpress-plugin
- * Plugin Name:           Alopeyk Shipping Method
+ * Plugin Name:           Alopeyk WooCommerce Shipping Method
  * Plugin URI:            https://alopeyk.com/#section-services
  * Description:           Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
- * Version:               4.2.1
+ * Version:               4.3.0
  * Author:                Alopeyk
  * Author URI:            https://alopeyk.com/
  * Text Domain:           alopeyk-woocommerce-shipping
  * Domain Path:           /languages
  *
  * WC requires at least:  3.9
- * WC tested up to:       8.5
+ * WC tested up to:       9.1
+ * WP tested up to:       6.6
  *
  * Copyright:             © 2017-2018 Alopeyk.
  * License:               GNU General Public License v3.0
  * License URI:           http://www.gnu.org/licenses/gpl-3.0.html
- * "awcshm" stands for Alopeyk woocommerce shipping method
+ * "awcshm" stands for Alopeyk WooCommerce Shipping Method
  */
 
 /**
@@ -38,7 +39,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('PLUGIN_VERSION', '4.2.1');
+define('PLUGIN_VERSION', '4.3.0');
 define('METHOD_ID', 'alopeyk_woocommerce_shipping_method');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
@@ -47,7 +48,7 @@ include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 $isWoocommerceActive = is_plugin_active('woocommerce/woocommerce.php') and file_exists(WP_PLUGIN_DIR . '/woocommerce/woocommerce.php');
 if (!$isWoocommerceActive) {
     add_action('admin_notices', function () {
-        $message = 'Woocommerce plugin is not active, to use "Alopeyk Woocommerce shipping method" plugin you need to enable it';
+        $message = 'Woocommerce plugin is not active, to use "Alopeyk WooCommerce Shipping Method" plugin you need to enable it';
         echo '<div class="error"><p>' . $message . '</p></div>';
     });
     return;

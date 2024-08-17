@@ -41,9 +41,9 @@ Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
 
 # Installation
 ## Automatic installation
-Automatic installation is the easiest option as WordPress handles the file transfers itself and, you don’t need to leave your web browser. To do an automatic installation of Alopeyk WooCommerce Shipping, log in to your WordPress dashboard, navigate to the Plugins menu, and click Add New.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and, you don’t need to leave your web browser. To do an automatic installation of Alopeyk WooCommerce Shipping Method, log in to your WordPress dashboard, navigate to the Plugins menu, and click Add New.
 
-In the search field type “Alopeyk WooCommerce Shipping” and click Search Plugins. Once you’ve found our plugin you can view details about it such as the point release, rating, and description. Most importantly of course, you can install it by simply clicking “Install Now”.
+In the search field type “Alopeyk WooCommerce Shipping Method” and click Search Plugins. Once you’ve found our plugin you can view details about it such as the point release, rating, and description. Most importantly of course, you can install it by simply clicking “Install Now”.
 
 ## Manual installation
 The manual installation method involves downloading our plugin and uploading it to your webserver via your favorite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
@@ -175,4 +175,9 @@ It is also highly recommended to enter your specific [Cedar Maps API Key](https:
 *   **Fix:** Show credit in Tomans
 *   **Fix:** Showing map in flex templates
 ##### 4.2.1
+*   **Edit:** Change title
+##### 4.3.0
+*   **New:** Test with the latest WordPress and Woocommerce
+*   **Fix:** Map marker bug for some templates 
+*   **Fix:** Jquery on ready event bug
 *   **Edit:** Change title
