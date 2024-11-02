@@ -1237,7 +1237,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 							'lng'     => $extra_address->center->lng,
 							'latlng'  => $extra_address->center->lat . ',' . $extra_address->center->lng,
 							'city'    => $extra_address->area_name,
-							'address' => $extra_address->area_name . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $extra_address->local_name
+							'address' => $extra_address->area_name . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $extra_address->local_name. ' ' . $extra_address->title
 						);
 					}
 				}
