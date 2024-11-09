@@ -40,6 +40,7 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 		}
 
 		self::change_store_city();
+		self::change_checkout_content();
 		
 	}
 
@@ -48,6 +49,18 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 		$schedule_name = METHOD_ID . '_check_mandatory_options';
 		wp_schedule_event( time(), $schedule_name . '_interval', $schedule_name );
 
+	}
+
+	public static function change_checkout_content() {
+		$checkout_page_id = wc_get_page_id('checkout');
+		if ($checkout_page_id) {
+			$new_content = "[woocommerce_checkout]";
+			$updated_post = array(
+				'ID'           => $checkout_page_id,
+				'post_content' => $new_content,
+			);
+			wp_update_post($updated_post);
+		}
 	}
 
 }
