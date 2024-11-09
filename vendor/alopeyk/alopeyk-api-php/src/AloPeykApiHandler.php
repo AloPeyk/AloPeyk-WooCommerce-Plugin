@@ -272,7 +272,7 @@ class AloPeykApiHandler
     {
         $curl = curl_init();
 
-        curl_setopt_array($curl, self::getCurlOptions('orders', 'POST', $order->toArray('createOrder')));
+        curl_setopt_array($curl, self::getCurlOptions('orders?platform=wordpress', 'POST', $order->toArray('createOrder')));
 
         return self::getApiResponse($curl);
     }
