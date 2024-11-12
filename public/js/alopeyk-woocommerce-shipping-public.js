@@ -63,8 +63,8 @@
 				lat : 35.6996468,
 				lng : 51.3377773
 			},
-			parsiMapJsLib                              : 'https://www.parsimap.com/docs/leaflet/v1.5.1/leaflet.js',
-			parsiMapCssLib                             : 'https://www.parsimap.com/docs/leaflet/v1.5.1/leaflet.css',
+			parsiMapJsLib                              : 'https://cdn.parsimap.ir/third-party/leaflet/v1.7.1/leaflet.js',
+			parsiMapCssLib                             : 'https://cdn.parsimap.ir/third-party/leaflet/v1.7.1/leaflet.css',
 		},
 
 	};
@@ -340,7 +340,7 @@
 
 						],
 						zoomControl     : false,
-						gestureHandling : true,
+						gestureHandling : false,
 						gestureHandlingText: {
 
 							touch: alopeyk.wcshm.public.fn.translate ( 'Use two fingers to move the map' ),

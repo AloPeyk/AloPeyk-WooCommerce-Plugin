@@ -200,7 +200,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					'map'     => array(
 						'marker'  => $this->get_option( 'map_marker', 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png', false ),
 						'styles'  => $this->get_option( 'map_styles' ),
-						'api_url' => 'https://alopeyk.parsimap.com/comapi.svc/tile/googlemap/{x}/{y}/{z}/{{TOKEN}}',
+						'api_url' => 'https://alopeyk.parsimap.com/comapi.svc/tile/parsimap/{x}/{y}/{z}/{{TOKEN}}',
 						'api_key' => 'ALo575W-53FG6cv8-OPw330-kmA99q', // TODO remove api key
 						'leaflet_gesture_handling' => array(
 							'css' => plugin_dir_url( __FILE__ ) . '../public/css/leaflet-gesture-handling' . ( WP_DEBUG ? '' : '.min' ) . '.css',
