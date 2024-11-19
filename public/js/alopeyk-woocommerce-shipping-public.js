@@ -382,6 +382,13 @@
 
 						}, function ( response ) {
 
+              destinationAutocompleteInput.on('mousedown touchstart', function(event) {     
+                if ($j(this).val() !== '') {
+                    $j(this).val(''); 
+                }
+            });
+
+
 							if ( response ) {
 
 								autoCompleteList.empty();
