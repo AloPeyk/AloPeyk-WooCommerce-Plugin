@@ -1,5 +1,5 @@
 === Alopeyk Shipping Method ===
-//TODO: for Contributors: a case sensitive, comma separated list of all WordPress.org usernames
+
 Contributors: alopeyk
 Tags: shipping, shipping method, woocommerce
 Requires at least: 5.3
