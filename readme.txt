@@ -1,11 +1,13 @@
-=== Alopeyk WooCommerce Shipping Method ===
+=== Alopeyk Shipping Method ===
 
 Contributors: alopeyk
-Tags: alopeyk, shipping, shipping method, woocommerce
+Tags: shipping, shipping method, woocommerce
 Requires at least: 5.3
 Tested up to: 6.6.1
 Stable tag: 4.4                                                                                                                                                                                                   
-
+Requires PHP: 7.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
@@ -57,7 +59,7 @@ List of some features:
 == Changelog ==
 
 = 4.4 =
-‫*‬ Edit Update the map to the latest version.
+* Edit Update the map to the latest version.
 * Edit Improved user experience when searching for a new address on the map
 * Fix  users were not able to suggest locations when searching map
 * Fix  Fixing UI bugs

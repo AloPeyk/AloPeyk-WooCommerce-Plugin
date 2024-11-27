@@ -6,8 +6,8 @@
  * @package               Alopeyk_WooCommerce_Shipping_Method
  *
  * @wordpress-plugin
- * Plugin Name:           Alopeyk WooCommerce Shipping Method
- * Plugin URI:            https://alopeyk.com/#section-services
+ * Plugin Name:           Alopeyk Shipping Method
+ * Plugin URI:            https://github.com/AloPeyk/AloPeyk-WooCommerce-Plugin
  * Description:           Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods.
  * Version:               4.4.0
  * Author:                Alopeyk
