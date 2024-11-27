@@ -29,11 +29,11 @@ $data = $this->vars;
 					</div>
 					<div class="awcshm-support-content-item-body">
 						<div class="awcshm-support-content-item-body-inner">
-							<p><?php echo __( 'You can access all of your activity logs such as orders and transactions, and also edit your profile information via Alopeyk web dashboard.', 'alopeyk-woocommerce-shipping' ); ?></p>
+							<p><?php echo __( 'You can access all of your activity logs such as orders and transactions, and also edit your profile information via Alopeyk web dashboard.', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 						</div>
 					</div>
 					<div class="awcshm-support-content-item-footer">
-						<a href="https://app.alopeyk.com" target="_blank" class="button button-primary"><?php echo __( 'Go to my dashboard', 'alopeyk-woocommerce-shipping' ); ?></a>
+						<a href="https://app.alopeyk.com" target="_blank" class="button button-primary"><?php echo __( 'Go to my dashboard', 'alopeyk-shipping-for-woocommerce' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -45,12 +45,12 @@ $data = $this->vars;
 					</div>
 					<div class="awcshm-support-content-item-body">
 						<div class="awcshm-support-content-item-body-inner">
-							<p><?php echo __( 'You can call our support team to get your questions answered just in time.', 'alopeyk-woocommerce-shipping' ); ?></p>
+							<p><?php echo __( 'You can call our support team to get your questions answered just in time.', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 							<?php echo isset( $data['is_api_user'] ) && $data['is_api_user'] !== true ? '<p>' . $data['is_api_user'] . '</p>' : ''; ?>
 						</div>
 					</div>
 					<div class="awcshm-support-content-item-footer">
-						<a href="tel:<?php echo $support_tel; ?>" class="button button-primary"><?php echo sprintf( __( 'Call Support: %s', 'alopeyk-woocommerce-shipping' ), '<span class="awcshm-phone">' . $support_tel . '</span>' ); ?></a>
+						<a href="tel:<?php echo $support_tel; ?>" class="button button-primary"><?php echo sprintf( __( 'Call Support: %s', 'alopeyk-shipping-for-woocommerce' ), '<span class="awcshm-phone">' . $support_tel . '</span>' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -65,16 +65,16 @@ $data = $this->vars;
 						<div class="awcshm-support-content-item-body-inner">
 							<p>
 								<?php
-									echo __( 'Please let us know about bugs or UX problems you may encounter while working with this extension.', 'alopeyk-woocommerce-shipping' );
+									echo __( 'Please let us know about bugs or UX problems you may encounter while working with this extension.', 'alopeyk-shipping-for-woocommerce' );
 									if ( isset( $data['log_url'] ) && $data['log_url'] ) {
-										echo ' ' . sprintf( __( 'Its better to attach a copy of <a href="%s" target="_blank">system logs</a> to your email.', 'alopeyk-woocommerce-shipping' ), $data['log_url'] );
+										echo ' ' . sprintf( __( 'Its better to attach a copy of <a href="%s" target="_blank">system logs</a> to your email.', 'alopeyk-shipping-for-woocommerce' ), $data['log_url'] );
 									}
 								?>
 							</p>
 						</div>
 					</div>
 					<div class="awcshm-support-content-item-footer">
-						<a href="mailto:<?php echo $dev_email; ?>" class="button button-primary"><?php echo sprintf( __( 'Report a Bug: %s', 'alopeyk-woocommerce-shipping' ), $dev_email ); ?></a>
+						<a href="mailto:<?php echo $dev_email; ?>" class="button button-primary"><?php echo sprintf( __( 'Report a Bug: %s', 'alopeyk-shipping-for-woocommerce' ), $dev_email ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -86,11 +86,11 @@ $data = $this->vars;
 					</div>
 					<div class="awcshm-support-content-item-body">
 						<div class="awcshm-support-content-item-body-inner">
-							<p><?php echo __( 'Check our contact page on Alopeyk website to leave us reviews about this extension or find more available communication methods.', 'alopeyk-woocommerce-shipping' ); ?></p>
+							<p><?php echo __( 'Check our contact page on Alopeyk website to leave us reviews about this extension or find more available communication methods.', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 						</div>
 					</div>
 					<div class="awcshm-support-content-item-footer">
-						<a href="https://alopeyk.com/contact" target="_blank" class="button button-primary"><?php echo __( 'Contact Us', 'alopeyk-woocommerce-shipping' ); ?></a>
+						<a href="https://alopeyk.com/contact" target="_blank" class="button button-primary"><?php echo __( 'Contact Us', 'alopeyk-shipping-for-woocommerce' ); ?></a>
 					</div>
 				</div>
 			</div>

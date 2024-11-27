@@ -3,11 +3,13 @@
 Contributors: alopeyk
 Tags: shipping, shipping method, woocommerce
 Requires at least: 5.3
-Tested up to: 6.6.1
-Stable tag: 4.4                                                                                                                                                                                                   
+Tested up to: 6.7
+Stable tag: 4.4.0                                                                                                                                                                                                   
 Requires PHP: 7.0
-License: GPLv2 or later
+License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+Alopeyk (https://alopeyk.com "Alopeyk On-demand Delivery")
 
 == Description ==
 

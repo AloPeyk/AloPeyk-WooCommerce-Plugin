@@ -31,7 +31,7 @@ $text_color       = $color_gray;
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><?php echo __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ); ?><?php echo ( isset( $data['title'] ) && $data['title'] && strlen( $data['title'] ) ) ? ' | ' . $data['title'] : ''; ?></title>
+		<title><?php echo __( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' ); ?><?php echo ( isset( $data['title'] ) && $data['title'] && strlen( $data['title'] ) ) ? ' | ' . $data['title'] : ''; ?></title>
 		<meta name="charset" content="utf-8">
 		<meta name="robots" content="noindex,nofollow">
 		<meta name="format-detection" content="email=no">
@@ -141,7 +141,7 @@ $text_color       = $color_gray;
 								<tr>
 									<td align="center" valign="top" width="642" style="width:642px;">
 										<a href="<?php echo $campaign_url; ?>" class="logo">
-											<img src="https://bucket.mlcdn.com/a/243/243983/images/5b524ed08e12993b954c9744bfc423b6a6256b13.jpeg" width="130" height="127" border="0" style="max-width:130px;" alt="<?php echo __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ); ?>" title="<?php echo __( 'Alopeyk', 'alopeyk-woocommerce-shipping' ); ?>">
+											<img src="https://bucket.mlcdn.com/a/243/243983/images/5b524ed08e12993b954c9744bfc423b6a6256b13.jpeg" width="130" height="127" border="0" style="max-width:130px;" alt="<?php echo __( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' ); ?>">
 										</a>
 									</td>
 								</tr>
@@ -176,19 +176,19 @@ $text_color       = $color_gray;
 																<tr>
 																	<td align="center" width="100%">
 																		<a href="https://instagram.com/alopeyk" class="social-link">
-																			<img alt="<?php echo __( 'Instagram', 'alopeyk-woocommerce-shipping' ); ?>" title="<?php echo __( 'Instagram', 'alopeyk-woocommerce-shipping' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/instagram.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/instagram.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.linkedin.com/company/alopeyk" class="social-link">
-																			<img alt="<?php echo __( 'Linkedin', 'alopeyk-woocommerce-shipping' ); ?>" title="<?php echo __( 'Linkedin', 'alopeyk-woocommerce-shipping' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/linkedin.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/linkedin.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.facebook.com/alopeyk/" class="social-link">
-																			<img alt="<?php echo __( 'Facebook', 'alopeyk-woocommerce-shipping' ); ?>" title="<?php echo __( 'Facebook', 'alopeyk-woocommerce-shipping' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/facebook.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/facebook.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://twitter.com/alopeyk" class="social-link">
-																			<img alt="<?php echo __( 'Twitter', 'alopeyk-woocommerce-shipping' ); ?>" title="<?php echo __( 'Twitter', 'alopeyk-woocommerce-shipping' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/twitter.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/twitter.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="<?php echo $campaign_url; ?>" class="social-link">
-																			<img alt="<?php echo __( 'Website', 'alopeyk-woocommerce-shipping' ); ?>" title="<?php echo __( 'Website', 'alopeyk-woocommerce-shipping' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/website.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/website.png" width="32" style="width:32px;">
 																		</a>
 																	</td>
 																</tr>
@@ -198,9 +198,9 @@ $text_color       = $color_gray;
 															<tbody>
 																<tr>
 																	<td align="center" width="100%" class="footer-data">
-																		<p class="footer-copyright"><?php echo __( '© Alopeyk all rights reserved', 'alopeyk-woocommerce-shipping' ); ?></p>
-																		<p><span style="color:#ffffff;"><?php echo __( 'Licensed by the Tehran Pickup And Bike Delivery Union', 'alopeyk-woocommerce-shipping' ); ?></span></p>
-																		<p><?php echo __( 'Alopeyk building, No.5, Vozara 14th, Shahid beheshti St., Tehran, I.R.Iran', 'alopeyk-woocommerce-shipping' ); ?></p>
+																		<p class="footer-copyright"><?php echo __( '© Alopeyk all rights reserved', 'alopeyk-shipping-for-woocommerce' ); ?></p>
+																		<p><span style="color:#ffffff;"><?php echo __( 'Licensed by the Tehran Pickup And Bike Delivery Union', 'alopeyk-shipping-for-woocommerce' ); ?></span></p>
+																		<p><?php echo __( 'Alopeyk building, No.5, Vozara 14th, Shahid beheshti St., Tehran, I.R.Iran', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 																		<?php if ( $tel ) { ?>
 																		<p class="ltr"><?php echo $tel; ?></p>
 																		<?php } ?>

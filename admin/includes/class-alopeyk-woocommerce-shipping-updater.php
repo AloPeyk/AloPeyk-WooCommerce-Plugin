@@ -53,7 +53,6 @@ class Alopeyk_WooCommerce_Shipping_Updater {
 
 		$this->set_defaults();
 
-		add_filter( 'site_transient_update_plugins', array( $this, 'api_check' ) );
 
 		add_filter( 'plugins_api', array( $this, 'get_plugin_info' ), 10, 3 );
 		add_filter( 'upgrader_post_install', array( $this, 'upgrader_post_install' ), 10, 3 );

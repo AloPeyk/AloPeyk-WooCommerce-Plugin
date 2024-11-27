@@ -33,7 +33,7 @@ foreach ( $data as $card ) {
 					<img src="<?php echo $card->image->url; ?>" />
 				</div>
 				<div class="loyalty-product-text">
-					<p><?php echo __( 'Points required', 'alopeyk-woocommerce-shipping' ) . ' : ' . $card->price_score; ?></p>
+					<p><?php echo __( 'Points required', 'alopeyk-shipping-for-woocommerce' ) . ' : ' . $card->price_score; ?></p>
 				</div>
 		</div>
 		<?php

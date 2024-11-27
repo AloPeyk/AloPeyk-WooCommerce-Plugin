@@ -39,7 +39,7 @@ if ( ! empty( $action ) ) {
 	<?php } ?>
 	<label class="awcshm-amount-input-container">
 		<input type="text" name="amount" value="<?php echo isset( $data['amount'] ) ? $data['amount'] / 10 : ''; ?>" class="awcshm-amount-input awcshm-price-input" autofocus pattern="\d{3,}" required="required">
-		<span class="awcshm-amount-currency"><?php echo $currency ? $currency : __( 'Tomans', 'alopeyk-woocommerce-shipping' ); ?></span>
+		<span class="awcshm-amount-currency"><?php echo $currency ? $currency : __( 'Tomans', 'alopeyk-shipping-for-woocommerce' ); ?></span>
 	</label>
 	<?php foreach ( $params as $name => $value ) { ?>
 	<input type="hidden" name="<?php echo $name ?>" value="<?php echo $value; ?>">
