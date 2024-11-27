@@ -1,4 +1,4 @@
-=== Alopeyk Shipping Method ===
+=== Alopeyk Shipping Method for woocommerce ===
 
 Contributors: alopeyk
 Tags: shipping, shipping method, woocommerce
