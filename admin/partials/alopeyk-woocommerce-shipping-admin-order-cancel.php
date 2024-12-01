@@ -17,20 +17,20 @@ $data = $this->vars;
 $order_id = isset( $data['order'] ) ? $data['order'] : null;
 $edit_link = $order_id ? get_edit_post_link( $order_id ) : '#';
 $order_data = isset( $data['order_data'] ) ? $data['order_data'] : null;
-$order_label = $order_data ? '#' . $order_data->invoice_number : ( $order_id ? $order_id : __( 'Alopeyk order', 'alopeyk-woocommerce-shipping' ) );
+$order_label = $order_data ? '#' . $order_data->invoice_number : ( $order_id ? $order_id : __( 'Alopeyk order', 'alopeyk-shipping-for-woocommerce' ) );
 $cancel = isset( $data['cancel'] ) ? $data['cancel'] : null;
 ?>
 
 <form class="awcshm-cancel-order-form">
-	<p><?php echo sprintf( __( 'You are about to cancel <strong><a href="%s" target="blank">%s</a></strong>.', 'alopeyk-woocommerce-shipping' ), $edit_link, $order_label ); ?></p>
+	<p><?php echo sprintf( __( 'You are about to cancel <strong><a href="%s" target="blank">%s</a></strong>.', 'alopeyk-shipping-for-woocommerce' ), $edit_link, $order_label ); ?></p>
 	<?php
 		if ( $cancel && isset( $cancel['penalty'] ) && $cancel['penalty'] && isset( $cancel['penalty_info'] ) && isset( $cancel['penalty_info']['amount'] ) && $penalty_amount = $cancel['penalty_info']['amount'] ) {
 	?>
 	<div class="error notice">
 		<?php if ( isset( $cancel['penalty_info']['delay'] ) && $penalty_delay = $cancel['penalty_info']['delay'] ) { ?>
-		<p><?php echo sprintf( __( 'You will be charged %s for this cancelation, because more than %s minutes passed after order being accepted by Alopeyk courier.', 'alopeyk-woocommerce-shipping' ), wc_price( $penalty_amount ), $penalty_delay ); ?></p>
+		<p><?php echo sprintf( __( 'You will be charged %s for this cancelation, because more than %s minutes passed after order being accepted by Alopeyk courier.', 'alopeyk-shipping-for-woocommerce' ), wc_price( $penalty_amount ), $penalty_delay ); ?></p>
 		<?php } else { ?>
-		<p><?php echo sprintf( __( 'You will be charged %s for this cancelation.', 'alopeyk-woocommerce-shipping' ), wc_price( $penalty_amount ) ); ?></p>
+		<p><?php echo sprintf( __( 'You will be charged %s for this cancelation.', 'alopeyk-shipping-for-woocommerce' ), wc_price( $penalty_amount ) ); ?></p>
 		<?php } ?>
 	</div>
 	<?php
@@ -40,7 +40,7 @@ $cancel = isset( $data['cancel'] ) ? $data['cancel'] : null;
 	?>
 	<div class="awcshm-radio-list-container">
 		<p>
-			<strong><?php echo __( 'Which of the following reasons make you decide to cancel this request?', 'alopeyk-woocommerce-shipping' ); ?></strong>
+			<strong><?php echo __( 'Which of the following reasons make you decide to cancel this request?', 'alopeyk-shipping-for-woocommerce' ); ?></strong>
 		</p>
 		<p>
 			<?php foreach ( $reasons as $reason => $label ) { ?>

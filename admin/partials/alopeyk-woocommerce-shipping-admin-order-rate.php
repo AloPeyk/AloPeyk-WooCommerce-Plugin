@@ -37,19 +37,19 @@ $courier_info = isset( $data['order_data'] ) && isset( $data['order_data']->cour
 	?>
 	<div class="awcshm-rates-container">
 		<input type="radio" name="rate" id="awcshm-rate-checkbox-1" value="1" required="required">
-		<label for="awcshm-rate-checkbox-1"><?php echo __( 'Very Bad', 'alopeyk-woocommerce-shipping' ); ?></label>
+		<label for="awcshm-rate-checkbox-1"><?php echo __( 'Very Bad', 'alopeyk-shipping-for-woocommerce' ); ?></label>
 		<input type="radio" name="rate" id="awcshm-rate-checkbox-2" value="2" required="required">
-		<label for="awcshm-rate-checkbox-2"><?php echo __( 'Bad', 'alopeyk-woocommerce-shipping' ); ?></label>
+		<label for="awcshm-rate-checkbox-2"><?php echo __( 'Bad', 'alopeyk-shipping-for-woocommerce' ); ?></label>
 		<input type="radio" name="rate" id="awcshm-rate-checkbox-3" value="3" required="required">
-		<label for="awcshm-rate-checkbox-3"><?php echo __( 'Not Bad', 'alopeyk-woocommerce-shipping' ); ?></label>
+		<label for="awcshm-rate-checkbox-3"><?php echo __( 'Not Bad', 'alopeyk-shipping-for-woocommerce' ); ?></label>
 		<input type="radio" name="rate" id="awcshm-rate-checkbox-4" value="4" required="required">
-		<label for="awcshm-rate-checkbox-4"><?php echo __( 'Good', 'alopeyk-woocommerce-shipping' ); ?></label>
+		<label for="awcshm-rate-checkbox-4"><?php echo __( 'Good', 'alopeyk-shipping-for-woocommerce' ); ?></label>
 		<input type="radio" name="rate" id="awcshm-rate-checkbox-5" value="5" checked="checked" required="required">
-		<label for="awcshm-rate-checkbox-5"><?php echo __( 'Very Good', 'alopeyk-woocommerce-shipping' ); ?></label>
+		<label for="awcshm-rate-checkbox-5"><?php echo __( 'Very Good', 'alopeyk-shipping-for-woocommerce' ); ?></label>
 		<?php if ( isset( $data['reasons'] ) && $reasons = (array) $data['reasons'] ) { ?>
 		<div class="awcshm-radio-list-container">
 			<p>
-				<strong><?php echo __( 'Which of the following reasons make you decide to choose this score?', 'alopeyk-woocommerce-shipping' ); ?></strong>
+				<strong><?php echo __( 'Which of the following reasons make you decide to choose this score?', 'alopeyk-shipping-for-woocommerce' ); ?></strong>
 			</p>
 			<p>
 				<?php foreach ( $reasons as $reason => $label ) { ?>
@@ -57,7 +57,7 @@ $courier_info = isset( $data['order_data'] ) && isset( $data['order_data']->cour
 					<input type="radio" name="reason" value="<?php echo $reason; ?>" required="required" <?php if ( $reason == 'others' ) { ?>checked="checked"<?php } ?>>
 					<span><?php echo $label; ?></span>
 					<?php if ( $reason == 'others' ) { ?>
-					<textarea name="description" placeholder="<?php echo __( 'Description', 'alopeyk-woocommerce-shipping' ); ?>" rows="4" class="awcshm-rate-description" autofocus></textarea>
+					<textarea name="description" placeholder="<?php echo __( 'Description', 'alopeyk-shipping-for-woocommerce' ); ?>" rows="4" class="awcshm-rate-description" autofocus></textarea>
 					<?php } ?>
 				</label>
 				<?php } ?>

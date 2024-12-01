@@ -21,7 +21,7 @@ if ( $order_data ) {
 	if ( $order_data->screenshot && isset( $order_data->screenshot->url ) ) {
 ?>
 <a href="<?php echo $helpers->get_tracking_url( $order_data ); ?>" target="_blank">
-	<img src="<?php echo $order_data->screenshot->url; ?>" alt="<?php echo __( 'Order Screenshot', 'alopeyk-woocommerce-shipping' ); ?>" class="awcshm-order-screenshot">
+	<img src="<?php echo $order_data->screenshot->url; ?>" alt="<?php echo __( 'Order Screenshot', 'alopeyk-shipping-for-woocommerce' ); ?>" class="awcshm-order-screenshot">
 </a>
 <?php
 	}
@@ -29,41 +29,41 @@ if ( $order_data ) {
 <ul class="order_actions">
 	<li class="wide awcshm-meta-box-content-container">
 		<p>
-			<span><?php echo __( 'Status', 'alopeyk-woocommerce-shipping' ); ?>: </span>
+			<span><?php echo __( 'Status', 'alopeyk-shipping-for-woocommerce' ); ?>: </span>
 			<strong><?php echo $helpers->get_order_status_label( $helpers->get_order_status( $order_data ) ); ?></strong>
 		</p>
 		<?php if ( isset( $order_data->invoice_number ) ) { ?>
 		<p>
-			<span><?php echo __( 'Invoice Number', 'alopeyk-woocommerce-shipping' ); ?>: </span>
+			<span><?php echo __( 'Invoice Number', 'alopeyk-shipping-for-woocommerce' ); ?>: </span>
 			<strong><?php echo $order_data->invoice_number; ?></strong>
 		</p>
 		<?php } ?>
 		<?php if ( isset( $order_data->id ) ) { ?>
 		<p>
-			<span><?php echo __( 'ID', 'alopeyk-woocommerce-shipping' ); ?>: </span>
+			<span><?php echo __( 'ID', 'alopeyk-shipping-for-woocommerce' ); ?>: </span>
 			<strong><?php echo $order_data->id; ?></strong>
 		</p>
 		<?php } ?>
 		<?php if ( isset( $order_data->price ) ) { ?>
 		<p>
-			<span><?php echo __( 'Cost', 'alopeyk-woocommerce-shipping' ); ?>: </span>
+			<span><?php echo __( 'Cost', 'alopeyk-shipping-for-woocommerce' ); ?>: </span>
 			<strong><?php echo wc_price( $helpers->normalize_price( $order_data->price * 10 ) ); ?></strong>
 		</p>
 		<?php } ?>
 		<?php if ( isset( $order_data->order_discount ) && $order_data->order_discount ) { ?>
 				<p>
-					<span><?php echo __( 'Discount Code Value', 'alopeyk-woocommerce-shipping' ); ?>: </span>
+					<span><?php echo __( 'Discount Code Value', 'alopeyk-shipping-for-woocommerce' ); ?>: </span>
 					<strong><?php echo ( isset( $order_data->order_discount->discount ) && ! is_null( $order_data->order_discount->discount ) ) ? wc_price( $helpers->normalize_price( $order_data->order_discount->discount * 10 ) ) : '—'; ?></strong>
 				</p>
 		<?php } ?>
 		<?php if ( isset( $order_data->transport_type ) ) { ?>
 		<p>
-			<span><?php echo __( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?>: </span>
+			<span><?php echo __( 'Transport Type', 'alopeyk-shipping-for-woocommerce' ); ?>: </span>
 			<strong><?php echo $order_data->transport_type_name; ?></strong>
 		</p>
 		<?php } ?>
 		<p>
-			<span><?php echo __( 'Shop Order(s)', 'alopeyk-woocommerce-shipping' ); ?>: </span>
+			<span><?php echo __( 'Shop Order(s)', 'alopeyk-shipping-for-woocommerce' ); ?>: </span>
 			<?php
 				$order_ids = get_post_meta( $post->ID, '_awcshm_wc_order_id' );
 				if ( $order_ids && count( $order_ids ) ) {
@@ -71,7 +71,7 @@ if ( $order_data ) {
 					foreach ( $order_ids as $order_id ) {
 						$order_output[] = '<strong><a href="' . admin_url( 'post.php?post=' . $order_id ) . '&action=edit" target="_blank">#' . $order_id . '</a></strong>';
 					}
-					echo implode( __( ',', 'alopeyk-woocommerce-shipping' ) . ' ', $order_output );
+					echo implode( __( ',', 'alopeyk-shipping-for-woocommerce' ) . ' ', $order_output );
 				} else {
 					echo '<strong>—</strong>';
 				}
@@ -79,7 +79,7 @@ if ( $order_data ) {
 			<strong><?php echo ''; ?></strong>
 		</p>
 		<p>
-			<span><?php echo __( 'Customer(s)', 'alopeyk-woocommerce-shipping' ); ?>: </span>
+			<span><?php echo __( 'Customer(s)', 'alopeyk-shipping-for-woocommerce' ); ?>: </span>
 			<?php
 				$user_ids = get_post_meta( $post->ID, '_awcshm_user_id' );
 				if ( $user_ids && count( $user_ids ) ) {
@@ -92,7 +92,7 @@ if ( $order_data ) {
 							}
 						}
 					}
-					echo implode( __( ',', 'alopeyk-woocommerce-shipping' ) . ' ', array_unique( $user_output ) );
+					echo implode( __( ',', 'alopeyk-shipping-for-woocommerce' ) . ' ', array_unique( $user_output ) );
 				} else {
 					echo '<strong>—</strong>';
 				}
@@ -103,19 +103,19 @@ if ( $order_data ) {
 		<?php
 			if ( $helpers->can_be_invoiced( $order_data ) ) {
 		?>
-		<a class="button" target="_blank" href="<?php echo $helpers->get_invoice_url( $order_data ); ?>"><?php echo __( 'Invoice', 'alopeyk-woocommerce-shipping' ); ?></a>
+		<a class="button" target="_blank" href="<?php echo $helpers->get_invoice_url( $order_data ); ?>"><?php echo __( 'Invoice', 'alopeyk-shipping-for-woocommerce' ); ?></a>
 		<?php
 			}
 			if ( $helpers->can_be_tracked( $order_data ) ) {
 		?>
-		<a class="button" target="_blank" href="<?php echo $helpers->get_tracking_url( $order_data ); ?>"><?php echo __( 'Track', 'alopeyk-woocommerce-shipping' ); ?></a>
+		<a class="button" target="_blank" href="<?php echo $helpers->get_tracking_url( $order_data ); ?>"><?php echo __( 'Track', 'alopeyk-shipping-for-woocommerce' ); ?></a>
 		<?php
 			}
 			if ( in_array( $helpers->get_order_status( $order_data ), array( 'awcshm-progress', 'awcshm-pending', 'awcshm-scheduled' ) ) ) {
 				$can_be_canceled = $helpers->can_be_canceled( $order_data );
 				if ( $can_be_canceled['enabled'] ) {
 		?>
-		<button type="button" class="button button-primary awcshm-cancel-modal-toggler" data-order-id="<?php echo $post->ID; ?>"><?php echo __( 'Cancel Order', 'alopeyk-woocommerce-shipping' ); ?></button>
+		<button type="button" class="button button-primary awcshm-cancel-modal-toggler" data-order-id="<?php echo $post->ID; ?>"><?php echo __( 'Cancel Order', 'alopeyk-shipping-for-woocommerce' ); ?></button>
 		<?php
 				} else {
 		?>
@@ -124,7 +124,7 @@ if ( $order_data ) {
 				}
 			} else {
 		?>
-		<button type="button" class="button button-primary awcshm-order-modal-toggler" data-order-ids="<?php echo implode( ',', $order_ids ); ?>" data-order-types="<?php echo $order_data->transport_type ?>"><?php echo __( 'Ship Again', 'alopeyk-woocommerce-shipping' ); ?></button>
+		<button type="button" class="button button-primary awcshm-order-modal-toggler" data-order-ids="<?php echo implode( ',', $order_ids ); ?>" data-order-types="<?php echo $order_data->transport_type ?>"><?php echo __( 'Ship Again', 'alopeyk-shipping-for-woocommerce' ); ?></button>
 		<?php
 			}
 		?>

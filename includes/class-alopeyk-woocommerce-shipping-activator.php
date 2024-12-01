@@ -31,12 +31,12 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 
 		if ( ! in_array  ( 'curl', get_loaded_extensions() ) ) {
 			deactivate_plugins( plugin_basename( __FILE__ ) );
-			wp_die( __( 'Sorry, but you cannot run this plugin, it requires the <a href="http://php.net/manual/en/book.curl.php">cURL</a> support on your server/hosting to function.', 'alopeyk-woocommerce-shipping' ) );
+			wp_die( __( 'Sorry, but you cannot run this plugin, it requires the <a href="http://php.net/manual/en/book.curl.php">cURL</a> support on your server/hosting to function.', 'alopeyk-shipping-for-woocommerce' ) );
 		}
 
 		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 			deactivate_plugins( plugin_basename( __FILE__ ) );
-			wp_die( __( 'Sorry, WooCommerce plugin should be installed and activated before activating Alopeyk WooCommerce Shipping Method plugin.', 'alopeyk-woocommerce-shipping' ) );
+			wp_die( __( 'Sorry, WooCommerce plugin should be installed and activated before activating Alopeyk WooCommerce Shipping Method plugin.', 'alopeyk-shipping-for-woocommerce' ) );
 		}
 
 		self::change_store_city();

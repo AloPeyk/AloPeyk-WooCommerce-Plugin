@@ -20,7 +20,7 @@ $data = $this->vars;
 	<table cellpadding="0" cellspacing="0" border="0" class="fixed striped awcshm-horizonal-table">
 		<tbody>
 			<tr>
-				<th valign="middle"><?php echo __( 'Transport Type', 'alopeyk-woocommerce-shipping' ); ?></th>
+				<th valign="middle"><?php echo __( 'Transport Type', 'alopeyk-shipping-for-woocommerce' ); ?></th>
 				<td valign="middle">
 					<select name="type">
 						<?php
@@ -36,10 +36,10 @@ $data = $this->vars;
 				</td>
 			</tr>
 			<tr>
-				<th valign="top"><?php echo __( 'Shipping Time', 'alopeyk-woocommerce-shipping' ); ?></th>
+				<th valign="top"><?php echo __( 'Shipping Time', 'alopeyk-shipping-for-woocommerce' ); ?></th>
 				<td valign="top">
-					<input id="ship_now_true" type="radio" name="ship_now" value="true" checked="checked"><label for="ship_now_true"><?php echo __( 'Now', 'alopeyk-woocommerce-shipping' ); ?></label>&nbsp;
-					<input id="ship_now_false" type="radio" name="ship_now" value="false" class="awcshm-shipping-time-filter-trigger"><label for="ship_now_false"><?php echo __( 'Later', 'alopeyk-woocommerce-shipping' ); ?></label>
+					<input id="ship_now_true" type="radio" name="ship_now" value="true" checked="checked"><label for="ship_now_true"><?php echo __( 'Now', 'alopeyk-shipping-for-woocommerce' ); ?></label>&nbsp;
+					<input id="ship_now_false" type="radio" name="ship_now" value="false" class="awcshm-shipping-time-filter-trigger"><label for="ship_now_false"><?php echo __( 'Later', 'alopeyk-shipping-for-woocommerce' ); ?></label>
 					<div class="awcshm-shipping-time-filter">
 						<div class="awcshm-shipping-date-container">
 							<select name="ship_date"></select>						
@@ -53,23 +53,23 @@ $data = $this->vars;
 				</td>
 			</tr>
 			<tr>
-				<th valign="top"><?php echo __( 'Origin Description', 'alopeyk-woocommerce-shipping' ); ?></th>
+				<th valign="top"><?php echo __( 'Origin Description', 'alopeyk-shipping-for-woocommerce' ); ?></th>
 				<td valign="top">
 					<textarea name="description" rows="5" width="100%"><?php echo isset( $data['description'] ) ? $data['description'] : ''; ?></textarea>
-					<span class="awcshm-meta"><?php echo __( 'This will be shown on courier device and usually consists of order value, address details or any other sort of data needed for courier to know about the origin address or the whole order.', 'alopeyk-woocommerce-shipping' ); ?></span>
+					<span class="awcshm-meta"><?php echo __( 'This will be shown on courier device and usually consists of order value, address details or any other sort of data needed for courier to know about the origin address or the whole order.', 'alopeyk-shipping-for-woocommerce' ); ?></span>
 				</td>
 			</tr>
 			<?php
 				if ( isset( $data['orders'] ) && $orders = $data['orders'] ) {
 					$count = count( $orders );
-					$label = $count > 1 ? __( 'Orders', 'alopeyk-woocommerce-shipping' ) : __( 'Order', 'alopeyk-woocommerce-shipping' );
+					$label = $count > 1 ? __( 'Orders', 'alopeyk-shipping-for-woocommerce' ) : __( 'Order', 'alopeyk-shipping-for-woocommerce' );
 			?>
 			<tr>
 				<th valign="top"><?php echo $label; ?></th>
 				<td valign="top">
 					<?php
 						if ( $count == 0 ) {
-							echo __( 'No order selected for shipping.', 'alopeyk-woocommerce-shipping' );
+							echo __( 'No order selected for shipping.', 'alopeyk-shipping-for-woocommerce' );
 						} else if ( $count == 1 ) {
 							$order_id = $orders[0];
 					?>

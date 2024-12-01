@@ -35,8 +35,8 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 
 		$this->id                 = METHOD_ID;
 		$this->instance_id        = absint( $instance_id );
-		$this->method_title       = __( 'Alopeyk', 'alopeyk-woocommerce-shipping' );
-		$this->method_description = __( 'Alopeyk On-demand Delivery will be included in this WooCommerce shipping zone.', 'alopeyk-woocommerce-shipping' );
+		$this->method_title       = __( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' );
+		$this->method_description = __( 'Alopeyk On-demand Delivery will be included in this WooCommerce shipping zone.', 'alopeyk-shipping-for-woocommerce' );
 		$this->title              = $this->method_title;
 		$this->supports           = array(
 			'shipping-zones',
@@ -55,7 +55,7 @@ class alopeyk_woocommerce_shipping_method extends WC_Shipping_Method {
 		$this->instance_form_fields = [
 			'title' => array(
 				'type' => 'title',
-				'title' => __("You can customize the shipping method in the 'Alopeyk' tab in the Woocommerce settings", 'alopeyk-woocommerce-shipping'),
+				'title' => __("You can customize the shipping method in the 'Alopeyk' tab in the Woocommerce settings", 'alopeyk-shipping-for-woocommerce'),
             )
 		];
 	}

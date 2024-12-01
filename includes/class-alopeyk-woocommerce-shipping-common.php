@@ -223,37 +223,37 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'nonce' => wp_create_nonce( $this->plugin_name )
 			),
 			'translations' => array(
-				'Ship'                                => __( 'Ship',                              'alopeyk-woocommerce-shipping' ),
-				'Submit'                              => __( 'Submit',                            'alopeyk-woocommerce-shipping' ),
-				'Cancel'                              => __( 'Cancel',                            'alopeyk-woocommerce-shipping' ),
-				'Close'                               => __( 'Close',                             'alopeyk-woocommerce-shipping' ),
-				'Submit Order'                        => __( 'Submit Order',                      'alopeyk-woocommerce-shipping' ),
-				'Add Alopeyk Coupon'                  => __( 'Add Alopeyk Coupon',                'alopeyk-woocommerce-shipping' ),
-				'Add Alopeyk Credit'                  => __( 'Add Alopeyk Credit',                'alopeyk-woocommerce-shipping' ),
-				'Cancel Alopeyk Order'                => __( 'Cancel Alopeyk Order',              'alopeyk-woocommerce-shipping' ),
-				'Rate Alopeyk Courier'                => __( 'Rate Alopeyk Courier',              'alopeyk-woocommerce-shipping' ),
-				'Cancel Order'                        => __( 'Cancel Order',                      'alopeyk-woocommerce-shipping' ),
-				'Alopeyk Order'                       => __( 'Alopeyk Order',                     'alopeyk-woocommerce-shipping' ),
-				'Alopeyk Coupon'                      => __( 'Alopeyk Coupon',                    'alopeyk-woocommerce-shipping' ),
-				'Add Coupon'                          => __( 'Add Coupon',                        'alopeyk-woocommerce-shipping' ),
-				'Pay'                                 => __( 'Pay',                               'alopeyk-woocommerce-shipping' ),
-				'Apply'                               => __( 'Apply',                             'alopeyk-woocommerce-shipping' ),
-				'Yes'                                 => __( 'Yes',                               'alopeyk-woocommerce-shipping' ),
-				'No'                                  => __( 'No',                                'alopeyk-woocommerce-shipping' ),
-				'Track Order'                         => __( 'Track Order',                       'alopeyk-woocommerce-shipping' ),
-				'View Order'                          => __( 'View Order',                        'alopeyk-woocommerce-shipping' ),
-				'View Invoice'                        => __( 'View Invoice',                      'alopeyk-woocommerce-shipping' ),
-				'Ship via Alopeyk'                    => __( 'Ship via Alopeyk',                  'alopeyk-woocommerce-shipping' ),
-				'Unkown error occurred.'              => __( 'Unkown error occurred.',            'alopeyk-woocommerce-shipping' ),
-				'Request failed:'                     => __( 'Request failed:',                   'alopeyk-woocommerce-shipping' ),
-				'Add Discount Coupon'                 => __( 'Add Discount Coupon',               'alopeyk-woocommerce-shipping' ),
-				'Order Status'                        => __( 'Order Status',                      'alopeyk-woocommerce-shipping' ),
-				'Increase credit'                     => __( 'Increase credit',                   'alopeyk-woocommerce-shipping' ),
-				'Charge account with gift card'       => __( 'Charge account with gift card',     'alopeyk-woocommerce-shipping' ),
-				'Convert Alopeyk Scores to Credit'    => __( 'Convert Alopeyk Scores to Credit',  'alopeyk-woocommerce-shipping' ),
-				'Use two fingers to move the map'     => __( 'Use two fingers to move the map',   'alopeyk-woocommerce-shipping' ),
-				'Use ctrl + scroll to zoom the map'   => __( 'Use ctrl + scroll to zoom the map', 'alopeyk-woocommerce-shipping' ),
-				'Use ⌘ + scroll to zoom the map'      => __( 'Use ⌘ + scroll to zoom the map',    'alopeyk-woocommerce-shipping' ),
+				'Ship'                                => __( 'Ship',                              'alopeyk-shipping-for-woocommerce' ),
+				'Submit'                              => __( 'Submit',                            'alopeyk-shipping-for-woocommerce' ),
+				'Cancel'                              => __( 'Cancel',                            'alopeyk-shipping-for-woocommerce' ),
+				'Close'                               => __( 'Close',                             'alopeyk-shipping-for-woocommerce' ),
+				'Submit Order'                        => __( 'Submit Order',                      'alopeyk-shipping-for-woocommerce' ),
+				'Add Alopeyk Coupon'                  => __( 'Add Alopeyk Coupon',                'alopeyk-shipping-for-woocommerce' ),
+				'Add Alopeyk Credit'                  => __( 'Add Alopeyk Credit',                'alopeyk-shipping-for-woocommerce' ),
+				'Cancel Alopeyk Order'                => __( 'Cancel Alopeyk Order',              'alopeyk-shipping-for-woocommerce' ),
+				'Rate Alopeyk Courier'                => __( 'Rate Alopeyk Courier',              'alopeyk-shipping-for-woocommerce' ),
+				'Cancel Order'                        => __( 'Cancel Order',                      'alopeyk-shipping-for-woocommerce' ),
+				'Alopeyk Order'                       => __( 'Alopeyk Order',                     'alopeyk-shipping-for-woocommerce' ),
+				'Alopeyk Coupon'                      => __( 'Alopeyk Coupon',                    'alopeyk-shipping-for-woocommerce' ),
+				'Add Coupon'                          => __( 'Add Coupon',                        'alopeyk-shipping-for-woocommerce' ),
+				'Pay'                                 => __( 'Pay',                               'alopeyk-shipping-for-woocommerce' ),
+				'Apply'                               => __( 'Apply',                             'alopeyk-shipping-for-woocommerce' ),
+				'Yes'                                 => __( 'Yes',                               'alopeyk-shipping-for-woocommerce' ),
+				'No'                                  => __( 'No',                                'alopeyk-shipping-for-woocommerce' ),
+				'Track Order'                         => __( 'Track Order',                       'alopeyk-shipping-for-woocommerce' ),
+				'View Order'                          => __( 'View Order',                        'alopeyk-shipping-for-woocommerce' ),
+				'View Invoice'                        => __( 'View Invoice',                      'alopeyk-shipping-for-woocommerce' ),
+				'Ship via Alopeyk'                    => __( 'Ship via Alopeyk',                  'alopeyk-shipping-for-woocommerce' ),
+				'Unkown error occurred.'              => __( 'Unkown error occurred.',            'alopeyk-shipping-for-woocommerce' ),
+				'Request failed:'                     => __( 'Request failed:',                   'alopeyk-shipping-for-woocommerce' ),
+				'Add Discount Coupon'                 => __( 'Add Discount Coupon',               'alopeyk-shipping-for-woocommerce' ),
+				'Order Status'                        => __( 'Order Status',                      'alopeyk-shipping-for-woocommerce' ),
+				'Increase credit'                     => __( 'Increase credit',                   'alopeyk-shipping-for-woocommerce' ),
+				'Charge account with gift card'       => __( 'Charge account with gift card',     'alopeyk-shipping-for-woocommerce' ),
+				'Convert Alopeyk Scores to Credit'    => __( 'Convert Alopeyk Scores to Credit',  'alopeyk-shipping-for-woocommerce' ),
+				'Use two fingers to move the map'     => __( 'Use two fingers to move the map',   'alopeyk-shipping-for-woocommerce' ),
+				'Use ctrl + scroll to zoom the map'   => __( 'Use ctrl + scroll to zoom the map', 'alopeyk-shipping-for-woocommerce' ),
+				'Use ⌘ + scroll to zoom the map'      => __( 'Use ⌘ + scroll to zoom the map',    'alopeyk-shipping-for-woocommerce' ),
 			),
 			'dynamic_parts' => $this->get_dynamic_parts( is_admin() ),
 			'refresh_interval' => is_admin() ? self::ADMIN_REFRESH_INTERVAL : self::FRONT_REFRESH_INTERVAL,
@@ -332,22 +332,22 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public function index_reverse_translation() {
 
 		$clauses = array(
-			__( 'دیر رسیدن به مبدا یا مقصد',           'alopeyk-woocommerce-shipping' ),
-			__( 'برخورد و رفتار بد',                   'alopeyk-woocommerce-shipping' ),
-			__( 'ظاهر نامرتب و بی نظم',                'alopeyk-woocommerce-shipping' ),
-			__( 'برخورد و رفتار بد',                   'alopeyk-woocommerce-shipping' ),
-			__( 'دیر رسیدن به مبدا یا مقصد',           'alopeyk-woocommerce-shipping' ),
-			__( 'درخواست هزینه اضافه',                 'alopeyk-woocommerce-shipping' ),
-			__( 'عدم تماس با درخواست دهنده',           'alopeyk-woocommerce-shipping' ),
-			__( 'نداشتن باکس حمل مرسوله',              'alopeyk-woocommerce-shipping' ),
-			__( 'عدم تسلط بر مسیر',                    'alopeyk-woocommerce-shipping' ),
-			__( 'سایر موارد',                          'alopeyk-woocommerce-shipping' ),
-			__( 'برخورد و رفتار بد',                   'alopeyk-woocommerce-shipping' ),
-			__( 'پیک تقاضای لغو درخواست نمود',         'alopeyk-woocommerce-shipping' ),
-			__( 'فاصله پیک تا مبدا',                   'alopeyk-woocommerce-shipping' ),
-			__( 'سفیر باکس حمل مرسوله به همراه نداشت', 'alopeyk-woocommerce-shipping' ),
-			__( 'عدم تماس با درخواست دهنده',           'alopeyk-woocommerce-shipping' ),
-			__( 'سایر موارد',                          'alopeyk-woocommerce-shipping' ),
+			__( 'دیر رسیدن به مبدا یا مقصد',           'alopeyk-shipping-for-woocommerce' ),
+			__( 'برخورد و رفتار بد',                   'alopeyk-shipping-for-woocommerce' ),
+			__( 'ظاهر نامرتب و بی نظم',                'alopeyk-shipping-for-woocommerce' ),
+			__( 'برخورد و رفتار بد',                   'alopeyk-shipping-for-woocommerce' ),
+			__( 'دیر رسیدن به مبدا یا مقصد',           'alopeyk-shipping-for-woocommerce' ),
+			__( 'درخواست هزینه اضافه',                 'alopeyk-shipping-for-woocommerce' ),
+			__( 'عدم تماس با درخواست دهنده',           'alopeyk-shipping-for-woocommerce' ),
+			__( 'نداشتن باکس حمل مرسوله',              'alopeyk-shipping-for-woocommerce' ),
+			__( 'عدم تسلط بر مسیر',                    'alopeyk-shipping-for-woocommerce' ),
+			__( 'سایر موارد',                          'alopeyk-shipping-for-woocommerce' ),
+			__( 'برخورد و رفتار بد',                   'alopeyk-shipping-for-woocommerce' ),
+			__( 'پیک تقاضای لغو درخواست نمود',         'alopeyk-shipping-for-woocommerce' ),
+			__( 'فاصله پیک تا مبدا',                   'alopeyk-shipping-for-woocommerce' ),
+			__( 'سفیر باکس حمل مرسوله به همراه نداشت', 'alopeyk-shipping-for-woocommerce' ),
+			__( 'عدم تماس با درخواست دهنده',           'alopeyk-shipping-for-woocommerce' ),
+			__( 'سایر موارد',                          'alopeyk-shipping-for-woocommerce' ),
 		);
 		return $clauses;
 
@@ -361,14 +361,14 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public function index_transport_types_translation() {
 
 		$clauses = array(
-			__( 'Motorbike',   'alopeyk-woocommerce-shipping' ),
-			__( 'Cart Bike',   'alopeyk-woocommerce-shipping' ),
-			__( 'Cargo',       'alopeyk-woocommerce-shipping' ),
-			__( 'Small Cargo', 'alopeyk-woocommerce-shipping' ),
-			__( 'Car',         'alopeyk-woocommerce-shipping' ),
-			__( 'Production',  'alopeyk-woocommerce-shipping' ),
-			__( 'Sandbox',     'alopeyk-woocommerce-shipping' ),
-			__( 'Custom',      'alopeyk-woocommerce-shipping' ),
+			__( 'Motorbike',   'alopeyk-shipping-for-woocommerce' ),
+			__( 'Cart Bike',   'alopeyk-shipping-for-woocommerce' ),
+			__( 'Cargo',       'alopeyk-shipping-for-woocommerce' ),
+			__( 'Small Cargo', 'alopeyk-shipping-for-woocommerce' ),
+			__( 'Car',         'alopeyk-shipping-for-woocommerce' ),
+			__( 'Production',  'alopeyk-shipping-for-woocommerce' ),
+			__( 'Sandbox',     'alopeyk-shipping-for-woocommerce' ),
+			__( 'Custom',      'alopeyk-shipping-for-woocommerce' ),
 
 		);
 		return $clauses;
@@ -388,29 +388,29 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		$addresses_count  = count( $order->addresses );
 		$eta              = $order->eta_minimal;
 		$hasSingleAddress = $addresses_count < 3 || ( $addresses_count == 3 && $has_return );
-		$statusText       = __( 'Please wait ...', 'alopeyk-woocommerce-shipping' );
+		$statusText       = __( 'Please wait ...', 'alopeyk-shipping-for-woocommerce' );
 		$duration         = $eta && $eta->duration ? ceil( $eta->duration / 60 ) : 0;
 		if ( $next_address_any ) {
 			if ( $next_address_any->status === 'pending' && $eta && (int) $eta->address_id === $next_address_any->id ) {
-				$remainedTimeString = $duration ? $duration . ' ' . __( 'minute(s)', 'alopeyk-woocommerce-shipping' ) : __( 'Less than a minute', 'alopeyk-woocommerce-shipping' );
-				$statusText = sprintf( __( '%s left until the courier %s %s.', 'alopeyk-woocommerce-shipping' ), $remainedTimeString, ( in_array( $next_address_any->type, array( 'origin', 'destination' ) ) ? __( 'reaches', 'alopeyk-woocommerce-shipping' ) : __( 'returns', 'alopeyk-woocommerce-shipping' ) ), ( in_array( $next_address_any->type, array( 'origin', 'return' ) ) ? __( 'origin', 'alopeyk-woocommerce-shipping' ) : __( 'destination', 'alopeyk-woocommerce-shipping' ) . ( $addresses_count < 3 || ( $addresses_count == 3 && $has_return ) ? '' : ' ' . $next_address_any->priority ) ) );
+				$remainedTimeString = $duration ? $duration . ' ' . __( 'minute(s)', 'alopeyk-shipping-for-woocommerce' ) : __( 'Less than a minute', 'alopeyk-shipping-for-woocommerce' );
+				$statusText = sprintf( __( '%s left until the courier %s %s.', 'alopeyk-shipping-for-woocommerce' ), $remainedTimeString, ( in_array( $next_address_any->type, array( 'origin', 'destination' ) ) ? __( 'reaches', 'alopeyk-shipping-for-woocommerce' ) : __( 'returns', 'alopeyk-shipping-for-woocommerce' ) ), ( in_array( $next_address_any->type, array( 'origin', 'return' ) ) ? __( 'origin', 'alopeyk-shipping-for-woocommerce' ) : __( 'destination', 'alopeyk-shipping-for-woocommerce' ) . ( $addresses_count < 3 || ( $addresses_count == 3 && $has_return ) ? '' : ' ' . $next_address_any->priority ) ) );
 			} else if ( $next_address_any->status === 'arrived' ) {
-				$statusText = sprintf( ( $next_address_any->type == 'return' ? __( 'Courier returned to %s.', 'alopeyk-woocommerce-shipping' ) : __( 'Courier reached %s.', 'alopeyk-woocommerce-shipping' ) ), ( in_array ( $next_address_any->type, array( 'origin', 'return' ) ) ? __( 'origin', 'alopeyk-woocommerce-shipping' ) : __( 'destination', 'alopeyk-woocommerce-shipping' ) . ( $hasSingleAddress ? '' : ' ' . ( $next_address_any->type ? $next_address_any->priority : $addresses_count - 1 - ( $has_return ? 1 : 0 ) ) ) ) );
+				$statusText = sprintf( ( $next_address_any->type == 'return' ? __( 'Courier returned to %s.', 'alopeyk-shipping-for-woocommerce' ) : __( 'Courier reached %s.', 'alopeyk-shipping-for-woocommerce' ) ), ( in_array ( $next_address_any->type, array( 'origin', 'return' ) ) ? __( 'origin', 'alopeyk-shipping-for-woocommerce' ) : __( 'destination', 'alopeyk-shipping-for-woocommerce' ) . ( $hasSingleAddress ? '' : ' ' . ( $next_address_any->type ? $next_address_any->priority : $addresses_count - 1 - ( $has_return ? 1 : 0 ) ) ) ) );
 			} else {
 				if ( in_array( $status, array( 'searching', 'new' ) ) ) {
-					$statusText = __( 'Searching for closest courier.', 'alopeyk-woocommerce-shipping' );
+					$statusText = __( 'Searching for closest courier.', 'alopeyk-shipping-for-woocommerce' );
 				} else if ( $status === 'picking' ) {
-					$statusText = __( 'Courier is driving to origin.', 'alopeyk-woocommerce-shipping' );
+					$statusText = __( 'Courier is driving to origin.', 'alopeyk-shipping-for-woocommerce' );
 				} else if ( $status === 'delivering' ) {
-					$statusText = sprintf( __( 'Courier is driving to %s.', 'alopeyk-woocommerce-shipping' ), ( $next_address_any->type == 'return' ? __( 'origin', 'alopeyk-woocommerce-shipping' ) : __( 'destination', 'alopeyk-woocommerce-shipping' ) . ( $hasSingleAddress ? '' : ' ' . $next_address_any->priority ) ) );
+					$statusText = sprintf( __( 'Courier is driving to %s.', 'alopeyk-shipping-for-woocommerce' ), ( $next_address_any->type == 'return' ? __( 'origin', 'alopeyk-shipping-for-woocommerce' ) : __( 'destination', 'alopeyk-shipping-for-woocommerce' ) . ( $hasSingleAddress ? '' : ' ' . $next_address_any->priority ) ) );
 				} else if ( $status === 'delivered' ) {
-					$statusText = sprintf( __( 'Courier arrived at destination%s.', 'alopeyk-woocommerce-shipping' ), ( $hasSingleAddress ? '' : ' ' . ( $next_address_any->type ? $next_address_any->priority : $addresses_count - 1 - ( $has_return ? 1 : 0 ) ) ) );
+					$statusText = sprintf( __( 'Courier arrived at destination%s.', 'alopeyk-shipping-for-woocommerce' ), ( $hasSingleAddress ? '' : ' ' . ( $next_address_any->type ? $next_address_any->priority : $addresses_count - 1 - ( $has_return ? 1 : 0 ) ) ) );
 				} else if ( $status === 'accepted' ) {
-					$statusText = __( 'Courier is driving to origin.', 'alopeyk-woocommerce-shipping' );
+					$statusText = __( 'Courier is driving to origin.', 'alopeyk-shipping-for-woocommerce' );
 				}
 			}
 		} else {
-			$statusText = __( 'Courier arrived at destination.', 'alopeyk-woocommerce-shipping' );
+			$statusText = __( 'Courier arrived at destination.', 'alopeyk-shipping-for-woocommerce' );
 		}
 		return $statusText;
 
@@ -447,7 +447,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		$schedule_dates = array(
 			'dates' => null,
 			'steps' => $time_interval,
-			'error' => __( 'You have chosen a date which is passed. So your order will be shipped as soon as being created. Are you sure?', 'alopeyk-woocommerce-shipping' )
+			'error' => __( 'You have chosen a date which is passed. So your order will be shipped as soon as being created. Are you sure?', 'alopeyk-shipping-for-woocommerce' )
 		);
 		for ( $t = 0; $t < 24 * 60 / $time_interval; $t++ ) {
 			$time = $t * $time_interval / 60;
@@ -658,7 +658,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$order_data = get_post_meta( $last_alopeyk_order['id'], '_awcshm_order_data', true );
 				$wc_orders = get_post_meta( $last_alopeyk_order['id'], '_awcshm_wc_order_id' );
 				if ( $this->can_be_tracked( $order_data ) && $this->get_option( 'customer_dashboard', 'yes' ) == 'yes' && $wc_orders && count( $wc_orders ) == 1 ) {
-					echo '<a href="' . $this->get_tracking_url( $order_data, false ) . '" target="_blank" class="button awcshm-dashboard-track-button">' . __( 'Track Order', 'alopeyk-woocommerce-shipping' ) . '</a>';
+					echo '<a href="' . $this->get_tracking_url( $order_data, false ) . '" target="_blank" class="button awcshm-dashboard-track-button">' . __( 'Track Order', 'alopeyk-shipping-for-woocommerce' ) . '</a>';
 				}
 			}
 		}
@@ -699,7 +699,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			$shipping_address           = $checkout ? WC()->session->get( 'destination_address' )   : null;
 			$shipping_address_unit      = $checkout ? WC()->session->get( 'destination_unit' )      : null;
 			$shipping_address_number    = $checkout ? WC()->session->get( 'destination_number' )    : null;
-			echo '<div id="awcshm-address-details"><h3>' . __( 'Address Details', 'alopeyk-woocommerce-shipping' ) . '</h3>';
+			echo '<div id="awcshm-address-details"><h3>' . __( 'Address Details', 'alopeyk-shipping-for-woocommerce' ) . '</h3>';
 			woocommerce_form_field( 'destination_latitude', array(
 				'type'              => 'text',
 				'required'          => true,
@@ -721,13 +721,13 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'required'          => true,
 				'custom_attributes' => array(
 					'style' => 'display: none;',
-					'data-autocomplete-placeholder' => __( 'Please enter your address ...', 'alopeyk-woocommerce-shipping' )
+					'data-autocomplete-placeholder' => __( 'Please enter your address ...', 'alopeyk-shipping-for-woocommerce' )
 				)
 			), $shipping_address ? $shipping_address : $this->get_user_meta( 'shipping_address' ) );
 			woocommerce_form_field( 'destination_unit', array(
 				'type'              => 'text',
 				'class'             => array( 'form-row-first' ),
-				'label'             => __( 'Unit', 'alopeyk-woocommerce-shipping' ),
+				'label'             => __( 'Unit', 'alopeyk-shipping-for-woocommerce' ),
 				'custom_attributes' => array(
 					'pattern' => '\d*',
 				)
@@ -735,7 +735,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			woocommerce_form_field( 'destination_number', array(
 				'type'              => 'text',
 				'class'             => array( 'form-row-last' ),
-				'label'             => __( 'Plaque', 'alopeyk-woocommerce-shipping' ),
+				'label'             => __( 'Plaque', 'alopeyk-shipping-for-woocommerce' ),
 				'custom_attributes' => array(
 					'pattern' => '\d*',
 				)
@@ -785,7 +785,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			   ( isset( $data->destination_longitude ) && ( ! $data->destination_longitude || empty( $data->destination_longitude ) ) ) ||
 			   ( isset( $data->destination_address )   && ( ! $data->destination_address   || empty( $data->destination_address ) ) )
 			) {
-				wc_add_notice( __( 'Please specify your exact location on the map.', 'alopeyk-woocommerce-shipping' ), 'error' );
+				wc_add_notice( __( 'Please specify your exact location on the map.', 'alopeyk-shipping-for-woocommerce' ), 'error' );
 			}
 		}
 
@@ -873,7 +873,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			$return_alert    = $this->get_option( 'return_' . $method . '_customer_alert', 'no' );
 			$show_alert      = $should_return == 'yes' && $return_customer == 'yes' && $return_alert == 'yes';
 			if ( $show_alert ) {
-				$description .= '<span class="awcshm-return-price-alert">' . sprintf( __( 'You will be charged %s more by choosing this payment method.', 'alopeyk-woocommerce-shipping' ), wc_price( $return_cost ) ) . '</span>';
+				$description .= '<span class="awcshm-return-price-alert">' . sprintf( __( 'You will be charged %s more by choosing this payment method.', 'alopeyk-shipping-for-woocommerce' ), wc_price( $return_cost ) ) . '</span>';
 			}
 		}
 		return $description;
@@ -971,7 +971,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 						return true;
 					}
 				} catch ( Exception $e ) {
-					$error = __( 'Authentication failed.', 'alopeyk-woocommerce-shipping' ) . ' ' . __( 'API Key', 'alopeyk-woocommerce-shipping' ) . ': ' . $api_key;
+					$error = __( 'Authentication failed.', 'alopeyk-shipping-for-woocommerce' ) . ' ' . __( 'API Key', 'alopeyk-shipping-for-woocommerce' ) . ': ' . $api_key;
 					$this->add_log( $error );
 				}
 				AloPeykApiHandler::setToken( null );
@@ -993,7 +993,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( isset( $_POST['request'] ) ) {
 			if ( isset( $_POST['authenticate'] ) && $_POST['authenticate'] == true ) {
 				if ( ! $this->authenticate() ) {
-					$this->respond_ajax( __( 'Authentication failed may be because of wrong API key.', 'alopeyk-woocommerce-shipping' ), false );
+					$this->respond_ajax( __( 'Authentication failed may be because of wrong API key.', 'alopeyk-shipping-for-woocommerce' ), false );
 				}
 			}
 			$request = 'ajax_' . $_POST['request'];
@@ -1004,7 +1004,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			if ( method_exists( $scope, $request ) ) {
 				$scope->$request( $_POST );
 			} else {
-				$this->respond_ajax( __( 'No action defined for given request.', 'alopeyk-woocommerce-shipping' ), false );
+				$this->respond_ajax( __( 'No action defined for given request.', 'alopeyk-shipping-for-woocommerce' ), false );
 			}
 		}
 		wp_die();
@@ -1068,7 +1068,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		} else {
 			$this->respond_ajax( array(
 				'city'    => null,
-				'address' => __( 'This address is out of service.', 'alopeyk-woocommerce-shipping' )
+				'address' => __( 'This address is out of service.', 'alopeyk-shipping-for-woocommerce' )
 			), false );
 		}
 
@@ -1112,7 +1112,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( $addresses ) {
 			$this->respond_ajax( $addresses );
 		} else {
-			$this->respond_ajax( __( 'No address found.', 'alopeyk-woocommerce-shipping' ), false );
+			$this->respond_ajax( __( 'No address found.', 'alopeyk-shipping-for-woocommerce' ), false );
 		}
 
 	}
@@ -1182,7 +1182,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					$location = $apiResponse->object;
 					return array(
 						'city'    => $location->city_fa,
-						'address' => $location->city_fa . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . ($location->region ? $location->region . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' : '') . ( isset( $location->address[0] ) ? $location->address[0] : '' )
+						'address' => $location->city_fa . __( ',', 'alopeyk-shipping-for-woocommerce' ) . ' ' . ($location->region ? $location->region . __( ',', 'alopeyk-shipping-for-woocommerce' ) . ' ' : '') . ( isset( $location->address[0] ) ? $location->address[0] : '' )
 					);
 				}
 			} else {
@@ -1223,7 +1223,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 							'lng'     => $location->lng,
 							'latlng'  => $location->lat . ',' . $location->lng,
 							'city'    => $location->city,
-							'address' => $location->city_fa . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $location->region . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $location->title
+							'address' => $location->city_fa . __( ',', 'alopeyk-shipping-for-woocommerce' ) . ' ' . $location->region . __( ',', 'alopeyk-shipping-for-woocommerce' ) . ' ' . $location->title
 						);
 					}, $apiResponse->object );
 				}
@@ -1237,7 +1237,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 							'lng'     => $extra_address->center->lng,
 							'latlng'  => $extra_address->center->lat . ',' . $extra_address->center->lng,
 							'city'    => $extra_address->area_name,
-							'address' => $extra_address->area_name . __( ',', 'alopeyk-woocommerce-shipping' ) . ' ' . $extra_address->local_name. ' ' . $extra_address->title
+							'address' => $extra_address->area_name . __( ',', 'alopeyk-shipping-for-woocommerce' ) . ' ' . $extra_address->local_name. ' ' . $extra_address->title
 						);
 					}
 				}
@@ -1256,13 +1256,13 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public function create_post_type() {
 
 		register_post_type( self::$order_post_type_name, array(
-			'label'               => __( 'Alopeyk Orders', 'alopeyk-woocommerce-shipping' ),
+			'label'               => __( 'Alopeyk Orders', 'alopeyk-shipping-for-woocommerce' ),
 			'labels'              => array(
-				'name'               => __( 'Alopeyk Orders', 'alopeyk-woocommerce-shipping' ),
-				'singular_name'      => __( 'Alopeyk Order', 'alopeyk-woocommerce-shipping' ),
-				'menu_name'          => _x( 'Alopeyk Orders', 'Admin menu name', 'alopeyk-woocommerce-shipping' ),
-				'not_found'          => __( 'No orders found.', 'alopeyk-woocommerce-shipping' ),
-				'not_found_in_trash' => __( 'No orders found in Trash.', 'alopeyk-woocommerce-shipping' )
+				'name'               => __( 'Alopeyk Orders', 'alopeyk-shipping-for-woocommerce' ),
+				'singular_name'      => __( 'Alopeyk Order', 'alopeyk-shipping-for-woocommerce' ),
+				'menu_name'          => _x( 'Alopeyk Orders', 'Admin menu name', 'alopeyk-shipping-for-woocommerce' ),
+				'not_found'          => __( 'No orders found.', 'alopeyk-shipping-for-woocommerce' ),
+				'not_found_in_trash' => __( 'No orders found in Trash.', 'alopeyk-shipping-for-woocommerce' )
 			),
 			'description'         => '',
 			'public'              => false,
@@ -1294,44 +1294,44 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		$order_statuses = array(
 			'awcshm-progress'  => array(
-				'label'                     => _x( 'In Progress', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'In Progress', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'In Progress <span class="count">(%s)</span>', 'In Progress <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'In Progress <span class="count">(%s)</span>', 'In Progress <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			),
 			'awcshm-pending'  => array(
-				'label'                     => _x( 'Pending', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'Pending', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Pending <span class="count">(%s)</span>', 'Pending <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'Pending <span class="count">(%s)</span>', 'Pending <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			),
 			'awcshm-scheduled' => array(
-				'label'                     => _x( 'Scheduled', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'Scheduled', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Scheduled <span class="count">(%s)</span>', 'Scheduled <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'Scheduled <span class="count">(%s)</span>', 'Scheduled <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			),
 			'awcshm-failed'    => array(
-				'label'                     => _x( 'Failed', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'Failed', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Failed <span class="count">(%s)</span>', 'Failed <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'Failed <span class="count">(%s)</span>', 'Failed <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			),
 			'awcshm-done'      => array(
-				'label'                     => _x( 'Completed', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'Completed', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Completed <span class="count">(%s)</span>', 'Completed <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'Completed <span class="count">(%s)</span>', 'Completed <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			)
 		);
 		if ( $return_statuses ) {
@@ -1349,34 +1349,34 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		
 		$return= array(
 			'wc-awcshm-scheduled'    => array(
-				'label'                     => _x( 'Scheduled for sending with Alopeyk', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'Scheduled for sending with Alopeyk', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Scheduled for sending with Alopeyk <span class="count">(%s)</span>', 'Scheduled for sending with Alopeyk <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'Scheduled for sending with Alopeyk <span class="count">(%s)</span>', 'Scheduled for sending with Alopeyk <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			),
 			'wc-awcshm-searching'  => array(
-				'label'                     => _x( 'Finding Alopeyk courier', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'Finding Alopeyk courier', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Finding Alopeyk courier <span class="count">(%s)</span>', 'Finding Alopeyk courier <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'Finding Alopeyk courier <span class="count">(%s)</span>', 'Finding Alopeyk courier <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			),
 			'wc-awcshm-processing' => array(
-				'label'                     => _x( 'Sending with Alopeyk', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'Sending with Alopeyk', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Sending with Alopeyk <span class="count">(%s)</span>', 'Sending with Alopeyk <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'Sending with Alopeyk <span class="count">(%s)</span>', 'Sending with Alopeyk <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			),
 			'wc-awcshm-completed'  => array(
-				'label'                     => _x( 'Delivered with Alopeyk', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'Delivered with Alopeyk', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Delivered with Alopeyk <span class="count">(%s)</span>', 'Delivered with Alopeyk <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'Delivered with Alopeyk <span class="count">(%s)</span>', 'Delivered with Alopeyk <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			),
 			'wc-awcshm-failed'     => array(
-				'label'                     => _x( 'Unsuccessful sending with Alopeyk', 'Order status', 'alopeyk-woocommerce-shipping' ),
+				'label'                     => _x( 'Unsuccessful sending with Alopeyk', 'Order status', 'alopeyk-shipping-for-woocommerce' ),
 				'public'                    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( 'Unsuccessful sending with Alopeyk <span class="count">(%s)</span>', 'Unsuccessful sending with Alopeyk <span class="count">(%s)</span>', 'alopeyk-woocommerce-shipping' ),
+				'label_count'               => _n_noop( 'Unsuccessful sending with Alopeyk <span class="count">(%s)</span>', 'Unsuccessful sending with Alopeyk <span class="count">(%s)</span>', 'alopeyk-shipping-for-woocommerce' ),
 			)
 		);
 		return $return;
@@ -1893,28 +1893,28 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				date_default_timezone_set( $this->get_timezone_setting() );
 				$response = array(
 					'status' => 'wc-awcshm-scheduled',
-					'note'   => sprintf( __( 'Order scheduled to be shipped via Alopeyk shipping method at %s.', 'alopeyk-woocommerce-shipping' ), date_i18n( 'j F Y (g:i A)', strtotime( $order->scheduled_at ) ) )
+					'note'   => sprintf( __( 'Order scheduled to be shipped via Alopeyk shipping method at %s.', 'alopeyk-shipping-for-woocommerce' ), date_i18n( 'j F Y (g:i A)', strtotime( $order->scheduled_at ) ) )
 				);
 			} else if ( in_array( $status, array( 'new', 'searching' ) ) ) {
 				$response = array(
 					'status' => 'wc-awcshm-searching',
-					'note'   => __( 'Searching for the closest courier to assign shipping task.', 'alopeyk-woocommerce-shipping' )
+					'note'   => __( 'Searching for the closest courier to assign shipping task.', 'alopeyk-shipping-for-woocommerce' )
 				);
 			} else if ( in_array( $status, array( 'accepted', 'picking', 'delivering' ) ) ) {
-				$courier_info = isset( $order->courier_info ) ? ' (' . $order->courier_info->firstname . ' ' . $order->courier_info->lastname . ' ' . __( 'with the phone number', 'alopeyk-woocommerce-shipping' ) . ' ' . $order->courier_info->phone . ')' : '';
+				$courier_info = isset( $order->courier_info ) ? ' (' . $order->courier_info->firstname . ' ' . $order->courier_info->lastname . ' ' . __( 'with the phone number', 'alopeyk-shipping-for-woocommerce' ) . ' ' . $order->courier_info->phone . ')' : '';
 				$response = array(
 					'status' => 'wc-awcshm-processing',
-					'note'   => sprintf( __( 'Courier%s assigned and <a href="%s" target="_blank">shipping proccess</a> is started. It can be tracked <a href="%s" target="_blank">here</a>.', 'alopeyk-woocommerce-shipping' ), $courier_info, $order_id ? admin_url( 'post.php?action=edit&post=' . $order_id ) : '#', $this->get_tracking_url( $order ) )
+					'note'   => sprintf( __( 'Courier%s assigned and <a href="%s" target="_blank">shipping proccess</a> is started. It can be tracked <a href="%s" target="_blank">here</a>.', 'alopeyk-shipping-for-woocommerce' ), $courier_info, $order_id ? admin_url( 'post.php?action=edit&post=' . $order_id ) : '#', $this->get_tracking_url( $order ) )
 				);
 			} else if ( in_array( $status, array( 'delivered', 'finished' ) ) ) {
 				$response = array(
 					'status' => 'wc-awcshm-completed',
-					'note'   => __( 'Order successfully delivered.', 'alopeyk-woocommerce-shipping' )
+					'note'   => __( 'Order successfully delivered.', 'alopeyk-shipping-for-woocommerce' )
 				);
 			} else if ( in_array( $status, array( 'cancelled', 'deleted', 'expired' ) ) ) {
 				$response = array(
 					'status' => 'wc-awcshm-failed',
-					'note'   => __( 'Shipping canceled or No courier found.', 'alopeyk-woocommerce-shipping' )
+					'note'   => __( 'Shipping canceled or No courier found.', 'alopeyk-shipping-for-woocommerce' )
 				);
 			}
 		}
@@ -2297,7 +2297,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		$response = array(
 			'success' => false,
-			'message' => __( 'Coupon code is required.', 'alopeyk-woocommerce-shipping' ),
+			'message' => __( 'Coupon code is required.', 'alopeyk-shipping-for-woocommerce' ),
 		);
 		if ( $coupon_code ) {
 			try {
@@ -2306,29 +2306,29 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					if ( $apiResponse->status == 'success' ) {
 						$response = array(
 							'success' => true,
-							'message' => __( 'Coupon code successfully applied.', 'alopeyk-woocommerce-shipping' ),
+							'message' => __( 'Coupon code successfully applied.', 'alopeyk-shipping-for-woocommerce' ),
 						);
 					} else if ( $apiResponse->status == 'fail' && $apiResponse->object->error == 'invalid_coupon' ) {
 						$response = array(
 							'success' => false,
-							'message' => __( 'Entered coupon code is not valid.', 'alopeyk-woocommerce-shipping' ),
+							'message' => __( 'Entered coupon code is not valid.', 'alopeyk-shipping-for-woocommerce' ),
 						);
 					} else {
 						$response = array(
 							'success' => false,
-							'message' => __( 'Error occured while trying to apply coupon code.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $apiResponse->message,
+							'message' => __( 'Error occured while trying to apply coupon code.', 'alopeyk-shipping-for-woocommerce' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-shipping-for-woocommerce' ) . '</strong><br>' . $apiResponse->message,
 						);
 					}
 				} else {
 					$response = array(
 						'success' => false,
-						'message' => __( 'Authentication failed.', 'alopeyk-woocommerce-shipping' )
+						'message' => __( 'Authentication failed.', 'alopeyk-shipping-for-woocommerce' )
 					);
 				}
 			} catch ( Exception $e ) {
 				$response = array(
 					'success' => false,
-					'message' => __( 'Error occured while trying to apply coupon code.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $e->getMessage(),
+					'message' => __( 'Error occured while trying to apply coupon code.', 'alopeyk-shipping-for-woocommerce' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-shipping-for-woocommerce' ) . '</strong><br>' . $e->getMessage(),
 				);
 			}
 		}
@@ -2427,7 +2427,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( $this->is_in_progress( $wc_orders ) ) {
 			return array(
 				'success' => false,
-				'message' => __( 'Shipping proccess of one or more selected orders is in progress. Please cancel them before creating a new order.', 'alopeyk-woocommerce-shipping' ),
+				'message' => __( 'Shipping proccess of one or more selected orders is in progress. Please cancel them before creating a new order.', 'alopeyk-shipping-for-woocommerce' ),
 				'data'    => $order_data,
 			);
 		}
@@ -2435,7 +2435,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( ! $this->authenticate() ) {
 			return array(
 				'success' => false,
-				'message' => sprintf( __( 'You are not authenticated. Please recheck your API key entered in <a href="%s" target="_blank">Settings</a> page or <a href="%s" target="_blank">Contact Alopeyk</a>.', 'alopeyk-woocommerce-shipping' ), $this->get_settings_url(), $this->get_support_url() ),
+				'message' => sprintf( __( 'You are not authenticated. Please recheck your API key entered in <a href="%s" target="_blank">Settings</a> page or <a href="%s" target="_blank">Contact Alopeyk</a>.', 'alopeyk-shipping-for-woocommerce' ), $this->get_settings_url(), $this->get_support_url() ),
 				'data'    => $order_data,
 			);
 		}
@@ -2474,7 +2474,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			if ( ! $credit ) {
 				return array(
 					'success' => false,
-					'message' => __( 'Unable to get your Alopeyk credit.', 'alopeyk-woocommerce-shipping' )
+					'message' => __( 'Unable to get your Alopeyk credit.', 'alopeyk-shipping-for-woocommerce' )
 				);
 			}
 
@@ -2483,7 +2483,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			if ( $order_data->status != 'success' ) {
 				return array(
 					'success' => false,
-					'message' => __( $order->message, 'alopeyk-woocommerce-shipping' ),
+					'message' => __( $order->message, 'alopeyk-shipping-for-woocommerce' ),
 					'data'    => $order_data,
 				);
 			}
@@ -2500,7 +2500,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 				return array(
 					'success' => true,
-					'message' => __( 'Error occured while trying to fetch Alopeyk order details. Order cancelled due to security reasons. Please try again later.', 'alopeyk-woocommerce-shipping' ),
+					'message' => __( 'Error occured while trying to fetch Alopeyk order details. Order cancelled due to security reasons. Please try again later.', 'alopeyk-shipping-for-woocommerce' ),
 					'data'    => $order_data,
 				);
 			}
@@ -2518,7 +2518,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 				return array(
 					'success' => false,
-					'message' => sprintf( __( 'Error occurred while trying to write order as a Wordpress post. But your Alopeyk order is created and is in progress. You can <a href="%s" target="_blank">track your order here</a> or <a href="%s" target="_blank" >contact Alopeyk support</a>.', 'alopeyk-woocommerce-shipping' ), $tracking_url, $this->get_support_url() ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $result->get_error_message(),
+					'message' => sprintf( __( 'Error occurred while trying to write order as a Wordpress post. But your Alopeyk order is created and is in progress. You can <a href="%s" target="_blank">track your order here</a> or <a href="%s" target="_blank" >contact Alopeyk support</a>.', 'alopeyk-shipping-for-woocommerce' ), $tracking_url, $this->get_support_url() ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-shipping-for-woocommerce' ) . '</strong><br>' . $result->get_error_message(),
 					'data'    => $order_data,
 				);
 			}
@@ -2554,7 +2554,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 			return array(
 				'success' => true,
-				'message' => __( 'Your order has been successfully created and is in progress.', 'alopeyk-woocommerce-shipping' ),
+				'message' => __( 'Your order has been successfully created and is in progress.', 'alopeyk-shipping-for-woocommerce' ),
 				'data'    => $order_data,
 			);
 		} catch ( Exception $e ) {
@@ -2564,7 +2564,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 			return array(
 				'success' => false,
-				'message' => __( $e->getMessage(), 'alopeyk-woocommerce-shipping' ),
+				'message' => __( $e->getMessage(), 'alopeyk-shipping-for-woocommerce' ),
 				'data'    => $order_data,
 			);
 		}
@@ -2604,54 +2604,54 @@ class Alopeyk_WooCommerce_Shipping_Common {
 									if ( $diff <= 0 ) {
 										$response = array(
 											'success' => true,
-											'message' => __( 'Your Alopeyk order is ready to submit.', 'alopeyk-woocommerce-shipping' )
+											'message' => __( 'Your Alopeyk order is ready to submit.', 'alopeyk-shipping-for-woocommerce' )
 										);
 									} else {
 										$response = array(
 											'success' => false,
-											'message' => sprintf( __( 'Order price is %s while your credit balance is %s. You need to <a href="%s" class="awcshm-credit-modal-toggler" data-credit-amount="%s">add at least %s more credit to your Alopeyk account</a> to be enable to ship selected package(s).', 'alopeyk-woocommerce-shipping' ), wc_price( $this->normalize_price( $cost ) ), wc_price( $this->normalize_price( $credit ) ), add_query_arg( 'amount', $diff, admin_url( 'admin.php?page=alopeyk-credit' ) ), $diff, wc_price( $this->normalize_price( $diff ) ) )
+											'message' => sprintf( __( 'Order price is %s while your credit balance is %s. You need to <a href="%s" class="awcshm-credit-modal-toggler" data-credit-amount="%s">add at least %s more credit to your Alopeyk account</a> to be enable to ship selected package(s).', 'alopeyk-shipping-for-woocommerce' ), wc_price( $this->normalize_price( $cost ) ), wc_price( $this->normalize_price( $credit ) ), add_query_arg( 'amount', $diff, admin_url( 'admin.php?page=alopeyk-credit' ) ), $diff, wc_price( $this->normalize_price( $diff ) ) )
 										);
 									}
 								} else {
 									$response = array(
 										'success' => false,
-										'message' => __( 'Unfortunately, we are not able to submit this request.', 'alopeyk-woocommerce-shipping' )
+										'message' => __( 'Unfortunately, we are not able to submit this request.', 'alopeyk-shipping-for-woocommerce' )
 									);
 								}
 							} else {
 								$response = array(
 									'success' => false,
-									'message' => __( 'Unable to get your Alopeyk credit.', 'alopeyk-woocommerce-shipping' )
+									'message' => __( 'Unable to get your Alopeyk credit.', 'alopeyk-shipping-for-woocommerce' )
 								);
 							}
 						} else {
 							$response = array(
 								'success' => false,
-								'message' => __( 'One or more order shipping addresses are not supported by Alopeyk shipping method.', 'alopeyk-woocommerce-shipping' ),
+								'message' => __( 'One or more order shipping addresses are not supported by Alopeyk shipping method.', 'alopeyk-shipping-for-woocommerce' ),
 							);
 						}
 					} else {
 						$response = array(
 							'success' => false,
-							'message' => __( 'Order items have a total weight or volume more than maximum allowed for the selected shipping method.', 'alopeyk-woocommerce-shipping' ),
+							'message' => __( 'Order items have a total weight or volume more than maximum allowed for the selected shipping method.', 'alopeyk-shipping-for-woocommerce' ),
 						);
 					}
 				} else {
 					$response = array(
 						'success' => false,
-						'message' => __( 'Alopeyk shipping method is not active.', 'alopeyk-woocommerce-shipping' ),
+						'message' => __( 'Alopeyk shipping method is not active.', 'alopeyk-shipping-for-woocommerce' ),
 					);
 				}
 			} else {
 				$response = array(
 					'success' => false,
-					'message' => __( 'Error occurred while fetching data for orders.', 'alopeyk-woocommerce-shipping' ),
+					'message' => __( 'Error occurred while fetching data for orders.', 'alopeyk-shipping-for-woocommerce' ),
 				);
 			}
 		} else {
 			$response = array(
 				'success' => false,
-				'message' => __( 'No order selected for shipping.', 'alopeyk-woocommerce-shipping' ),
+				'message' => __( 'No order selected for shipping.', 'alopeyk-shipping-for-woocommerce' ),
 			);
 		}
 		$response['package'] = $package;
@@ -2686,53 +2686,53 @@ class Alopeyk_WooCommerce_Shipping_Common {
 									}
 									$response = array(
 										'success' => true,
-										'message' => __( 'Your rate successfully submitted.', 'alopeyk-woocommerce-shipping' )
+										'message' => __( 'Your rate successfully submitted.', 'alopeyk-shipping-for-woocommerce' )
 									);
 								} else if ( isset( $apiResponse->message ) ) {
 									$response = array(
 										'success' => false,
-										'message' => __( 'Error occured while trying to save your rate.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $apiResponse->message
+										'message' => __( 'Error occured while trying to save your rate.', 'alopeyk-shipping-for-woocommerce' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-shipping-for-woocommerce' ) . '</strong><br>' . $apiResponse->message
 									);
 								} else {
 									$response = array(
 										'success' => false,
-										'message' => __( 'Error occured while trying to save your rate.', 'alopeyk-woocommerce-shipping' )
+										'message' => __( 'Error occured while trying to save your rate.', 'alopeyk-shipping-for-woocommerce' )
 									);
 								}
 							} else {
 								$response = array(
 									'success' => false,
-									'message' => __( 'Error occured while trying to save your rate.', 'alopeyk-woocommerce-shipping' )
+									'message' => __( 'Error occured while trying to save your rate.', 'alopeyk-shipping-for-woocommerce' )
 								);
 							}
 						} else {
 							$response = array(
 								'success' => false,
-								'message' => __( 'Authentication failed.', 'alopeyk-woocommerce-shipping' )
+								'message' => __( 'Authentication failed.', 'alopeyk-shipping-for-woocommerce' )
 							);
 						}
 					} catch ( Exception $e ) {
 						$response = array(
 							'success' => false,
-							'message' => __( $e->getMessage(), 'alopeyk-woocommerce-shipping' ),
+							'message' => __( $e->getMessage(), 'alopeyk-shipping-for-woocommerce' ),
 						);
 					}
 				} else {
 					$response = array(
 						'success' => false,
-						'message' => __( 'No reason selected for low score.', 'alopeyk-woocommerce-shipping' )
+						'message' => __( 'No reason selected for low score.', 'alopeyk-shipping-for-woocommerce' )
 					);
 				}
 			} else {
 				$response = array(
 					'success' => false,
-					'message' => __( 'Rate is not specified.', 'alopeyk-woocommerce-shipping' )
+					'message' => __( 'Rate is not specified.', 'alopeyk-shipping-for-woocommerce' )
 				);
 			}
 		} else {
 			$response = array(
 				'success' => false,
-				'message' => __( 'Order ID is required for rate submission.', 'alopeyk-woocommerce-shipping' )
+				'message' => __( 'Order ID is required for rate submission.', 'alopeyk-shipping-for-woocommerce' )
 			);
 		}
 		return $response;
@@ -2751,7 +2751,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( !$order_id ) {
 			return array(
 				'success' => false,
-				'message' => __( 'Order should be specified to be canceled.', 'alopeyk-woocommerce-shipping' ),
+				'message' => __( 'Order should be specified to be canceled.', 'alopeyk-shipping-for-woocommerce' ),
 			);
 		}
 
@@ -2759,7 +2759,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			if ( !$this->authenticate() ) {
 				return array(
 					'success' => false,
-					'message' => __( 'Authentication failed.', 'alopeyk-woocommerce-shipping' )
+					'message' => __( 'Authentication failed.', 'alopeyk-shipping-for-woocommerce' )
 				);
 			}
 
@@ -2770,7 +2770,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$this->update_active_order( $local_order_id );
 				return array(
 					'success' => true,
-					'message' => __( 'We can not cancel this order, but we update your order status with our data, current status: ' . $orderStatus, 'alopeyk-woocommerce-shipping'),
+					'message' => __( 'We can not cancel this order, but we update your order status with our data, current status: ' . $orderStatus, 'alopeyk-shipping-for-woocommerce'),
 				);
 			}
 
@@ -2782,23 +2782,23 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 				return array(
 					'success' => true,
-					'message' => __( 'Order successfully canceled.', 'alopeyk-woocommerce-shipping' ),
+					'message' => __( 'Order successfully canceled.', 'alopeyk-shipping-for-woocommerce' ),
 				);
 			} else if ( isset( $apiResponse->status ) && $apiResponse->status == 'fail' && isset( $apiResponse->object ) && isset( $apiResponse->object->error_msg ) ) {
 				return array(
 					'success' => false,
-					'message' => __( 'Cannot cancel selected order.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $apiResponse->object->error_msg,
+					'message' => __( 'Cannot cancel selected order.', 'alopeyk-shipping-for-woocommerce' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-shipping-for-woocommerce' ) . '</strong><br>' . $apiResponse->object->error_msg,
 				);
 			} else {
 				return array(
 					'success' => false,
-					'message' => __( 'Error occurred while trying to cancel selected order.', 'alopeyk-woocommerce-shipping' )
+					'message' => __( 'Error occurred while trying to cancel selected order.', 'alopeyk-shipping-for-woocommerce' )
 				);
 			}
 		} catch ( Exception $e ) {
 			return array(
 				'success' => false,
-				'message' => __( 'Error occurred while trying to cancel selected order.', 'alopeyk-woocommerce-shipping' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-woocommerce-shipping' ) . '</strong><br>' . $e->getMessage(),
+				'message' => __( 'Error occurred while trying to cancel selected order.', 'alopeyk-shipping-for-woocommerce' ) . '<br><br><strong>' . __( 'Detail:', 'alopeyk-shipping-for-woocommerce' ) . '</strong><br>' . $e->getMessage(),
 			);
 		}
 	}
@@ -2878,12 +2878,12 @@ class Alopeyk_WooCommerce_Shipping_Common {
 						$wc_order = $wc_orders[0];
 						$wc_order = new WC_Order( $wc_order );
 						$order_link = $wc_order->get_view_order_url();
-						$message .= '<p><strong>' . sprintf( __( 'Dear %s,', 'alopeyk-woocommerce-shipping' ), $order->get_shipping_first_name() . ' ' . $order->get_shipping_last_name() ) . '</strong></p>';
+						$message .= '<p><strong>' . sprintf( __( 'Dear %s,', 'alopeyk-shipping-for-woocommerce' ), $order->get_shipping_first_name() . ' ' . $order->get_shipping_last_name() ) . '</strong></p>';
 					}
-					$subject = __( 'Your order is being shipped via Alopeyk', 'alopeyk-woocommerce-shipping' );
-					$message .= '<p>' . sprintf( __( '%s is picked up from <a href="%s">%s</a> and is being delivered to you by <a href="%s">Alopeyk</a> courier.', 'alopeyk-woocommerce-shipping' ), ( $order_link ? '<a href="' . $order_link . '">' . __( 'Your order', 'alopeyk-woocommerce-shipping' ) . '</a>' : __( 'Your order', 'alopeyk-woocommerce-shipping' ) ), get_permalink( wc_get_page_id( 'shop' ) ), get_option( 'woocommerce_email_from_name' ), $this->get_campaign_url( 'status_change:' . $new_order_data->status ) ) . '</p>';
+					$subject = __( 'Your order is being shipped via Alopeyk', 'alopeyk-shipping-for-woocommerce' );
+					$message .= '<p>' . sprintf( __( '%s is picked up from <a href="%s">%s</a> and is being delivered to you by <a href="%s">Alopeyk</a> courier.', 'alopeyk-shipping-for-woocommerce' ), ( $order_link ? '<a href="' . $order_link . '">' . __( 'Your order', 'alopeyk-shipping-for-woocommerce' ) . '</a>' : __( 'Your order', 'alopeyk-shipping-for-woocommerce' ) ), get_permalink( wc_get_page_id( 'shop' ) ), get_option( 'woocommerce_email_from_name' ), $this->get_campaign_url( 'status_change:' . $new_order_data->status ) ) . '</p>';
 					if ( $this->can_be_tracked( $new_order_data ) ) {
-						$message .= '<p class="button-container"><a href="' . $this->get_tracking_url( $new_order_data, false ) . '" class="button">' . __( 'Track', 'alopeyk-woocommerce-shipping' ) . '</a></p>';
+						$message .= '<p class="button-container"><a href="' . $this->get_tracking_url( $new_order_data, false ) . '" class="button">' . __( 'Track', 'alopeyk-shipping-for-woocommerce' ) . '</a></p>';
 					}
 					$this->send_email( $recipients, $subject, $message, 'status_change:' . $new_order_data->status );
 				};
@@ -2977,11 +2977,11 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		$interval = self::CRON_INTERVAL;
 		$schedules[ METHOD_ID . '_active_order_update_interval' ] = array(
 			'interval' => $interval < 10 ? 10 : $interval,
-			'display'  => __( 'Update Active Order Interval', 'alopeyk-woocommerce-shipping' ),
+			'display'  => __( 'Update Active Order Interval', 'alopeyk-shipping-for-woocommerce' ),
 		);
 		$schedules[ METHOD_ID . '_check_mandatory_options_interval' ] = array(
 			'interval' => 1,
-			'display'  => __( 'Every Second', 'alopeyk-woocommerce-shipping' ),
+			'display'  => __( 'Every Second', 'alopeyk-shipping-for-woocommerce' ),
 		);
 		return $schedules;
 
@@ -3071,7 +3071,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$name = $transport_types[$name]['label'];
 			}
 		}
-		return __( $name, 'alopeyk-woocommerce-shipping' );
+		return __( $name, 'alopeyk-shipping-for-woocommerce' );
 
 	}
 
@@ -3116,7 +3116,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					if ( $apiResponse->status == 'success' ) {
 						$response = array(
 							'success' => true,
-							'message' => '<div class="updated notice"><p>' . __( 'Successful Purchase! Your credit has been added.', 'alopeyk-woocommerce-shipping' ) . '</p></div>'
+							'message' => '<div class="updated notice"><p>' . __( 'Successful Purchase! Your credit has been added.', 'alopeyk-shipping-for-woocommerce' ) . '</p></div>'
 						);
 						return $response;
 					}
@@ -3129,13 +3129,13 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			} else {
 				$response = array(
 					'success' => false,
-					'message' => __( 'Error occured.', 'alopeyk-woocommerce-shipping' ),
+					'message' => __( 'Error occured.', 'alopeyk-shipping-for-woocommerce' ),
 				);
 			}
 		} else {
 			$response = array(
 				'success' => false,
-				'message' => __( 'Authentication failed.', 'alopeyk-woocommerce-shipping' )
+				'message' => __( 'Authentication failed.', 'alopeyk-shipping-for-woocommerce' )
 			);
 		}
 		
@@ -3177,7 +3177,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( isset( $userData->customer->is_api ) && $userData->customer->is_api ) {
 			return true;
 		}
-		return __( 'Contact <a href="https://alopeyk.com/api#section-form" target="_blank">Alopeyk</a> to become an API user and unlock the premium features for free.', 'alopeyk-woocommerce-shipping' );
+		return __( 'Contact <a href="https://alopeyk.com/api#section-form" target="_blank">Alopeyk</a> to become an API user and unlock the premium features for free.', 'alopeyk-shipping-for-woocommerce' );
 
 	}
 	/**

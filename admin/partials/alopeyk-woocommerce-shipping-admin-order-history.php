@@ -122,5 +122,5 @@ $data = $this->vars;
 if ( isset( $data['history'] ) && $data['history'] ) {
 	render_alopeyk_history_log_list( $data['history'] );
 } else {
-	echo __( 'This order is not yet shipped via Alopeyk shipping method.', 'alopeyk-woocommerce-shipping' );
+	echo __( 'This order is not yet shipped via Alopeyk shipping method.', 'alopeyk-shipping-for-woocommerce' );
 }
