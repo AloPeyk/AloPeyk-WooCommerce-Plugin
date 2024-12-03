@@ -4,7 +4,7 @@ Contributors: alopeyk
 Tags: shipping, shipping method, woocommerce
 Requires at least: 5.3
 Tested up to: 6.7
-Stable tag: 4.4.0                                                                                                                                                                                                   
+Stable tag: 4.5.0                                                                                                                                                                                                   
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -59,6 +59,10 @@ List of some features:
 4. Plugin main settings
 
 == Changelog ==
+
+= 4.5.0 =
+* Fix open modal alopeyk in admin panel
+* Fix set map defalut location
 
 = 4.4 =
 * Edit Update the map to the latest version.
@@ -135,5 +139,46 @@ List of some features:
 * Edit Improving map functionality
 * Fix Fixing UI bugs
 
+= 1.5.0 =
+* Edit Changing map engine from Google to Cedar
+* Edit Watching for map movement instead of marker
+* Fix  Fix for using unicode characters while searching addresses
+* Fix  Fixing some RTL support issues
+
+= 1.4.0 =
+* New Update plugin from github master source
+* New Manage timezone setting
+
+= 1.3.3 =
+* New Add new supported cities
+
+= 1.3.2 =
+* Fix Admin panel origin map visibility
+
+= 1.3.1 =
+* Fix Current location CTA UI override issue
+
+= 1.3.0 =
+* New Adding current position CTA and functionality to destination address maps
+* Fix Loading default and minified version of assets based on WP_DEBUG constant
+
+= 1.2.2 =
+* Fix Admin shipping address fields visibility issue
+
+= 1.2.1 =
+* Fix Check for alternative if WC_Admin_Settings is not present
+
+= 1.2.0 =
+* New Installing a filter for dynamic price (alopeyk_woocommerce_shipping_method/shipping_info)
+* Edit Changing filter name for method availability (alopeyk_woocommerce_shipping_method/is_available)
+
+= 1.1.1 =
+* Fix Translation refinement
+* Fix Currency change support for Alopeyk order details page
+* Fix Currency change support for credit page
+
+= 1.1.0 =
+* Edit Removing limitations from scheduled order options
+
 = 1.0 =
-* Hello world...
+* New First release
