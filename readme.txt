@@ -63,6 +63,7 @@ List of some features:
 = 4.5.0 =
 * Fix open modal alopeyk in admin panel
 * Fix set map defalut location
+* Fix showing map in some templates
 
 = 4.4 =
 * Edit Update the map to the latest version.

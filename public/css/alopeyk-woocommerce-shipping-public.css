@@ -94,8 +94,8 @@
 	display: none !important;
 } */
 .woocommerce-checkout #awcshm-address-details {
-    height: 0rem;
-    overflow: hidden;
+    height: unset;
+    overflow: unset;
 }
 
 .awcshm-map-visible #awcshm-address-details {
