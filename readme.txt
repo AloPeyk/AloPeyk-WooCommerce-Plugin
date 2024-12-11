@@ -61,6 +61,7 @@ List of some features:
 == Changelog ==
 
 = 4.5.0 =
+* New Compatible with WordPress Multisite / Network
 * Fix open modal alopeyk in admin panel
 * Fix set map defalut location
 * Fix showing map in some templates
