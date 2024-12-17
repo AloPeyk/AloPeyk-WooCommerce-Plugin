@@ -531,9 +531,6 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			break;
 			case 'order_date' :
 				$timezone = get_option( 'timezone_string' );
-				if ( $timezone && ! empty( $timezone ) ) {
-					date_default_timezone_set( $timezone );
-				}
 				$datetime = new DateTime( get_post_time( 'Y-m-d H:i:s', false, $post_id ) );
 				$datetime->setTimezone( new DateTimeZone( 'Asia/Tehran' ) );
 				$post_date = strtotime( $datetime->format( 'Y-m-d H:i:s' ) );
