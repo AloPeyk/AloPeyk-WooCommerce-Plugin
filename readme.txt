@@ -45,6 +45,25 @@ List of some features:
 *   Inline chat with Alopeyk support
 *   Lots of more handy features
 
+
+== External services ==
+
+This plugin utilizes the Parsimap service to display maps within the plugin interface. The integration with Parsimap allows users to view interactive maps based on their specified locations.
+
+### What the service is and what it is used for:
+The Parsimap service provides mapping and geolocation functionalities. This plugin uses Parsimap to render maps and provide location-based services to users.
+
+### What data is sent and when:
+- The plugin sends the user's location data (latitude and longitude) to the Alopeyk service every time a new order is placed on the site. 
+- If the user's location is not available or if the user has not granted permission for location access, the plugin will display a default map view instead.
+
+### Links to the service:
+- [website](https://www.parsimap.ir/)
+
+
+By using this plugin, you acknowledge that your location data may be sent to the Alopeyk service as described above.
+
+
 == Installation ==
 
 1. Upload plugin folder to the `/wp-content/plugins/` directory
