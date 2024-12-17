@@ -52,8 +52,7 @@
 				lat : 35.6996468,
 				lng : 51.3377773
 			},
-			parsiMapJsLib                        : 'https://cdn.parsimap.ir/third-party/leaflet/v1.7.1/leaflet.js',
-			parsiMapCssLib                       : 'https://cdn.parsimap.ir/third-party/leaflet/v1.7.1/leaflet.css',
+
 		},
 
 		cost : {
@@ -353,14 +352,8 @@
 				} else {
 
 					window.cedarMapIsLoading = true;
-					alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.maps.parsiMapJsLib, function () {
-
-						alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.leaflet_gesture_handling.js, alopeykHandleMapsAdmin );
-
-					});
-					alopeyk.wcshm.admin.fn.injectStylesheet ( alopeyk.wcshm.admin.vars.maps.parsiMapCssLib );
-					alopeyk.wcshm.admin.fn.injectStylesheet ( alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.leaflet_gesture_handling.css );
-
+					alopeyk.wcshm.admin.fn.injectScript ( alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.leaflet.js, alopeykHandleMapsAdmin );
+					alopeyk.wcshm.admin.fn.injectStylesheet ( alopeyk.wcshm.admin.vars.common.info.alopeyk.wcshm.map.leaflet.css );
 				}
 
 			}

@@ -49,13 +49,6 @@ $text_color       = $color_gray;
 						<table align="center" border="0" cellpadding="0" cellspacing="0" style="min-width:642px;width:642px;" width="642">
 							<tbody>
 								<tr>
-									<td align="center" valign="top" width="642" style="width:642px;">
-										<a href="<?php echo $campaign_url; ?>" class="logo">
-											<img src="https://bucket.mlcdn.com/a/243/243983/images/5b524ed08e12993b954c9744bfc423b6a6256b13.jpeg" width="130" height="127" border="0" style="max-width:130px;" alt="<?php echo __( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' ); ?>">
-										</a>
-									</td>
-								</tr>
-								<tr>
 									<td align="center" valign="top" class="content-inner" style="width:680px;" width="680">
 										<?php echo $message; ?>
 									</td>
@@ -86,19 +79,19 @@ $text_color       = $color_gray;
 																<tr>
 																	<td align="center" width="100%">
 																		<a href="https://instagram.com/alopeyk" class="social-link">
-																			<img alt="<?php echo __( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/instagram.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img//instagram.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.linkedin.com/company/alopeyk" class="social-link">
-																			<img alt="<?php echo __( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/linkedin.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img/linkedin.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.facebook.com/alopeyk/" class="social-link">
-																			<img alt="<?php echo __( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/facebook.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img/facebook.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://twitter.com/alopeyk" class="social-link">
-																			<img alt="<?php echo __( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/twitter.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img/twitter.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="<?php echo $campaign_url; ?>" class="social-link">
-																			<img alt="<?php echo __( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="https://static.mailerlite.com/images/social-icons/new/set4/website.png" width="32" style="width:32px;">
+																			<img alt="<?php echo __( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img/website.png" width="32" style="width:32px;">
 																		</a>
 																	</td>
 																</tr>

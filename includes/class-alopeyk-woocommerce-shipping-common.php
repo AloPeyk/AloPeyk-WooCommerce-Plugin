@@ -202,9 +202,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 						'styles'  => $this->get_option( 'map_styles' ),
 						'api_url' => 'https://alopeyk.parsimap.com/comapi.svc/tile/parsimap/{x}/{y}/{z}/{{TOKEN}}',
 						'api_key' => 'ALo575W-53FG6cv8-OPw330-kmA99q', // TODO remove api key
-						'leaflet_gesture_handling' => array(
-							'css' => plugin_dir_url( __FILE__ ) . '../public/css/leaflet-gesture-handling' . ( WP_DEBUG ? '' : '.min' ) . '.css',
-							'js'  => plugin_dir_url( __FILE__ ) . '../public/js/leaflet-gesture-handling'  . ( WP_DEBUG ? '' : '.min' ) . '.js',
+						'leaflet' => array(
+							'css' => plugin_dir_url( __FILE__ ) . '../public/css/leaflet.css',
+							'js'  => plugin_dir_url( __FILE__ ) . '../public/js/leaflet.js' ,
 						),
 					),
 					'config'  => array(
