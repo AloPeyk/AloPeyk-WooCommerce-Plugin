@@ -1044,30 +1044,33 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @since 1.0.0
 	 */
 	public function dispatch_requests() {
-
 		check_ajax_referer( $this->plugin_name, 'nonce' );
+	
 		if ( isset( $_POST['request'] ) ) {
 			if ( isset( $_POST['authenticate'] ) && $_POST['authenticate'] == true ) {
 				if ( ! $this->authenticate() ) {
 					$this->respond_ajax( esc_html__( 'Authentication failed may be because of wrong API key.', 'alopeyk-shipping-for-woocommerce' ), false );
 				}
 			}
+	
 			$request = 'ajax_' . sanitize_key( $_POST['request'] );
 			$scope = $this;
+	
 			if ( isset( $_POST['scope'] ) && $_POST['scope'] == 'admin' ) {
 				$scope = new Alopeyk_WooCommerce_Shipping_Admin();
 			}
+	
 			if ( method_exists( $scope, $request ) ) {
-				$scope->$request( $_POST );
+				$sanitized_post_data = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+				$scope->$request( $sanitized_post_data );
 			} else {
 				$this->respond_ajax( esc_html__( 'No action defined for given request.', 'alopeyk-shipping-for-woocommerce' ), false );
 			}
 		}
+	
 		wp_die();
-
 	}
-
-
+	
 
 	/**
 	 * @since  1.0.0
@@ -2698,15 +2701,26 @@ class Alopeyk_WooCommerce_Shipping_Common {
 										$response = array(
 											'success' => false,
 											'message' => sprintf(
-											/* translators: %1$s: First : Order price, %2$s: creadit balance, %3$s: URL buy credit, %4$s: diff amount, %5$s: Diff amount */
-												esc_html__('Order price is %1$s while your credit balance is %2$s. You need to <a href="%3$s" class="awcshm-credit-modal-toggler" data-credit-amount="%4$s">add at least %5$s more credit to your Alopeyk account</a> to be able to ship selected package(s).', 'alopeyk-shipping-for-woocommerce'),
-												wc_price($this->normalize_price($cost)),
-												wc_price($this->normalize_price($credit)),
-												esc_url(add_query_arg('amount', $diff, admin_url('admin.php?page=alopeyk-credit'))),
-												esc_html($diff),
-												wc_price($this->normalize_price($diff))
+												/* translators: %1$s: First : Order price, %2$s: credit balance, %3$s: URL buy credit, %4$s: diff amount, %5$s: Diff amount */
+												wp_kses(
+													sprintf(
+														esc_html__('Order price is %1$s while your credit balance is %2$s. You need to %3$sadd at least %4$s more credit to your Alopeyk account%5$s to be able to ship selected package(s).', 'alopeyk-shipping-for-woocommerce'),
+														wc_price($this->normalize_price($cost)),
+														wc_price($this->normalize_price($credit)),
+														'<a href="' . esc_url(add_query_arg('amount', $diff, admin_url('admin.php?page=alopeyk-credit'))) . '" class="awcshm-credit-modal-toggler" data-credit-amount="' . esc_html($diff) . '">',
+														wc_price($this->normalize_price($diff)),
+														'</a>'
+													),
+													array(
+														'a' => array(
+															'href' => array(),
+															'class' => array(),
+															'data-credit-amount' => array()
+														)
+													)
+												)
 											),
-										);
+										);										
 									}
 								} else {
 									$response = array(
