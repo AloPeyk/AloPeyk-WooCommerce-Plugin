@@ -26,33 +26,33 @@ if ( $user_data ) {
 
 <div class="awcshm-credit-widget-container">
 	<div class="avatar">
-		<span style="background-image:url('<?php echo $avatar; ?>')"></span>
+		<span style="background-image:url('<?php echo esc_url($avatar); ?>')"></span>
 	</div>
 	<span class="awcshm-credit-widget-name">
-		<?php echo $user_data->firstname . ' ' . $user_data->lastname; ?>
+		<?php echo esc_html($user_data->firstname) . ' ' . esc_html($user_data->lastname); ?>
 	</span>
 	<span class="awcshm-credit-widget-id">
-		<?php echo __( 'ID Number', 'alopeyk-shipping-for-woocommerce' ) . ' : ' . $user_data->id; ?>
+		<?php echo esc_html__('ID Number', 'alopeyk-shipping-for-woocommerce') . ' : ' . esc_html($user_data->id); ?>
 	</span>
 	<hr />
 	<?php if ( isset( $data['user_credit'] ) && ! is_null( $data['user_credit'] ) ) { ?>
 		<span class="awcshm-credit-widget-credit">
-			<?php echo __( 'My Credit', 'alopeyk-shipping-for-woocommerce' ) . ' : <span class="awcshm-credit-widget-number">' . number_format($data['user_credit'] / 10) . ' ' . __('Tomans', 'alopeyk-shipping-for-woocommerce') ?></span>
+			<?php echo esc_html__( 'My Credit', 'alopeyk-shipping-for-woocommerce' ) . ' : <span class="awcshm-credit-widget-number">' . number_format($data['user_credit'] / 10) . ' ' . esc_html__('Tomans', 'alopeyk-shipping-for-woocommerce') ?></span>
 		</span>
 	<?php } ?>
 	<div class="awcshm-credit-widget-actions">
-		<button type="button" class="button button-primary awcshm-credit-modal-toggler"><?php echo __( 'Increase credit', 'alopeyk-shipping-for-woocommerce' ); ?></button>
+		<button type="button" class="button button-primary awcshm-credit-modal-toggler"><?php echo esc_html__( 'Increase credit', 'alopeyk-shipping-for-woocommerce' ); ?></button>
 	</div>
 	<div class="awcshm-credit-widget-actions awcshm-credit-widget-coupon">
-		<button type="button" class="button awcshm-coupon-modal-toggler"><?php echo __( 'Charge account with gift card', 'alopeyk-shipping-for-woocommerce' ); ?></button>
+		<button type="button" class="button awcshm-coupon-modal-toggler"><?php echo esc_html__( 'Charge account with gift card', 'alopeyk-shipping-for-woocommerce' ); ?></button>
 	</div>
 	<?php if ( isset( $data['user_credit'] ) && ! is_null( $data['user_credit'] ) ) { ?>
 		<span class="awcshm-credit-widget-score">
-			<?php echo __( 'My Score', 'alopeyk-shipping-for-woocommerce' ) . ' : <span class="awcshm-credit-widget-number">' . number_format( $user_data->score ); ?></span>
+			<?php echo esc_html__( 'My Score', 'alopeyk-shipping-for-woocommerce' ) . ' : <span class="awcshm-credit-widget-number">' . number_format( $user_data->score ); ?></span>
 		</span>
 	<?php } ?>
 	<div class="awcshm-credit-widget-actions awcshm-score-exchange">
-		<button type="button" class="button awcshm-customer-score-exchange-modal-toggler"><?php echo __( 'Convert Alopeyk Scores to Credit', 'alopeyk-shipping-for-woocommerce' ); ?></button>
+		<button type="button" class="button awcshm-customer-score-exchange-modal-toggler"><?php echo esc_html__( 'Convert Alopeyk Scores to Credit', 'alopeyk-shipping-for-woocommerce' ); ?></button>
 	</div>
 </div>
 <?php

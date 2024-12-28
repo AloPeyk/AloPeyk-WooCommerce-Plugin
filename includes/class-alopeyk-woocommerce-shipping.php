@@ -36,8 +36,8 @@ class Alopeyk_WooCommerce_Shipping {
 	 */
 	public function __construct() {
 		
-		if ( defined( 'PLUGIN_VERSION' ) ) {
-			$this->version = PLUGIN_VERSION;
+		if ( defined( 'ALOPEYK_PLUGIN_VERSION' ) ) {
+			$this->version = ALOPEYK_PLUGIN_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
@@ -86,7 +86,7 @@ class Alopeyk_WooCommerce_Shipping {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles', 1000 );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'meta_links', 10, 2 );
-		$this->loader->add_filter( 'plugin_action_links_' . PLUGIN_BASENAME, $plugin_admin, 'action_links' );
+		$this->loader->add_filter( 'plugin_action_links_' . ALOPEYK_PLUGIN_BASENAME, $plugin_admin, 'action_links' );
 		$this->loader->add_filter( 'woocommerce_admin_shipping_fields', $plugin_admin, 'add_address_fields', 1000 );
 		$this->loader->add_action( 'woocommerce_admin_order_data_after_shipping_address', $plugin_admin, 'add_address_description_field' );
 		$this->loader->add_action( 'save_post', $plugin_admin, 'save_address_description_field' );
@@ -128,9 +128,9 @@ class Alopeyk_WooCommerce_Shipping {
 
 		$plugin_common = new Alopeyk_WooCommerce_Shipping_Common( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'cron_schedules', $plugin_common, 'add_cron_schedule' );
-		$this->loader->add_action( METHOD_ID . '_active_order_update', $plugin_common, 'update_active_order' );
-		$this->loader->add_action( METHOD_ID . '_active_orders_update', $plugin_common, 'update_active_orders' );
-		$this->loader->add_action( METHOD_ID . '_check_mandatory_options', $plugin_common, 'check_mandatory_options' );
+		$this->loader->add_action( ALOPEYK_METHOD_ID . '_active_order_update', $plugin_common, 'update_active_order' );
+		$this->loader->add_action( ALOPEYK_METHOD_ID . '_active_orders_update', $plugin_common, 'update_active_orders' );
+		$this->loader->add_action( ALOPEYK_METHOD_ID . '_check_mandatory_options', $plugin_common, 'check_mandatory_options' );
 		$this->loader->add_action( 'init', $plugin_common, 'create_post_type' );
 		$this->loader->add_action( 'init', $plugin_common, 'create_order_statuses' );
 		$this->loader->add_action( 'wc_order_statuses', $plugin_common, 'add_awcshm_order_statuses' );
@@ -139,8 +139,8 @@ class Alopeyk_WooCommerce_Shipping {
 		$this->loader->add_filter( 'woocommerce_shipping_methods', $plugin_common, 'add_method' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_common, 'localize_scripts' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_common, 'localize_scripts' );
-		$this->loader->add_action( 'wp_ajax_' . METHOD_ID, $plugin_common, 'dispatch_requests' );
-		$this->loader->add_action( 'wp_ajax_nopriv_' . METHOD_ID, $plugin_common, 'dispatch_requests' );
+		$this->loader->add_action( 'wp_ajax_' . ALOPEYK_METHOD_ID, $plugin_common, 'dispatch_requests' );
+		$this->loader->add_action( 'wp_ajax_nopriv_' . ALOPEYK_METHOD_ID, $plugin_common, 'dispatch_requests' );
 		$this->loader->add_action( 'woocommerce_after_checkout_billing_form', $plugin_common, 'add_address_fields' );
 		$this->loader->add_action( 'woocommerce_after_edit_address_form_shipping', $plugin_common, 'add_address_fields' );
 		$this->loader->add_action( 'woocommerce_customer_save_address', $plugin_common, 'save_address_fields', 10, 2 );

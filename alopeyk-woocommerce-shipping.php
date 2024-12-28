@@ -39,10 +39,10 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('PLUGIN_VERSION', '4.5.0');
-define('METHOD_ID', 'alopeyk_woocommerce_shipping_method');
-define('PLUGIN_BASENAME', plugin_basename(__FILE__));
-define('PLUGIN_PATH', plugin_dir_path(__FILE__));
+define('ALOPEYK_PLUGIN_VERSION', '4.5.0');
+define('ALOPEYK_METHOD_ID', 'alopeyk_woocommerce_shipping_method');
+define('ALOPEYK_PLUGIN_BASENAME', plugin_basename(__FILE__));
+define('ALOPEYK_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
 include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 $isWoocommerceActive = is_plugin_active('woocommerce/woocommerce.php') || is_plugin_active_for_network( 'woocommerce/woocommerce.php' );
@@ -50,7 +50,7 @@ $isWoocommerceActive = is_plugin_active('woocommerce/woocommerce.php') || is_plu
 if (!$isWoocommerceActive) {
     add_action('admin_notices', function () {
         $message = 'Woocommerce plugin is not active, to use "Alopeyk WooCommerce Shipping Method" plugin you need to enable it';
-        echo '<div class="error"><p>' . $message . '</p></div>';
+        echo '<div class="error"><p>' . esc_html($message) . '</p></div>';
     });
     return;
 }
@@ -61,32 +61,32 @@ add_action('before_woocommerce_init', function () {
     }
 });
 
-if (!function_exists('activate_alopeyk_woocommerce_shipping')) {
-    function activate_alopeyk_woocommerce_shipping()
+if (!function_exists('alopeyk_activate_woocommerce_shipping')) {
+    function alopeyk_activate_woocommerce_shipping()
     {
         require_once plugin_dir_path(__FILE__) . 'includes/class-alopeyk-woocommerce-shipping-activator.php';
         Alopeyk_WooCommerce_Shipping_Activator::activate();
     }
 }
 
-if (!function_exists('deactivate_alopeyk_woocommerce_shipping')) {
-    function deactivate_alopeyk_woocommerce_shipping()
+if (!function_exists('alopeyk_deactivate_woocommerce_shipping')) {
+    function alopeyk_deactivate_woocommerce_shipping()
     {
         require_once plugin_dir_path(__FILE__) . 'includes/class-alopeyk-woocommerce-shipping-deactivator.php';
         Alopeyk_WooCommerce_Shipping_Deactivator::deactivate();
     }
 }
 
-register_activation_hook(__FILE__, 'activate_alopeyk_woocommerce_shipping');
-register_deactivation_hook(__FILE__, 'deactivate_alopeyk_woocommerce_shipping');
+register_activation_hook(__FILE__, 'alopeyk_activate_woocommerce_shipping');
+register_deactivation_hook(__FILE__, 'alopeyk_deactivate_woocommerce_shipping');
 require plugin_dir_path(__FILE__) . 'includes/class-alopeyk-woocommerce-shipping.php';
 
-if (!function_exists('run_alopeyk_woocommerce_shipping')) {
-    function run_alopeyk_woocommerce_shipping()
+if (!function_exists('alopeyk_run_woocommerce_shipping')) {
+    function alopeyk_run_woocommerce_shipping()
     {
         $plugin = new Alopeyk_WooCommerce_Shipping();
         $plugin->run();
     }
 }
 
-run_alopeyk_woocommerce_shipping();
+alopeyk_run_woocommerce_shipping();

@@ -24,25 +24,25 @@ if ( ! empty( $action ) ) {
 	}
 }
 ?>
-<form class="awcshm-add-credit-form" target="_blank" method="GET" action="<?php echo $action; ?>">
+<form class="awcshm-add-credit-form" target="_blank" method="GET" action="<?php echo esc_url($action); ?>">
 	<?php if ( isset( $data['amounts'] ) && $amounts = $data['amounts'] ) { ?>
 	<div class="awcshm-amounts-container">
 		<?php
 			foreach ( $amounts as $amount ) {
 				$normalized_amount = Alopeyk_WooCommerce_Shipping_Common::normalize_price( $amount * 10 );
 		?>
-		<button type="button" class="button awcshm-amount-button" data-credit-amount="<?php echo $amount; ?>"><?php echo wc_price( $normalized_amount ); ?></button>
+		<button type="button" class="button awcshm-amount-button" data-credit-amount="<?php echo esc_attr($amount); ?>"><?php echo wp_kses_post(wc_price($normalized_amount)); ?></button>
 		<?php
 			}
 		?>
 	</div>
 	<?php } ?>
 	<label class="awcshm-amount-input-container">
-		<input type="text" name="amount" value="<?php echo isset( $data['amount'] ) ? $data['amount'] / 10 : ''; ?>" class="awcshm-amount-input awcshm-price-input" autofocus pattern="\d{3,}" required="required">
-		<span class="awcshm-amount-currency"><?php echo $currency ? $currency : __( 'Tomans', 'alopeyk-shipping-for-woocommerce' ); ?></span>
+		<input type="text" name="amount" value="<?php echo isset($data['amount']) ? esc_attr($data['amount'] / 10) : ''; ?>" class="awcshm-amount-input awcshm-price-input" autofocus pattern="\d{3,}" required="required">
+		<span class="awcshm-amount-currency"><?php echo esc_html($currency ? $currency : esc_html__('Tomans', 'alopeyk-shipping-for-woocommerce')); ?></span>
 	</label>
 	<?php foreach ( $params as $name => $value ) { ?>
-	<input type="hidden" name="<?php echo $name ?>" value="<?php echo $value; ?>">
+	<input type="hidden" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value); ?>">
 	<?php } ?>
 	<button type="submit" class="awcshm-hidden"></button>
 </form>

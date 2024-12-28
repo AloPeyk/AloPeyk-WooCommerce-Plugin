@@ -31,7 +31,7 @@ $text_color       = $color_gray;
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><?php echo __( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' ); ?><?php echo ( isset( $data['title'] ) && $data['title'] && strlen( $data['title'] ) ) ? ' | ' . $data['title'] : ''; ?></title>
+		<title><?php echo esc_html__( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' ); ?><?php echo ( isset( $data['title'] ) && $data['title'] && strlen( $data['title'] ) ) ? ' | ' . esc_html( $data['title'] ) : ''; ?></title>
 		<meta name="charset" content="utf-8">
 		<meta name="robots" content="noindex,nofollow">
 		<meta name="format-detection" content="email=no">
@@ -50,7 +50,7 @@ $text_color       = $color_gray;
 							<tbody>
 								<tr>
 									<td align="center" valign="top" class="content-inner" style="width:680px;" width="680">
-										<?php echo $message; ?>
+										<?php echo esc_html($message); ?>
 									</td>
 								</tr>
 							</tbody>
@@ -60,7 +60,7 @@ $text_color       = $color_gray;
 							<tbody>
 								<tr>
 									<td align="center" valign="top" width="680" style="width:680px;" width="680">
-										<?php echo $extra; ?>
+										<?php echo esc_html($extra); ?>
 									</td>
 								</tr>
 							</tbody>
@@ -79,19 +79,19 @@ $text_color       = $color_gray;
 																<tr>
 																	<td align="center" width="100%">
 																		<a href="https://instagram.com/alopeyk" class="social-link">
-																			<img alt="<?php echo __( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img//instagram.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="img/instagram.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.linkedin.com/company/alopeyk" class="social-link">
-																			<img alt="<?php echo __( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img/linkedin.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="mg/linkedin.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.facebook.com/alopeyk/" class="social-link">
-																			<img alt="<?php echo __( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img/facebook.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="img/facebook.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://twitter.com/alopeyk" class="social-link">
-																			<img alt="<?php echo __( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img/twitter.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="img/twitter.png" width="32" style="width:32px;">
 																		</a>
-																		<a href="<?php echo $campaign_url; ?>" class="social-link">
-																			<img alt="<?php echo __( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo __( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="../img/website.png" width="32" style="width:32px;">
+																		<a href="<?php echo esc_url($campaign_url); ?>" class="social-link">
+																			<img alt="<?php echo esc_html__( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="img/website.png" width="32" style="width:32px;">
 																		</a>
 																	</td>
 																</tr>
@@ -101,11 +101,11 @@ $text_color       = $color_gray;
 															<tbody>
 																<tr>
 																	<td align="center" width="100%" class="footer-data">
-																		<p class="footer-copyright"><?php echo __( '© Alopeyk all rights reserved', 'alopeyk-shipping-for-woocommerce' ); ?></p>
-																		<p><span style="color:#ffffff;"><?php echo __( 'Licensed by the Tehran Pickup And Bike Delivery Union', 'alopeyk-shipping-for-woocommerce' ); ?></span></p>
-																		<p><?php echo __( 'Alopeyk building, No.5, Vozara 14th, Shahid beheshti St., Tehran, I.R.Iran', 'alopeyk-shipping-for-woocommerce' ); ?></p>
+																		<p class="footer-copyright"><?php echo esc_html__( '© Alopeyk all rights reserved', 'alopeyk-shipping-for-woocommerce' ); ?></p>
+																		<p><span style="color:#ffffff;"><?php echo esc_html__( 'Licensed by the Tehran Pickup And Bike Delivery Union', 'alopeyk-shipping-for-woocommerce' ); ?></span></p>
+																		<p><?php echo esc_html__( 'Alopeyk building, No.5, Vozara 14th, Shahid beheshti St., Tehran, I.R.Iran', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 																		<?php if ( $tel ) { ?>
-																		<p class="ltr"><?php echo $tel; ?></p>
+																		<p class="ltr"><?php echo esc_html($tel); ?></p>
 																		<?php } ?>
 																	</td>
 																</tr>

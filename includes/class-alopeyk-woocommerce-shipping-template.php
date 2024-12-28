@@ -100,7 +100,7 @@ class Alopeyk_WooCommerce_Shipping_Template {
 		if ( isset( $this->template ) ) {
 			return $this->template;
 		}
-		$this->template = PLUGIN_PATH . "{$this->args['dir']}/{$this->slug}.php";
+		$this->template = ALOPEYK_PLUGIN_PATH . "{$this->args['dir']}/{$this->slug}.php";
 		if ( 0 !== validate_file( $this->template ) ) {
 			$this->template = '';
 		}
@@ -165,13 +165,13 @@ class Alopeyk_WooCommerce_Shipping_Template {
  * @param  array   $args
  * @return string
  */
-function get_local_template_part( $slug, array $vars = array(), $echo = false, $scope = 'admin', array $args = array() ) {
+function alopeyk_get_local_template_part( $slug, array $vars = array(), $echo = false, $scope = 'admin', array $args = array() ) {
 
 	$template = new Alopeyk_WooCommerce_Shipping_Template( $slug, $vars, $args, $scope );
 
 	$output = $template->get_output();
 	if ( $echo ) {
-		echo $output;
+		echo esc_html($output);
 	} else {
 		return $output;
 	}

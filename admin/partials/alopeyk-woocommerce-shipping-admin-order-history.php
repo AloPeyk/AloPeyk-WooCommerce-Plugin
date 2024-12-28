@@ -100,13 +100,13 @@ if ( ! class_exists( 'Alopeyk_History_Log_List_Table' ) ) {
 
 }
 
-if ( ! function_exists( 'render_alopeyk_history_log_list' ) ) {
+if ( ! function_exists( 'alopeyk_render_history_log_list' ) ) {
 
 	/**
 	 * @since 1.0.0
 	 * @param array $order_data
 	 */
-	function render_alopeyk_history_log_list( $order_data ) {
+	function alopeyk_render_history_log_list( $order_data ) {
 
 		$admin_helpers = new Alopeyk_WooCommerce_Shipping_Admin();
 		$testListTable = new Alopeyk_History_Log_List_Table( $admin_helpers, $order_data );
@@ -120,7 +120,7 @@ if ( ! function_exists( 'render_alopeyk_history_log_list' ) ) {
 $data = $this->vars;
 
 if ( isset( $data['history'] ) && $data['history'] ) {
-	render_alopeyk_history_log_list( $data['history'] );
+	alopeyk_render_history_log_list( $data['history'] );
 } else {
-	echo __( 'This order is not yet shipped via Alopeyk shipping method.', 'alopeyk-shipping-for-woocommerce' );
+	echo esc_html__( 'This order is not yet shipped via Alopeyk shipping method.', 'alopeyk-shipping-for-woocommerce' );
 }
