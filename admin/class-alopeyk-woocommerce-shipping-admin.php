@@ -248,36 +248,39 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	/**
 	 * @since 1.0.0
 	 */
-	public function add_address_description_field() {
-
+	public function add_address_description_field( $order ) {
 		if ( $this->helpers->is_enabled() ) {
-            $order = wc_get_order();
-            $description = $order->get_meta('_shipping_address_description');
+			$description = $order->get_meta('_shipping_address_description');
 			echo '<p id="_shipping_address_description_field" class="form-field form-field-wide">' .
 					'<label for="_shipping_address_description"><strong>' . esc_html__( 'Address Description', 'alopeyk-shipping-for-woocommerce' ) . '</strong></label>' .
 					'<span class="awcshm-meta">' . esc_html__( 'This will be shown on courier device if order is being sent via Alopeyk shipping method and usually consists of order value, address details or any other sort of data needed for courier to know.', 'alopeyk-shipping-for-woocommerce' ) . '</span>' .
 					'<textarea id="_shipping_address_description" name="_shipping_address_description" rows="3">' . esc_html($description) . '</textarea>' .
 				'</p>';
 		}
-
 	}
+	
+	
+	
 
 	/**
 	 * @since 1.0.0
 	 * @param integer $post_id
 	 */
-	public function save_address_description_field($post_id) {
+	public function save_address_description_field( $post_id ) {
 		$shipping_address_description_field = '_shipping_address_description';
 	
-		if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'save_setting_option')) {
-			if (in_array(get_post_type($post_id), ['woocommerce_page_wc-orders', 'shop_order']) && isset($_POST[$shipping_address_description_field])) {
-				$description = sanitize_textarea_field($_POST[$shipping_address_description_field]);
-				update_post_meta($post_id, $shipping_address_description_field, $description);
+		if ( current_user_can( 'edit_post', $post_id ) ) {
+			if ( get_post_type( $post_id ) == 'shop_order' && isset( $_POST[$shipping_address_description_field] ) ) {
+				$description = sanitize_textarea_field( $_POST[$shipping_address_description_field] );
+				update_post_meta( $post_id, $shipping_address_description_field, $description );
 			}
 		} else {
-			wp_die(__('Nonce verification failed!'));
+			wp_die( esc_html__( 'You do not have permission to edit this order.', 'alopeyk-shipping-for-woocommerce' ) );
 		}
 	}
+	
+	
+	
 
 	/**
 	 * @since 1.0.0

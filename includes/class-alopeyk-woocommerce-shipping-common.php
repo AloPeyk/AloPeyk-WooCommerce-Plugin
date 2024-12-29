@@ -2701,10 +2701,10 @@ class Alopeyk_WooCommerce_Shipping_Common {
 										$response = array(
 											'success' => false,
 											'message' => sprintf(
-												/* translators: %1$s: First : Order price, %2$s: credit balance, %3$s: URL buy credit, %4$s: diff amount, %5$s: Diff amount */
 												wp_kses(
 													sprintf(
-														esc_html__('Order price is %1$s while your credit balance is %2$s. You need to %3$sadd at least %4$s more credit to your Alopeyk account%5$s to be able to ship selected package(s).', 'alopeyk-shipping-for-woocommerce'),
+														/* translators: %1$s: First : Order price, %2$s: credit balance, %3$s: URL buy credit, %4$s: diff amount, %5$s: Diff amount */
+														esc_html__('Order price is %1$s while your credit balance is %2$s. You need to %3$s add at least %4$s more credit to your Alopeyk account %5$s to be able to ship selected package(s).', 'alopeyk-shipping-for-woocommerce'),
 														wc_price($this->normalize_price($cost)),
 														wc_price($this->normalize_price($credit)),
 														'<a href="' . esc_url(add_query_arg('amount', $diff, admin_url('admin.php?page=alopeyk-credit'))) . '" class="awcshm-credit-modal-toggler" data-credit-amount="' . esc_html($diff) . '">',

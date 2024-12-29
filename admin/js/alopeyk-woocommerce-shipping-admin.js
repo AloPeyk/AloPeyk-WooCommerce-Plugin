@@ -154,7 +154,7 @@
 
 		endpoint : {
 
-			environmentInputName     : 'environment',
+			environmentInputName     : 'environment_type',
 			endpointUrl              : 'endpoint_url',
 			endpointApiUrl           : 'endpoint_api_url',
 			endpointTrackingUrl      : 'endpoint_tracking_url',

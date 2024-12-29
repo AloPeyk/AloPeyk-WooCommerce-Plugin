@@ -14,9 +14,9 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 "X-Loco-Version: 2.4.0; wp-5.4.4\n"
 
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:143
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:162
-#: admin/class-alopeyk-woocommerce-shipping-admin.php:375
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:148
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:167
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:410
 msgid "Support"
 msgstr "پشتیبانی"
 
@@ -553,8 +553,8 @@ msgstr "کمتر از یک دقیقه"
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:389
 #, php-format
-msgid "%s left until the courier %s %s."
-msgstr "%s تا %s سفیر به %s باقی مانده است."
+msgid "%1$s left until the courier %2$s %3$s."
+msgstr "%1$s تا %2$s سفیر به %3$s باقی مانده است."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:389
 msgid "reaches"
@@ -801,11 +801,11 @@ msgstr "با شماره تلفن"
 #: includes/class-alopeyk-woocommerce-shipping-common.php:1897
 #, php-format
 msgid ""
-"Courier%s assigned and <a href=\"%s\" target=\"_blank\">shipping proccess</a> is started. It "
-"can be tracked <a href=\"%s\" target=\"_blank\">here</a>."
+"Courier %1$s assigned and <a href=\"%2$s\" target=\"_blank\">shipping proccess</a> is started. It "
+"can be tracked <a href=\"%3$s\" target=\"_blank\">here</a>."
 msgstr ""
-"سفیر%s برای ارسال سفارش اختصاص یافت و <a href=\"%s\" target=\"_blank\">فرآیند ارسال</a> آغاز "
-"شد. می‌توانید سفارش خود را از <a href=\"%s\" target=\"_blank\">اینجا</a> آنلاین رصد کنید."
+"سفیر %1$s برای ارسال سفارش اختصاص یافت و <a href=\"%2$s\" target=\"_blank\">فرآیند ارسال</a> آغاز "
+"شد. می‌توانید سفارش خود را از <a href=\"%3$s\" target=\"_blank\">اینجا</a> آنلاین رصد کنید."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:1902
 msgid "Order successfully delivered."
@@ -853,12 +853,12 @@ msgstr ""
 #, php-format
 msgid ""
 "Error occurred while trying to write order as a Wordpress post. But your Alopeyk order is "
-"created and is in progress. You can <a href=\"%s\" target=\"_blank\">track your order here</a> "
-"or <a href=\"%s\" target=\"_blank\" >contact Alopeyk support</a>."
+"created and is in progress. You can <a href=\"%1$s\" target=\"_blank\">track your order here</a> "
+"or <a href=\"%2$s\" target=\"_blank\" >contact Alopeyk support</a>."
 msgstr ""
 "در هنگام ذخیره سفارش الوپیک در قالب نوشته وردپرس خطایی رخ داد ولی سفارش شما در جریان است. "
-"می‌توانید <a href=\"%s\" target=\"_blank\">سفارش خود را از اینجا آنلاین رصد کنید</a> یا <a "
-"href=\"%s\" target=\"_blank\" >با پشتیبانی الوپیک تماس بگیرید</a>."
+"می‌توانید <a href=\"%1$s\" target=\"_blank\">سفارش خود را از اینجا آنلاین رصد کنید</a> یا <a "
+"href=\"%2$s\" target=\"_blank\" >با پشتیبانی الوپیک تماس بگیرید</a>."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:2513
 msgid "Your order has been successfully created and is in progress."
@@ -880,11 +880,11 @@ msgstr "در هنگام دریافت اعتبار الوپیکی شما خطای
 #: includes/class-alopeyk-woocommerce-shipping-common.php:2551
 #, php-format
 msgid ""
-"You are not authenticated. Please recheck your API key entered in <a href=\"%s\" "
-"target=\"_blank\">Settings</a> page or <a href=\"%s\" target=\"_blank\">Contact Alopeyk</a>."
+"You are not authenticated. Please recheck your API key entered in <a href=\"%1$s\" "
+"target=\"_blank\">Settings</a> page or <a href=\"%2$s\" target=\"_blank\">Contact Alopeyk</a>."
 msgstr ""
-"اعتبارسنجی شما با مشکل مواجه شد. لطفاً کلید API خود را در صفحه  <a href=\"%s\" "
-"target=\"_blank\">تنظیمات الوپیک</a> مجدداً بررسی کنید و یا با <a href=\"%s\" "
+"اعتبارسنجی شما با مشکل مواجه شد. لطفاً کلید API خود را در صفحه  <a href=\"%1$s\" "
+"target=\"_blank\">تنظیمات الوپیک</a> مجدداً بررسی کنید و یا با <a href=\"%2$s\" "
 "target=\"_blank\">پشتیبانی الوپیک</a> تماس بگیرید."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:2594
@@ -894,13 +894,9 @@ msgstr "سفارش الوپیک شما آماده ثبت است."
 #: includes/class-alopeyk-woocommerce-shipping-common.php:2599
 #, php-format
 msgid ""
-"Order price is %s while your credit balance is %s. You need to <a href=\"%s\" class=\"awcshm-"
-"credit-modal-toggler\" data-credit-amount=\"%s\">add at least %s more credit to your Alopeyk "
-"account</a> to be enable to ship selected package(s)."
+"Order price is %1$s while your credit balance is %2$s. You need to %3$s add at least %4$s more credit to your Alopeyk account %5$s to be able to ship selected package(s)."
 msgstr ""
-"هزینه سفارش %s است، در حالی که اعتبار الوپیکی شما %s می‌باشد. شما می‌بایست <a href=\"%s\" "
-"class=\"awcshm-credit-modal-toggler\" data-credit-amount=\"%s\">حداقل %s به اعتبار الوپیک خود "
-"بیفزایید</a> تا بتوانید بسته(های) انتخاب شده را از طریق الوپیک ارسال کنید."
+"هزینه سفارش شما %1$s می‌باشد، در حالی که اعتبار شما %2$s است. شما نیاز دارید %3$s حداقل مبلغ %4$s را به حساب Alopeyk خود اضافه کنید %5$s تا بتوانید بسته(ها)ی انتخابی خود را ارسال کنید."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:2605
 msgid "Unfortunately, we are not able to submit this request."
@@ -975,11 +971,9 @@ msgstr "سفارش شما با الوپیک در حال ارسال است"
 #: includes/class-alopeyk-woocommerce-shipping-common.php:2861
 #, php-format
 msgid ""
-"%s is picked up from <a href=\"%s\">%s</a> and is being delivered to you by <a "
-"href=\"%s\">Alopeyk</a> courier."
+"%1$s is picked up from <a href="%2$s">%3$s</a> and is being delivered to you by <a href="%4$s">Alopeyk</a> courier."
 msgstr ""
-"%s از <a href=\"%s\">%s</a> تحویل گرفته شده و توسط سفیر <a href=\"%s\">الوپیک</a> به مقصد شما "
-"در حال حمل است."
+"%1$s بسته شما تحویل گرفته شده از  <a href="%2$s">%3$s</a> و توسط  <a href="%4$s">Alopeyk</a> سفیر در حال حمل است."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:2861
 msgid "Your order"
@@ -1251,8 +1245,8 @@ msgid "Transportation Type Settings"
 msgstr "تنظیمات روش‌های حمل و نقل"
 
 #: includes/class-alopeyk-woocommerce-shipping-tab.php:475
-msgid "Ship via"
-msgstr "ارسال با"
+msgid "Ship via %s"
+msgstr " %s ارسال با"
 
 #: includes/class-alopeyk-woocommerce-shipping-tab.php:478
 #: includes/class-alopeyk-woocommerce-shipping-tab.php:512
@@ -1261,14 +1255,11 @@ msgstr "ارسال با"
 msgid "Enabled"
 msgstr "فعال"
 
-#: includes/class-alopeyk-woocommerce-shipping-tab.php:479
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:532
 #, php-format
-msgid ""
-"Total weight of the package should be up to %s kg and its dimensions in centimeters should be "
-"up to %s for width, %s for height and %s for length to be allowed to be shipped by this method."
-msgstr ""
-"محدودیت وزن برای جابجایی مرسوله با این روش %s کیلوگرم و محدودیت ابعاد برای این روش برحسب "
-"سانتی‌متر %s برای عرض، %s برای ارتفاع و %s برای طول می‌باشد."
+msgid "Total weight of the package should be up to %1$s kg and its dimensions in centimeters should be up to %2$s for width, %3$s for height and %4$s for length to be allowed to be shipped by this method."
+msgstr "محدودیت وزن برای جابجایی مرسوله با این روش %1$s کیلوگرم و محدودیت ابعاد برای این روش برحسب سانتی‌متر %2$s برای عرض، %3$s برای ارتفاع و %4$s برای طول می‌باشد."
+
 
 #: includes/class-alopeyk-woocommerce-shipping-tab.php:483
 msgid "Smart Switch"

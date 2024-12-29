@@ -134,12 +134,8 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	public function get_post_data()
 	{
 
-    if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'save_setting_option')) {
-        wp_die(__('Nonce verification failed', 'alopeyk-shipping-for-woocommerce'));
-    }
-
     if (!current_user_can('manage_options')) {
-        wp_die(__('You do not have sufficient permissions to access this page.', 'alopeyk-shipping-for-woocommerce'));
+        wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'alopeyk-shipping-for-woocommerce'));
     }
 		if (!empty($this->data) && is_array($this->data)) {
 			return $this->data;
@@ -218,7 +214,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 				} catch (Exception $e) {
 					$this->errors->add($key, sprintf(
 						/* translators: %s: Error Message */
-						__('Error: %s', 'alopeyk-shipping-for-woocommerce'), esc_html($e->getMessage())
+						sprintf(esc_html__('Error: %s', 'alopeyk-shipping-for-woocommerce'), esc_html($e->getMessage()))
 					));
 				}
 			}
@@ -324,16 +320,10 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			}
 		}
 
-		$form_fields['nonce'] = array(
-			'type' => 'hidden',
-			'id' => '_wpnonce',
-			'value' => wp_create_nonce('save_setting_option'),
-		);
-
-		$form_fields['environment'] = array(
+		$form_fields['environment_type'] = array(
 			'title'       => esc_html__('Environment', 'alopeyk-shipping-for-woocommerce'),
 			'type'        => 'select',
-			'id' => 'environment',
+			'id' => 'environment_type',
 			'options'     => $env_option,
 			'default'     => 'production',
 			'desc'        => esc_html__('Please select the appropriate plugin environment in consultation with the Alopeyk sales team.', 'alopeyk-shipping-for-woocommerce'),
@@ -538,7 +528,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 					'default'     => 'yes',
 					'desc'        => esc_html__('Enabled', 'alopeyk-shipping-for-woocommerce'),
 					'desc_tip'    => sprintf(
-						/* translators: %1$s: Weight product, %2$s:height , %3$s:lenght  */
+						/* translators: %1$s: Weight product, %2$s:height , %3$s:lenght ,%4$s: height  */
 						esc_html__('Total weight of the package should be up to %1$s kg and its dimensions in centimeters should be up to %2$s for width, %3$s for height and %4$s for length to be allowed to be shipped by this method.', 'alopeyk-shipping-for-woocommerce'), $transport_type['limits']['max_weight'] / 1000, $transport_type['limits']['max_width'], $transport_type['limits']['max_height'], $transport_type['limits']['max_length']),
 				);
 			}
