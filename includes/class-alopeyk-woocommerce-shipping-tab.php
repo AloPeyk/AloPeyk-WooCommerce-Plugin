@@ -74,7 +74,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 		if (count($empty_fields)) {
 			$this->empty_fields_string = '';
 			$empty_fields = array_map(function ($field, $index) use ($empty_fields) {
-				$this->empty_fields_string .= ($index == 0 ? '' : ($index == count($empty_fields) - 1 ? ' ' . esc_html__('and', 'alopeyk-shipping-for-woocommerce') . ' ' : esc_html__(',', 'alopeyk-shipping-for-woocommerce') . ' ')) . '<strong>' . $field . '</strong>';
+				$this->empty_fields_string .= ($index == 0 ? '' : ($index == count($empty_fields) - 1 ? ' ' . esc_html__('and', 'alopeyk-shipping-for-woocommerce') . ' ' : esc_html__(',', 'alopeyk-shipping-for-woocommerce') . ' ')) .  $field;
 				return $field;
 			}, $empty_fields, array_keys($empty_fields));
 			$this->errors->add('missing',

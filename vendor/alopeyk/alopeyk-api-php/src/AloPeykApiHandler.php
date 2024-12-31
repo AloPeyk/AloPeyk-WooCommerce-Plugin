@@ -141,19 +141,19 @@ class AloPeykApiHandler
     {
         self::$env = $env;
         $endpoints = Configs::ENDPOINTS;
+    
         if ($env == 'production') {
             $endpoint = $endpoints['production'];
         } elseif ($env == 'sandbox') {
             $endpoint = $endpoints['sandbox'];
         } elseif ($env == 'custom') {
-            if (!is_array($endpoint) || !isset($endpoint['url']) || !isset($endpoint['api_url']) || !isset($endpoint['tracking_url'])) {
-                throw new AloPeykApiException('Endpoint is not correct');
+            if ($endpoint === null || !is_array($endpoint) || !isset($endpoint['url']) || !isset($endpoint['api_url']) || !isset($endpoint['tracking_url'])) {
+                $endpoint = $endpoints['custom']; 
             }
         } else {
-            $endpoint['url']          = str_replace('***', $env, $endpoints['custom']['url']);
-            $endpoint['api_url']      = str_replace('***', $env, $endpoints['custom']['api_url']);
-            $endpoint['tracking_url'] = str_replace('***', $env, $endpoints['custom']['tracking_url']);
+            throw new AloPeykApiException('Invalid environment specified'); 
         }
+    
         self::$endpoint = $endpoint;
     }
 

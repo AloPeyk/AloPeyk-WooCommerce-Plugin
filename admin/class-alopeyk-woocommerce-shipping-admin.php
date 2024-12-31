@@ -327,7 +327,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
                 } else {
                     $content = '<ul><li class="wide awcshm-meta-box-content-container">' . esc_html__( 'No courier assigned to this order yet.', 'alopeyk-shipping-for-woocommerce' ) . '</li></ul>';
                 }
-                echo esc_html($content);
+                echo wp_kses_post($content);
             }, $screen, 'side' );
 
             add_meta_box( ALOPEYK_METHOD_ID . '-order-info-actions', esc_html__( 'Order Information', 'alopeyk-shipping-for-woocommerce' ), function () use ( $order_data ) {
@@ -524,8 +524,8 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 						}
 					}
 					$user_output_unique = array_unique( $user_output );
-					$user_output_escaped = array_map( 'esc_html', $user_output_unique ); 
-					echo implode( ', ', esc_html( $user_output_escaped )); 
+					$user_output_escaped = array_map( 'wp_kses_post', $user_output_unique ); 
+					echo implode(', ', array_map('wp_kses_post', $user_output_escaped));
 				} else {
 					echo '—';
 				}
@@ -537,14 +537,14 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 					foreach ( $order_ids as $order_id ) {
 						$order_output[] = '<a href="' . admin_url( 'post.php?post=' . $order_id ) . '&action=edit" target="_blank">#' . $order_id . '</a>';
 					}
-					echo implode( esc_html__( ',', 'alopeyk-shipping-for-woocommerce' ) . ' ', esc_html($order_output ));
+					echo wp_kses_post(implode(esc_html__(' ,', 'alopeyk-shipping-for-woocommerce') . ' ', $order_output));
 				} else {
 					echo '—';
 				}
 			break;
 			case 'order_price' :
 				$price = get_post_meta( $post_id, '_awcshm_order_price', true );
-				echo $price ? esc_html( wc_price( $this->helpers->normalize_price( $price ) )) : '—';
+				echo $price ? wp_kses_post( wc_price( $this->helpers->normalize_price( $price ) )) : '—';
 			break;
 			case 'order_date' :
 				$timezone = get_option( 'timezone_string' );
@@ -1094,6 +1094,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function dashboard_widget_enter_api() {
 		?>
 		<div class="awcshm-dashboard-widget" >
+			<!--This image is located in the admin/img/logo.png path of the plugin. -->
 			<p><img class="awcshm-dashboard-widget-logo" src="<?php echo esc_url( $this->helpers->get_logo_url()); ?>"></p>
 			<p><?php echo esc_html__( 'In order to active Alopeyk shipping method, enter Alopeyk API Key in the woocommerce settings.', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 			<p>&nbsp;</p>
@@ -1106,6 +1107,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 	public function dashboard_widget_enable_awcshm() {
 		?>
 		<div class="awcshm-dashboard-widget">
+			<!--This image is located in the admin/img/logo.png path of the plugin. -->
 			<p><img class="awcshm-dashboard-widget-logo" src="<?php echo esc_url( $this->helpers->get_logo_url()); ?>"></p>
 			<p><?php echo esc_html__( 'Alopeyk shipping method is not activated for your store. You can activate it by enabling the method via Settings page.', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 			<p>&nbsp;</p>

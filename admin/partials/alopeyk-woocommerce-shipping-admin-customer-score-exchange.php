@@ -30,7 +30,8 @@ foreach ( $data as $card ) {
 		?>
 		<div data-id="<?php echo esc_attr($card->id); ?>" class="awcshm-customer-score-exchange-card">
 				<div class="loyalty-product-image" style="background-image: url('<?php echo esc_url($card->cover_image->url); ?>'); width:<?php echo esc_attr($card->image->width); ?>px; height:<?php echo esc_attr($card->image->height); ?>px">
-					<img src="<?php echo esc_url($card->image->url); ?>" />
+				<!--This image varies for each order and is sourced from the official Alopeyk API.-->
+				<img src="<?php echo esc_url($card->image->url); ?>" />
 				</div>
 				<div class="loyalty-product-text">
 					<p><?php echo esc_html__('Points required', 'alopeyk-shipping-for-woocommerce') . ' : ' . esc_html($card->price_score); ?></p>

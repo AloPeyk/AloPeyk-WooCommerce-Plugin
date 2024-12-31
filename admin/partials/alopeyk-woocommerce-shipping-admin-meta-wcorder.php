@@ -45,6 +45,7 @@ $last_status = isset( $data['last_status'] ) ? $data['last_status'] : null;
 		<?php
 					} else {
 		?>
+		<!--This image is of the main WordPress files located in the wp-includes folder.-->
 		<img src="<?php echo esc_url(includes_url('images/spinner.gif')); ?>" alt="<?php esc_attr_e('Loading...', 'alopeyk-shipping-for-woocommerce'); ?>">
 		<?php
 					}

@@ -55,7 +55,22 @@ $data = $this->vars;
 		<tr>
 			<th width="130" valign="middle"><?php echo esc_html__( 'Cost', 'alopeyk-shipping-for-woocommerce' ); ?></th>
 			<td valign="top">
-				<?php echo isset($data['shipping']) ? esc_html(wc_price(Alopeyk_WooCommerce_Shipping_Common::normalize_price($data['shipping']->cost))) : '—'; ?>
+			<?php 
+				if (isset($data['shipping'])) {
+					$normalized_price = Alopeyk_WooCommerce_Shipping_Common::normalize_price($data['shipping']->cost);					
+					echo wp_kses(wc_price($normalized_price), array(
+						'span' => array(
+							'class' => array(),
+						),
+						'bdi' => array(),
+						'span' => array(
+							'class' => array('woocommerce-Price-currencySymbol'),
+						),
+					));
+				} else {
+					echo '—'; 
+				}
+			?>
 			</td>
 		</tr>
 		<tr>
@@ -70,14 +85,40 @@ $data = $this->vars;
 				<tr>
 					<th width="130" valign="middle"><?php echo esc_html__( 'Discount Code Value', 'alopeyk-shipping-for-woocommerce' ); ?></th>
 					<td valign="top">
-						<?php echo esc_html(wc_price(Alopeyk_WooCommerce_Shipping_Common::normalize_price($data['shipping']->discount))); ?>
+						<?php 
+					$discount_price = Alopeyk_WooCommerce_Shipping_Common::normalize_price($data['shipping']->discount);					
+						echo wp_kses(wc_price($discount_price), array(
+							'span' => array(
+								'class' => array(),
+							),
+							'bdi' => array(),
+							'span' => array(
+								'class' => array('woocommerce-Price-currencySymbol'),
+							),
+						));
+					?>
 						<span class="remove-discount-coupon"><a href="#"><?php echo esc_html__( '(Remove)', 'alopeyk-shipping-for-woocommerce' ); ?></a></span>
 					</td>
 				</tr>
 				<tr>
 					<th width="130" valign="middle"><?php echo esc_html__( 'Final Cost', 'alopeyk-shipping-for-woocommerce' ); ?></th>
 					<td valign="top">
-						<?php echo (isset($data['shipping']->final_price) && !is_null($data['shipping']->final_price)) ? esc_html(wc_price(Alopeyk_WooCommerce_Shipping_Common::normalize_price($data['shipping']->final_price))) : '—'; ?>
+						<?php 
+							if (isset($data['shipping']->final_price) && !is_null($data['shipping']->final_price)) {
+								$finall_price = Alopeyk_WooCommerce_Shipping_Common::normalize_price($data['shipping']->final_price);					
+								echo wp_kses(wc_price($finall_price), array(
+									'span' => array(
+										'class' => array(),
+									),
+									'bdi' => array(),
+									'span' => array(
+										'class' => array('woocommerce-Price-currencySymbol'),
+									),
+								));
+							} else {
+								echo '—'; 
+							}
+						?>
 					</td>
 				</tr>
 		<?php

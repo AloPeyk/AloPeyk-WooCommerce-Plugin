@@ -21,6 +21,7 @@ if ( $order_data ) {
 	if ( $order_data->screenshot && isset( $order_data->screenshot->url ) ) {
 ?>
 <a href="<?php echo esc_url($helpers->get_tracking_url($order_data)); ?>" target="_blank">
+	<!--This image varies for each order and is sourced from the official Alopeyk API-->
 	<img src="<?php echo esc_url($order_data->screenshot->url); ?>" alt="<?php echo esc_attr__('Order Screenshot', 'alopeyk-shipping-for-woocommerce'); ?>" class="awcshm-order-screenshot">
 </a>
 <?php
@@ -71,7 +72,7 @@ if ( $order_data ) {
 					foreach ( $order_ids as $order_id ) {
 						$order_output[] = '<strong><a href="' . admin_url( 'post.php?post=' . $order_id ) . '&action=edit" target="_blank">#' . $order_id . '</a></strong>';
 					}
-					echo implode(', ', array_map('esc_html', $order_output));
+					echo implode(', ', array_map('wp_kses_post', $order_output));
 				} else {
 					echo '<strong>—</strong>';
 				}
@@ -92,7 +93,7 @@ if ( $order_data ) {
 							}
 						}
 					}
-					echo implode(', ', array_map('esc_html', array_unique($user_output)));
+					echo implode(', ', array_map('wp_kses_post', array_unique($user_output)));
 				} else {
 					echo '<strong>—</strong>';
 				}
@@ -119,6 +120,7 @@ if ( $order_data ) {
 		<?php
 				} else {
 		?>
+	<!--This image is of the main WordPress files located in the wp-includes folder.-->
 		<img src="<?php echo esc_url(includes_url('images/spinner.gif')); ?>" alt="<?php esc_attr_e('Loading...', 'alopeyk-shipping-for-woocommerce'); ?>">
 		<?php
 				}

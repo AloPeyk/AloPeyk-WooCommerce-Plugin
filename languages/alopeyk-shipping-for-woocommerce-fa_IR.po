@@ -996,12 +996,8 @@ msgid "Error occured."
 msgstr "خطایی رخ داده است."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:3157
-msgid ""
-"Contact <a href=\"https://alopeyk.com/api#section-form\" target=\"_blank\">Alopeyk</a> to "
-"become an API user and unlock the premium features for free."
-msgstr ""
-"برای استفاده رایگان از امکانات ویژه ثبت سفارش، با <a href=\"https://alopeyk.com/api#section-"
-"form\" target=\"_blank\">تیم فروش الوپیک</a> تماس بگیرید."
+msgid "Contact %1$s to become an API user and unlock the premium features for free."
+msgstr "برای استفاده رایگان از امکانات ویژه ثبت سفارش، با %1$s تماس بگیرید."
 
 #: includes/class-alopeyk-woocommerce-shipping-method.php:37
 msgid "Alopeyk On-demand Delivery will be included in this WooCommerce shipping zone."
@@ -1537,8 +1533,8 @@ msgstr "سفارش الوپیک"
 
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:25
 #, php-format
-msgid "You are about to cancel <strong><a href=\"%s\" target=\"blank\">%s</a></strong>."
-msgstr "شما در حال لغو سفارش <strong><a href=\"%s\" target=\"blank\">%s</a></strong> هستید."
+msgid "You are about to cancel <strong><a href=\"%1$s\" target=\"blank\">%2$s</a></strong>."
+msgstr "شما در حال لغو سفارش <strong><a href=\"%1$s\" target=\"blank\">%2$s</a></strong> هستید."
 
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:31
 #, php-format

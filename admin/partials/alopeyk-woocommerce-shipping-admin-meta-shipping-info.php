@@ -51,10 +51,26 @@ if ( $order_data ) {
 			<div class="awcshm-address-info-title">
 				<?php if ( $helpers->is_active_address( $order_data, $address ) ) { ?>
 				<span><?php echo esc_html($helpers->get_order_address_status($order_data)); ?></span>
-				<img src="<?php echo esc_url($helpers->get_loader_url()); ?>" alt="<?php esc_attr_e('Loading...', 'alopeyk-shipping-for-woocommerce'); ?>">
+				<!--This image is of the main WordPress files located in the wp-includes folder.-->
+				<img src="<?php echo esc_url(includes_url('images/spinner.gif')); ?>" alt="<?php esc_attr_e('Loading...', 'alopeyk-shipping-for-woocommerce'); ?>">
 				<?php } else if ( $address->status == 'handled' ) { ?>
-				<?php /* translators: %s: Location */ ?>
-				<span><?php $message = ( $address->type == 'return' ) ? esc_html__( 'Courier returned to %s.', 'alopeyk-shipping-for-woocommerce' ) : esc_html__( 'Courier reached %s.', 'alopeyk-shipping-for-woocommerce' ); $location = ( in_array( $address->type, array( 'origin', 'return' ) ) ) ? esc_html__( 'origin', 'alopeyk-shipping-for-woocommerce' ) : esc_html__( 'destination', 'alopeyk-shipping-for-woocommerce' ) . ( count( $order_data->addresses ) < 3 || ( count( $order_data->addresses ) == 3 && $order_data->has_return ) ? '' : ' ' . $key ); echo sprintf( esc_html( $message, $location ));?></span>
+				<span>
+					<?php 
+					$message = ( $address->type == 'return' ) 
+					/* translators: %s: location */
+						? esc_html__( 'Courier returned to %s.', 'alopeyk-shipping-for-woocommerce' ) 
+					/* translators: %s: location */
+						: esc_html__( 'Courier reached %s.', 'alopeyk-shipping-for-woocommerce' );
+
+					$location = ( in_array( $address->type, array( 'origin', 'return' ) ) ) 
+					/* translators: %s: location */
+						? esc_html__( 'origin', 'alopeyk-shipping-for-woocommerce' ) 
+					/* translators: %s: location */
+						: esc_html__( 'destination', 'alopeyk-shipping-for-woocommerce' ) . ( count( $order_data->addresses ) < 3 || ( count( $order_data->addresses ) == 3 && $order_data->has_return ) ? '' : ' ' . $key );
+
+					echo esc_html( sprintf( $message, $location ) );
+					?>
+				</span>
 				<span><?php echo esc_html(date_i18n('j F Y (g:i A)', strtotime($address->handled_at))); ?></span>
 				<?php } else { ?>
 				<span><?php echo esc_html(in_array($address->type, array('origin', 'return')) ? esc_html__('origin', 'alopeyk-shipping-for-woocommerce') : esc_html__('destination', 'alopeyk-shipping-for-woocommerce') . (count($order_data->addresses) < 3 || (count($order_data->addresses) == 3 && $order_data->has_return) ? '' : ' ' . esc_html($key))); ?></span>
@@ -104,6 +120,7 @@ if ( $order_data ) {
 				</ul>
 				<?php if ( $address->signed_by && $address->signature && isset( $address->signature->url ) && $address->status == 'handled' && $address->type != 'origin' ) { ?>
 				<div align="center">
+					<!--This image varies for each order and is sourced from the official Alopeyk API-->
 					<img src="<?php echo esc_url($helpers->get_signature_url($address->signature->url)); ?>" alt="<?php echo esc_attr(__('Signature', 'alopeyk-shipping-for-woocommerce')); ?>" title="<?php echo esc_attr($address->signed_by); ?>" class="awcshm-address-signature">
 				</div>
 				<?php } ?>

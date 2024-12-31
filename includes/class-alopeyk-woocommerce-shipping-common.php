@@ -1979,11 +1979,19 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$response = array(
 					'status' => 'wc-awcshm-processing',
 					'note' => sprintf(
-					/* translators: %1$s: Courier info, %2$s: URL order , %3$s: URL track */
-						esc_html__( 'Courier %1$s assigned and <a href="%2$s" target="_blank">shipping process</a> is started. It can be tracked <a href="%3$s" target="_blank">here</a>.', 'alopeyk-shipping-for-woocommerce' ),
-						esc_html( $courier_info ),
-						esc_url( $order_id ? admin_url( 'post.php?action=edit&post=' . $order_id ) : '#' ),
-						esc_url( $this->get_tracking_url( $order ) )
+						/* translators: %1$s: Courier info, %2$s: URL order , %3$s: URL track */
+						wp_kses(
+							'Courier %1$s assigned and <a href="%2$s" target="_blank">shipping process</a> is started. It can be tracked <a href="%3$s" target="_blank">here</a>.',
+							array(
+								'a' => array(
+									'href' => array(),
+									'target' => array(),
+								),
+							)
+						),
+						esc_html($courier_info),
+						esc_url($order_id ? admin_url('post.php?action=edit&post=' . $order_id) : '#'),
+						esc_url($this->get_tracking_url($order))
 					),
 				);
 			} else if ( in_array( $status, array( 'delivered', 'finished' ) ) ) {
@@ -2685,13 +2693,16 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					if ( $type ) {
 						if ( $this->is_available_for_destinations( $package->destinations ) ) {
 							$credit = $this->get_user_data( 'credit' ) * 10;
-							if ( $credit >= 0 ) {
 								$shipping = (object) $this->calculate_shipping( $package, $type, $package->has_return, 'dynamic', true, false, $discount_coupon );
 								$shipping = (object) $shipping->{$type};
 								$package->shipping = $shipping;
 								$cost = $shipping->cost;
 								if ( ! is_null( $cost ) ) {
+									if ( $credit >= 0 ) {
 									$diff = $cost - $credit;
+									}else{
+									$diff = $cost + abs($credit);	
+									}
 									if ( $diff <= 0 ) {
 										$response = array(
 											'success' => true,
@@ -2728,12 +2739,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 										'message' => esc_html__( 'Unfortunately, we are not able to submit this request.', 'alopeyk-shipping-for-woocommerce' )
 									);
 								}
-							} else {
-								$response = array(
-									'success' => false,
-									'message' => esc_html__( 'Unable to get your Alopeyk credit.', 'alopeyk-shipping-for-woocommerce' )
-								);
-							}
 						} else {
 							$response = array(
 								'success' => false,
@@ -3289,7 +3294,19 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( isset( $userData->customer->is_api ) && $userData->customer->is_api ) {
 			return true;
 		}
-		return esc_html__( 'Contact <a href="https://alopeyk.com/api#section-form" target="_blank">Alopeyk</a> to become an API user and unlock the premium features for free.', 'alopeyk-shipping-for-woocommerce' );
+		return wp_kses(
+		sprintf(
+			/* translators: %1$s: Url Form */
+			esc_html__('Contact %1$s to become an API user and unlock the premium features for free.', 'alopeyk-shipping-for-woocommerce'),
+			'<a href="https://alopeyk.com/api#section-form" target="_blank">Alopeyk</a>'
+		),
+		array(
+			'a' => array(
+				'href' => array(),
+				'target' => array(),
+			),
+		)
+	);
 
 	}
 	/**
