@@ -1981,8 +1981,8 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$response = array(
 					'status' => 'wc-awcshm-processing',
 					'note' => sprintf(
-						/* translators: %1$s: Courier info, %2$s: URL order , %3$s: URL track */
 						html_entity_decode(wp_kses(
+						/* translators: %1$s: Courier info, %2$s: URL order , %3$s: URL track */
 							esc_html__('Courier %1$s assigned and <a href="%2$s" target="_blank">shipping process</a> is started. It can be tracked <a href="%3$s" target="_blank">here</a>.', 'alopeyk-shipping-for-woocommerce'),
 							array(
 								'a' => array(
