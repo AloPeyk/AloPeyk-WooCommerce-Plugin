@@ -137,25 +137,31 @@ class AloPeykApiHandler
      * @param $env
      * @param $endpoint
      */
-    public static function setEndpoint($env = 'production', $endpoint = null)
-    {
-        self::$env = $env;
-        $endpoints = Configs::ENDPOINTS;
-    
-        if ($env == 'production') {
-            $endpoint = $endpoints['production'];
-        } elseif ($env == 'sandbox') {
-            $endpoint = $endpoints['sandbox'];
-        } elseif ($env == 'custom') {
-            if ($endpoint === null || !is_array($endpoint) || !isset($endpoint['url']) || !isset($endpoint['api_url']) || !isset($endpoint['tracking_url'])) {
-                $endpoint = $endpoints['custom']; 
-            }
-        } else {
-            throw new AloPeykApiException('Invalid environment specified'); 
-        }
-    
-        self::$endpoint = $endpoint;
-    }
+	public static function setEndpoint($env = 'production', $endpoint = null)
+	{
+		self::$env = $env;
+		$endpoints = Configs::ENDPOINTS;
+
+		if ($env == 'production') {
+			$endpoint = $endpoints['production'];
+		} elseif ($env == 'sandbox') {
+			$endpoint = $endpoints['sandbox'];
+		} elseif ($env == 'custom') {
+			if (!is_array($endpoint) || !isset($endpoint['url']) || !isset($endpoint['api_url']) || !isset($endpoint['tracking_url'])) {
+				echo '<div class="notice notice-error is-dismissible"><p>Endpoint is not correct</p></div>';
+				return;
+			} else {
+				$endpoint = array(
+					'url' => $endpoint['url'],
+					'api_url' => $endpoint['api_url'],
+					'tracking_url' => $endpoint['tracking_url']
+				);
+			}
+		}
+
+		self::$endpoint = $endpoint;
+	}
+
 
     /**
      * @return array

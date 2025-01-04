@@ -267,7 +267,7 @@ msgid "No address found."
 msgstr ""
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1042
-msgid "Alopeyk WooCommerce Shipping Method"
+msgid "Alopeyk Shipping Method for woocommerce"
 msgstr ""
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1055
@@ -808,8 +808,7 @@ msgstr ""
 #: includes/class-alopeyk-woocommerce-shipping-common.php:1897
 #, php-format
 msgid ""
-"Courier%s assigned and <a href=\"%s\" target=\"_blank\">shipping proccess</a>"
-" is started. It can be tracked <a href=\"%s\" target=\"_blank\">here</a>."
+"Courier %1$s assigned and <a href=\"%2$s\" target=\"_blank\">shipping process</a> is started. It can be tracked <a href=\"%3$s\" target=\"_blank\">here</a>."
 msgstr ""
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:1902
@@ -1510,7 +1509,7 @@ msgstr ""
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:25
 #, php-format
 msgid ""
-"You are about to cancel <strong><a href=\"%s\" target=\"blank\">%s</a>"
+"You are about to cancel <strong><a href='%1$s' target='blank'>%2$s</a></strong>."
 "</strong>."
 msgstr ""
 

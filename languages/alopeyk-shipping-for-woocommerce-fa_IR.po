@@ -266,7 +266,7 @@ msgid "No address found."
 msgstr "آدرسی یافت نشد."
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1042
-msgid "Alopeyk WooCommerce Shipping Method"
+msgid "Alopeyk Shipping Method for woocommerce"
 msgstr "ارسال با الوپیک برای ووکامرس"
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1055
@@ -583,14 +583,14 @@ msgstr "مقصد"
 #: includes/class-alopeyk-woocommerce-shipping-common.php:391
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56
 #, php-format
-msgid "Courier returned to %s."
-msgstr "سفیر به %s بازگشت."
+msgid "Courier returned to %1$s."
+msgstr "سفیر به %1$s بازگشت."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:391
 #: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56
 #, php-format
-msgid "Courier reached %s."
-msgstr "سفیر به %s رسید."
+msgid "Courier reached %2$s."
+msgstr "سفیر به %2$s رسید."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:394
 msgid "Searching for closest courier."
@@ -608,7 +608,7 @@ msgstr "سفیر در حال حرکت به سمت %s است."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:400
 #, php-format
-msgid "Courier arrived at destination%s."
+msgid "Courier arrived at destination %s."
 msgstr "سفیر به مقصد%s رسید."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:406
@@ -801,8 +801,7 @@ msgstr "با شماره تلفن"
 #: includes/class-alopeyk-woocommerce-shipping-common.php:1897
 #, php-format
 msgid ""
-"Courier %1$s assigned and <a href=\"%2$s\" target=\"_blank\">shipping proccess</a> is started. It "
-"can be tracked <a href=\"%3$s\" target=\"_blank\">here</a>."
+"Courier %1$s assigned and <a href=\"%2$s\" target=\"_blank\">shipping process</a> is started. It can be tracked <a href=\"%3$s\" target=\"_blank\">here</a>."
 msgstr ""
 "سفیر %1$s برای ارسال سفارش اختصاص یافت و <a href=\"%2$s\" target=\"_blank\">فرآیند ارسال</a> آغاز "
 "شد. می‌توانید سفارش خود را از <a href=\"%3$s\" target=\"_blank\">اینجا</a> آنلاین رصد کنید."
@@ -1533,8 +1532,8 @@ msgstr "سفارش الوپیک"
 
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:25
 #, php-format
-msgid "You are about to cancel <strong><a href=\"%1$s\" target=\"blank\">%2$s</a></strong>."
-msgstr "شما در حال لغو سفارش <strong><a href=\"%1$s\" target=\"blank\">%2$s</a></strong> هستید."
+msgid "You are about to cancel <strong><a href='%1$s' target='blank'>%2$s</a></strong>."
+msgstr "شما در حال لغو سفارش <strong><a href='%1$s' target='blank'>%2$s</a></strong> هستید."
 
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:31
 #, php-format

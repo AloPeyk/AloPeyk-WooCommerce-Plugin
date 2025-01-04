@@ -20,6 +20,9 @@ if ( $courier_info ) {
 	$transport_type = $data['order_data']->transport_type;
 	$avatar = strpos( $courier_info->abs_avatar->url, '?' ) !== false ? explode( '?', $courier_info->abs_avatar->url ) : array( $courier_info->abs_avatar->url );
 	$avatar = $avatar[0];
+	if(empty($avatar)){
+		$avatar = plugin_dir_url( __DIR__ ).'img/avatar.png';
+	}
 	$helpers = new Alopeyk_WooCommerce_Shipping_Common();
 ?>
 <ul>

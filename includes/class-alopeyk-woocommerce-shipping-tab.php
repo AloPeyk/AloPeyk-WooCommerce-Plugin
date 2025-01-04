@@ -204,7 +204,8 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 		foreach ($fields as $key => $field) {
 			if (!in_array($this->get_field_type($field), ['title', 'sectionend'])) {
 				try {
-					$value = $this->get_field_value($key, $field, $post_data);
+					$value = trim($this->get_field_value($key, $field, $post_data));
+					$value = preg_replace('/\x{200B}/u', '', $value); 
 					if ($field['type'] == 'checkbox') {
 						$this->settings[$key] = $value ? 'yes' : 'no';
 					} else {
@@ -220,7 +221,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 			}
 		}
 		$api_key                  = $this->get_field_value('api_key',               $fields['api_key'],               $post_data);
-		$environment              = $this->get_field_value('environment',           $fields['environment'],           $post_data);
+		$environment              = $this->get_field_value('environment_type',      $fields['environment_type'],      $post_data);
 		$endpoint['url']          = $this->get_field_value('endpoint_url',          $fields['endpoint_url'],          $post_data);
 		$endpoint['api_url']      = $this->get_field_value('endpoint_api_url',      $fields['endpoint_api_url'],      $post_data);
 		$endpoint['tracking_url'] = $this->get_field_value('endpoint_tracking_url', $fields['endpoint_tracking_url'], $post_data);

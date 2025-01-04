@@ -416,13 +416,15 @@ class Alopeyk_WooCommerce_Shipping_Common {
 						/* translators: %2$s: Destination */
 						esc_html__('Courier reached %2$s.', 'alopeyk-shipping-for-woocommerce')
 					),
+					esc_html__('origin', 'alopeyk-shipping-for-woocommerce'),
 					(in_array($next_address_any->type, array('origin', 'return')) ? 
 						esc_html__('origin', 'alopeyk-shipping-for-woocommerce') : 
 						esc_html__('destination', 'alopeyk-shipping-for-woocommerce') . 
 						($hasSingleAddress ? '' : ' ' . esc_html($next_address_any->priority))
 					)
 				);
-			} else {
+			}
+			 else {
 				if ( in_array( $status, array( 'searching', 'new' ) ) ) {
 					$statusText = esc_html__( 'Searching for closest courier.', 'alopeyk-shipping-for-woocommerce' );
 				} else if ( $status === 'picking' ) {
@@ -1010,7 +1012,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		if ( ! AloPeykApiHandler::getToken() || $force_set ) {
 			$api_key                  = $api_key                           ? $api_key                  : $this->get_option( 'api_key',               null, false );
-			$environment              = $environment                       ? $environment              : $this->get_option( 'environment',           null, false );
+			$environment              = $environment                       ? $environment              : $this->get_option( 'environment_type',      null, false );
 			$endpoint['url']          = isset( $endpoint['url']          ) ? $endpoint['url']          : $this->get_option( 'endpoint_url',          null, false );
 			$endpoint['api_url']      = isset( $endpoint['api_url']      ) ? $endpoint['api_url']      : $this->get_option( 'endpoint_api_url',      null, false );
 			$endpoint['tracking_url'] = isset( $endpoint['tracking_url'] ) ? $endpoint['tracking_url'] : $this->get_option( 'endpoint_tracking_url', null, false );
