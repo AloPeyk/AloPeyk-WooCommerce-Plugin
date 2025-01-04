@@ -24,7 +24,7 @@ $courier_info = isset( $data['order_data'] ) && isset( $data['order_data']->cour
 			$avatar = strpos( $courier_info->abs_avatar->url, '?' ) !== false ? explode( '?', $courier_info->abs_avatar->url ) : array( $courier_info->abs_avatar->url );
 			$avatar = $avatar[0];
 			if(empty($avatar)){
-				$avatar = plugin_dir_url( __DIR__ ).'img/avatar.png';
+				$avatar = plugin_dir_url( __DIR__ ).'img/avatar.svg';
 			}
 	?>
 	<div class="awcshm-rate-courier-info">

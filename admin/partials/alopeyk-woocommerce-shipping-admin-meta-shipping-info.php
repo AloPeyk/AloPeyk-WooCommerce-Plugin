@@ -56,19 +56,20 @@ if ( $order_data ) {
 				<?php } else if ( $address->status == 'handled' ) { ?>
 				<span>
 					<?php 
-					$message = ( $address->type == 'return' ) 
-					/* translators: %s: location */
-						? esc_html__( 'Courier returned to %s.', 'alopeyk-shipping-for-woocommerce' ) 
-					/* translators: %s: location */
-						: esc_html__( 'Courier reached %s.', 'alopeyk-shipping-for-woocommerce' );
+						$message = ( $address->type == 'return' ) 
+						/* translators: %s: location */
+						? esc_html__('Courier returned to %s.', 'alopeyk-shipping-for-woocommerce') 
+						/* translators: %s: location */
+						: esc_html__('Courier reached %s.', 'alopeyk-shipping-for-woocommerce'); 
 
-					$location = ( in_array( $address->type, array( 'origin', 'return' ) ) ) 
-					/* translators: %s: location */
+						$location = ( in_array( $address->type, array( 'origin', 'return' ) ) ) 
+						/* translators: %s: location */
 						? esc_html__( 'origin', 'alopeyk-shipping-for-woocommerce' ) 
-					/* translators: %s: location */
+						/* translators: %s: location */
 						: esc_html__( 'destination', 'alopeyk-shipping-for-woocommerce' ) . ( count( $order_data->addresses ) < 3 || ( count( $order_data->addresses ) == 3 && $order_data->has_return ) ? '' : ' ' . $key );
 
-					echo esc_html( sprintf( $message, $location ) );
+						echo esc_html( sprintf( $message, $location ) );
+
 					?>
 				</span>
 				<span><?php echo esc_html(date_i18n('j F Y (g:i A)', strtotime($address->handled_at))); ?></span>
