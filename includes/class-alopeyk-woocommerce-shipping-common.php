@@ -1982,20 +1982,20 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					'status' => 'wc-awcshm-processing',
 					'note' => sprintf(
 						/* translators: %1$s: Courier info, %2$s: URL order , %3$s: URL track */
-						wp_kses(
-							'Courier %1$s assigned and <a href="%2$s" target="_blank">shipping process</a> is started. It can be tracked <a href="%3$s" target="_blank">here</a>.',
+						html_entity_decode(wp_kses(
+							esc_html__('Courier %1$s assigned and <a href="%2$s" target="_blank">shipping process</a> is started. It can be tracked <a href="%3$s" target="_blank">here</a>.', 'alopeyk-shipping-for-woocommerce'),
 							array(
 								'a' => array(
 									'href' => array(),
 									'target' => array(),
 								),
 							)
-						),
+						)),
 						esc_html($courier_info),
 						esc_url($order_id ? admin_url('post.php?action=edit&post=' . $order_id) : '#'),
 						esc_url($this->get_tracking_url($order))
 					),
-				);
+				);				
 			} else if ( in_array( $status, array( 'delivered', 'finished' ) ) ) {
 				$response = array(
 					'status' => 'wc-awcshm-completed',

@@ -800,11 +800,8 @@ msgstr "با شماره تلفن"
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:1897
 #, php-format
-msgid ""
-"Courier %1$s assigned and <a href=\"%2$s\" target=\"_blank\">shipping process</a> is started. It can be tracked <a href=\"%3$s\" target=\"_blank\">here</a>."
-msgstr ""
-"سفیر %1$s برای ارسال سفارش اختصاص یافت و <a href=\"%2$s\" target=\"_blank\">فرآیند ارسال</a> آغاز "
-"شد. می‌توانید سفارش خود را از <a href=\"%3$s\" target=\"_blank\">اینجا</a> آنلاین رصد کنید."
+msgid "Courier %1$s assigned and <a href=\"%2$s\" target=\"_blank\">shipping process</a> is started. It can be tracked <a href=\"%3$s\" target=\"_blank\">here</a>."
+msgstr “aسفیر  %1$s اختصاص داده شد و <a href=\"%2$s\" target=\"_blank\">فرآیند ارسال</a> آغاز شد. می‌توان آن را <a href=\"%3$s\" target=\"_blank\">اینجا</a> پیگیری کرد."
 
 #: includes/class-alopeyk-woocommerce-shipping-common.php:1902
 msgid "Order successfully delivered."
@@ -1532,8 +1529,8 @@ msgstr "سفارش الوپیک"
 
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:25
 #, php-format
-msgid "You are about to cancel <strong><a href='%1$s' target='blank'>%2$s</a></strong>."
-msgstr "شما در حال لغو سفارش <strong><a href='%1$s' target='blank'>%2$s</a></strong> هستید."
+msgid "You are about to cancel <strong><a href=\"%1$s\" target=\"_blank\">%2$s</a></strong>."
+msgstr "شما در حال لغو <strong><a href=\"%1$s\" target=\"_blank\">%2$s</a></strong> هستید."
 
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:31
 #, php-format

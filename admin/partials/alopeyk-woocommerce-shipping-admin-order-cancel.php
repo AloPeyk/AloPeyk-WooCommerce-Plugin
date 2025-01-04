@@ -24,12 +24,19 @@ $cancel = isset( $data['cancel'] ) ? $data['cancel'] : null;
 <form class="awcshm-cancel-order-form">
 	<p>
 	<?php
-		echo wp_kses_post(
+		echo wp_kses(
 			sprintf(
 				/* translators: %1$s: URL cancel order, %2$s: Cancel URL */
-				'You are about to cancel <strong><a href="%1$s" target="_blank">%2$s</a></strong>.',
-				esc_url( $edit_link ),
-				$order_label 
+				html_entity_decode(esc_html__('You are about to cancel <strong><a href="%1$s" target="_blank">%2$s</a></strong>.', 'alopeyk-shipping-for-woocommerce')),
+				esc_url($edit_link),
+				$order_label
+			),
+			array(
+				'strong' => array(),
+				'a'      => array(
+					'href'  => array(),
+					'target' => array()
+				),
 			)
 		);
 	?>

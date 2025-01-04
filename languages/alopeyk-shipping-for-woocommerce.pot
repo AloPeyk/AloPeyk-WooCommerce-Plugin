@@ -1509,7 +1509,7 @@ msgstr ""
 #: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:25
 #, php-format
 msgid ""
-"You are about to cancel <strong><a href='%1$s' target='blank'>%2$s</a></strong>."
+"You are about to cancel <strong><a href=\"%1$s\" target=\"blank\">%2$s</a></strong>."
 "</strong>."
 msgstr ""
 
