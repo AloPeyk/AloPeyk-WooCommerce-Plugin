@@ -3291,24 +3291,25 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @return string or boolean
 	 */
 	public function is_api_user() {
-
 		$userData = $this->get_user_data( null, null, true, [ 'with' => [ 'customer' ] ], false );
 		if ( isset( $userData->customer->is_api ) && $userData->customer->is_api ) {
 			return true;
 		}
-		return wp_kses(
-		sprintf(
-			/* translators: %1$s: Url Form */
-			esc_html__('Contact %1$s to become an API user and unlock the premium features for free.', 'alopeyk-shipping-for-woocommerce'),
-			'<a href="https://alopeyk.com/api#section-form" target="_blank">Alopeyk</a>'
-		),
-		array(
-			'a' => array(
-				'href' => array(),
-				'target' => array(),
+		echo html_entity_decode(wp_kses(
+			sprintf(
+				/* translators: %1$s: Url Form */
+				esc_html__('Contact %1$s to become an API user and unlock the premium features for free.', 'alopeyk-shipping-for-woocommerce'),
+				'<a href="https://alopeyk.com/api#section-form" target="_blank">Alopeyk</a>'
 			),
-		)
-	);
+			array(
+				'a' => array(
+					'href' => array(),
+					'target' => array(),
+				),
+			)
+		));
+		return false;
+	}
 
 	}
 	/**
