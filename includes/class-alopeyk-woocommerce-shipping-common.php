@@ -491,7 +491,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		for ( $t = 0; $t < 24 * 60 / $time_interval; $t++ ) {
 			$time = $t * $time_interval / 60;
 			$time = sprintf( '%02d:%02d', (int) $time, round( fmod( $time, 1 ) * 60 ) );
-			$times[ $time . ':00' ] = date_i18n( 'H:i', strtotime( $time ) );
+			$times[ $time . ':00' ] = wp_date( 'H:i', strtotime( $time ) );
 		}
 		for ( $i = 0; $i < $days_count; $i++ ) {
 			$times_filtered = $times;
@@ -505,7 +505,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$initial_time = explode( ':', array_values($times_filtered)[0] );
 				$schedule_dates['dates'][$date] = array(
 					// 'times'          => $times_filtered,
-					'label'          => date_i18n( 'j F Y', strtotime( $date ) ),
+					'label'          => wp_date( 'j F Y', strtotime( $date ) ),
 					'initial_hour'   => (int) $this->convert_numbers( $initial_time[0], 'persian' ),
 					'initial_minute' => (int) $this->convert_numbers( $initial_time[1], 'persian' ),
 				);
@@ -1968,7 +1968,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					'note' => sprintf(
 					/* translators: %s: Shipping method */
 						esc_html__( 'Order scheduled to be shipped via Alopeyk shipping method at %s.', 'alopeyk-shipping-for-woocommerce' ),
-						esc_html( date_i18n( 'j F Y (g:i A)', strtotime( $order->scheduled_at ) ) )
+						esc_html( wp_date( 'j F Y (g:i A)', strtotime( $order->scheduled_at ) ) )
 					),
 				);
 			} else if ( in_array( $status, array( 'new', 'searching' ) ) ) {
@@ -3309,8 +3309,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			)
 		));
 		return false;
-	}
-
 	}
 	/**
 	 * @since  1.7.0

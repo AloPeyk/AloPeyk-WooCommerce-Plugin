@@ -551,7 +551,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 				$datetime = new DateTime( get_post_time( 'Y-m-d H:i:s', false, $post_id ) );
 				$datetime->setTimezone( new DateTimeZone( 'Asia/Tehran' ) );
 				$post_date = strtotime( $datetime->format( 'Y-m-d H:i:s' ) );
-				echo esc_html( date_i18n( 'j F Y', $post_date )) . '<br>' . esc_html( date_i18n( 'g:i A', $post_date ));
+				echo esc_html( wp_date( 'j F Y', $post_date )) . '<br>' . esc_html( wp_date( 'g:i A', $post_date ));
 			break;
 			case 'order_actions' :
 				$order_data = get_post_meta( $post_id, '_awcshm_order_data', true );

@@ -26,7 +26,7 @@ if ( $order_data ) {
 		<div class="postbox awcshm-address-info-box">
 			<div class="awcshm-address-info-title">
 				<span><?php echo esc_html__( 'Order Created', 'alopeyk-shipping-for-woocommerce' ); ?></span>
-				<span><?php echo esc_html(date_i18n('j F Y (g:i A)', strtotime($order_data->created_at))); ?></span>
+				<span><?php echo esc_html(wp_date('j F Y (g:i A)', strtotime($order_data->created_at))); ?></span>
 			</div>
 		</div>
 		<?php } ?>
@@ -34,7 +34,7 @@ if ( $order_data ) {
 		<div class="postbox awcshm-address-info-box">
 			<div class="awcshm-address-info-title">
 				<span><?php echo esc_html__( 'Order Scheduled', 'alopeyk-shipping-for-woocommerce' ); ?></span>
-				<span><?php echo esc_html(date_i18n('j F Y (g:i A)', strtotime($order_data->scheduled_at))); ?></span>
+				<span><?php echo esc_html(wp_date('j F Y (g:i A)', strtotime($order_data->scheduled_at))); ?></span>
 			</div>
 		</div>
 		<?php } ?>
@@ -42,7 +42,7 @@ if ( $order_data ) {
 		<div class="postbox awcshm-address-info-box">
 			<div class="awcshm-address-info-title">
 				<span><?php echo esc_html__( 'Order Accepted', 'alopeyk-shipping-for-woocommerce' ); ?></span>
-				<span><?php echo esc_html(date_i18n('j F Y (g:i A)', strtotime($order_data->accepted_at))); ?></span>
+				<span><?php echo esc_html(wp_date('j F Y (g:i A)', strtotime($order_data->accepted_at))); ?></span>
 			</div>
 		</div>
 		<?php } ?>
@@ -72,7 +72,7 @@ if ( $order_data ) {
 
 					?>
 				</span>
-				<span><?php echo esc_html(date_i18n('j F Y (g:i A)', strtotime($address->handled_at))); ?></span>
+				<span><?php echo esc_html(wp_date('j F Y (g:i A)', strtotime($address->handled_at))); ?></span>
 				<?php } else { ?>
 				<span><?php echo esc_html(in_array($address->type, array('origin', 'return')) ? esc_html__('origin', 'alopeyk-shipping-for-woocommerce') : esc_html__('destination', 'alopeyk-shipping-for-woocommerce') . (count($order_data->addresses) < 3 || (count($order_data->addresses) == 3 && $order_data->has_return) ? '' : ' ' . esc_html($key))); ?></span>
 				<?php } ?>
@@ -132,7 +132,7 @@ if ( $order_data ) {
 		<div class="postbox awcshm-address-info-box">
 			<div class="awcshm-address-info-title">
 				<span><?php echo esc_html__( 'Order Deleted', 'alopeyk-shipping-for-woocommerce' ); ?></span>
-				<span><?php echo esc_html(date_i18n('j F Y (g:i A)', strtotime($order_data->updated_at))); ?></span>
+				<span><?php echo esc_html(wp_date('j F Y (g:i A)', strtotime($order_data->updated_at))); ?></span>
 			</div>
 		</div>
 		<?php } ?>
@@ -140,7 +140,7 @@ if ( $order_data ) {
 		<div class="postbox awcshm-address-info-box">
 			<div class="awcshm-address-info-title">
 				<span><?php echo esc_html__( 'Order Canceled', 'alopeyk-shipping-for-woocommerce' ); ?></span>
-				<span><?php echo esc_html(date_i18n('j F Y (g:i A)', strtotime($order_data->updated_at))); ?></span>
+				<span><?php echo esc_html(wp_date('j F Y (g:i A)', strtotime($order_data->updated_at))); ?></span>
 			</div>
 		</div>
 		<?php } ?>
@@ -148,7 +148,7 @@ if ( $order_data ) {
 		<div class="postbox awcshm-address-info-box">
 			<div class="awcshm-address-info-title">
 				<span><?php echo esc_html__( 'Order Expired', 'alopeyk-shipping-for-woocommerce' ); ?></span>
-				<span><?php echo esc_html(date_i18n('j F Y (g:i A)', strtotime($order_data->updated_at))); ?></span>
+				<span><?php echo esc_html(wp_date('j F Y (g:i A)', strtotime($order_data->updated_at))); ?></span>
 			</div>
 		</div>
 		<?php } ?>

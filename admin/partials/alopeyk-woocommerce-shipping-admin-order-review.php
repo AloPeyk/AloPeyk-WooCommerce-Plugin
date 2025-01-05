@@ -27,7 +27,7 @@ $data = $this->vars;
 		<tr>
 			<th width="130" valign="middle"><?php echo esc_html__( 'Shipping Time', 'alopeyk-shipping-for-woocommerce' ); ?></th>
 			<td valign="top">
-				<?php echo isset($data['scheduled_at']) ? esc_html(date_i18n('j F Y (g:i A)', strtotime($data['scheduled_at']))) : esc_html__('Now', 'alopeyk-shipping-for-woocommerce'); ?>
+				<?php echo isset($data['scheduled_at']) ? esc_html(wp_date('j F Y (g:i A)', strtotime($data['scheduled_at']))) : esc_html__('Now', 'alopeyk-shipping-for-woocommerce'); ?>
 			</td>
 		</tr>
 		<?php
