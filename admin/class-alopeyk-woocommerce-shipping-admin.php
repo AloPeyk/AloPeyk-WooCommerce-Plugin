@@ -398,9 +398,17 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 				) );
 				echo wp_kses_post( $content ); 
 			} else {
-				echo '<div class="error notice awcshm-credit-widget-wrapper"><p>'
-				/* translators: %s: Setting url */
-				 . sprintf( esc_html__( 'User data not found. You have to enter a valid API key in <a href="%s" target="blank">settings page</a> in order to access this page.', 'alopeyk-shipping-for-woocommerce' ), esc_url($this->get_settings_url() )) . '</p></div>';
+				echo '<div class="error notice awcshm-credit-widget-wrapper"><p>';
+				echo sprintf(
+					/* translators: %1$s: Setting url */
+					esc_html__(
+						'User data not found. You have to enter a valid API key in %1$s in order to access this page.',
+						'alopeyk-shipping-for-woocommerce'
+					),
+					'<a href="' . esc_url($this->get_settings_url()) . '" target="_blank">' . esc_html__('settings page', 'alopeyk-shipping-for-woocommerce') . '</a>'
+				);
+				echo '</p></div>';
+				
 			}
 		});
 		add_submenu_page( 'alopeyk', esc_html__( 'Settings', 'alopeyk-shipping-for-woocommerce' ), esc_html__( 'Settings', 'alopeyk-shipping-for-woocommerce' ), 'manage_options', 'alopeyk-shipping-settings', function () {

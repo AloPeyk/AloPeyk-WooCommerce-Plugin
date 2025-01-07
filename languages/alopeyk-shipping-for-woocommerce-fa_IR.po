@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Alopeyk WooCommerce Shipping Method\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-23 13:02+0000\n"
-"PO-Revision-Date: 2025-01-04 14:46+0000\n"
+"PO-Revision-Date: 2025-01-07 10:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: Persian (Iran)\n"
 "Language: fa-IR\n"
@@ -108,11 +108,11 @@ msgstr "حساب کاربری"
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:368
 #, php-format
 msgid ""
-"User data not found. You have to enter a valid API key in <a href=\"%s\" "
-"target=\"blank\">settings page</a> in order to access this page."
+"User data not found. You have to enter a valid API key in %1$s in order to "
+"access this page."
 msgstr ""
 "اطلاعات کاربری یافت نشد. برای مشاهده این صفحه ابتدا می‌بایست یک کلید API "
-"معتبر در <a href=\"%s\" target=\"blank\">صفحه تنظیمات</a> وارد نمایید."
+"معتبر در  %1$s  وارد نمایید."
 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:421 
 #: admin/class-alopeyk-woocommerce-shipping-admin.php:1092 
@@ -1041,7 +1041,7 @@ msgstr ""
 "اضافه خواهد شد."
 
 #: includes/class-alopeyk-woocommerce-shipping-tab.php:56
-msgid "The <strong>API key</strong> is not valid."
+msgid "The API key is not valid."
 msgstr "کلید API معتبر نیست."
 
 #: includes/class-alopeyk-woocommerce-shipping-tab.php:67
@@ -1823,3 +1823,6 @@ msgid ""
 "Woocommerce settings"
 msgstr ""
 "برای تغییر تنظیمات شیوه ارسال به تب 'الوپیک' در تنظیمات ووکامرس مراجعه کنید"
+
+msgid "settings page"
+msgstr "صفحه تنظیمات"

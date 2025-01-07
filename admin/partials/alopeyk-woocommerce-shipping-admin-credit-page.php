@@ -18,10 +18,15 @@ $user_data = isset( $data['user_data'] ) ? $data['user_data'] : null;
 if ( $user_data ) {
 	$avatar  = strpos( $user_data->avatar->url, '?' ) !== false ? explode( '?', $user_data->avatar->url ) : array( $user_data->avatar->url );
 	$avatar  = $avatar[0];
+
+	if(empty($avatar)){
+		$avatar = plugin_dir_url( __DIR__ ).'img/avatar.svg';
+	}else{
 	$api_url = explode( '/', $data['api_url'] );
 	array_pop( $api_url );
 	$api_url = implode('/', $api_url);
 	$avatar  = $api_url . $avatar;
+	}
 ?>
 
 <div class="awcshm-credit-widget-container">

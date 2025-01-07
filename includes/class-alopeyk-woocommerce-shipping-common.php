@@ -481,7 +481,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		$days_count = (float) $this->get_config( 'schedule_days_count' );
 		$time_interval = min( (float) $this->get_config( 'schedule_time_interval' ), 59 );
 		$first_request_delay = (float) $this->get_config( 'schedule_first_request_delay' );
-		$from = wp_date( 'Y-m-d H:i:s', strtotime( '+ ' . $first_request_delay . 'minutes' ) );
+		$from = gmdate( 'Y-m-d H:i:s', strtotime( '+ ' . $first_request_delay . 'minutes' ) );
 		$times = array();
 		$schedule_dates = array(
 			'dates' => null,
@@ -495,9 +495,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		}
 		for ( $i = 0; $i < $days_count; $i++ ) {
 			$times_filtered = $times;
-			$date = wp_date( 'Y-m-d', strtotime( $from . ' +' . $i . ' days' ) );
+			$date = gmdate( 'Y-m-d', strtotime( $from . ' +' . $i . ' days' ) );
 			if ( $i == 0 ) {
-				$time = explode( ':', wp_date( 'H:i', strtotime( $from ) ) );
+				$time = explode( ':', wp_date( 'H:i', strtotime( $from )) );
 				$pieces = round ( ( ( $time[0] * 60 ) + $time[1] ) / $time_interval );
 				$times_filtered = array_slice( $times_filtered, $pieces + 1 );
 			}
@@ -2955,7 +2955,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				$should_update = true;
 				$new_order_data = $old_order_data;
 				$new_order_data->status = $status ? $status : 'deleted';
-				$new_order_data->updated_at = wp_date( 'Y-m-dTH:i:s' ); // Only to support deleted status
+				$new_order_data->updated_at = gmdate( 'Y-m-dTH:i:s' ); // Only to support deleted status
 			}
 			if ( $should_update ) {
 				$result = wp_update_post( array(
@@ -3295,7 +3295,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( isset( $userData->customer->is_api ) && $userData->customer->is_api ) {
 			return true;
 		}
-		echo html_entity_decode(wp_kses(
+		echo wp_kses(
 			sprintf(
 				/* translators: %1$s: Url Form */
 				esc_html__('Contact %1$s to become an API user and unlock the premium features for free.', 'alopeyk-shipping-for-woocommerce'),
@@ -3307,7 +3307,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					'target' => array(),
 				),
 			)
-		));
+		);
 		return false;
 	}
 	/**

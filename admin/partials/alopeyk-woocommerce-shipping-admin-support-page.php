@@ -65,13 +65,19 @@ $data = $this->vars;
 					<div class="awcshm-support-content-item-body">
 						<div class="awcshm-support-content-item-body-inner">
 							<p>
-								<?php
-									echo esc_html__( 'Please let us know about bugs or UX problems you may encounter while working with this extension.', 'alopeyk-shipping-for-woocommerce' );
-									if ( isset( $data['log_url'] ) && $data['log_url'] ) {
-										/* translators: %s: URL log */
-										echo ' ' . sprintf( esc_html__('It\'s better to attach a copy of <a href="%s" target="_blank">system logs</a> to your email.', 'alopeyk-shipping-for-woocommerce'), esc_url($data['log_url']) );
-									}
-								?>
+							<?php
+								echo wp_kses(
+									__('Please let us know about bugs or UX problems you may encounter while working with this extension.', 'alopeyk-shipping-for-woocommerce'),
+									array( 'a' => array( 'href' => array(), 'target' => array() ) )
+								);
+								if ( isset( $data['log_url'] ) && $data['log_url'] ) {
+									echo ' ' . wp_kses(
+									/* translators: %s: URL log */
+										sprintf( __('Its better to attach a copy of <a href="%s" target="_blank">system logs</a> to your email.', 'alopeyk-shipping-for-woocommerce'), esc_url($data['log_url']) ),
+										array( 'a' => array( 'href' => array(), 'target' => array() ) )
+									);
+								}
+							?>
 							</p>
 						</div>
 					</div>
