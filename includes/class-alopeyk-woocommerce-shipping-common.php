@@ -497,9 +497,9 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			$times_filtered = $times;
 			$date = gmdate( 'Y-m-d', strtotime( $from . ' +' . $i . ' days' ) );
 			if ( $i == 0 ) {
-				$time = explode( ':', wp_date( 'H:i', strtotime( $from )) );
+				$time = explode( ':', gmdate( 'H:i', strtotime( $from )) );
 				$pieces = round ( ( ( $time[0] * 60 ) + $time[1] ) / $time_interval );
-				$times_filtered = array_slice( $times_filtered, $pieces + 1 );
+				$times_filtered = array_slice( $times_filtered, $pieces + 60 );
 			}
 			if ( count( $times_filtered ) ) {
 				$initial_time = explode( ':', array_values($times_filtered)[0] );
