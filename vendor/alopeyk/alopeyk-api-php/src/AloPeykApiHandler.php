@@ -148,8 +148,7 @@ class AloPeykApiHandler
 			$endpoint = $endpoints['sandbox'];
 		} elseif ($env == 'custom') {
 			if (!is_array($endpoint) || !isset($endpoint['url']) || !isset($endpoint['api_url']) || !isset($endpoint['tracking_url'])) {
-				echo '<div class="notice notice-error is-dismissible"><p>Endpoint is not correct</p></div>';
-				return;
+				    throw new AloPeykApiException('Endpoint is not correct');
 			} else {
 				$endpoint = array(
 					'url' => $endpoint['url'],
