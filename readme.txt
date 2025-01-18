@@ -59,6 +59,7 @@ The Parsimap service provides mapping and geolocation functionalities. This plug
 
 ### Links to the service:
 - [website](https://www.parsimap.ir/)
+- [website](https://pm2.parsimap.com/webapi.svc/)
 
 
 By using this plugin, you acknowledge that your location data may be sent to the Alopeyk service as described above.
