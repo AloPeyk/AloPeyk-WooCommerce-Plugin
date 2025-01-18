@@ -79,19 +79,19 @@ $text_color       = $color_gray;
 																<tr>
 																	<td align="center" width="100%">
 																		<a href="https://instagram.com/alopeyk" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="img/instagram.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/instagram.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.linkedin.com/company/alopeyk" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="mg/linkedin.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/linkedin.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.facebook.com/alopeyk/" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="img/facebook.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/facebook.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://twitter.com/alopeyk" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="img/twitter.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/twitter.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="<?php echo esc_url($campaign_url); ?>" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="img/website.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/website.png" width="32" style="width:32px;">
 																		</a>
 																	</td>
 																</tr>
