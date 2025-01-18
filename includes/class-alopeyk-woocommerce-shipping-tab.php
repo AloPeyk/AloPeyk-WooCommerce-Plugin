@@ -172,29 +172,26 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	 */
 	public function get_field_value($key, $field, $post_data = array())
 	{
-		$type      = $this->get_field_type($field);
-
-	    if (empty($post_data)) {
-			$post_data = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); 
+		$type = $this->get_field_type($field);
+	
+		if (empty($post_data)) {
+			$post_data = isset($_POST[$key]) ? filter_var($_POST[$key], FILTER_SANITIZE_STRING) : null;
 		}
-
-		$value     = isset($post_data[$key]) ? $post_data[$key] : null;
-
+	
+		$value = isset($post_data[$key]) ? $post_data[$key] : null;
+	
 		if (isset($field['sanitize_callback']) && is_callable($field['sanitize_callback'])) {
 			return call_user_func($field['sanitize_callback'], $value);
 		}
-
-		// Look for a validate_FIELDID_field method for special handling.
+	
 		if (is_callable(array($this, 'validate_' . $key . '_field'))) {
 			return $this->{'validate_' . $key . '_field'}($key, $value);
 		}
-
-		// Look for a validate_FIELDTYPE_field method.
+	
 		if (is_callable(array($this, 'validate_' . $type . '_field'))) {
 			return $this->{'validate_' . $type . '_field'}($key, $value);
 		}
-
-		// Fallback to text.
+	
 		return $this->validate_text_field($key, $value);
 	}
 
@@ -205,20 +202,19 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	public function save()
 	{
 		$this->init_settings();
-		$post_data = $this->get_post_data();
+		$post_data = $this->get_post_data(); 
 		$fields = $this->form_fields;
-
+	
 		foreach ($fields as $key => $field) {
 			if (!in_array($this->get_field_type($field), ['title', 'sectionend'])) {
 				try {
 					$value = trim($this->get_field_value($key, $field, $post_data));
-					$value = preg_replace('/\x{200B}/u', '', $value); 
+					$value = preg_replace('/\x{200B}/u', '', $value);
 					if ($field['type'] == 'checkbox') {
 						$this->settings[$key] = $value ? 'yes' : 'no';
 					} else {
 						$this->settings[$key] = $value;
 					}
-					
 				} catch (Exception $e) {
 					$this->errors->add($key, sprintf(
 						/* translators: %s: Error Message */
@@ -227,16 +223,17 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 				}
 			}
 		}
-		$api_key                  = $this->get_field_value('api_key',               $fields['api_key'],               $post_data);
-		$environment              = $this->get_field_value('environment_type',      $fields['environment_type'],      $post_data);
-		$endpoint['url']          = $this->get_field_value('endpoint_url',          $fields['endpoint_url'],          $post_data);
-		$endpoint['api_url']      = $this->get_field_value('endpoint_api_url',      $fields['endpoint_api_url'],      $post_data);
+	
+		$api_key = $this->get_field_value('api_key', $fields['api_key'], $post_data);
+		$environment = $this->get_field_value('environment_type', $fields['environment_type'], $post_data);
+		$endpoint['url'] = $this->get_field_value('endpoint_url', $fields['endpoint_url'], $post_data);
+		$endpoint['api_url'] = $this->get_field_value('endpoint_api_url', $fields['endpoint_api_url'], $post_data);
 		$endpoint['tracking_url'] = $this->get_field_value('endpoint_tracking_url', $fields['endpoint_tracking_url'], $post_data);
-
-		if (!(empty($api_key))) {
+	
+		if (!empty($api_key)) {
 			if ($this->helpers->authenticate(true, $api_key, true, $environment, $endpoint) && $user_data = $this->helpers->get_user_data()) {
 				$phone = isset($fields['store_phone']) ? $this->get_field_value('store_phone', $fields['store_phone'], $post_data) : '';
-				$name  = isset($fields['store_name'])  ? $this->get_field_value('store_name',  $fields['store_name'],  $post_data) : '';
+				$name = isset($fields['store_name']) ? $this->get_field_value('store_name', $fields['store_name'], $post_data) : '';
 				if (empty($phone)) {
 					$this->settings['store_phone'] = $user_data->phone;
 				}
@@ -245,19 +242,20 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 				}
 				$this->settings['wrong_key'] = 'no';
 			} else {
-				$this->settings['enabled']   = 'no';
+				$this->settings['enabled'] = 'no';
 				$this->settings['wrong_key'] = 'yes';
 			}
 		}
+	
 		foreach ($this->required_fields as $required_field) {
 			if (!isset($this->settings[$required_field]) || empty($this->settings[$required_field])) {
 				$this->settings['enabled'] = 'no';
 				break;
 			}
 		}
-
-        update_option($this->get_option_key(), apply_filters('woocommerce_settings_api_sanitized_fields_' . $this->id, $this->settings));
-        return wp_redirect( (new Alopeyk_WooCommerce_Shipping_Admin())->get_settings_url(), 301 );
+	
+		update_option($this->get_option_key(), apply_filters('woocommerce_settings_api_sanitized_fields_' . $this->id, $this->settings));
+		return wp_redirect((new Alopeyk_WooCommerce_Shipping_Admin())->get_settings_url(), 301);
 	}
 
 	/**

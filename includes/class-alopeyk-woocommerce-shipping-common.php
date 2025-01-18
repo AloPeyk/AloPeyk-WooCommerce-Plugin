@@ -1091,29 +1091,31 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		check_ajax_referer( $this->plugin_name, 'nonce' );
 	
 		if ( isset( $_POST['request'] ) ) {
-			if ( isset( $_POST['authenticate'] ) && $_POST['authenticate'] == true ) {
-				if ( ! $this->authenticate() ) {
-					$this->respond_ajax( esc_html__( 'Authentication failed may be because of wrong API key.', 'alopeyk-shipping-for-woocommerce' ), false );
-				}
+			$request = sanitize_key( $_POST['request'] );
+			$authenticate = isset( $_POST['authenticate'] ) ? filter_var( $_POST['authenticate'], FILTER_VALIDATE_BOOLEAN ) : false;
+	
+			if ( $authenticate && ! $this->authenticate() ) {
+				wp_send_json_error( esc_html__( 'Authentication failed may be because of wrong API key.', 'alopeyk-shipping-for-woocommerce' ) );
 			}
 	
-			$request = 'ajax_' . sanitize_key( $_POST['request'] );
 			$scope = $this;
-	
 			if ( isset( $_POST['scope'] ) && $_POST['scope'] == 'admin' ) {
 				$scope = new Alopeyk_WooCommerce_Shipping_Admin();
 			}
 	
-			if ( method_exists( $scope, $request ) ) {
-				$sanitized_post_data = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-				$scope->$request( $sanitized_post_data );
+			$method = 'ajax_' . $request;
+			if ( method_exists( $scope, $method ) ) {
+				$sanitized_post_data = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES | FILTER_FLAG_STRIP_HIGH);
+				$sanitized_post_data = wp_unslash( $sanitized_post_data );
+				$scope->$method( $sanitized_post_data );
 			} else {
-				$this->respond_ajax( esc_html__( 'No action defined for given request.', 'alopeyk-shipping-for-woocommerce' ), false );
+				wp_send_json_error( esc_html__( 'No action defined for given request.', 'alopeyk-shipping-for-woocommerce' ) );
 			}
 		}
 	
 		wp_die();
 	}
+	
 	
 
 	/**
