@@ -738,6 +738,12 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 */
 	public function add_address_fields( $checkout = null ) {
 		if ( $this->is_enabled() && ! ( $checkout && $this->has_virtual_product() ) ) {
+			$shipping_address_latitude  = $checkout ? WC()->session->get( 'destination_latitude' )  : null;
+			$shipping_address_longitude = $checkout ? WC()->session->get( 'destination_longitude' ) : null;
+			$shipping_address           = $checkout ? WC()->session->get( 'destination_address' )   : null;
+			$shipping_address_unit      = $checkout ? WC()->session->get( 'destination_unit' )      : null;
+			$shipping_address_number    = $checkout ? WC()->session->get( 'destination_number' )    : null;
+			
 			wp_nonce_field( 'save_address_fields_nonce', 'address_fields_nonce' );
 	
 			echo '<button type="button" id="awcshm-open-address-popup" class="button">' . esc_html__( 'Select Your Location', 'alopeyk-shipping-for-woocommerce' ) . '</button>';
