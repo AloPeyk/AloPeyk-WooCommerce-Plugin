@@ -810,7 +810,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @param string  $type
 	 */
 	public function save_address_fields( $user_id = null, $type = null ) {
-		if ( ! isset( $_POST['address_fields_nonce'] ) || ! wp_verify_nonce( $_POST['address_fields_nonce'], 'save_address_fields_nonce' ) ) {
+		if ( ! isset( $_POST['address_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['address_fields_nonce'] ) ), 'save_address_fields_nonce' ) ) {
 			return; 
 		}
 		if ( $user_id && $type && $type === 'shipping' ) {
@@ -845,7 +845,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 
 		if ( $this->is_enabled() ) {
 
-			if ( ! isset( $_POST['address_fields_nonce'] ) || ! wp_verify_nonce( $_POST['address_fields_nonce'], 'save_address_fields_nonce' ) ) {
+			if ( ! isset( $_POST['address_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['address_fields_nonce'] ) ), 'save_address_fields_nonce' ) ) {
 				return; 
 			}
 			$data = (object) $_POST;
@@ -866,8 +866,8 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 */
 	public function update_order_meta( $order_id ) {
 
-		if ( ! isset( $_POST['address_fields_nonce'] ) || ! wp_verify_nonce( $_POST['address_fields_nonce'], 'save_address_fields_nonce' ) ) {
-			return; 
+		if ( ! isset( $_POST['address_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['address_fields_nonce'] ) ), 'save_address_fields_nonce' ) ) {
+			return;
 		}
 		if ( $this->is_enabled() ) {
 			$data = (object) $_POST;
