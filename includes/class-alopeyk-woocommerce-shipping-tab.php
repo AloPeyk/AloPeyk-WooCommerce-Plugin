@@ -133,16 +133,23 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	 */
 	public function get_post_data()
 	{
-
-    if (!current_user_can('manage_options')) {
-        wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'alopeyk-shipping-for-woocommerce'));
-    }
+		if (!current_user_can('manage_options')) {
+			wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'alopeyk-shipping-for-woocommerce'));
+		}
+	
 		if (!empty($this->data) && is_array($this->data)) {
 			return $this->data;
 		}
-		return $_POST; // WPCS: CSRF ok, input var ok.
+	
+		$sanitized_data = array();
+		if (!empty($_POST) && is_array($_POST)) {
+			foreach ($_POST as $key => $value) {
+				$sanitized_data[$key] = sanitize_text_field($value);
+			}
+		}
+	
+		return $sanitized_data;
 	}
-
 	/**
 	 * @since 2.0.0
 	 */

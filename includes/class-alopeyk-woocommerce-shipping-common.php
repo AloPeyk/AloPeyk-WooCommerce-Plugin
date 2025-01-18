@@ -844,20 +844,25 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public function check_checkout_fields() {
 
 		if ( $this->is_enabled() ) {
-
+	
 			if ( ! isset( $_POST['address_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['address_fields_nonce'] ) ), 'save_address_fields_nonce' ) ) {
 				return; 
 			}
-			$data = (object) $_POST;
-			if ( isset( $data->shipping_method )       && in_array( ALOPEYK_METHOD_ID, $data->shipping_method ) &&
-			   ( isset( $data->destination_latitude )  && ( ! $data->destination_latitude  || empty( $data->destination_latitude ) ) )  ||
-			   ( isset( $data->destination_longitude ) && ( ! $data->destination_longitude || empty( $data->destination_longitude ) ) ) ||
-			   ( isset( $data->destination_address )   && ( ! $data->destination_address   || empty( $data->destination_address ) ) )
+	
+			$data = (object) array(
+				'shipping_method'       => isset( $_POST['shipping_method'] ) ? array_map( 'sanitize_text_field', $_POST['shipping_method'] ) : array(),
+				'destination_latitude'  => isset( $_POST['destination_latitude'] ) ? sanitize_text_field( $_POST['destination_latitude'] ) : '',
+				'destination_longitude' => isset( $_POST['destination_longitude'] ) ? sanitize_text_field( $_POST['destination_longitude'] ) : '',
+				'destination_address'   => isset( $_POST['destination_address'] ) ? sanitize_text_field( $_POST['destination_address'] ) : '',
+			);
+	
+			if ( in_array( ALOPEYK_METHOD_ID, $data->shipping_method ) &&
+				 ( empty( $data->destination_latitude ) || empty( $data->destination_longitude ) || empty( $data->destination_address ) )
 			) {
 				wc_add_notice( esc_html__( 'Please specify your exact location on the map.', 'alopeyk-shipping-for-woocommerce' ), 'error' );
 			}
 		}
-
+	
 	}
 
 	/**
@@ -869,65 +874,84 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( ! isset( $_POST['address_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['address_fields_nonce'] ) ), 'save_address_fields_nonce' ) ) {
 			return;
 		}
+	
 		if ( $this->is_enabled() ) {
-			$data = (object) $_POST;
+			$data = (object) array(
+				'shipping_method'    => isset( $_POST['shipping_method'] ) ? array_map( 'sanitize_text_field', $_POST['shipping_method'] ) : array(),
+				'createaccount'      => isset( $_POST['createaccount'] ) ? sanitize_key( $_POST['createaccount'] ) : '',
+				'destination_latitude'  => isset( $_POST['destination_latitude'] ) ? floatval( $_POST['destination_latitude'] ) : 0,
+				'destination_longitude' => isset( $_POST['destination_longitude'] ) ? floatval( $_POST['destination_longitude'] ) : 0,
+				'destination_address'   => isset( $_POST['destination_address'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_address'] ) ) : '',
+				'destination_unit'      => isset( $_POST['destination_unit'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_unit'] ) ) : '',
+				'destination_number'    => isset( $_POST['destination_number'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_number'] ) ) : '',
+			);
+	
 			$matched_methods = array_filter( $data->shipping_method, function( $var ) {
 				return ALOPEYK_METHOD_ID == explode( '-', $var )[0];
 			});
+	
 			if ( count( $matched_methods ) ) {
-				$create_account = isset( $data->createaccount ) && $data->createaccount;
+				$create_account = ! empty( $data->createaccount );
 				$user_id = $create_account ? wc_get_order( $order_id )->get_user_id() : null;
 				$order = wc_get_order( $order_id );
 				$shipping_prefix = '_shipping_';
-				if ( isset( $data->destination_latitude ) && $data->destination_latitude ) {
+	
+				if ( $data->destination_latitude ) {
 					$order->update_meta_data( $shipping_prefix . 'address_latitude', $data->destination_latitude );
 					if ( $user_id ) {
 						update_user_meta( $user_id, 'shipping_address_latitude', esc_attr( $data->destination_latitude ) );
 					}
 				}
-				if ( isset( $data->destination_longitude ) && $data->destination_longitude ) {
+				if ( $data->destination_longitude ) {
 					$order->update_meta_data( $shipping_prefix . 'address_longitude', $data->destination_longitude );
 					if ( $user_id ) {
 						update_user_meta( $user_id, 'shipping_address_longitude', esc_attr( $data->destination_longitude ) );
 					}
 				}
-				if ( isset( $data->destination_address ) && $data->destination_address ) {
+				if ( $data->destination_address ) {
 					$order->update_meta_data( $shipping_prefix . 'address_location', $data->destination_address );
 					if ( $user_id ) {
 						update_user_meta( $user_id, 'shipping_address', esc_attr( $data->destination_address ) );
 					}
 				}
-				if ( isset( $data->destination_unit ) && $data->destination_unit ) {
+				if ( $data->destination_unit ) {
 					$order->update_meta_data( $shipping_prefix . 'address_unit', $data->destination_unit );
 					if ( $user_id ) {
 						update_user_meta( $user_id, 'shipping_address_unit', esc_attr( $data->destination_unit ) );
 					}
 				}
-				if ( isset( $data->destination_number ) && $data->destination_number ) {
+				if ( $data->destination_number ) {
 					$order->update_meta_data( $shipping_prefix . 'address_number', $data->destination_number );
 					if ( $user_id ) {
 						update_user_meta( $user_id, 'shipping_address_number', esc_attr( $data->destination_number ) );
 					}
 				}
+	
 				if ( $package_data = WC()->session->get( 'package_data' ) ) {
-					$package_data = (object) $package_data;
-					if ( isset( $package_data->total_weight ) ) {
+					$package_data = (object) array(
+						'total_weight' => isset( $package_data['total_weight'] ) ? floatval( $package_data['total_weight'] ) : 0,
+						'total_volume' => isset( $package_data['total_volume'] ) ? floatval( $package_data['total_volume'] ) : 0,
+						'overflowed'   => isset( $package_data['overflowed'] ) ? sanitize_key( $package_data['overflowed'] ) : '',
+						'shipping'     => isset( $package_data['shipping'] ) ? sanitize_text_field( $package_data['shipping'] ) : '',
+					);
+	
+					if ( $package_data->total_weight ) {
 						$order->update_meta_data( '_total_weight', $package_data->total_weight );
 					}
-					if ( isset( $package_data->total_volume ) ) {
+					if ( $package_data->total_volume ) {
 						$order->update_meta_data( '_total_volume', $package_data->total_volume );
 					}
-					if ( isset( $package_data->overflowed ) ) {
+					if ( $package_data->overflowed ) {
 						$order->update_meta_data( '_awcshm_overflowed', $package_data->overflowed );
 					}
-					if ( isset( $package_data->shipping ) ) {
+					if ( $package_data->shipping ) {
 						$order->update_meta_data( '_awcshm_shipping', $package_data->shipping );
 					}
 				}
+	
 				$order->save();
 			}
 		}
-
 	}
 
 	/**
@@ -1865,7 +1889,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			$base_url = remove_query_arg( 'amount', $base_url );
 			$args = array_merge( $args, array(
 				'from'     => 'customer',
-				'customer' => esc_url ( $_SERVER['SERVER_NAME']),
+				'customer' => sanitize_url ( $_SERVER['SERVER_NAME']),
 			));
 			return add_query_arg( $args, $base_url );
 		}

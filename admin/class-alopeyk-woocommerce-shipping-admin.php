@@ -600,7 +600,7 @@ class Alopeyk_WooCommerce_Shipping_Admin {
 			<select name="transport_type">
 				<option value=""><?php echo esc_html__( 'Transport Type', 'alopeyk-shipping-for-woocommerce' ); ?>&nbsp;</option>
 			<?php
-				$selected = isset( $_GET['transport_type'] ) ? $_GET['transport_type'] : '';
+				$selected = isset( $_GET['transport_type'] ) ? sanitize_text_field( $_GET['transport_type'] ) : '';
 				foreach ( $types as $type => $label ) {
 					printf( '<option value="%s"%s>%s</option>', esc_attr($type), $type == $selected ? ' selected="selected"' : '', esc_html($label ));
 				}
