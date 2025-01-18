@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Alopeyk WooCommerce Shipping Method\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-23 13:02+0000\n"
-"PO-Revision-Date: 2025-01-07 10:53+0000\n"
+"PO-Revision-Date: 2025-01-18 08:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: Persian (Iran)\n"
 "Language: fa-IR\n"
@@ -1826,3 +1826,24 @@ msgstr ""
 
 msgid "settings page"
 msgstr "صفحه تنظیمات"
+
+msgid "OK"
+msgstr "متوجه شدم"
+
+msgid "Please fill in all fields!"
+msgstr "لطفا تمامی فیلدها رو کامل نمایید"
+
+msgid "You have not confirmed your location yet."
+msgstr "شما هنوز آدرس انتخابی خود را تایید نکردید."
+
+msgid "Your Address"
+msgstr "آدرس انتخابی شما"
+
+msgid "Confirm Location"
+msgstr "تایید مکان انتخاب شده"
+
+msgid "Select Your Location"
+msgstr "موقعیت مکانی خود را انتخاب کنید"
+
+msgid "Place order"
+msgstr "ثبت سفارش"

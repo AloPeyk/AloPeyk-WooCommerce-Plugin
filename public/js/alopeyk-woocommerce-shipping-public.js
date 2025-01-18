@@ -852,6 +852,117 @@
 			alopeyk.wcshm.public.fn.initMaps();
 		},
 	});
+
+  jQuery(document).ready(function ($) {
+    let isLocationConfirmed = false;
+
+    function showPopupMessage(message) {
+
+        const popupHtml = `
+            <div class="awcshm-popup" style="display: none;">
+                <div class="awcshm-popup-content">
+                    <p>${alopeyk.wcshm.public.fn.translate(message)}</p>
+                    <button class="awcshm-close-popup button alt">${alopeyk.wcshm.public.fn.translate('OK')}</button>
+                </div>
+            </div>
+        `;
+
+        $('body').append(popupHtml);
+
+        $('.awcshm-popup').fadeIn();
+
+        $('.awcshm-popup').on('click', function () {
+            $('.awcshm-popup').fadeOut(function () {
+                $(this).remove(); 
+            });
+        });
+    }
+
+    $('#awcshm-open-address-popup').on('click', function () {
+        $('#awcshm-address-popup').fadeIn();
+    });
+
+    $('#awcshm-confirm-location-button').on('click', function () {
+        const latitude = $('#destination_latitude').val().trim();
+        const longitude = $('#destination_longitude').val().trim();
+        const address = $('#destination_address').val().trim();
+
+        if (!latitude || !longitude || !address) {
+            showPopupMessage(alopeyk.wcshm.public.fn.translate('Please fill in all fields!'));
+            return;
+        }
+
+        isLocationConfirmed = true;
+
+        addPlaceOrderButton();
+
+        updateLocationDetails(latitude, longitude, address);
+
+        $('#awcshm-address-popup').fadeOut();
+    });
+
+    function updateLocationDetails(latitude, longitude, address) {
+        if (isLocationConfirmed) {
+            $('#awcshm-location-details-text').html(
+                ` <p>${alopeyk.wcshm.public.fn.translate('Your Address')}: ${address}</p>`
+            );
+        } else {
+            $('#awcshm-location-details-text').html(
+                `<p style="color: red;">${alopeyk.wcshm.public.fn.translate('You have not confirmed your location yet.')}</p>`
+            );
+        }
+        $('#awcshm-selected-location-details').fadeIn();
+    }
+
+    function addPlaceOrderButton() {
+        if (isLocationConfirmed) {
+            $('#place_order').remove();
+
+            const placeOrderButton = `
+                <button type="submit" class="button alt wp-element-button" name="woocommerce_checkout_place_order" id="place_order" value="${alopeyk.wcshm.public.fn.translate('Place order')}" data-value="${alopeyk.wcshm.public.fn.translate('Place order')}">
+                    ${alopeyk.wcshm.public.fn.translate('Place order')}
+                </button>
+            `;
+
+            $('form.checkout').append(placeOrderButton);
+        }
+    }
+
+    function removePlaceOrderButton() { 
+        $('#place_order').remove(); 
+    }
+
+    removePlaceOrderButton();
+
+    const observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            if (mutation.type === 'childList') {
+                if ($('#place_order').length > 0 && !isLocationConfirmed) {
+                    removePlaceOrderButton();
+                }
+            }
+        });
+    });
+
+    const checkoutForm = document.querySelector('form.checkout');
+    if (checkoutForm) {
+        observer.observe(checkoutForm, {
+            childList: true, 
+            subtree: true 
+        });
+    }
+
+    $('#destination_latitude, #destination_longitude, #destination_address').on('input', function () {
+        if (isLocationConfirmed) {
+            isLocationConfirmed = false; 
+            removePlaceOrderButton(); 
+            updateLocationDetails(); 
+        }
+    });
+
+    updateLocationDetails();
+});	
+
 })( jQuery );
 
 var cedarmap_data = {

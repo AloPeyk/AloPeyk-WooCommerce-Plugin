@@ -224,37 +224,43 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'nonce' => wp_create_nonce( $this->plugin_name )
 			),
 			'translations' => array(
-				'Ship'                                => esc_html__( 'Ship',                              'alopeyk-shipping-for-woocommerce' ),
-				'Submit'                              => esc_html__( 'Submit',                            'alopeyk-shipping-for-woocommerce' ),
-				'Cancel'                              => esc_html__( 'Cancel',                            'alopeyk-shipping-for-woocommerce' ),
-				'Close'                               => esc_html__( 'Close',                             'alopeyk-shipping-for-woocommerce' ),
-				'Submit Order'                        => esc_html__( 'Submit Order',                      'alopeyk-shipping-for-woocommerce' ),
-				'Add Alopeyk Coupon'                  => esc_html__( 'Add Alopeyk Coupon',                'alopeyk-shipping-for-woocommerce' ),
-				'Add Alopeyk Credit'                  => esc_html__( 'Add Alopeyk Credit',                'alopeyk-shipping-for-woocommerce' ),
-				'Cancel Alopeyk Order'                => esc_html__( 'Cancel Alopeyk Order',              'alopeyk-shipping-for-woocommerce' ),
-				'Rate Alopeyk Courier'                => esc_html__( 'Rate Alopeyk Courier',              'alopeyk-shipping-for-woocommerce' ),
-				'Cancel Order'                        => esc_html__( 'Cancel Order',                      'alopeyk-shipping-for-woocommerce' ),
-				'Alopeyk Order'                       => esc_html__( 'Alopeyk Order',                     'alopeyk-shipping-for-woocommerce' ),
-				'Alopeyk Coupon'                      => esc_html__( 'Alopeyk Coupon',                    'alopeyk-shipping-for-woocommerce' ),
-				'Add Coupon'                          => esc_html__( 'Add Coupon',                        'alopeyk-shipping-for-woocommerce' ),
-				'Pay'                                 => esc_html__( 'Pay',                               'alopeyk-shipping-for-woocommerce' ),
-				'Apply'                               => esc_html__( 'Apply',                             'alopeyk-shipping-for-woocommerce' ),
-				'Yes'                                 => esc_html__( 'Yes',                               'alopeyk-shipping-for-woocommerce' ),
-				'No'                                  => esc_html__( 'No',                                'alopeyk-shipping-for-woocommerce' ),
-				'Track Order'                         => esc_html__( 'Track Order',                       'alopeyk-shipping-for-woocommerce' ),
-				'View Order'                          => esc_html__( 'View Order',                        'alopeyk-shipping-for-woocommerce' ),
-				'View Invoice'                        => esc_html__( 'View Invoice',                      'alopeyk-shipping-for-woocommerce' ),
-				'Ship via Alopeyk'                    => esc_html__( 'Ship via Alopeyk',                  'alopeyk-shipping-for-woocommerce' ),
-				'Unkown error occurred.'              => esc_html__( 'Unkown error occurred.',            'alopeyk-shipping-for-woocommerce' ),
-				'Request failed:'                     => esc_html__( 'Request failed:',                   'alopeyk-shipping-for-woocommerce' ),
-				'Add Discount Coupon'                 => esc_html__( 'Add Discount Coupon',               'alopeyk-shipping-for-woocommerce' ),
-				'Order Status'                        => esc_html__( 'Order Status',                      'alopeyk-shipping-for-woocommerce' ),
-				'Increase credit'                     => esc_html__( 'Increase credit',                   'alopeyk-shipping-for-woocommerce' ),
-				'Charge account with gift card'       => esc_html__( 'Charge account with gift card',     'alopeyk-shipping-for-woocommerce' ),
-				'Convert Alopeyk Scores to Credit'    => esc_html__( 'Convert Alopeyk Scores to Credit',  'alopeyk-shipping-for-woocommerce' ),
-				'Use two fingers to move the map'     => esc_html__( 'Use two fingers to move the map',   'alopeyk-shipping-for-woocommerce' ),
-				'Use ctrl + scroll to zoom the map'   => esc_html__( 'Use ctrl + scroll to zoom the map', 'alopeyk-shipping-for-woocommerce' ),
-				'Use ⌘ + scroll to zoom the map'      => esc_html__( 'Use ⌘ + scroll to zoom the map',    'alopeyk-shipping-for-woocommerce' ),
+				'Ship'                               			 => esc_html__( 'Ship',                             		  'alopeyk-shipping-for-woocommerce' ),
+				'Submit'                             			 => esc_html__( 'Submit',                          		 	  'alopeyk-shipping-for-woocommerce' ),
+				'Cancel'                             			 => esc_html__( 'Cancel',                           		  'alopeyk-shipping-for-woocommerce' ),
+				'Close'                             			 => esc_html__( 'Close',                            		  'alopeyk-shipping-for-woocommerce' ),
+				'Submit Order'                       			 => esc_html__( 'Submit Order',                     		  'alopeyk-shipping-for-woocommerce' ),
+				'Add Alopeyk Coupon'                 			 => esc_html__( 'Add Alopeyk Coupon',              		      'alopeyk-shipping-for-woocommerce' ),
+				'Add Alopeyk Credit'                 			 => esc_html__( 'Add Alopeyk Credit',               		  'alopeyk-shipping-for-woocommerce' ),
+				'Cancel Alopeyk Order'               			 => esc_html__( 'Cancel Alopeyk Order',             		  'alopeyk-shipping-for-woocommerce' ),
+				'Rate Alopeyk Courier'               			 => esc_html__( 'Rate Alopeyk Courier',             		  'alopeyk-shipping-for-woocommerce' ),
+				'Cancel Order'                       			 => esc_html__( 'Cancel Order',                   		      'alopeyk-shipping-for-woocommerce' ),
+				'Alopeyk Order'                      			 => esc_html__( 'Alopeyk Order',                   			  'alopeyk-shipping-for-woocommerce' ),
+				'Alopeyk Coupon'                     			 => esc_html__( 'Alopeyk Coupon',                  			  'alopeyk-shipping-for-woocommerce' ),
+				'Add Coupon'                         			 => esc_html__( 'Add Coupon',                       		  'alopeyk-shipping-for-woocommerce' ),
+				'Pay'                                			 => esc_html__( 'Pay',                             			  'alopeyk-shipping-for-woocommerce' ),
+				'Apply'                              			 => esc_html__( 'Apply',                            		  'alopeyk-shipping-for-woocommerce' ),
+				'Yes'                                			 => esc_html__( 'Yes',                            			  'alopeyk-shipping-for-woocommerce' ),
+				'No'                                  			 => esc_html__( 'No',                             		      'alopeyk-shipping-for-woocommerce' ),
+				'Track Order'                        			 => esc_html__( 'Track Order',                    		      'alopeyk-shipping-for-woocommerce' ),
+				'View Order'                          			 => esc_html__( 'View Order',                       		  'alopeyk-shipping-for-woocommerce' ),
+				'View Invoice'                       			 => esc_html__( 'View Invoice',                     		  'alopeyk-shipping-for-woocommerce' ),
+				'Ship via Alopeyk'                  			 => esc_html__( 'Ship via Alopeyk',                			  'alopeyk-shipping-for-woocommerce' ),
+				'Unkown error occurred.'             			 => esc_html__( 'Unkown error occurred.',           		  'alopeyk-shipping-for-woocommerce' ),
+				'Request failed:'                    			 => esc_html__( 'Request failed:',                  		  'alopeyk-shipping-for-woocommerce' ),
+				'Add Discount Coupon'                 			 => esc_html__( 'Add Discount Coupon',              		  'alopeyk-shipping-for-woocommerce' ),
+				'Order Status'                        			 => esc_html__( 'Order Status',                     		  'alopeyk-shipping-for-woocommerce' ),
+				'Increase credit'                     			 => esc_html__( 'Increase credit',                   		  'alopeyk-shipping-for-woocommerce' ),
+				'Charge account with gift card'       			 => esc_html__( 'Charge account with gift card',     		  'alopeyk-shipping-for-woocommerce' ),
+				'Convert Alopeyk Scores to Credit'    			 => esc_html__( 'Convert Alopeyk Scores to Credit',  		  'alopeyk-shipping-for-woocommerce' ),
+				'Use two fingers to move the map'     			 => esc_html__( 'Use two fingers to move the map',   		  'alopeyk-shipping-for-woocommerce' ),
+				'Use ctrl + scroll to zoom the map'   			 => esc_html__( 'Use ctrl + scroll to zoom the map', 		  'alopeyk-shipping-for-woocommerce' ),
+				'Use ⌘ + scroll to zoom the map'     			=> esc_html__( 'Use ⌘ + scroll to zoom the map',   			'alopeyk-shipping-for-woocommerce' ),
+				'OK'      							  			 => esc_html__( 'ok'								, 		  'alopeyk-shipping-for-woocommerce' ),
+				'Please fill in all fields!'      	  			 => esc_html__( 'Please fill in all fields!'		, 		  'alopeyk-shipping-for-woocommerce' ),
+				'Your Address'      						  	 => esc_html__( 'Your Address'							, 	  'alopeyk-shipping-for-woocommerce' ),
+				'You have not confirmed your location yet.'      => esc_html__( 'You have not confirmed your location yet.',  'alopeyk-shipping-for-woocommerce' ),
+				'Select Your Location'      					 => esc_html__( 'Select Your Location',  					  'alopeyk-shipping-for-woocommerce' ),
+				'Place order'      								 => esc_html__( 'Place order',  					  		  'alopeyk-shipping-for-woocommerce' ),
 			),
 			'dynamic_parts' => $this->get_dynamic_parts( is_admin() ),
 			'refresh_interval' => is_admin() ? self::ADMIN_REFRESH_INTERVAL : self::FRONT_REFRESH_INTERVAL,
@@ -731,16 +737,20 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	 * @param array $checkout
 	 */
 	public function add_address_fields( $checkout = null ) {
-
 		if ( $this->is_enabled() && ! ( $checkout && $this->has_virtual_product() ) ) {
-			$shipping_address_latitude  = $checkout ? WC()->session->get( 'destination_latitude' )  : null;
-			$shipping_address_longitude = $checkout ? WC()->session->get( 'destination_longitude' ) : null;
-			$shipping_address           = $checkout ? WC()->session->get( 'destination_address' )   : null;
-			$shipping_address_unit      = $checkout ? WC()->session->get( 'destination_unit' )      : null;
-			$shipping_address_number    = $checkout ? WC()->session->get( 'destination_number' )    : null;
-
 			wp_nonce_field( 'save_address_fields_nonce', 'address_fields_nonce' );
-			echo '<div id="awcshm-address-details"><h3>' . esc_html__( 'Address Details', 'alopeyk-shipping-for-woocommerce' ) . '</h3>';
+	
+			echo '<button type="button" id="awcshm-open-address-popup" class="button">' . esc_html__( 'Select Your Location', 'alopeyk-shipping-for-woocommerce' ) . '</button>';
+	
+			echo '<div id="awcshm-selected-location-details" style="margin-top: 10px; display: none;">';
+			echo '<p><strong>' . esc_html__( 'Select Your Location', 'alopeyk-shipping-for-woocommerce' ) . ': </strong></p>';
+			echo '<p id="awcshm-location-details-text"></p>';
+			echo '</div>';
+	
+			echo '<div id="awcshm-address-popup" style="display: none;">';
+			echo '<div class="awcshm-popup-content">';
+			echo '<h3>' . esc_html__( 'Select Your Location', 'alopeyk-shipping-for-woocommerce' ) . '</h3>';
+	
 			woocommerce_form_field( 'destination_latitude', array(
 				'type'              => 'text',
 				'required'          => true,
@@ -762,13 +772,13 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'required'          => true,
 				'custom_attributes' => array(
 					'style' => 'display: none;',
-					'data-autocomplete-placeholder' => esc_html__( 'Please enter your address ...', 'alopeyk-shipping-for-woocommerce' )
+					'data-autocomplete-placeholder' => __( 'Please enter your address ...', 'alopeyk-shipping-for-woocommerce' )
 				)
 			), $shipping_address ? $shipping_address : $this->get_user_meta( 'shipping_address' ) );
 			woocommerce_form_field( 'destination_unit', array(
 				'type'              => 'text',
 				'class'             => array( 'form-row-first' ),
-				'label'             => esc_html__( 'Unit', 'alopeyk-shipping-for-woocommerce' ),
+				'label'             => __( 'Unit', 'alopeyk-shipping-for-woocommerce' ),
 				'custom_attributes' => array(
 					'pattern' => '\d*',
 				)
@@ -776,14 +786,16 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			woocommerce_form_field( 'destination_number', array(
 				'type'              => 'text',
 				'class'             => array( 'form-row-last' ),
-				'label'             => esc_html__( 'Plaque', 'alopeyk-shipping-for-woocommerce' ),
+				'label'             => __( 'Plaque', 'alopeyk-shipping-for-woocommerce' ),
 				'custom_attributes' => array(
 					'pattern' => '\d*',
 				)
 			), $shipping_address_number ? $shipping_address_number : $this->get_user_meta( 'shipping_address_number' ) );
-			echo '<div class="clear"></div></div>';
+	
+			echo '<button type="button" id="awcshm-confirm-location-button" class="button">' . esc_html__( 'Confirm Location', 'alopeyk-shipping-for-woocommerce' ) . '</button>';
+	
+			echo '</div></div>'; 
 		}
-
 	}
 
 	/**

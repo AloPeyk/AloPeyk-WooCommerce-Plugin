@@ -80,6 +80,7 @@ By using this plugin, you acknowledge that your location data may be sent to the
 == Changelog ==
 
 = 4.5.0 =
+* New force users to select map
 * New Compatible with WordPress Multisite / Network
 * Fix open modal alopeyk in admin panel
 * Fix set map defalut location
