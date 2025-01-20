@@ -745,18 +745,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			$shipping_address_number    = $checkout ? WC()->session->get( 'destination_number' )    : null;
 			
 			wp_nonce_field( 'save_address_fields_nonce', 'address_fields_nonce' );
-	
-			echo '<button type="button" id="awcshm-open-address-popup" class="button">' . esc_html__( 'Select Your Location', 'alopeyk-shipping-for-woocommerce' ) . '</button>';
-	
-			echo '<div id="awcshm-selected-location-details" style="margin-top: 10px; display: none;">';
-			echo '<p><strong>' . esc_html__( 'Select Your Location', 'alopeyk-shipping-for-woocommerce' ) . ': </strong></p>';
-			echo '<p id="awcshm-location-details-text"></p>';
-			echo '</div>';
-	
-			echo '<div id="awcshm-address-popup" style="display: none;">';
-			echo '<div class="awcshm-popup-content">';
-			echo '<h3>' . esc_html__( 'Select Your Location', 'alopeyk-shipping-for-woocommerce' ) . '</h3>';
-	
+
 			woocommerce_form_field( 'destination_latitude', array(
 				'type'              => 'text',
 				'required'          => true,
@@ -797,10 +786,6 @@ class Alopeyk_WooCommerce_Shipping_Common {
 					'pattern' => '\d*',
 				)
 			), $shipping_address_number ? $shipping_address_number : $this->get_user_meta( 'shipping_address_number' ) );
-	
-			echo '<button type="button" id="awcshm-confirm-location-button" class="button">' . esc_html__( 'Confirm Location', 'alopeyk-shipping-for-woocommerce' ) . '</button>';
-	
-			echo '</div></div>'; 
 		}
 	}
 
