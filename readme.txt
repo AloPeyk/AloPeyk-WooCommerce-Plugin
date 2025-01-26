@@ -51,7 +51,7 @@ List of some features:
 This plugin integrates with the following third-party services:
 
 ### 1. Parsimap (Mapping Service)
-- **Purpose**: Provides interactive maps and geolocation services for address validation and visual display.
+- **Purpose**: A mapping and location platform providing APIs and SDKs for search, navigation, and geospatial visualization.
 - **Data Sent**:
   - Latitude/longitude coordinates of store location and customer addresses
   - Map view preferences (zoom level, map type)
