@@ -75,18 +75,22 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 	}
 
 	private static function update_checkout_content() {
-	    $checkout_page_id = wc_get_page_id('checkout');
-	    if ($checkout_page_id) {
-	        $new_content = "[woocommerce_checkout]";
-	        $updated_post = array(
-	            'ID'           => $checkout_page_id,
-	            'post_content' => $new_content,
-	        );
-	        $result = wp_update_post($updated_post);
-	    } else {
+		$checkout_page_id = wc_get_page_id('checkout');
+		if ($checkout_page_id) {
+			$new_content = "[woocommerce_checkout]";
+			$updated_post = array(
+				'ID'           => $checkout_page_id,
+				'post_content' => $new_content,
+			);
+			$result = wp_update_post($updated_post);
+		} else {
 			if ( defined('WP_DEBUG') && WP_DEBUG ) {
-	        	error_log('Checkout page ID is not valid for site ID: ' . get_current_blog_id());
+				$logger = wc_get_logger();
+				$logger->debug(
+					'Checkout page ID is not valid for site ID: ' . get_current_blog_id(),
+					array('source' => 'alopeyk-shipping-for-woocommerce')
+				);
 			}
-	    }
+		}
 	}
 }

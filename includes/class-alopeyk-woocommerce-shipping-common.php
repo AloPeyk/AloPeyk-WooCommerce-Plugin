@@ -137,13 +137,14 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	public function add_log( $message = null, $level = WC_Log_Levels::NOTICE) {
 
 		if ( $message ) {
-			if ( defined('WP_DEBUG') && WP_DEBUG ) {
-				error_log( $message, 0 );
-			}
-			$logger = new WC_Logger();
-			$logger->add( ALOPEYK_METHOD_ID, $message, $level);
+			$logger = wc_get_logger();
+			$logger->log(
+				$level, 
+				$message, 
+				array('source' => ALOPEYK_METHOD_ID)
+			);
 		}
-
+	
 	}
 
 	/**
@@ -799,11 +800,11 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			return; 
 		}
 		if ( $user_id && $type && $type === 'shipping' ) {
-			$destination_latitude = isset( $_POST['destination_latitude'] ) ? sanitize_text_field( $_POST['destination_latitude'] ) : '';
-			$destination_longitude = isset( $_POST['destination_longitude'] ) ? sanitize_text_field( $_POST['destination_longitude'] ) : '';
-			$destination_address = isset( $_POST['destination_address'] ) ? sanitize_text_field( $_POST['destination_address'] ) : '';
-			$destination_unit = isset( $_POST['destination_unit'] ) ? sanitize_text_field( $_POST['destination_unit'] ) : '';
-			$destination_number = isset( $_POST['destination_number'] ) ? sanitize_text_field( $_POST['destination_number'] ) : '';
+			$destination_latitude = isset( $_POST['destination_latitude'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_latitude'] ) ) : '';
+			$destination_longitude = isset( $_POST['destination_longitude'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_longitude'] ) ) : '';
+			$destination_address = isset( $_POST['destination_address'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_address'] ) ) : '';
+			$destination_unit = isset( $_POST['destination_unit'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_unit'] ) ) : '';
+			$destination_number = isset( $_POST['destination_number'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_number'] ) ) : '';
 	
 			if ( $destination_latitude ) {
 				update_user_meta( $user_id, 'shipping_address_latitude', $destination_latitude );
@@ -835,12 +836,12 @@ class Alopeyk_WooCommerce_Shipping_Common {
 			}
 	
 			$data = (object) array(
-				'shipping_method'       => isset( $_POST['shipping_method'] ) ? array_map( 'sanitize_text_field', $_POST['shipping_method'] ) : array(),
-				'destination_latitude'  => isset( $_POST['destination_latitude'] ) ? sanitize_text_field( $_POST['destination_latitude'] ) : '',
-				'destination_longitude' => isset( $_POST['destination_longitude'] ) ? sanitize_text_field( $_POST['destination_longitude'] ) : '',
-				'destination_address'   => isset( $_POST['destination_address'] ) ? sanitize_text_field( $_POST['destination_address'] ) : '',
+				'shipping_method' => isset( $_POST['shipping_method'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST['shipping_method'] ) ) : array(),
+				'destination_latitude'  => isset( $_POST['destination_latitude'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_latitude'] ) ) : '',
+				'destination_longitude' => isset( $_POST['destination_longitude'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_longitude'] ) ) : '',
+				'destination_address'   => isset( $_POST['destination_address'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_address'] ) ) : '',
 			);
-	
+
 			if ( in_array( ALOPEYK_METHOD_ID, $data->shipping_method ) &&
 				 ( empty( $data->destination_latitude ) || empty( $data->destination_longitude ) || empty( $data->destination_address ) )
 			) {
@@ -862,7 +863,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	
 		if ( $this->is_enabled() ) {
 			$data = (object) array(
-				'shipping_method'    => isset( $_POST['shipping_method'] ) ? array_map( 'sanitize_text_field', $_POST['shipping_method'] ) : array(),
+				'shipping_method'    => isset( $_POST['shipping_method'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST['shipping_method'] ) ) : array(),
 				'createaccount'      => isset( $_POST['createaccount'] ) ? sanitize_key( $_POST['createaccount'] ) : '',
 				'destination_latitude'  => isset( $_POST['destination_latitude'] ) ? floatval( $_POST['destination_latitude'] ) : 0,
 				'destination_longitude' => isset( $_POST['destination_longitude'] ) ? floatval( $_POST['destination_longitude'] ) : 0,
@@ -870,7 +871,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 				'destination_unit'      => isset( $_POST['destination_unit'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_unit'] ) ) : '',
 				'destination_number'    => isset( $_POST['destination_number'] ) ? sanitize_text_field( wp_unslash( $_POST['destination_number'] ) ) : '',
 			);
-	
+
 			$matched_methods = array_filter( $data->shipping_method, function( $var ) {
 				return ALOPEYK_METHOD_ID == explode( '-', $var )[0];
 			});
@@ -1077,7 +1078,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	
 		if ( isset( $_POST['request'] ) ) {
 			$request = sanitize_key( $_POST['request'] );
-			$authenticate = isset( $_POST['authenticate'] ) ? filter_var( $_POST['authenticate'], FILTER_VALIDATE_BOOLEAN ) : false;
+			$authenticate = isset( $_POST['authenticate'] ) ? filter_var( wp_unslash( $_POST['authenticate'] ), FILTER_VALIDATE_BOOLEAN ) : false;
 	
 			if ( $authenticate && ! $this->authenticate() ) {
 				wp_send_json_error( esc_html__( 'Authentication failed may be because of wrong API key.', 'alopeyk-shipping-for-woocommerce' ) );
@@ -1874,9 +1875,10 @@ class Alopeyk_WooCommerce_Shipping_Common {
 		if ( $user_id ) {
 			$base_url = AloPeykApiHandler::getPaymentRoute( $user_id, '' );
 			$base_url = remove_query_arg( 'amount', $base_url );
-			$args = array_merge( $args, array(
+			$server_name = isset($_SERVER['SERVER_NAME']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_NAME'])) : '';
+			$args = array_merge($args, array(
 				'from'     => 'customer',
-				'customer' => sanitize_url ( $_SERVER['SERVER_NAME']),
+				'customer' => sanitize_text_field($server_name),
 			));
 			return add_query_arg( $args, $base_url );
 		}
@@ -2376,7 +2378,7 @@ class Alopeyk_WooCommerce_Shipping_Common {
 	static function get_campaign_url( $content = '', $medium = 'email', $name = null, $website = 'https://alopeyk.com', $source = 'woocommerce_plugin' ) {
 
 		if ( $website && ! empty( $website ) ) {
-			$name = $name ? sanitize_text_field( $name ) : sanitize_text_field( $_SERVER['SERVER_NAME'] );
+			$name = $name ? sanitize_text_field($name) : (isset($_SERVER['SERVER_NAME']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_NAME'])) : '');
 			$pieces = array(
 				'utm_medium'   => sanitize_text_field( $medium ),
 				'utm_source'   => sanitize_text_field( $source ),

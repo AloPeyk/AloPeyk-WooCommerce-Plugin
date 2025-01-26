@@ -47,7 +47,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 		$this->init_form_fields();
 
 		parent::__construct();
-
+		add_action('woocommerce_update_options_' . $this->id, array($this, 'save'));
 		add_action('woocommerce_before_settings_' . $this->id, array($this, 'before_settings'));
 		add_action('woocommerce_settings_' . $this->parentId, array($this, 'test'));
 	}
@@ -133,21 +133,14 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	 */
 	public function get_post_data()
 	{
-		if (!current_user_can('manage_options')) {
-			wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'alopeyk-shipping-for-woocommerce'));
+		check_admin_referer('woocommerce-settings', '_wpnonce');
+		
+		$sanitized_data = [];
+		foreach ($_POST as $key => $value) {
+			$sanitized_key = sanitize_key($key);
+			$sanitized_data[$sanitized_key] = sanitize_textarea_field(wp_unslash($value));
 		}
-	
-		if (!empty($this->data) && is_array($this->data)) {
-			return $this->data;
-		}
-	
-		$sanitized_data = array();
-		if (!empty($_POST) && is_array($_POST)) {
-			foreach ($_POST as $key => $value) {
-				$sanitized_data[$key] = sanitize_text_field($value);
-			}
-		}
-	
+		
 		return $sanitized_data;
 	}
 	/**
@@ -163,8 +156,7 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	 */
 	public function validate_text_field($key, $value)
 	{
-		$value = is_null($value) ? '' : $value;
-		return wp_kses_post(trim(stripslashes($value)));
+		return sanitize_textarea_field(wp_unslash($value));
 	}
 
 	/**
@@ -175,10 +167,15 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 		$type = $this->get_field_type($field);
 	
 		if (empty($post_data)) {
-			$post_data = isset($_POST[$key]) ? filter_var($_POST[$key], FILTER_SANITIZE_STRING) : null;
+			if (!isset($_POST['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wpnonce'])), 'woocommerce-settings')) {
+				wp_die(esc_html__('Security check failed.', 'alopeyk-shipping-for-woocommerce'));
+			}
+			
+			$sanitized_key = sanitize_key($key);
+			$post_data = isset($_POST[$sanitized_key]) ? sanitize_text_field(wp_unslash($_POST[$sanitized_key])) : null;
 		}
 	
-		$value = isset($post_data[$key]) ? $post_data[$key] : null;
+		$value = isset($post_data[$key]) ? sanitize_text_field(wp_unslash($post_data[$key])) : null;
 	
 		if (isset($field['sanitize_callback']) && is_callable($field['sanitize_callback'])) {
 			return call_user_func($field['sanitize_callback'], $value);
@@ -201,6 +198,16 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 	 */
 	public function save()
 	{
+		if (!isset($_POST['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wpnonce'])), 'woocommerce-settings')) {
+			wp_die(esc_html__('Security check failed.', 'alopeyk-shipping-for-woocommerce'));
+		}
+	
+		check_admin_referer('woocommerce-settings', '_wpnonce');
+    
+		if (!current_user_can('manage_options')) {
+			wp_die(esc_html__('Permission denied.', 'alopeyk-shipping-for-woocommerce'));
+		}
+		
 		$this->init_settings();
 		$post_data = $this->get_post_data(); 
 		$fields = $this->form_fields;
@@ -286,6 +293,11 @@ class Alopeyk_WooCommerce_Shipping_Common_Settings extends WC_Settings_Page
 		}
 
 		$form_fields = array(
+			array(
+				'type' => 'hidden',
+				'id'   => '_wpnonce',
+				'value' => wp_create_nonce('woocommerce-settings')
+			),
 			array(
 				'title' => esc_html__( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' ),
 				'id'    => $this->parentId,

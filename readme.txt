@@ -46,26 +46,47 @@ List of some features:
 *   Lots of more handy features
 
 
-== External services ==
+== External Services ==
 
-This plugin utilizes the Parsimap service to display maps within the plugin interface. The integration with Parsimap allows users to view interactive maps based on their specified locations.
+This plugin integrates with the following third-party services:
 
-### What the service is and what it is used for:
-The Parsimap service provides mapping and geolocation functionalities. This plugin uses Parsimap to render maps and provide location-based services to users.
+### 1. Parsimap (Mapping Service)
+- **Purpose**: Provides interactive maps and geolocation services for address validation and visual display.
+- **Data Sent**:
+  - Latitude/longitude coordinates of store location and customer addresses
+  - Map view preferences (zoom level, map type)
+- **When Data is Sent**:
+  - When calculating shipping costs during checkout
+  - When searching/selecting addresses in map interfaces
+- **Service Information**:
+  - Official Website: [parsimap.ir](https://parsimap.ir)
+  - Contact Page: [about us Parsimap](https://www.parsimap.ir/about-us)  
+  - *Note: Parsimap does not currently provide publicly accessible Terms of Service or Privacy Policy documents. For service-related inquiries, use their official contact channels.*
 
-### What data is sent and when:
-- The plugin sends the user's location data (latitude and longitude) to the Alopeyk service every time a new order is placed on the site. 
-- If the user's location is not available or if the user has not granted permission for location access, the plugin will display a default map view instead.
+---
 
-### Links to the service:
-- [website](https://www.parsimap.ir/)
-- [website](https://pm2.parsimap.com/webapi.svc/)
+### 2. Alopeyk (Delivery Service)
+- **Purpose**: Calculate shipping costs, manage orders, and provide real-time delivery tracking.
+- **Data Sent**:
+  - Origin/destination coordinates
+  - Package dimensions/weight
+  - Customer contact information (name, phone number)
+  - Order value/payment details
+- **When Data is Sent**:
+  - When generating shipping quotes
+  - When creating/canceling orders
+  - During order tracking requests
+- **Service Policies**:
+  - [Alopeyk Terms of Service](https://alopeyk.com/terms)
 
+---
 
-By using this plugin, you acknowledge that your location data may be sent to the Alopeyk service as described above.
+**Important Notes**:
+- Location data transmission can be managed through plugin settings
+- If location access is denied, maps will default to showing the store's location
+- No sensitive payment information is shared with third parties
 
-
-== Installation ==
+== Installation ==  
 
 1. Upload plugin folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
