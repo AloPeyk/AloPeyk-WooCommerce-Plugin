@@ -33,7 +33,7 @@ class Alopeyk_WooCommerce_Shipping_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'alopeyk-shipping',
+			'alopeyk-shipping-for-woocommerce',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

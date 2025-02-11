@@ -29,11 +29,11 @@ $data = $this->vars;
 					</div>
 					<div class="awcshm-support-content-item-body">
 						<div class="awcshm-support-content-item-body-inner">
-							<p><?php echo esc_html__( 'You can access all of your activity logs such as orders and transactions, and also edit your profile information via Alopeyk web dashboard.', 'alopeyk-shipping' ); ?></p>
+							<p><?php echo esc_html__( 'You can access all of your activity logs such as orders and transactions, and also edit your profile information via Alopeyk web dashboard.', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 						</div>
 					</div>
 					<div class="awcshm-support-content-item-footer">
-						<a href="https://app.alopeyk.com" target="_blank" class="button button-primary"><?php echo esc_html__( 'Go to my dashboard', 'alopeyk-shipping' ); ?></a>
+						<a href="https://app.alopeyk.com" target="_blank" class="button button-primary"><?php echo esc_html__( 'Go to my dashboard', 'alopeyk-shipping-for-woocommerce' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -45,13 +45,13 @@ $data = $this->vars;
 					</div>
 					<div class="awcshm-support-content-item-body">
 						<div class="awcshm-support-content-item-body-inner">
-							<p><?php echo esc_html__( 'You can call our support team to get your questions answered just in time.', 'alopeyk-shipping' ); ?></p>
+							<p><?php echo esc_html__( 'You can call our support team to get your questions answered just in time.', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 							<?php echo isset($data['is_api_user']) && $data['is_api_user'] !== true ? '<p>' . esc_html($data['is_api_user']) . '</p>' : ''; ?>
 						</div>
 					</div>
 					<div class="awcshm-support-content-item-footer">
 					<?php /* translators: %s: Support tell */?>
-						<a href="tel:<?php echo esc_attr($support_tel); ?>" class="button button-primary"> <?php echo sprintf( esc_html__( 'Call Support: %s', 'alopeyk-shipping' ), '<span class="awcshm-phone">' . esc_html($support_tel) . '</span>' ); ?></a>
+						<a href="tel:<?php echo esc_attr($support_tel); ?>" class="button button-primary"> <?php echo sprintf( esc_html__( 'Call Support: %s', 'alopeyk-shipping-for-woocommerce' ), '<span class="awcshm-phone">' . esc_html($support_tel) . '</span>' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -67,13 +67,13 @@ $data = $this->vars;
 							<p>
 							<?php
 								echo wp_kses(
-									__('Please let us know about bugs or UX problems you may encounter while working with this extension.', 'alopeyk-shipping'),
+									__('Please let us know about bugs or UX problems you may encounter while working with this extension.', 'alopeyk-shipping-for-woocommerce'),
 									array( 'a' => array( 'href' => array(), 'target' => array() ) )
 								);
 								if ( isset( $data['log_url'] ) && $data['log_url'] ) {
 									echo ' ' . wp_kses(
 									/* translators: %s: URL log */
-										sprintf( __('Its better to attach a copy of <a href="%s" target="_blank">system logs</a> to your email.', 'alopeyk-shipping'), esc_url($data['log_url']) ),
+										sprintf( __('Its better to attach a copy of <a href="%s" target="_blank">system logs</a> to your email.', 'alopeyk-shipping-for-woocommerce'), esc_url($data['log_url']) ),
 										array( 'a' => array( 'href' => array(), 'target' => array() ) )
 									);
 								}
@@ -83,7 +83,7 @@ $data = $this->vars;
 					</div>
 					<div class="awcshm-support-content-item-footer">
 						<?php /* translators: %s: Email */ ?>
-						<a href="mailto:<?php echo esc_url( 'mailto:' . $dev_email ); ?>" class="button button-primary"><?php echo sprintf( esc_html__( 'Report a Bug: %s', 'alopeyk-shipping' ), esc_html( $dev_email ) ); ?></a>
+						<a href="mailto:<?php echo esc_url( 'mailto:' . $dev_email ); ?>" class="button button-primary"><?php echo sprintf( esc_html__( 'Report a Bug: %s', 'alopeyk-shipping-for-woocommerce' ), esc_html( $dev_email ) ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -95,11 +95,11 @@ $data = $this->vars;
 					</div>
 					<div class="awcshm-support-content-item-body">
 						<div class="awcshm-support-content-item-body-inner">
-							<p><?php echo esc_html__( 'Check our contact page on Alopeyk website to leave us reviews about this extension or find more available communication methods.', 'alopeyk-shipping' ); ?></p>
+							<p><?php echo esc_html__( 'Check our contact page on Alopeyk website to leave us reviews about this extension or find more available communication methods.', 'alopeyk-shipping-for-woocommerce' ); ?></p>
 						</div>
 					</div>
 					<div class="awcshm-support-content-item-footer">
-						<a href="https://alopeyk.com/contact" target="_blank" class="button button-primary"><?php echo esc_html__( 'Contact Us', 'alopeyk-shipping' ); ?></a>
+						<a href="https://alopeyk.com/contact" target="_blank" class="button button-primary"><?php echo esc_html__( 'Contact Us', 'alopeyk-shipping-for-woocommerce' ); ?></a>
 					</div>
 				</div>
 			</div>
