@@ -1,0 +1,1849 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Alopeyk WooCommerce Shipping Method\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-23 13:02+0000\n"
+"PO-Revision-Date: 2025-01-18 08:29+0000\n"
+"Last-Translator: \n"
+"Language-Team: Persian (Iran)\n"
+"Language: fa-IR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: en_IR\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.0; wp-5.4.4\n"
+"X-Loco-Parser: loco_parse_po"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:148 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:167 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:410
+msgid "Support"
+msgstr "پشتیبانی"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:158 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:371 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1069
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:228 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:716 
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:401
+msgid "Please enter your address ..."
+msgstr "لطفاً آدرس را وارد کنید ..."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:232 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:722 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:70
+msgid "Unit"
+msgstr "واحد"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:236 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:730 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:73
+msgid "Plaque"
+msgstr "پلاک"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:252
+msgid "Address Description"
+msgstr "توضیحات آدرس"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:253
+msgid ""
+"This will be shown on courier device if order is being sent via Alopeyk "
+"shipping method and usually consists of order value, address details or any "
+"other sort of data needed for courier to know."
+msgstr ""
+"اگر سفارش از طریق روش ارسال الوپیک در حال ارسال باشد، این متن به سفیر الوپیک "
+"نمایش داده خواهد شد. این متن معمولاً شامل ارزش بسته، جزئیات آدرس و همه‌ی "
+"اطلاعات دیگری است که سفیر الوپیک می‌بایست بداند."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:298
+msgid "Courier Information"
+msgstr "مشخصات سفیر"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:303
+msgid "No courier assigned to this order yet."
+msgstr "هنوز سفیری به این سفارش اختصاص داده نشده است."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:307
+msgid "Order Information"
+msgstr "اطلاعات سفارش"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:310
+msgid "Shipping Details"
+msgstr "جزئیات ارسال"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:315
+msgid "Order details not found."
+msgstr "متأسفانه اطلاعات سفارش یافت نشد."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:320 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:620 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:239
+msgid "Ship via Alopeyk"
+msgstr "ارسال با الوپیک"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:344
+msgid "Alopeyk Orders History"
+msgstr "تاریخچه سفارشات الوپیک"
+
+#. Author of the plugin
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:358 
+#: includes/class-alopeyk-woocommerce-shipping-method.php:36 
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:27 
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:265 
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:324 
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:26 
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:46
+msgid "Alopeyk"
+msgstr "الوپیک"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:359
+msgid "Profile"
+msgstr "حساب کاربری"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:368
+#, php-format
+msgid ""
+"User data not found. You have to enter a valid API key in %1$s in order to "
+"access this page."
+msgstr ""
+"اطلاعات کاربری یافت نشد. برای مشاهده این صفحه ابتدا می‌بایست یک کلید API "
+"معتبر در  %1$s  وارد نمایید."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:421 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1092 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1099 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1106 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1113 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1120 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1127 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:65 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:36
+msgid "Order"
+msgstr "سفارش"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:422
+msgid "Type"
+msgstr "نوع"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:423 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:66
+msgid "Shop Order(s)"
+msgstr "سفارش(های) فروشگاه"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:424 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:82
+msgid "Customer(s)"
+msgstr "مشتری(ها)"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:425 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:49 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:56
+msgid "Cost"
+msgstr "هزینه"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:426
+msgid "Date"
+msgstr "تاریخ"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:427
+msgid "Actions"
+msgstr "عملیات"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:467 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:43
+msgid "ID"
+msgstr "شناسه"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:486 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:498 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1178 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1219 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1233 
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:67 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:74 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:95 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:21
+msgid ","
+msgstr "،"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:519
+msgid "View"
+msgstr "دیدن جزییات"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:521 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2863 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:111
+msgid "Track"
+msgstr "رصد آنلاین"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:524 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:106
+msgid "Invoice"
+msgstr "نمایش فاکتور سفر"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:528 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:228 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:118 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:44
+msgid "Cancel Order"
+msgstr "لغو سفارش"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:531 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-courier-info.php:31
+msgid "Rate"
+msgstr "امتیازدهی به سفیر"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:535 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:127 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:53
+msgid "Ship Again"
+msgstr "درخواست مجدد"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:556 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:61 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:23 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:22
+msgid "Transport Type"
+msgstr "نوع حمل و نقل"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:670
+#, php-format
+msgid "Maximum %s orders can be shipped at once."
+msgstr "حداکثر %s آدرس در هر سفارش قابل انتخاب است."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:674 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2641 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:72
+msgid "No order selected for shipping."
+msgstr "هیچ سفارشی برای ارسال انتخاب نشده است."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:740
+msgid "Coupon data not found."
+msgstr "اطلاعات کوپن یافت نشد."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:763
+msgid "Order cannot be canceled."
+msgstr "امکان لغو سفارش وجود ندارد."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:767
+msgid "No order is selected to be canceled."
+msgstr "هیچ سفارشی برای لغو انتخاب نشده است."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:790
+msgid "Cancelation data not found."
+msgstr "اطلاعات لغو سفارش یافت نشد."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:815 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:839 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:866 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1023
+msgid "Order data not found."
+msgstr "اطلاعات سفارش یافت نشد."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:835
+msgid "Courier can not be rated because it is already rated."
+msgstr "سفیر پیش از این برای این سفارش نظرسنجی شده است."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:932
+msgid "An error occurred while loading card data."
+msgstr "خطایی در فرآیند بارگزاری اطلاعات کارت رخ داده است."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:954
+msgid "An error occurred while trying to apply entered discount coupon."
+msgstr "خطایی در فرآیند تایید کدتخفیف رخ داده است."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:975 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1063
+msgid "This address is out of service."
+msgstr "این آدرس خارج از محدوده پشتیبانی است."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:997 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1108
+msgid "No address found."
+msgstr "آدرسی یافت نشد."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1042
+msgid "Alopeyk Shipping Method for woocommerce"
+msgstr "ارسال با الوپیک برای ووکامرس"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1055 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1148
+msgid ""
+"In order to active Alopeyk shipping method, enter Alopeyk API Key in the "
+"woocommerce settings."
+msgstr ""
+"برای فعال سازی ارسال با الوپیک، لطفا API KEY دریافت شده را در تنظیمات "
+"ووکامرس وارد نمایید."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1057
+msgid "Enter API key"
+msgstr "وارد کردن کلید API (توکن)"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1058
+msgid "I have no API key"
+msgstr "کلید API ندارم"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1067 
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1151
+msgid ""
+"Alopeyk shipping method is not activated for your store. You can activate it "
+"by enabling the method via Settings page."
+msgstr ""
+"افزونه الوپیک برای فروشگاه شما فعال نیست. برای فعالسازی لطفا تیک \"فعال‌ "
+"کردن الوپیک\" در قسمت تنظیمات را بزنید."
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1070
+msgid "I have problem with my API key"
+msgstr "با کلید API مشکل دارم"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1093 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:28
+msgid "Order Created"
+msgstr "درخواست ثبت شده"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1100
+msgid "unsuccessful sending"
+msgstr "تلاش ناموفق"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1107
+msgid "sending"
+msgstr "در حال ارسال"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1114
+msgid "delivered"
+msgstr "تحویل شده"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1121
+msgid "finding"
+msgstr "در حال یافتن سفیر"
+
+#: admin/class-alopeyk-woocommerce-shipping-admin.php:1128
+msgid "scheduled for sending"
+msgstr "زمانبندی شده"
+
+#: includes/class-alopeyk-woocommerce-shipping-activator.php:34
+msgid ""
+"Sorry, but you cannot run this plugin, it requires the <a href=\"http://php."
+"net/manual/en/book.curl.php\">cURL</a> support on your server/hosting to "
+"function."
+msgstr ""
+"متأسفیم ولی این افزونه نمی‌تواند فعال شود زیرا فعالیت آن منوط به فعال بودن "
+"<a href=\"http://php.net/manual/en/book.curl.php\">cURL</a> بر روی "
+"هاستینگ/سرور شما است."
+
+#: includes/class-alopeyk-woocommerce-shipping-activator.php:39
+msgid ""
+"Sorry, WooCommerce plugin should be installed and activated before "
+"activating Alopeyk WooCommerce Shipping plugin."
+msgstr ""
+"پیش از فعال‌سازی این افزونه لطفاً از نصب و فعال بودن افزونه WooCommerce "
+"اطمینان حاصل کنید."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:219 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:59
+msgid "Ship"
+msgstr "ارسال"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:220
+msgid "Submit"
+msgstr "ثبت"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:221
+msgid "Cancel"
+msgstr "لغو"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:222
+msgid "Close"
+msgstr "بستن"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:223
+msgid "Submit Order"
+msgstr "ثبت سفارش"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:224
+msgid "Add Alopeyk Coupon"
+msgstr "اعمال کوپن الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:225
+msgid "Add Alopeyk Credit"
+msgstr "افزودن اعتبار الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:226
+msgid "Cancel Alopeyk Order"
+msgstr "لغو سفارش الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:227
+msgid "Rate Alopeyk Courier"
+msgstr "امتیازدهی به سفیر الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:229 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1255
+msgid "Alopeyk Order"
+msgstr "سفارش الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:230
+msgid "Alopeyk Coupon"
+msgstr "کوپن الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:231
+msgid "Add Coupon"
+msgstr "افرودن کوپن"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:232
+msgid "Pay"
+msgstr "پرداخت"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:233
+msgid "Apply"
+msgstr "اعمال"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:234
+msgid "Yes"
+msgstr "بلی"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:235
+msgid "No"
+msgstr "خیر"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:236 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:653
+msgid "Track Order"
+msgstr "رصد آنلاین سفارش"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:237
+msgid "View Order"
+msgstr "جزییات سفارش"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:238
+msgid "View Invoice"
+msgstr "نمایش فاکتور"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:240
+msgid "Unkown error occurred."
+msgstr "خطای ناشناسی رخ داده است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:241
+msgid "Request failed:"
+msgstr "درخواست انجام نشد:"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:242
+msgid "Add Discount Coupon"
+msgstr "اضافه کردن کد تخفیف"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:243
+msgid "Order Status"
+msgstr "وضعیت سفارش"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:244 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-credit-page.php:44
+msgid "Increase credit"
+msgstr "افزایش اعتبار"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:245 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-credit-page.php:47
+msgid "Charge account with gift card"
+msgstr "شارژ حساب با کد هدیه"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:246 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-credit-page.php:55
+msgid "Convert Alopeyk Scores to Credit"
+msgstr "تبدیل امتیاز به اعتبار"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:247
+msgid "Use two fingers to move the map"
+msgstr "برای حرکت دادن نقشه از دو انگشت استفاده کنید"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:248
+msgid "Use ctrl + scroll to zoom the map"
+msgstr "‏برای بزرگ‌نمایی نقشه از ctrl + scroll استفاده کنید"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:249
+msgid "Use ⌘ + scroll to zoom the map"
+msgstr "برای بزرگ‌نمایی نقشه، از ⌘ + scroll استفاده کنید"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:328 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:332
+msgid "دیر رسیدن به مبدا یا مقصد"
+msgstr "دیر رسیدن به مبدا یا مقصد"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:329 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:331 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:338
+msgid "برخورد و رفتار بد"
+msgstr "برخورد و رفتار بد"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:330
+msgid "ظاهر نامرتب و بی نظم"
+msgstr "ظاهر نامرتب و بی نظم"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:333
+msgid "درخواست هزینه اضافه"
+msgstr "درخواست هزینه اضافه"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:334 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:342
+msgid "عدم تماس با درخواست دهنده"
+msgstr "عدم تماس با درخواست دهنده"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:335
+msgid "نداشتن باکس حمل مرسوله"
+msgstr "نداشتن باکس حمل مرسوله"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:336
+msgid "عدم تسلط بر مسیر"
+msgstr "عدم تسلط بر مسیر"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:337 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:343
+msgid "سایر موارد"
+msgstr "سایر موارد"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:339
+msgid "پیک تقاضای لغو درخواست نمود"
+msgstr "پیک تقاضای لغو درخواست نمود"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:340
+msgid "فاصله پیک تا مبدا"
+msgstr "فاصله پیک تا مبدا"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:341
+msgid "سفیر باکس حمل مرسوله به همراه نداشت"
+msgstr "سفیر باکس حمل مرسوله به همراه نداشت"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:357
+msgid "Motorbike"
+msgstr "موتورسیکلت"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:358
+msgid "Cart Bike"
+msgstr "تاکس موتور"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:359
+msgid "Cargo"
+msgstr "وانت سنگین"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:360
+msgid "Small Cargo"
+msgstr "وانت سبک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:361
+msgid "Car"
+msgstr "سواری"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:362
+msgid "Production"
+msgstr "محیط واقعی"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:363
+msgid "Sandbox"
+msgstr "محیط تست"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:364
+msgid "Custom"
+msgstr "محیط سفارشی"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:384
+msgid "Please wait ..."
+msgstr "لطفاً کمی صبر کنید ..."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:388
+msgid "minute(s)"
+msgstr "دقیقه"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:388
+msgid "Less than a minute"
+msgstr "کمتر از یک دقیقه"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:389
+#, php-format
+msgid "%1$s left until the courier %2$s %3$s."
+msgstr "%1$s تا %2$s سفیر به %3$s باقی مانده است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:389
+msgid "reaches"
+msgstr "رسیدن"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:389
+msgid "returns"
+msgstr "بازگشت"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:389 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:391 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:398 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:59
+msgid "origin"
+msgstr "مبدأ"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:389 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:391 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:398 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:59
+msgid "destination"
+msgstr "مقصد"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:391
+#, php-format
+msgid "Courier returned to %1$s."
+msgstr "سفیر به %1$s بازگشت."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56
+#, php-format
+msgid "Courier returned to %s."
+msgstr "سفیر به %s  بازگشت."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:391
+#, php-format
+msgid "Courier reached %2$s."
+msgstr "سفیر به %2$s رسید."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:56
+#, php-format
+msgid "Courier reached %s."
+msgstr "سفیر به %s رسید."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:394
+msgid "Searching for closest courier."
+msgstr "در حال جستجو برای نزدیک‌ترین سفیر."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:396 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:402
+msgid "Courier is driving to origin."
+msgstr "سفیر در حال حرکت به سمت مبدأ است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:398
+#, php-format
+msgid "Courier is driving to %s."
+msgstr "سفیر در حال حرکت به سمت %s است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:400
+#, php-format
+msgid "Courier arrived at destination %s."
+msgstr "سفیر به مقصد%s رسید."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:406
+msgid "Courier arrived at destination."
+msgstr "سفیر به مقصد رسید."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:443
+msgid ""
+"You have chosen a date which is passed. So your order will be shipped as "
+"soon as being created. Are you sure?"
+msgstr ""
+"زمان انتخابی شما برای زمان‌بندی ارسال، پیش از زمان حال می‌باشد. به همین علت، "
+"در صورت ثبت سفارش، سفارش در لحظه ارسال خواهد شد. آیا اطمینان دارید؟"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:694
+msgid "Address Details"
+msgstr "جزئیات آدرس"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:780
+msgid "Please specify your exact location on the map."
+msgstr "لطفاً نشانی دقیق خود را بر روی نقشه مشخص کنید."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:868
+#, php-format
+msgid "You will be charged %s more by choosing this payment method."
+msgstr "انتخاب این روش پرداخت %s هزینه اضافی در پی خواهد داشت."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:966 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2312 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2698 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2768 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:3115
+msgid "Authentication failed."
+msgstr "خطا در اعتبارسنجی."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:966 
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:278
+msgid "API Key"
+msgstr "کلید API"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:988
+msgid "Authentication failed may be because of wrong API key."
+msgstr "اعتبارسنجی احتمالاً به علت کلید API نادرست با خطا مواجه شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:999
+msgid "No action defined for given request."
+msgstr "هیچ عملی متناسب با درخواست دریافتی یافت نشد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1252 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1254
+msgid "Alopeyk Orders"
+msgstr "سفارشات الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1256
+msgctxt "Admin menu name"
+msgid "Alopeyk Orders"
+msgstr "سفارشات"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1257
+msgid "No orders found."
+msgstr "سفارشی یافت نشد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1258
+msgid "No orders found in Trash."
+msgstr "سفارشی در زباله‌دان یافت نشد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1290
+msgctxt "Order status"
+msgid "In Progress"
+msgstr "در حال ارسال با الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1295
+#, php-format
+msgid "In Progress <span class=\"count\">(%s)</span>"
+msgid_plural "In Progress <span class=\"count\">(%s)</span>"
+msgstr[0] "در حال ارسال <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1298
+msgctxt "Order status"
+msgid "Pending"
+msgstr "در حال یافتن سفیر الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1303
+#, php-format
+msgid "Pending <span class=\"count\">(%s)</span>"
+msgid_plural "Pending <span class=\"count\">(%s)</span>"
+msgstr[0] "در حال یافتن سفیر <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1306
+msgctxt "Order status"
+msgid "Scheduled"
+msgstr "زمانبندی شده برای ارسال با الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1311
+#, php-format
+msgid "Scheduled <span class=\"count\">(%s)</span>"
+msgid_plural "Scheduled <span class=\"count\">(%s)</span>"
+msgstr[0] "زمانبندی شده برای ارسال <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1314
+msgctxt "Order status"
+msgid "Failed"
+msgstr "ارسال ناموفق با الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1319
+#, php-format
+msgid "Failed <span class=\"count\">(%s)</span>"
+msgid_plural "Failed <span class=\"count\">(%s)</span>"
+msgstr[0] "ارسال ناموفق <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1322
+msgctxt "Order status"
+msgid "Completed"
+msgstr "تحویل شده با الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1327
+#, php-format
+msgid "Completed <span class=\"count\">(%s)</span>"
+msgid_plural "Completed <span class=\"count\">(%s)</span>"
+msgstr[0] "تحویل شده <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1345
+msgctxt "Order status"
+msgid "Scheduled for sending with Alopeyk"
+msgstr "زمانبندی شده برای ارسال با الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1348
+#, php-format
+msgid "Scheduled for sending with Alopeyk <span class=\"count\">(%s)</span>"
+msgid_plural ""
+"Scheduled for sending with Alopeyk <span class=\"count\">(%s)</span>"
+msgstr[0] "زمانبندی شده برای ارسال با الوپیک <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1351
+msgctxt "Order status"
+msgid "Finding Alopeyk courier"
+msgstr "در حال یافتن سفیر الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1354
+#, php-format
+msgid "Finding Alopeyk courier <span class=\"count\">(%s)</span>"
+msgid_plural "Finding Alopeyk courier <span class=\"count\">(%s)</span>"
+msgstr[0] "در حال یافتن سفیر الوپیک <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1357
+msgctxt "Order status"
+msgid "Sending with Alopeyk"
+msgstr "در حال ارسال با الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1360
+#, php-format
+msgid "Sending with Alopeyk <span class=\"count\">(%s)</span>"
+msgid_plural "Sending with Alopeyk <span class=\"count\">(%s)</span>"
+msgstr[0] "در حال ارسال با الوپیک <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1363
+msgctxt "Order status"
+msgid "Delivered with Alopeyk"
+msgstr "تحویل شده با الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1366
+#, php-format
+msgid "Delivered with Alopeyk <span class=\"count\">(%s)</span>"
+msgid_plural "Delivered with Alopeyk <span class=\"count\">(%s)</span>"
+msgstr[0] "تحویل شده با الوپیک <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1369
+msgctxt "Order status"
+msgid "Unsuccessful sending with Alopeyk"
+msgstr "ارسال ناموفق با الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1372
+#, php-format
+msgid "Unsuccessful sending with Alopeyk <span class=\"count\">(%s)</span>"
+msgid_plural ""
+"Unsuccessful sending with Alopeyk <span class=\"count\">(%s)</span>"
+msgstr[0] "ارسال ناموفق با الوپیک <span class=\"count\">(%s)</span>"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1886
+#, php-format
+msgid "Order scheduled to be shipped via Alopeyk shipping method at %s."
+msgstr "سفارش برای ارسال از طریق روش اسال الوپیک در تاریخ %s زمان بندی شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1891
+msgid "Searching for the closest courier to assign shipping task."
+msgstr "در حال یافتن نزدیک‌ترین سفیر برای اختصاص سفارش ارسال ..."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1894
+msgid "with the phone number"
+msgstr "با شماره تلفن"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1897
+msgid ""
+"Courier %1$s assigned and <a href=\"%2$s\" target=\"_blank\">shipping "
+"process</a> is started. It can be tracked <a href=\"%3$s\" target=\"_blank\">"
+"here</a>."
+msgstr ""
+"سفیر %1$s اختصاص داده شد و <a href=\\\"%2$s\\\" target=\\\"_blank\\\">فرآیند "
+"حمل و نقل</a> آغاز شد. می‌توان آن را <a href=\\\"%3$s\\\" "
+"target=\\\"_blank\\\">اینجا</a> پیگیری کرد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1902
+msgid "Order successfully delivered."
+msgstr "سفارش با موفقیت تحویل شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:1907
+msgid "Shipping canceled or No courier found."
+msgstr "ارسال لغو شد و یا سفیری یافت نشد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2287
+msgid "Coupon code is required."
+msgstr "وارد کردن کد کوپن الزامی است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2296
+msgid "Coupon code successfully applied."
+msgstr "کوپن وارد شده با موفقیت اعمال شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2301
+msgid "Entered coupon code is not valid."
+msgstr "کد کوپن وارد شده معتبر نمی‌باشد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2306 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2318
+msgid "Error occured while trying to apply coupon code."
+msgstr "خطایی در اعمال کد کوپن وارد شده رخ داد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2306 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2318 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2481 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2681 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2757 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2774
+msgid "Detail:"
+msgstr "جزئیات:"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2432
+msgid ""
+"Shipping proccess of one or more selected orders is in progress. Please "
+"cancel them before creating a new order."
+msgstr ""
+"فرآیند ارسال یک یا چند سفارش در جریان است. لطفاً پیش از ارسال سفارش، فرآیند "
+"ارسال پیشین را در صورت امکان لغو کنید."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2481
+#, php-format
+msgid ""
+"Error occurred while trying to write order as a Wordpress post. But your "
+"Alopeyk order is created and is in progress. You can <a href=\"%1$s\" "
+"target=\"_blank\">track your order here</a> or <a href=\"%2$s\" "
+"target=\"_blank\" >contact Alopeyk support</a>."
+msgstr ""
+"در هنگام ذخیره سفارش الوپیک در قالب نوشته وردپرس خطایی رخ داد ولی سفارش شما "
+"در جریان است. می‌توانید <a href=\"%1$s\" target=\"_blank\">سفارش خود را از "
+"اینجا آنلاین رصد کنید</a> یا <a href=\"%2$s\" target=\"_blank\" >با پشتیبانی "
+"الوپیک تماس بگیرید</a>."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2513
+msgid "Your order has been successfully created and is in progress."
+msgstr "سفارش شما با موفقیت ثبت شد و در جریان است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2521
+msgid ""
+"Error occured while trying to fetch Alopeyk order details. Order cancelled "
+"due to security reasons. Please try again later."
+msgstr ""
+"خطایی در دریافت اطلاعات سفارش رخ داد. سفارش الوپیک به علت مسائل امنیتی لغو "
+"شد. لطفاً مجدداً تلاش فرمایید."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2535 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2611
+msgid "Unable to get your Alopeyk credit."
+msgstr "در هنگام دریافت اعتبار الوپیکی شما خطایی رخ داده است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2551
+#, php-format
+msgid ""
+"You are not authenticated. Please recheck your API key entered in <a "
+"href=\"%1$s\" target=\"_blank\">Settings</a> page or <a href=\"%2$s\" "
+"target=\"_blank\">Contact Alopeyk</a>."
+msgstr ""
+"اعتبارسنجی شما با مشکل مواجه شد. لطفاً کلید API خود را در صفحه  <a "
+"href=\"%1$s\" target=\"_blank\">تنظیمات الوپیک</a> مجدداً بررسی کنید و یا با "
+"<a href=\"%2$s\" target=\"_blank\">پشتیبانی الوپیک</a> تماس بگیرید."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2594
+msgid "Your Alopeyk order is ready to submit."
+msgstr "سفارش الوپیک شما آماده ثبت است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2599
+#, php-format
+msgid ""
+"Order price is %1$s while your credit balance is %2$s. You need to %3$s add "
+"at least %4$s more credit to your Alopeyk account %5$s to be able to ship "
+"selected package(s)."
+msgstr ""
+"هزینه سفارش شما %1$s می‌باشد، در حالی که اعتبار شما %2$s است. شما نیاز دارید "
+"%3$s حداقل مبلغ %4$s را به حساب Alopeyk خود اضافه کنید %5$s تا بتوانید "
+"بسته(ها)ی انتخابی خود را ارسال کنید."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2605
+msgid "Unfortunately, we are not able to submit this request."
+msgstr "متاسفانه، در حال حاضر امکان ارسال این نوع درخواست وجود ندارد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2617
+msgid ""
+"One or more order shipping addresses are not supported by Alopeyk shipping "
+"method."
+msgstr "یک یا چند آدرس تحت پوشش روش ارسال الوپیک نیستند."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2623
+msgid ""
+"Order items have a total weight or volume more than maximum allowed for the "
+"selected shipping method."
+msgstr ""
+"مجموع وزن یا حجم آیتم‌های سفارش بیش از میزان مجاز روش حمل و نقل انتخابی شما "
+"می‌باشد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2629
+msgid "Alopeyk shipping method is not active."
+msgstr "روش ارسال الوپیک فعال نمی‌باشد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2635
+msgid "Error occurred while fetching data for orders."
+msgstr "خطایی در دریافت اطلاعات سفارش(ها) رخ داده است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2676
+msgid "Your rate successfully submitted."
+msgstr "امتیاز وارد شده با موفقیت ارسال شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2681 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2686 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2692
+msgid "Error occured while trying to save your rate."
+msgstr "در فرآیند ذخیره امتیاز خطایی رخ داده است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2710
+msgid "No reason selected for low score."
+msgstr "علتی برای امتیاز ناکامل انتخاب نشده است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2716
+msgid "Rate is not specified."
+msgstr "امتیاز مشخص نشده است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2722
+msgid "Order ID is required for rate submission."
+msgstr "شناسه سفارش برای ثبت امتیاز الزامی است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2740
+msgid "Order should be specified to be canceled."
+msgstr "سفارشی برای لغو مشخص نشده است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2752
+msgid "Order successfully canceled."
+msgstr "سفارش با موفقیت لغو شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2757
+msgid "Cannot cancel selected order."
+msgstr "امکان لغو سفارش انتخاب شده وجود ندارد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2762 
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2774
+msgid "Error occured while trying to cancel selected order."
+msgstr "خطایی در هنگام لغو سفارش انتخاب شده رخ داد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2858
+#, php-format
+msgid "Dear %s,"
+msgstr "%s عزیز،"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2860
+msgid "Your order is being shipped via Alopeyk"
+msgstr "سفارش شما با الوپیک در حال ارسال است"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2861
+#, php-format
+msgid ""
+"%1$s is picked up from <a href=\"%2$s\">%3$s</a> and is being delivered to "
+"you by <a href=\"%4$s\">Alopeyk</a> courier."
+msgstr ""
+"%1$s بسته شما تحویل گرفته شده از  <a href=\"%2$s\">%3$s</a> و توسط  <a "
+"href=\"%4$s\">Alopeyk</a> سفیر در حال حمل است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2861
+msgid "Your order"
+msgstr "سفارش شما"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2957
+msgid "Update Active Order Interval"
+msgstr "فاصله زمانی بروزرسانی سفارش فعال"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:2961
+msgid "Every Second"
+msgstr "هر ثانیه"
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:3096
+msgid "Successful Purchase! Your credit has been added."
+msgstr "خرید شما با موفقیت انجام شد و به اعتبار شما در حساب کاربری اضافه شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:3109
+msgid "Error occured."
+msgstr "خطایی رخ داده است."
+
+#: includes/class-alopeyk-woocommerce-shipping-common.php:3157
+msgid ""
+"Contact %1$s to become an API user and unlock the premium features for free."
+msgstr "برای استفاده رایگان از امکانات ویژه ثبت سفارش، با %1$s تماس بگیرید."
+
+#: includes/class-alopeyk-woocommerce-shipping-method.php:37
+msgid ""
+"Alopeyk On-demand Delivery will be included in this WooCommerce shipping "
+"zone."
+msgstr ""
+"روش های ارسال با الوپیک به لیست روش‌های ارسال این منطقه حمل و نقل ووکامرس "
+"اضافه خواهد شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:56
+msgid "The API key is not valid."
+msgstr "کلید API معتبر نیست."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:67
+msgid "and"
+msgstr "و"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:70
+#, php-format
+msgid ""
+"Please fill %s field(s), otherwise Alopeyk shipping method cannot be enabled."
+msgstr ""
+"لطفاً فیلد(های) %s را تکمیل کنید، در غیر این صورت روش ارسال الوپیک فعال "
+"نخواهد شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:268
+msgid ""
+"By filling the following fields and checking enabled field, Alopeyk On-"
+"demand Delivery will be included in WooCommerce shop shipping methods."
+msgstr ""
+"با پر کردن فیلدهای زیر و تیک زدن گزینه فعال کردن الوپیک، پیک موتوری و "
+"وانت‌بار الوپیک به لیست روش‌های ارسال فروشگاه ووکامرس شما اضافه خواهد شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:272
+msgid "Enable/Disable"
+msgstr "فعال کردن/غیرفعال کردن"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:274
+msgid "Enable Alopeyk shipping"
+msgstr "فعال کردن الوپیک"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:296
+msgid "Environment"
+msgstr "انتخاب محیط"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:300
+msgid ""
+"Please select the appropriate plugin environment in consultation with the "
+"Alopeyk sales team."
+msgstr "لطفاً محیط مناسب افزونه را با مشورت تیم فروش الوپیک انتخاب کنید."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:303
+msgid "Endpoint Url"
+msgstr "Endpoint Url"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:309
+msgid "Endpoint API Url"
+msgstr "Endpoint API Url"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:315
+msgid "Endpoint Tracking Url"
+msgstr "Endpoint Tracking Url"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:322
+msgid "Method Title"
+msgstr "عنوان روش ارسال"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:325
+msgid ""
+"This controls the title which the user will see during checkout proccess."
+msgstr "عنوانی که در فرآیند تسویه حساب نمایش داده خواهد شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:332
+msgid "Store Details"
+msgstr "اطلاعات فروشگاه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:336
+msgid "Store Name"
+msgstr "نام فروشگاه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:338
+msgid "This is your store's name."
+msgstr "نام فروشگاه شما."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:344
+msgid "Store Number"
+msgstr "پلاک فروشگاه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:346
+msgid "This is your store's number."
+msgstr "شماره‌ی پلاک فروشگاه شما."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:352
+msgid "Store Unit"
+msgstr "واحد فروشگاه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:354
+msgid "This is your store's unit."
+msgstr "شماره واحد فروشگاه شما."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:360
+msgid "Store Phone"
+msgstr "تلفن فروشگاه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:362
+msgid "This is your store's phone."
+msgstr "تلفن فروشگاه شما."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:370
+msgid "Store Latitude"
+msgstr "عرض جغرافیایی فروشگاه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:372
+msgid "Latitude for specified store address."
+msgstr "عرض جغرافیایی آدرس مشخص شده برای فروشگاه."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:378
+msgid "Store Longitude"
+msgstr "طول جغرافیایی فروشگاه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:380
+msgid "Longitude for specified store address."
+msgstr "طول جغرافیایی آدرس مشخص شده برای فروشگاه."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:386
+msgid "Store City"
+msgstr "شهر فروشگاه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:391
+msgid ""
+"This will be automatically fetched when you specify your store location via "
+"moving below map marker."
+msgstr ""
+"با جابجایی نشانگر (مارکر) روی نقشه‌ی زیر این فیلد به صورت خودکار پُر خواهد "
+"شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:394
+msgid "Store Address"
+msgstr "آدرس فروشگاه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:399
+msgid ""
+"Please specify the exact address for your stock, because it will be used as "
+"origin address. The origin address will later be used for picking the "
+"packages by the courier and calculation of dynamic shipping cost."
+msgstr ""
+"لطفاً نشانی دقیق فروشگاه (انبار) خود را مشخص کنید زیرا به عنوان آدرس مبدأ در "
+"سفارشات الوپیک از آن استفاده خواهد شد. این آدرس، آدرسی خواهد بود که سفیر "
+"الوپیک برای برداشت مرسوله برای شروع فرآیند تحویل بار به آن مراجعه خواهد کرد. "
+"همچین اگر محاسبه‌ی قیمت پویا انتخاب شده باشد، محاسبه هزینه بر اساس این آدرس "
+"خواهد بود."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:405 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:56
+msgid "Origin Description"
+msgstr "توضیحات مبدأ"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:407
+msgid ""
+"This will be used as origin description shown on couriers device. In most "
+"cases it consists of store address details."
+msgstr ""
+"این متن به عنوان توضیحات آدرس مبدأ به سفیر الوپیک نشان داده خواهد شد که در "
+"اکثر مواقع شامل جزئیات آدرس فروشگاه است."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:414
+msgid "Map Options"
+msgstr "تنظیمات نقشه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:418
+msgid "Marker Image"
+msgstr "تصویر نشانگر (مارکر)"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:421
+msgid ""
+"You can upload your desired marker image here to be used instead of Cedar's "
+"default marker image on address maps around your store."
+msgstr ""
+"می‌توانید تصویر نشانگر‌ (مارکر) دلخواه خود را در این قسمت بارگذاری کنید تا "
+"به جای تصویر نشانگر پیش‌فرض سیدار در تمامی نقشه‌هایی که برای انتخاب آدرس در "
+"وی‌سایتتان نمایش داده خواهد از آن استفاده شود."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:423
+msgid "Upload"
+msgstr "بارگذاری"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:432
+msgid "Cost Options"
+msgstr "تنظیمات هزینه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:436
+msgid "Cost Type"
+msgstr "نوع هزینه"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:439
+msgid "Dynamic Cost"
+msgstr "هزینه پویا"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:440
+msgid "Static Cost"
+msgstr "هزینه ثابت"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:443
+msgid ""
+"This option will specify that whether the shipping cost is a static value or "
+"should be fetched from Alopeyk API."
+msgstr ""
+"از این طریق می‌توانید تعیین کنید که هزینه ارسال سفارشات فروشگاهتان از طریق "
+"الوپیک، از دید خریدار عدد ثابتی باشد یا عدد دقیقی که بنا به آدرس تحویل "
+"خریدار و آدرس فروشگاه شما از سمت API الوپیک محاسبه می‌شود.\n"
+"توجه کنید که هزینه تمام شده‌ی این ارسال برای شما همان عدد دقیق حساب شده توسط "
+"API الوپیک خواهد بود."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:446
+msgid "Static Cost Type"
+msgstr "نوع هزینه ثابت"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:449
+msgid "Percentage"
+msgstr "درصدی"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:450
+msgid "Fixed"
+msgstr "ثابت"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:453
+msgid ""
+"This option will specify that wether the shipping cost is a fixed value or a "
+"percentage of cart price."
+msgstr ""
+"از این طریق می‌توانید تعیین کنید که هزینه ثابت یک عدد ثابت باشد یا درصدی از "
+"قیمت سبد خرید."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:456
+msgid "Fixed Cost"
+msgstr "عدد هزینه ثابت"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:459
+msgid ""
+"This option defines the fixed cost should be added to total cart amount. "
+"(IRR)"
+msgstr ""
+"نمایانگر هزینه‌ی ثابتی بر حسب ریال است که به عنوان هزینه ارسال به مجموع سبد "
+"خرید اضافه خواهد شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:462
+msgid "Percentage Cost"
+msgstr "درصد هزینه ثابت"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:465
+msgid ""
+"This option defines the percentage of cart amount that should be added to "
+"total cart amount."
+msgstr ""
+"نمایانگر درصدی از مجموع سبد خرید است که به عنوان هزینه ارسال به مجموع سبد "
+"خرید اضافه خواهد شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:468
+msgid "Transportation Type Settings"
+msgstr "تنظیمات روش‌های حمل و نقل"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:475
+msgid "Ship via %s"
+msgstr " %s ارسال با"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:478 
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:512 
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:519 
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:526
+msgid "Enabled"
+msgstr "فعال"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:532
+#, php-format
+msgid ""
+"Total weight of the package should be up to %1$s kg and its dimensions in "
+"centimeters should be up to %2$s for width, %3$s for height and %4$s for "
+"length to be allowed to be shipped by this method."
+msgstr ""
+"محدودیت وزن برای جابجایی مرسوله با این روش %1$s کیلوگرم و محدودیت ابعاد برای "
+"این روش برحسب سانتی‌متر %2$s برای عرض، %3$s برای ارتفاع و %4$s برای طول "
+"می‌باشد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:483
+msgid "Smart Switch"
+msgstr "تشخیص هوشمند"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:486
+msgid "Show only most optimal shipping method"
+msgstr "نمایش بهینه‌ترین روش ارسال"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:487
+msgid ""
+"If not enabled, all possible shipping methods will be shown in the checkout "
+"page."
+msgstr ""
+"در صورت غیر فعال بودن این گزینه، همه‌ی روش‌های ارسال مجاز برای جابجایی "
+"مرسوله در صفحه‌ی تسویه حساب نمایش داده خواهد شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:493
+msgid "&nbsp;"
+msgstr "&nbsp;"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:496
+msgid "Use default price set for choosing most optimal method"
+msgstr "انتخاب بهینه‌ترین روش بر اساس قیمت پیش‌فرض روش‌ها انجام گیرد"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:497
+msgid ""
+"If not enabled, real-time price will be fetched from Alopeyk’s API for each "
+"shipping method in order to choose the most optimal one. This may make the "
+"process a bit slower."
+msgstr ""
+"در صورت غیر فعال بودن این گزینه، قیمت هر یک از روش‌ها به صورت لحظه‌ای از "
+"الوپیک استعلام، و بهترین روش بر اساس قیمت انتخاب می‌گردد که انتخاب بهترین "
+"روش را اندکی کند می‌کند."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:507
+msgid "Order Options"
+msgstr "تنظیمات سفارش"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:511
+msgid "Status Change"
+msgstr "تغییر وضعیت"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:515
+msgid ""
+"Check this checkbox only if you want WooCommerce orders' status to be "
+"changed based on changes being made in Alopeyk delivery status."
+msgstr ""
+"با فعال کردن این گزینه، به محض تغییر وضعیت سفارش حمل و نقل الوپیک، وضعیت "
+"سفارش(های) فروشگاه ووکامرس شما که از طریق آن سفارش الوپیک در حال ارسال هستند "
+"نیز به صورت خودکار تغییر خواهد کرد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:518
+msgid "Dashboard Tracking"
+msgstr "پیگیری در حساب کاربری"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:522
+msgid ""
+"Check this checkbox only if you want your customers to be able to track "
+"their delivering from their account dashboard."
+msgstr ""
+"در صورتی که تمایل دارید مشتریان شما قادر باشند تا از طریق حساب کاربری خود "
+"وضعیت تحویل مرسوله‌ی الوپیکی خود را دنبال کنند این گزینه را فعال کنید."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:525
+msgid "Use Tehran TimeZone"
+msgstr "استفاده از تنظیمات زمانی تهران"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:529
+msgid ""
+"Check this checkbox only if you want to use “Tehran TomeZone” for Alopeyk "
+"orders, otherwise default Wordpress timezone will be used."
+msgstr ""
+"اگر می‌خواهد از ناحیه زمانی تهران (ایران) برای سفارشات الوپیک استفاده کنید، "
+"این گزینه را فعال نمایید. در غیر این صورت، از تنظیمات پیش‌فرض وردپرس استفاده "
+"خواهد شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:536
+msgid "Refresh Options"
+msgstr "تنظیمات بروزرسانی"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:540
+msgid "Cron Interval"
+msgstr "فاصله زمانی وظایف Cron"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:544
+msgid ""
+"The number of seconds between each request for fetching the latest status of "
+"an active order. It is highly recommended to be more than 10."
+msgstr ""
+"تعداد ثانیه‌های مکث بین درخواست‌ها به سرور الوپیک جهت دریافت آخرین وضعیت "
+"سفارشات فعال. از آن جا که با کم شدن این عدد، در صورت وجود تعداد بالای "
+"سفارشات، درگیری زیادی برای هاستینگ/سرور شما بوجود خواهد آمد،‌ مقادیر بیش از "
+"۱۰ اکیداً توصیه می‌شود."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:551
+msgid "Admin Refresh Interval"
+msgstr "فاصله زمانی بروزرسانی پنل مدیریت"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:554
+msgid ""
+"The number of seconds between refreshes in admin panel for bringing latest "
+"order details to the screen. It is highly recommended to be more than 10."
+msgstr ""
+"تعداد ثانیه‌های مکث بین درخواست‌ها به سرور خودتان جهت دریافت آخرین وضعیت "
+"سفارشات فعال برای نمایش در صفحات مرتبط در داشبورد وردپرس. از آن جا که با کم "
+"شدن این عدد، در صورت وجود تعداد بالای سفارشات، درگیری زیادی برای "
+"هاستینگ/سرور شما بوجود خواهد آمد،‌ مقادیر بیش از ۱۰ اکیداً توصیه می‌شود."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:561
+msgid "Front Refresh Interval"
+msgstr "فاصله زمانی بروزرسانی خروجی وب‌سایت"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:564
+msgid ""
+"The number of seconds between refreshes in customer dashboard for bringing "
+"latest order details to the screen. It is highly recommended to be more than "
+"10."
+msgstr ""
+"تعداد ثانیه‌های مکث بین درخواست‌ها به سرور خودتان جهت دریافت آخرین وضعیت "
+"سفارشات فعال برای نمایش در صفحات خروجی وب‌سایتتان. از آن جا که با کم شدن این "
+"عدد، در صورت وجود تعداد بالای سفارشات، درگیری زیادی برای هاستینگ/سرور شما "
+"بوجود خواهد آمد،‌ مقادیر بیش از ۱۰ اکیداً توصیه می‌شود."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:580
+msgid "Payment Options"
+msgstr "تنظیمات پرداخت"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:586
+msgid "Has return"
+msgstr "برگشت دارد"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:589
+msgid ""
+"Check this checkbox only if you need this payment method to have return trip."
+" For example if want the courier to take the money from the customer after "
+"delivering the package and bring it back to your store."
+msgstr ""
+"تنها زمانی این گزینه را فعال کنید که می‌خواهید این روش پرداخت، سفر برگشت "
+"داشته باشد. برای مثال اگر می‌خواهید سفیر الوپیک هزینه خرید را پس از تحویل "
+"درب منزل از مشتری دریافت کند و آن را به نشانی فروشگاه بازگرداند."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:595
+msgid "Customer should pay for return cost"
+msgstr "خریدار می‌بایست هزینه برگشت سفیر به فروشگاه را پرداخت کند"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:598
+msgid ""
+"Check this checkbox only if you want customers to pay for return costs "
+"whenever this payment method is chosen. If not checked, the cost will be "
+"deducted from your Alopeyk account."
+msgstr ""
+"این گزینه را تنها زمانی فعال کنید که می‌خواهید هزینه برگشت سفیر الوپیک از "
+"مقصد را به شرط این روش پرداخت، خریدار پرداخت کند. در غیر این صورت هزینه از "
+"حساب الوپیک شما کاسته خواهد شد."
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:605
+msgid "Warn customer about price change"
+msgstr "تغییرات قیمت ناشی از تغییر روش پرداخت به مشتری اطلاع داده شود"
+
+#: includes/class-alopeyk-woocommerce-shipping-tab.php:608
+msgid ""
+"Check this checkbox only if you want inform customers about the return cost "
+"that will be added to total price."
+msgstr ""
+"این گزینه را تنها زمانی فعال کنید که می‌خواهید هزینه‌ی اضافی این روش پرداخت "
+"(ناشی از برگشت‌دار بودن) که قرار است به قیمت کل اضافه شود به خریدار اطلاع "
+"رسانی شود."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-coupon.php:19
+msgid "Gift Card Code"
+msgstr "کد هدیه"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-credit-page.php:35
+msgid "ID Number"
+msgstr "شماره شناسه شما"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-credit-page.php:40
+msgid "My Credit"
+msgstr "اعتبار من"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-credit-page.php:51
+msgid "My Score"
+msgstr "امتیاز من"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-credit.php:42
+msgid "Tomans"
+msgstr "تومان"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-customer-score-exchange-submit.php:20
+#, php-format
+msgid "Are you sure you want to buy a %s worthing %s?"
+msgstr "آیا از خرید %s به ارزش %s اطمینان دارید؟"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-customer-score-exchange.php:36
+msgid "Points required"
+msgstr "امتیاز مورد نیاز"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-discount-coupon.php:19
+msgid "Discount Coupon Code"
+msgstr "کد تخفیف"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-courier-info.php:31
+msgid "out of"
+msgstr "از"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-courier-info.php:71
+msgid "Rate this courier"
+msgstr "به عملکرد سفیر امتیاز دهید"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:24
+msgid "Order Screenshot"
+msgstr "پیش‌نمایش سفارش"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:32
+msgid "Status"
+msgstr "وضعیت"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:37
+msgid "Invoice Number"
+msgstr "شماره فاکتور"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-order-info.php:55 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:71
+msgid "Discount Code Value"
+msgstr "ارزش کد تخفیف"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:36
+msgid "Order Scheduled"
+msgstr "زمان بندی درخواست"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:44
+msgid "Order Accepted"
+msgstr "پذیرش درخواست"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:66
+msgid "Address"
+msgstr "آدرس"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:81 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-rate.php:60
+msgid "Description"
+msgstr "توضیحات"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:87
+msgid "Name"
+msgstr "نام"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:93
+msgid "Phone"
+msgstr "تلفن"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:99
+msgid "Signed By"
+msgstr "نام صاحب امضا"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:106
+msgid "Signature"
+msgstr "امضا"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:115
+msgid "Order Deleted"
+msgstr "حذف سفارش"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:123
+msgid "Order Canceled"
+msgstr "لغو سفارش"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-shipping-info.php:131
+msgid "Order Expired"
+msgstr "انقضای سفارش"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:23
+msgid "Last Status"
+msgstr "آخرین وضعیت"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:27
+msgid ""
+"Click \"Ship\" button to start shipping of this order using Alopeyk shipping "
+"method."
+msgstr "برای ارسال این سفارش با روش ارسال الوپیک روی دکمه‌ی «ارسال» کلیک کنید."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-meta-wcorder.php:38
+msgid "View Details"
+msgstr "نمایش جزئیات"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:20
+msgid "Alopeyk order"
+msgstr "سفارش الوپیک"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:25
+#, php-format
+msgid ""
+"You are about to cancel <strong><a href=\"%1$s\" target=\"_blank\">%2$s</a>"
+"</strong>."
+msgstr ""
+"شما در حال لغو <strong><a href=\"%1$s\" target=\"_blank\">%2$s</a></strong> "
+"هستید."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:31
+#, php-format
+msgid ""
+"You will be charged %s for this cancelation, because more than %s minutes "
+"passed after order being accepted by Alopeyk courier."
+msgstr ""
+"%s بابت لغو این سفارش از حساب الوپیک شما کسر خواهد شد. زیرا از زمان قبول "
+"درخواست توسط سفیر الوپیک بیش از %s دقیقه گذشته است."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:33
+#, php-format
+msgid "You will be charged %s for this cancelation."
+msgstr "%s بابت لغو این سفارش از حساب شما کم خواهد شد."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-cancel.php:43
+msgid "Which of the following reasons make you decide to cancel this request?"
+msgstr "چه دلیلی موجب تصمیم شما به لغو این درخواست شده است؟"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:39 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:28
+msgid "Shipping Time"
+msgstr "زمان ارسال"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:41 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:30
+msgid "Now"
+msgstr "هم اکنون"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:42
+msgid "Later"
+msgstr "بعداً"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:59
+msgid ""
+"This will be shown on courier device and usually consists of order value, "
+"address details or any other sort of data needed for courier to know about "
+"the origin address or the whole order."
+msgstr ""
+"زمانی که روش ارسال الوپیک انتخاب شده باشد، این متن به سفیر الوپیک نشان داده "
+"خواهد شد که معمولاً شامل ارزش مرسوله، جزئیات آدرس و هر اطلاعات دیگری است که "
+"سفیر می‌بایست در رابطه با آدرس مبدأ یا کلیت سفارش از آن مطلع باشد."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-create.php:65 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:36
+msgid "Orders"
+msgstr "سفارشات"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-history.php:125
+msgid "This order is not yet shipped via Alopeyk shipping method."
+msgstr "این سفارش تا به حال با روش ارسال الوپیک ارسال نشده است."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-rate.php:40
+msgid "Very Bad"
+msgstr "خیلی‌بد"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-rate.php:42
+msgid "Bad"
+msgstr "بد"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-rate.php:44
+msgid "Not Bad"
+msgstr "معمولی"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-rate.php:46
+msgid "Good"
+msgstr "خوب"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-rate.php:48
+msgid "Very Good"
+msgstr "خیلی‌خوب"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-rate.php:52
+msgid "Which of the following reasons make you decide to choose this score?"
+msgstr "چه موردی از سفیر موجب تصمیم شما به این امتیاز شده است؟"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:50
+msgid "Has Return"
+msgstr "برگشت دارد"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:52
+msgid "yes"
+msgstr "بله"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:52
+msgid "no"
+msgstr "خیر"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:62 
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:87
+msgid "Order Point"
+msgstr "امتیاز این درخواست"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:74
+msgid "(Remove)"
+msgstr "(حذف کد)"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-order-review.php:78
+msgid "Final Cost"
+msgstr "هزینه نهایی"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-support-page.php:32
+msgid ""
+"You can access all of your activity logs such as orders and transactions, "
+"and also edit your profile information via Alopeyk web dashboard."
+msgstr ""
+"از طریق حساب کاربری خود در الوپیک می‌توانید سوابق فعالیتتان شامل تراکنش‌های "
+"مالی و سفارشات را پیگیری و اطلاعات کاربری خود را ویرایش کنید."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-support-page.php:36
+msgid "Go to my dashboard"
+msgstr "برو به حساب کاربری"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-support-page.php:48
+msgid ""
+"You can call our support team to get your questions answered just in time."
+msgstr ""
+"با تماس با تیم پشتیبانی الوپیک، پاسخ پرسش‌های خود را در لحظه دریافت کنید."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-support-page.php:53
+#, php-format
+msgid "Call Support: %s"
+msgstr "تماس با پشتیبانی: %s"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-support-page.php:68
+msgid ""
+"Please let us know about bugs or UX problems you may encounter while working "
+"with this extension."
+msgstr ""
+"لطفاً در صورت مواجه شدن با مشکلات نرم‌افزاری و طراحی رابط کاربری این افزونه "
+"ما را مطلع سازید."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-support-page.php:70
+#, php-format
+msgid ""
+"Its better to attach a copy of <a href=\"%s\" target=\"_blank\">system "
+"logs</a> to your email."
+msgstr ""
+"بهتر است یک نسخه از <a href=\"%s\" target=\"_blank\">لاگ‌های سیستمی</a> را "
+"به همراه ایمیل خود ارسال کنید."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-support-page.php:77
+#, php-format
+msgid "Report a Bug: %s"
+msgstr "گزارش مشکل: %s"
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-support-page.php:89
+msgid ""
+"Check our contact page on Alopeyk website to leave us reviews about this "
+"extension or find more available communication methods."
+msgstr ""
+"برای ثبت نظر خود در ارتباط با این افزونه و یا اطلاع از روش‌های بیشتر جهت "
+"ارتباط با الوپیک به صفحه تماس در وب‌سایت الوپیک مراجعه کنید."
+
+#: admin/partials/alopeyk-woocommerce-shipping-admin-support-page.php:93
+msgid "Contact Us"
+msgstr "تماس با ما"
+
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:81
+msgid "Instagram"
+msgstr "اینستاگرام"
+
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:84
+msgid "Linkedin"
+msgstr "لینکداین"
+
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:87
+msgid "Facebook"
+msgstr "فیسبوک"
+
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:90
+msgid "Twitter"
+msgstr "توئیتر"
+
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:93
+msgid "Website"
+msgstr "وب‌سایت"
+
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:103
+msgid "© Alopeyk all rights reserved"
+msgstr "© تمامی حقوق برای الوپیک محفوظ است"
+
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:104
+msgid "Licensed by the Tehran Pickup And Bike Delivery Union"
+msgstr "با مجوز از اتحادیه صنف وانت‌بار و پیک موتوری تهران"
+
+#: public/partials/alopeyk-woocommerce-shipping-public-email.php:105
+msgid ""
+"Alopeyk building, No.5, Vozara 14th, Shahid beheshti St., Tehran, I.R.Iran"
+msgstr ""
+"تهران، خیابان شهید بهشتی، خیابان وزرا، کوچه چهاردهم، پلاک ۵، ساختمان الوپیک"
+
+#. Description of the plugin
+msgid ""
+"Include Alopeyk On-demand Delivery in WooCommerce shop shipping methods."
+msgstr ""
+"افزودن پیک موتوری، سواری، وانت سبک و وانت سنگین الوپیک به لیست روش‌های ارسال "
+"فروشگاه ووکامرس."
+
+#. URI of the plugin
+msgid "https://alopeyk.com/#section-services"
+msgstr "https://alopeyk.com/#section-services"
+
+#. Author URI of the plugin
+msgid "https://alopeyk.com/"
+msgstr "https://alopeyk.com/"
+
+msgid ""
+"You can customize the shipping method in the 'Alopeyk' tab in the "
+"Woocommerce settings"
+msgstr ""
+"برای تغییر تنظیمات شیوه ارسال به تب 'الوپیک' در تنظیمات ووکامرس مراجعه کنید"
+
+msgid "settings page"
+msgstr "صفحه تنظیمات"
+
+msgid "OK"
+msgstr "متوجه شدم"
+
+msgid "Please fill in all fields!"
+msgstr "لطفا تمامی فیلدها رو کامل نمایید"
+
+msgid "You have not confirmed your location yet."
+msgstr "شما هنوز آدرس انتخابی خود را تایید نکردید."
+
+msgid "Your Address"
+msgstr "آدرس انتخابی شما"
+
+msgid "Confirm Location"
+msgstr "تایید مکان انتخاب شده"
+
+msgid "Select Your Location"
+msgstr "موقعیت مکانی خود را انتخاب کنید"
+
+msgid "Place order"
+msgstr "ثبت سفارش"

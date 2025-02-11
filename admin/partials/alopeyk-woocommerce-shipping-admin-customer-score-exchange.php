@@ -34,7 +34,7 @@ foreach ( $data as $card ) {
 				<img src="<?php echo esc_url($card->image->url); ?>" />
 				</div>
 				<div class="loyalty-product-text">
-					<p><?php echo esc_html__('Points required', 'alopeyk-shipping-for-woocommerce') . ' : ' . esc_html($card->price_score); ?></p>
+					<p><?php echo esc_html__('Points required', 'alopeyk-shipping') . ' : ' . esc_html($card->price_score); ?></p>
 				</div>
 		</div>
 		<?php

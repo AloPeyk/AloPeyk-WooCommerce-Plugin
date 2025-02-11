@@ -41,7 +41,7 @@ class Alopeyk_WooCommerce_Shipping {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'alopeyk-shipping-for-woocommerce';
+		$this->plugin_name = 'alopeyk-shipping';
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();

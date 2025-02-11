@@ -12,7 +12,7 @@
  * Version:               4.5.0
  * Author:                Alopeyk
  * Author URI:            https://alopeyk.com/
- * Text Domain:           alopeyk-shipping-for-woocommerce
+ * Text Domain:           alopeyk-shipping
  * Domain Path:           /languages
  *
  * WC requires at least:  3.9

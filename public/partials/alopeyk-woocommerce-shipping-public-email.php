@@ -31,7 +31,7 @@ $text_color       = $color_gray;
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><?php echo esc_html__( 'Alopeyk', 'alopeyk-shipping-for-woocommerce' ); ?><?php echo ( isset( $data['title'] ) && $data['title'] && strlen( $data['title'] ) ) ? ' | ' . esc_html( $data['title'] ) : ''; ?></title>
+		<title><?php echo esc_html__( 'Alopeyk', 'alopeyk-shipping' ); ?><?php echo ( isset( $data['title'] ) && $data['title'] && strlen( $data['title'] ) ) ? ' | ' . esc_html( $data['title'] ) : ''; ?></title>
 		<meta name="charset" content="utf-8">
 		<meta name="robots" content="noindex,nofollow">
 		<meta name="format-detection" content="email=no">
@@ -79,19 +79,19 @@ $text_color       = $color_gray;
 																<tr>
 																	<td align="center" width="100%">
 																		<a href="https://instagram.com/alopeyk" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/instagram.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping' ); ?>" title="<?php echo esc_html__( 'Instagram', 'alopeyk-shipping' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/instagram.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.linkedin.com/company/alopeyk" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/linkedin.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping' ); ?>" title="<?php echo esc_html__( 'Linkedin', 'alopeyk-shipping' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/linkedin.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://www.facebook.com/alopeyk/" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/facebook.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping' ); ?>" title="<?php echo esc_html__( 'Facebook', 'alopeyk-shipping' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/facebook.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="https://twitter.com/alopeyk" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/twitter.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping' ); ?>" title="<?php echo esc_html__( 'Twitter', 'alopeyk-shipping' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/twitter.png" width="32" style="width:32px;">
 																		</a>
 																		<a href="<?php echo esc_url($campaign_url); ?>" class="social-link">
-																			<img alt="<?php echo esc_html__( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" title="<?php echo esc_html__( 'Website', 'alopeyk-shipping-for-woocommerce' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/website.png" width="32" style="width:32px;">
+																			<img alt="<?php echo esc_html__( 'Website', 'alopeyk-shipping' ); ?>" title="<?php echo esc_html__( 'Website', 'alopeyk-shipping' ); ?>" border="0" src="<?php plugin_dir_url( __DIR__ ) ?> public/img/website.png" width="32" style="width:32px;">
 																		</a>
 																	</td>
 																</tr>
@@ -101,9 +101,9 @@ $text_color       = $color_gray;
 															<tbody>
 																<tr>
 																	<td align="center" width="100%" class="footer-data">
-																		<p class="footer-copyright"><?php echo esc_html__( '© Alopeyk all rights reserved', 'alopeyk-shipping-for-woocommerce' ); ?></p>
-																		<p><span style="color:#ffffff;"><?php echo esc_html__( 'Licensed by the Tehran Pickup And Bike Delivery Union', 'alopeyk-shipping-for-woocommerce' ); ?></span></p>
-																		<p><?php echo esc_html__( 'Alopeyk building, No.5, Vozara 14th, Shahid beheshti St., Tehran, I.R.Iran', 'alopeyk-shipping-for-woocommerce' ); ?></p>
+																		<p class="footer-copyright"><?php echo esc_html__( '© Alopeyk all rights reserved', 'alopeyk-shipping' ); ?></p>
+																		<p><span style="color:#ffffff;"><?php echo esc_html__( 'Licensed by the Tehran Pickup And Bike Delivery Union', 'alopeyk-shipping' ); ?></span></p>
+																		<p><?php echo esc_html__( 'Alopeyk building, No.5, Vozara 14th, Shahid beheshti St., Tehran, I.R.Iran', 'alopeyk-shipping' ); ?></p>
 																		<?php if ( $tel ) { ?>
 																		<p class="ltr"><?php echo esc_html($tel); ?></p>
 																		<?php } ?>

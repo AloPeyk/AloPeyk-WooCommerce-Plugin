@@ -31,7 +31,7 @@ if ( $courier_info ) {
 			<figure class="awcshm-courier-avatar" style="background-image: url('<?php echo esc_url($avatar); ?>');"></figure>
 			<div class="awchm-courier-info">
 				<div>
-					<span class="awcshm-meta"><?php echo esc_html__( 'Rate', 'alopeyk-shipping-for-woocommerce' ) . ': ' . number_format( $courier_info->rates_avg, 2 ) . ' ' . esc_html__( 'out of', 'alopeyk-shipping-for-woocommerce' ) . ' 5'; ?></span>
+					<span class="awcshm-meta"><?php echo esc_html__( 'Rate', 'alopeyk-shipping' ) . ': ' . number_format( $courier_info->rates_avg, 2 ) . ' ' . esc_html__( 'out of', 'alopeyk-shipping' ) . ' 5'; ?></span>
 				</div>
 				<div>
 					<strong><?php echo esc_html($courier_info->firstname . ' ' . $courier_info->lastname); ?></strong>
@@ -71,7 +71,7 @@ if ( $courier_info ) {
 	if ( $helpers->can_be_rated( $data['order_data'] ) ) {
 ?>
 <div class="wide awcshm-meta-box-actions-container">
-	<button type="button" class="button button-primary awcshm-rate-modal-toggler awcshm-full-width" data-order-id="<?php echo esc_attr($post->ID); ?>"><?php echo esc_html__('Rate this courier', 'alopeyk-shipping-for-woocommerce'); ?></button>
+	<button type="button" class="button button-primary awcshm-rate-modal-toggler awcshm-full-width" data-order-id="<?php echo esc_attr($post->ID); ?>"><?php echo esc_html__('Rate this courier', 'alopeyk-shipping'); ?></button>
 </div>
 <?php
 	}

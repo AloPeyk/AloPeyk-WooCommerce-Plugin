@@ -31,12 +31,12 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 
 	    if ( ! in_array( 'curl', get_loaded_extensions() ) ) {
 	        deactivate_plugins( plugin_basename( __FILE__ ) );
-	        wp_die( esc_html__( 'Sorry, but you cannot run this plugin, it requires the <a href="http://php.net/manual/en/book.curl.php">cURL</a> support on your server/hosting to function.', 'alopeyk-shipping-for-woocommerce' ) );
+	        wp_die( esc_html__( 'Sorry, but you cannot run this plugin, it requires the <a href="http://php.net/manual/en/book.curl.php">cURL</a> support on your server/hosting to function.', 'alopeyk-shipping' ) );
 	    }
 
 	    if ( ! self::is_woocommerce_active() ) {
 	        deactivate_plugins( plugin_basename( __FILE__ ) );
-	        wp_die( esc_html__( 'Sorry, WooCommerce plugin should be installed and activated before activating Alopeyk WooCommerce Shipping Method plugin.', 'alopeyk-shipping-for-woocommerce' ) );
+	        wp_die( esc_html__( 'Sorry, WooCommerce plugin should be installed and activated before activating Alopeyk WooCommerce Shipping Method plugin.', 'alopeyk-shipping' ) );
 	    }
 
 	    self::change_store_city();
@@ -88,7 +88,7 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 				$logger = wc_get_logger();
 				$logger->debug(
 					'Checkout page ID is not valid for site ID: ' . get_current_blog_id(),
-					array('source' => 'alopeyk-shipping-for-woocommerce')
+					array('source' => 'alopeyk-shipping')
 				);
 			}
 		}

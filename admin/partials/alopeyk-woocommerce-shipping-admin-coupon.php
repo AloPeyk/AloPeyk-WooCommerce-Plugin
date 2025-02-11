@@ -16,6 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 $data = $this->vars;
 ?>
 <form class="awcshm-add-coupon-form">
-	<input type="text" name="coupon_code" class="awcshm-coupon-input" autofocus required="required" placeholder="<?php echo esc_html__( 'Gift Card Code', 'alopeyk-shipping-for-woocommerce' ); ?>">
+	<input type="text" name="coupon_code" class="awcshm-coupon-input" autofocus required="required" placeholder="<?php echo esc_html__( 'Gift Card Code', 'alopeyk-shipping' ); ?>">
 	<button type="submit" class="awcshm-hidden"></button>
 </form>
