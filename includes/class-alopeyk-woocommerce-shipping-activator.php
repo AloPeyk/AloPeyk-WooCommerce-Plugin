@@ -31,12 +31,12 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 
 	    if ( ! in_array( 'curl', get_loaded_extensions() ) ) {
 	        deactivate_plugins( plugin_basename( __FILE__ ) );
-	        wp_die( __( 'Sorry, but you cannot run this plugin, it requires the <a href="http://php.net/manual/en/book.curl.php">cURL</a> support on your server/hosting to function.', 'alopeyk-shipping-for-woocommerce' ) );
+	        wp_die( esc_html__( 'Sorry, but you cannot run this plugin, it requires the <a href="http://php.net/manual/en/book.curl.php">cURL</a> support on your server/hosting to function.', 'alopeyk-shipping-for-woocommerce' ) );
 	    }
 
 	    if ( ! self::is_woocommerce_active() ) {
 	        deactivate_plugins( plugin_basename( __FILE__ ) );
-	        wp_die( __( 'Sorry, WooCommerce plugin should be installed and activated before activating Alopeyk WooCommerce Shipping Method plugin.', 'alopeyk-shipping-for-woocommerce' ) );
+	        wp_die( esc_html__( 'Sorry, WooCommerce plugin should be installed and activated before activating Alopeyk WooCommerce Shipping Method plugin.', 'alopeyk-shipping-for-woocommerce' ) );
 	    }
 
 	    self::change_store_city();
@@ -54,7 +54,7 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 	}
 
 	public static function change_store_city() {
-		$schedule_name = METHOD_ID . '_check_mandatory_options';
+		$schedule_name = ALOPEYK_METHOD_ID . '_check_mandatory_options';
 		wp_schedule_event( time(), $schedule_name . '_interval', $schedule_name );
 	}
 
@@ -75,16 +75,22 @@ class Alopeyk_WooCommerce_Shipping_Activator {
 	}
 
 	private static function update_checkout_content() {
-	    $checkout_page_id = wc_get_page_id('checkout');
-	    if ($checkout_page_id) {
-	        $new_content = "[woocommerce_checkout]";
-	        $updated_post = array(
-	            'ID'           => $checkout_page_id,
-	            'post_content' => $new_content,
-	        );
-	        $result = wp_update_post($updated_post);
-	    } else {
-	        error_log('Checkout page ID is not valid for site ID: ' . get_current_blog_id());
-	    }
+		$checkout_page_id = wc_get_page_id('checkout');
+		if ($checkout_page_id) {
+			$new_content = "[woocommerce_checkout]";
+			$updated_post = array(
+				'ID'           => $checkout_page_id,
+				'post_content' => $new_content,
+			);
+			$result = wp_update_post($updated_post);
+		} else {
+			if ( defined('WP_DEBUG') && WP_DEBUG ) {
+				$logger = wc_get_logger();
+				$logger->debug(
+					'Checkout page ID is not valid for site ID: ' . get_current_blog_id(),
+					array('source' => 'alopeyk-shipping-for-woocommerce')
+				);
+			}
+		}
 	}
 }

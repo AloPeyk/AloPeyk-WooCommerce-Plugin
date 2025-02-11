@@ -45,7 +45,48 @@ List of some features:
 *   Inline chat with Alopeyk support
 *   Lots of more handy features
 
-== Installation ==
+
+== External Services ==
+
+This plugin integrates with the following third-party services:
+
+### 1. Parsimap (Mapping Service)
+- **Purpose**: A mapping and location platform providing APIs and SDKs for search, navigation, and geospatial visualization.
+- **Data Sent**:
+  - Latitude/longitude coordinates of store location and customer addresses
+  - Map view preferences (zoom level, map type)
+- **When Data is Sent**:
+  - When calculating shipping costs during checkout
+  - When searching/selecting addresses in map interfaces
+- **Service Information**:
+  - Official Website: [parsimap.ir](https://parsimap.ir)
+  - Contact Page: [about us Parsimap](https://www.parsimap.ir/about-us)  
+  - *Note: Parsimap does not currently provide publicly accessible Terms of Service or Privacy Policy documents. For service-related inquiries, use their official contact channels.*
+
+---
+
+### 2. Alopeyk (Delivery Service)
+- **Purpose**: Calculate shipping costs, manage orders, and provide real-time delivery tracking.
+- **Data Sent**:
+  - Origin/destination coordinates
+  - Package dimensions/weight
+  - Customer contact information (name, phone number)
+  - Order value/payment details
+- **When Data is Sent**:
+  - When generating shipping quotes
+  - When creating/canceling orders
+  - During order tracking requests
+- **Service Policies**:
+  - [Alopeyk Terms of Service](https://alopeyk.com/terms)
+
+---
+
+**Important Notes**:
+- Location data transmission can be managed through plugin settings
+- If location access is denied, maps will default to showing the store's location
+- No sensitive payment information is shared with third parties
+
+== Installation ==  
 
 1. Upload plugin folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
@@ -61,6 +102,7 @@ List of some features:
 == Changelog ==
 
 = 4.5.0 =
+* New force users to select map
 * New Compatible with WordPress Multisite / Network
 * Fix open modal alopeyk in admin panel
 * Fix set map defalut location

@@ -63,8 +63,7 @@
 				lat : 35.6996468,
 				lng : 51.3377773
 			},
-			parsiMapJsLib                              : 'https://cdn.parsimap.ir/third-party/leaflet/v1.7.1/leaflet.js',
-			parsiMapCssLib                             : 'https://cdn.parsimap.ir/third-party/leaflet/v1.7.1/leaflet.css',
+
 		},
 
 	};
@@ -169,13 +168,8 @@
 				} else {
 
 					window.cedarMapIsLoading = true;
-					alopeyk.wcshm.public.fn.injectScript ( alopeyk.wcshm.public.vars.maps.parsiMapJsLib, function () {
-
-						alopeyk.wcshm.public.fn.injectScript ( alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.leaflet_gesture_handling.js, alopeykHandleMapsPublic );
-
-					});
-					alopeyk.wcshm.public.fn.injectStylesheet ( alopeyk.wcshm.public.vars.maps.parsiMapCssLib );
-					alopeyk.wcshm.public.fn.injectStylesheet ( alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.leaflet_gesture_handling.css );
+					alopeyk.wcshm.public.fn.injectScript ( alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.leaflet.js, alopeykHandleMapsPublic );
+					alopeyk.wcshm.public.fn.injectStylesheet ( alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.leaflet.css );
 
 				}
 
@@ -255,6 +249,8 @@
 
 		initDestinationLocator : function ( destinationLatInput, destinationLngInput, destinationAddressInput, destinationNumberInput, destinationUnitInput, shipToDifferentAddressInput, editAddressButton, billingCountry, shippingCountry, billingCity, shippingCity, billingState, shippingState, woocommerceCheckoutClass, wcAddAlopeyk ) {
 
+            var markerMoved = false;
+    var allowFormSubmission = false;
 			var initialize = function () {
 
 				var mapMarkerImageUrl  = alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.map.marker,
@@ -556,8 +552,6 @@
 					paymentMethodInputSelector = alopeyk.wcshm.public.vars.common.paymentMethodInput;
 					preLoadCities();
 
-				
-
 				$j( document ).on ( 'change', billingCity, function ( event ) {
 
 					if ( ! shipToDifferentAddressInput.prop ( 'checked' ) ) {
@@ -576,26 +570,26 @@
 
 				}).on ({ 'updated_checkout' : function ( e ) {
 
-          $j.post ( alopeyk.wcshm.public.vars.common.info.ajaxOptions.url, {
-
-            nonce        : alopeyk.wcshm.public.vars.common.info.ajaxOptions.nonce,
-            action       : alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.id,
-            request      : 'check_shipping_rates'
-
-          }, function ( response ) {
-
-            if ( response ) {
-              console.log(response.data.showMap);
-              if (response.data && response.data.showMap) {
-                $j( woocommerceCheckoutClass ).addClass ( wcAddAlopeyk );
-              } else {
-                $j( woocommerceCheckoutClass ).removeClass ( wcAddAlopeyk );
-              }
-            }
-
-          });
-
-        }});
+                  $j.post ( alopeyk.wcshm.public.vars.common.info.ajaxOptions.url, {
+        
+                    nonce        : alopeyk.wcshm.public.vars.common.info.ajaxOptions.nonce,
+                    action       : alopeyk.wcshm.public.vars.common.info.alopeyk.wcshm.id,
+                    request      : 'check_shipping_rates'
+        
+                  }, function ( response ) {
+        
+                    if ( response ) {
+                      //console.log(response.data.showMap);
+                      if (response.data && response.data.showMap) {
+                        $j( woocommerceCheckoutClass ).addClass ( wcAddAlopeyk );
+                      } else {
+                        $j( woocommerceCheckoutClass ).removeClass ( wcAddAlopeyk );
+                      }
+                    }
+        
+                  });
+        
+                }});
 
 				L.control.zoom ({
 					position : 'bottomleft'
@@ -629,6 +623,63 @@
 					});
 
 				}
+				
+                    map.on('dragend', function () {
+                        markerMoved = true;
+                       //console.log("Marker moved!"); 
+                    });
+                
+                    $j(document).on('click', '#place_order', function (e) {
+                        if (!markerMoved) {
+                            e.preventDefault(); 
+                    
+                            var popup = $j('<div>', {
+                                id: 'awcshm-map-popup',
+                                class: 'awcshm-map-popup'
+                            }).append(
+                                $j('<div>', {
+                                    class: 'awcshm-map-popup-content'
+                                }).append(
+                                    $j('<p>').text('لطفاً موقعیت مکانی خود را روی نقشه مشخص نمایید.'),
+                                    $j('<button>', {
+                                        id: 'close-popup',
+                                        text: 'متوجه شدم'
+                                    })
+                                )
+                            );
+                    
+                            $j('body').append(popup);
+                    
+                            $j('#awcshm-map-popup').fadeIn();
+                    
+                            $j('html, body').animate({
+                                scrollTop: $j('.awcshm-map-container').offset().top - 100
+                            }, 1000, function () {  
+                                $j('.awcshm-map-container').addClass('awcshm-map-highlight');
+                    
+                                setTimeout(function () {
+                                    $j('.awcshm-map-container').removeClass('awcshm-map-highlight');
+                                }, 5000); 
+                            });
+                    
+                            $j(document).on('click', '#close-popup', function () {
+                                $j('#awcshm-map-popup').fadeOut(function () {
+                                    $j(this).remove(); 
+                                });
+                            });
+                    
+                            $j(document).on('click', '#map-popup', function (e) {
+                                if (e.target === this) {
+                                    $j('#awcshm-map-popup').fadeOut(function () {
+                                        $j(this).remove(); 
+                                    });
+                                }
+                            });
+                    
+                            return false; 
+                        }
+                    });
+
 
 				map.on ( 'move dragend zoomend', function () {
 
@@ -858,6 +909,7 @@
 			alopeyk.wcshm.public.fn.initMaps();
 		},
 	});
+
 })( jQuery );
 
 var cedarmap_data = {

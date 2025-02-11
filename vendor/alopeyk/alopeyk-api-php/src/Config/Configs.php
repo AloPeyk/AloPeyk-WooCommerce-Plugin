@@ -34,9 +34,9 @@ class Configs
             'tracking_url' => 'https://tracking.alopeyk.com/',
         ],
         'custom'     => [
-            'url'          => 'https://api-***.alopeyk.com/',
-            'api_url'      => 'https://api-***.alopeyk.com/api/v2/',
-            'tracking_url' => 'https://tracking-***.alopeyk.com/',
+            'url'          => 'https://api-stg.alo-dev.com/',
+            'api_url'      => 'https://api-stg.alo-dev.com/api/v2/',
+            'tracking_url' => 'https://tracking-stg.alo-dev.com/',
         ],
     ];
     const PAYMENT_ROUTES = [
