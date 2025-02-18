@@ -4,7 +4,7 @@ Contributors: alopeyk
 Tags: shipping, shipping method, woocommerce
 Requires at least: 5.3
 Tested up to: 6.7
-Stable tag: 4.5.0                                                                                                                                                                                                   
+Stable tag: 4.5.1                                                                                                                                                                                                   
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -100,6 +100,9 @@ This plugin integrates with the following third-party services:
 4. Plugin main settings
 
 == Changelog ==
+
+= 4.5.1 =
+* Fix Issue Price Display on Credit Page
 
 = 4.5.0 =
 * New force users to select map

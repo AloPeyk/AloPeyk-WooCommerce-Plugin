@@ -27,6 +27,14 @@ if ( $user_data ) {
 	$api_url = implode('/', $api_url);
 	$avatar  = $api_url . $avatar;
 	}
+
+	$currency = get_woocommerce_currency();
+	if ( $currency == 'IRT' ){
+	    $credit = $data['user_credit'];	    
+	    
+	}else if($currency == 'IRR'){
+	    $credit = $data['user_credit'] / 10;
+	}
 ?>
 
 <div class="awcshm-credit-widget-container">
@@ -42,7 +50,7 @@ if ( $user_data ) {
 	<hr />
 	<?php if ( isset( $data['user_credit'] ) && ! is_null( $data['user_credit'] ) ) { ?>
 		<span class="awcshm-credit-widget-credit">
-			<?php echo esc_html__( 'My Credit', 'alopeyk-shipping-for-woocommerce' ) . ' : <span class="awcshm-credit-widget-number">' . number_format($data['user_credit'] / 10) . ' ' . esc_html__('Tomans', 'alopeyk-shipping-for-woocommerce') ?></span>
+			<?php echo esc_html__( 'My Credit', 'alopeyk-shipping-for-woocommerce' ) . ' : <span class="awcshm-credit-widget-number">' . number_format($credit) . ' ' . esc_html__('Tomans', 'alopeyk-shipping-for-woocommerce') ?></span>
 		</span>
 	<?php } ?>
 	<div class="awcshm-credit-widget-actions">
