@@ -561,9 +561,37 @@ public function save_address_description_field( $post_id ) {
 					echo '—';
 				}
 			break;
-			case 'order_price' :
-				$price = get_post_meta( $post_id, '_awcshm_order_price', true );
-				echo $price ? wp_kses_post( wc_price( $this->helpers->normalize_price( $price ) )) : '—';
+			case 'order_price':
+				$order_data = get_post_meta($post_id, '_awcshm_order_data', true);
+				$final_price = null;
+
+				if (is_object($order_data)) {
+						$original_price = $order_data->price;
+						$final_price = $order_data->final_price;
+				}
+			
+				$currency = get_woocommerce_currency();
+				if ( $currency == 'IRT' ){
+					$original_price = $original_price;	   
+					$final_price = $final_price; 
+					
+				}else if($currency == 'IRR'){
+					$original_price = $original_price * 10;
+					$final_price = $final_price * 10;
+				}			
+				$output = '';
+			
+				if ($original_price == $final_price ) {
+					$display_price = $original_price ?: $final_price;
+					if ($display_price) {
+						$output = wc_price($display_price);
+					}
+				} else {
+					$output = '<del>' . wc_price($original_price) . '</del>';
+					$output .= '<br>' . wc_price($final_price);
+				}
+
+				echo $output ? wp_kses_post($output) : '—';
 			break;
 			case 'order_date' :
 				$datetime =  get_post_time( 'Y-m-d H:i:s', false, $post_id ) ;
