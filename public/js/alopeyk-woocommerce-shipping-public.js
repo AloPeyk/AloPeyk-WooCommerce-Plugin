@@ -624,61 +624,120 @@
 
 				}
 				
-                    map.on('dragend', function () {
-                        markerMoved = true;
-                       //console.log("Marker moved!"); 
-                    });
+        var initialLat = parseFloat($j('#awcshm_initial_lat').val());
+        var initialLng = parseFloat($j('#awcshm_initial_lng').val());
+        var markerMoved = sessionStorage.getItem('awcshmMarkerMoved') === 'true';
+        
+        map.on('dragend', function() {
+            const currentPos = map.getCenter();
+            const isMoved = (currentPos.lat !== initialLat) || (currentPos.lng !== initialLng);
+            
+            if(isMoved) {
+                markerMoved = true;
+                sessionStorage.setItem('awcshmMarkerMoved', 'true');
                 
-                    $j(document).on('click', '#place_order', function (e) {
-                        if (!markerMoved) {
-                            e.preventDefault(); 
-                    
-                            var popup = $j('<div>', {
-                                id: 'awcshm-map-popup',
-                                class: 'awcshm-map-popup'
-                            }).append(
-                                $j('<div>', {
-                                    class: 'awcshm-map-popup-content'
-                                }).append(
-                                    $j('<p>').text('لطفاً موقعیت مکانی خود را روی نقشه مشخص نمایید.'),
-                                    $j('<button>', {
-                                        id: 'close-popup',
-                                        text: 'متوجه شدم'
-                                    })
-                                )
-                            );
-                    
-                            $j('body').append(popup);
-                    
-                            $j('#awcshm-map-popup').fadeIn();
-                    
-                            $j('html, body').animate({
-                                scrollTop: $j('.awcshm-map-container').offset().top - 100
-                            }, 1000, function () {  
-                                $j('.awcshm-map-container').addClass('awcshm-map-highlight');
-                    
-                                setTimeout(function () {
-                                    $j('.awcshm-map-container').removeClass('awcshm-map-highlight');
-                                }, 5000); 
-                            });
-                    
-                            $j(document).on('click', '#close-popup', function () {
-                                $j('#awcshm-map-popup').fadeOut(function () {
-                                    $j(this).remove(); 
-                                });
-                            });
-                    
-                            $j(document).on('click', '#map-popup', function (e) {
-                                if (e.target === this) {
-                                    $j('#awcshm-map-popup').fadeOut(function () {
-                                        $j(this).remove(); 
-                                    });
-                                }
-                            });
-                    
-                            return false; 
+                initialLat = currentPos.lat;
+                initialLng = currentPos.lng;
+                sessionStorage.setItem('awcshm_initial_lat', initialLat);
+                sessionStorage.setItem('awcshm_initial_lng', initialLng);
+            }
+        });
+        
+        $j(document).on('input', '#billing_address_1, #shipping_address_1', function() {
+            markerMoved = false;
+            sessionStorage.setItem('awcshmMarkerMoved', 'false');
+            
+            initialLat = parseFloat($j('#awcshm_current_lat').val());
+            initialLng = parseFloat($j('#awcshm_current_lng').val());
+            sessionStorage.setItem('awcshm_initial_lat', initialLat);
+            sessionStorage.setItem('awcshm_initial_lng', initialLng);
+        });
+        
+        
+        $j(document).on('click', '#place_order', function (e) {
+            const currentPos = map.getCenter();
+            const savedLat = parseFloat(sessionStorage.getItem('awcshm_initial_lat')) || initialLat;
+            const savedLng = parseFloat(sessionStorage.getItem('awcshm_initial_lng')) || initialLng;
+            const isActuallyMoved = (currentPos.lat !== savedLat) || (currentPos.lng !== savedLng);
+        
+            if (!isActuallyMoved || !markerMoved) {
+                e.preventDefault();
+                
+                const popup = $j('<div>', {
+                    id: 'awcshm-map-popup',
+                    class: 'awcshm-map-popup',
+                    css: { 
+                        position: 'fixed',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        zIndex: 99999,
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        color: 'white'
+                    }
+                }).append(
+                    $j('<div>', {
+                        class: 'awcshm-map-popup-content',
+                        css: {
+                            textAlign: 'center'
                         }
-                    });
+                    }).append(
+                        $j('<p>', {
+                            text: 'لطفاً موقعیت مکانی خود را روی نقشه مشخص نمایید.',
+                            css: { marginBottom: '15px', color:'#000' }
+                        }),
+                        $j('<button>', {
+                            id: 'close-popup',
+                            text: 'متوجه شدم',
+                            css: {
+                                padding: '8px 25px',
+                                backgroundColor: '#007bff',
+                                border: 'none',
+                                borderRadius: '5px',
+                                color: 'white',
+                                cursor: 'pointer'
+                            }
+                        })
+                    )
+                );
+        
+                $j('body').append(popup);
+                popup.fadeIn(300);
+                
+                $j('html, body').animate({
+                    scrollTop: $j('.awcshm-map-container').offset().top - 100
+                }, 1000, function() {
+                    $j('.awcshm-map-container').addClass('awcshm-map-highlight');
+                    
+                    setTimeout(() => {
+                        $j('.awcshm-map-container').removeClass('awcshm-map-highlight');
+                    }, 5000);
+                });
+        
+                $j(document).on('click', '#close-popup, #awcshm-map-popup', function(e) {
+                    if(e.target === this) {
+                        popup.fadeOut(200, function() {
+                            $j(this).remove();
+                        });
+                    }
+                });
+        
+                return false;
+            } else {
+                sessionStorage.removeItem('awcshmMarkerMoved');
+                sessionStorage.removeItem('awcshm_initial_lat');
+                sessionStorage.removeItem('awcshm_initial_lng');
+            }
+        });
+        
+        
+        if(window.location.href.indexOf('order-received') > -1) {
+            sessionStorage.removeItem('awcshmMarkerMoved');
+            sessionStorage.removeItem('awcshm_initial_lat');
+            sessionStorage.removeItem('awcshm_initial_lng');
+        }
 
 
 				map.on ( 'move dragend zoomend', function () {
