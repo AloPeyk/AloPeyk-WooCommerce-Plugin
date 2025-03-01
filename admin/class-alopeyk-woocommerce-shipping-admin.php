@@ -628,23 +628,40 @@ public function save_address_description_field( $post_id ) {
 	 * @param string $current_post_type
 	 */
 	public function add_orders_filter( $current_post_type ) {
-
+    
 		$common = $this->helpers;
 		$post_type = $common::$order_post_type_name;
+		
 		if ( $post_type == $current_post_type ) {
+			$types = [];
+			
 			foreach ( $this->helpers->get_transport_types() as $key => $transport_type ) {
 				$types[$key] = $transport_type['label'];
 			}
 			?>
+			
 			<select name="transport_type">
-				<option value=""><?php echo esc_html__( 'Transport Type', 'alopeyk-shipping-for-woocommerce' ); ?>&nbsp;</option>
-			<?php
+				<option value="">
+					<?php echo esc_html__( 'Transport Type', 'alopeyk-shipping-for-woocommerce' ); ?>&nbsp;
+				</option>
+				
+				<?php
 				$selected = isset( $_GET['transport_type'] ) ? sanitize_text_field( $_GET['transport_type'] ) : '';
 				foreach ( $types as $type => $label ) {
-					printf( '<option value="%s"%s>%s</option>', esc_attr($type), $type == $selected ? ' selected="selected"' : '', esc_html($label ));
+					printf(
+						'<option value="%s"%s>%s</option>',
+						esc_attr($type),
+						$type == $selected ? ' selected="selected"' : '',
+						esc_html($label)
+					);
 				}
-		}
-
+				?>
+				
+			</select> 
+			
+			<?php
+		} 
+		
 	}
 
 	/**
