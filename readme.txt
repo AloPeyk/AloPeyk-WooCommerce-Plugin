@@ -4,7 +4,7 @@ Contributors: alopeyk
 Tags: shipping, shipping method, woocommerce
 Requires at least: 5.3
 Tested up to: 6.7
-Stable tag: 4.5.1                                                                                                                                                                                                   
+Stable tag: 4.5.2                                                                                                                                                                                                   
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,83 +13,83 @@ Alopeyk (https://alopeyk.com "Alopeyk On-demand Delivery")
 
 == Description ==
 
-Alopeyk (https://alopeyk.com "Alopeyk On-demand Delivery")** is Iran’s leading on-demand urban logistics platform bringing instant delivery within anyone's reach. It uses an extensive network of motorcycle and pickup couriers to form a logistics network that's fast, cheap, and reliable. This plugin will include **Alopeyk** in WooCommerce shop shipping methods.
+Alopeyk (https://alopeyk.com “Alopeyk On-demand Delivery”)** پیشروترین پلتفرم لجستیک شهری در ایران است که امکان تحویل فوری را در دسترس همه قرار می‌دهد. این پلتفرم از یک شبکه گسترده از موتورسیکلت‌ها و خودروهای پیک استفاده می‌کند تا یک شبکه لجستیکی سریع، ارزان و قابل اعتماد ایجاد کند. این افزونه یک روش حمل و نقل به افزونه ووکامرس اضافه می کند.
 
-List of some features:
+برخی از ویژگی های افزونه:
 
-*   Single and Bulk shipping
-*   Scheduled shipping
-*   Choose transport type
-*   Add credit
-*   View credit
-*   Apply coupons
-*   Cancel order
-*   Reorder
-*   Rate Alopeyk courier
-*   View Invoice
-*   Real-time tracking both for the shop owner and the customer
-*   View Alopeyk order history per WooCommerce order
-*   View the list of all Alopeyk orders
-*   View Alopeyk order details
-*   View courier information
-*   Filter Alopeyk orders based on date, transport type, and status
-*   Sort Alopeyk orders based on invoice number, transport type, WooCommerce order ID, customer, cost, and date
-*   Edit store information and address as the origin address
-*   Change map styles
-*   Change default map marker
-*   Detect default transport type based on cart contents
-*   Define custom shipping cost (fixed amount or a percentage of cart total price) or fetch the real shipping cost based on distance and transport type via Alopeyk API
-*   Options for payment methods (methods like **“Cash on Delivery”** can be marked as **“has returned”** to notify Alopeyk courier to return to the origin address and bring the money taken from the customer back)
-*   Show Alopeyk shipping method, its type, and its cost in the list of shipping methods in front if available
-*   Add a map and address detail fields anywhere an address is being entered or edited both in admin and frontend
-*   Inline chat with Alopeyk support
-*   Lots of more handy features
+*   امکان ارسال تکی و گروهی
+*   ارسال زمان بندی شده
+*   امکان انتخاب نوع وسیله حمل و نقل
+*   امکان افزایش اعتبار حساب کاربری
+*   امکان مشاهده اعتبار حساب کاربری
+*   امکان اعمال کوپن تخفیف
+*   امکان لغو سفارش
+*   امکان سفارش مجدد 
+*   امکان امتیاز دهی به سفیر الوپیک
+*   امکان مشاهده فاکتور سفارش
+*   امکان رصد آنلاین سفارش توسط مدیر فروشگاه و مشتری
+*   امکان مشاهده تاریخچه سفارشات الوپیکی برای هر یک از سفارشات فروشگاه
+*   امکان مشاهده لیست سفارشات الوپیکی به صورت مجزا
+*  امکان مشاهده جزییات هر سفارش  الوپیکی
+*   امکان مشاهده مشخصات سفیر برای هر سفارش
+*   امکان فیلتر کردن سفارشات الوپیکی بر اساس تاریخ سفارش، نوع وسیله حمل و نقل و وضعیت سفارش
+*   مرتب سازی سفارشات الوپیکی بر اساس  شماره فاکتور، نوع وسیله حمل و نقل، شماره سفارش ووکامرس، مشتری، هزینه و تاریخ
+*   امکان ویرایش آدرس و اطلاعات فروشگاه به عنوان آدرس مبدا
+*   امکان تغییر ظاهر پیش فرض نقشه
+*   امکان تغییر نشانه گر (مارکر) نقشه 
+*   تشخیص هوشمند وسیله حمل و نقل بر اساس محتویات سبد خرید
+*   امکان انتخاب بین نمایش هزینه ارسال دلخواه (مبلغ ثابت یا درصدی از مجموع سبد خرید) و هزینه ارسال واقعی که در لحظه بنا بر مسافت، نوع وسیله حمل و نقل به صورت پویا محاسبه می شود
+*   امکان انتخاب روش پرداخت به صورت برگشتی (مشابه پرداخت نقدی در ووکامرس) که به سفیر اطلاع داده می شود از مقصد هزینه دریافت شده و به مبدا ارسال کند
+*   اضافه شدن روش پرداخت الوپیک در صورت فعال بودن پلاگین و ثبت تنظیمات اولیه
+*   اضافه شدن نقشه و فیلدهای جزییات آدرس برای ثبت هر سفارش در سایت و قسمت مدیریت سایت
+*   امکان چت آنلاین با تیم الوپیک
+*   و بسیاری از امکانات کاربردی دیگر
 
 
 == External Services ==
 
-This plugin integrates with the following third-party services:
+این افزونه برای فعالیت با سرویس های زیر در ارتباط است:
 
-### 1. Parsimap (Mapping Service)
-- **Purpose**: A mapping and location platform providing APIs and SDKs for search, navigation, and geospatial visualization.
-- **Data Sent**:
-  - Latitude/longitude coordinates of store location and customer addresses
-  - Map view preferences (zoom level, map type)
-- **When Data is Sent**:
-  - When calculating shipping costs during checkout
-  - When searching/selecting addresses in map interfaces
-- **Service Information**:
-  - Official Website: [parsimap.ir](https://parsimap.ir)
-  - Contact Page: [about us Parsimap](https://www.parsimap.ir/about-us)  
-  - *Note: Parsimap does not currently provide publicly accessible Terms of Service or Privacy Policy documents. For service-related inquiries, use their official contact channels.*
+### 1. پارسی مپ (سرویس نقشه)
+- **هدف**: سرویسی است که بر اساس موقعیت جعفرافیایی خدمات متنوعی را در اختیار توسعه دهنگان قرار می دهد.
+- **اطلاعات ارسالی**:
+  - موقعیت جغرافیای مدیر سایت و مشتری
+  - جزییات نمایش نقشه (بزرگنمایی نقشه، نوع نقشه و..)
+- **چه زمانی این اطلاعات ارسال می گردد**:
+  -زمان محاسبه شدن هزینه ارسال در برگه پرداخت ووکامرس
+  - زمان جستجوی آدرس روی نقشه
+- **اطلاعات سرویس**:
+  - آدرس سایت رسمی: [parsimap.ir](https://parsimap.ir)
+  - صفحه تماس با ما: [about us Parsimap](https://www.parsimap.ir/about-us)  
+  - *توجه : در حال حاظر صفحه شرایط و قوانین در سایت پارسی مپ وجود ندارد. به محض فعال شدن بر روی سایت اصلی ، این بخش اضافه می گردد.*
 
 ---
 
-### 2. Alopeyk (Delivery Service)
-- **Purpose**: Calculate shipping costs, manage orders, and provide real-time delivery tracking.
-- **Data Sent**:
-  - Origin/destination coordinates
-  - Package dimensions/weight
-  - Customer contact information (name, phone number)
-  - Order value/payment details
-- **When Data is Sent**:
-  - When generating shipping quotes
-  - When creating/canceling orders
-  - During order tracking requests
-- **Service Policies**:
+### 2. الوپیک (سرویس ارسال )
+- **هدف**: محاسبه هزینه حمل و نقل ، مدیریت سفارشات و ردیابی زمان واقعی تحویل
+- **اطلاعات ارسالی**:
+  - موقعیت جغرافیایی مبدا و مقصد
+  - وزن و ابعاد مرسوله
+  - اطلاعات تماس مشتری (نام و شماره تلفن).
+  - هزینه سفارش و جزییات پرداخت
+- **چه زمانی این اطلاعات ارسال می گردد**:
+  -هنگام محاسبه قیمت
+  - هنگام ثبت یا لغو سفارش
+  - در طی درخواست های پیگیری سفارش
+- **سیاست های خدمات**:
   - [Alopeyk Terms of Service](https://alopeyk.com/terms)
 
 ---
 
-**Important Notes**:
-- Location data transmission can be managed through plugin settings
-- If location access is denied, maps will default to showing the store's location
-- No sensitive payment information is shared with third parties
+**نکته مهم**:
+- اطلاعات موقعیت ها را میتوان در تنظیمات افزونه تغییر داد.
+- اگر دسترسی به یک موقعیت ممنوع باشد، موقعیت نقشه به طور پیش فرض موقعیت فروشگاه را نشان خواهد داد
+-هیچ اطلاعات پرداخت حساسی با اشخاص ثالت به اشتراک گذاشته نخواهد شد1
 
 == Installation ==  
 
-1. Upload plugin folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
+1. پوشه افزونه را در مسیر `/wp-content/plugins/` بارگذاری کنید
+2. از طریق منو افزونه ها ، افزونه الوپیک را فعال کنید
 
 
 == Screenshots ==
@@ -101,131 +101,134 @@ This plugin integrates with the following third-party services:
 
 == Changelog ==
 
+= 4.5.2 =
+* بروزرسانی : اضافه شدن نمابش هزینه سفارش با تخفیف  در صفحه سفارشات الوپیک
+
 = 4.5.1 =
-* Fix Issue Price Display on Credit Page
+* رفع : حل مشکل نمایش اعتبار ریالی مدیر سایت در صفحه حساب کاربری
 
 = 4.5.0 =
-* New force users to select map
-* New Compatible with WordPress Multisite / Network
-* Fix open modal alopeyk in admin panel
-* Fix set map defalut location
-* Fix showing map in some templates
+* جدید : اجبار کاربران به انتخاب موقعیت روی نقشه
+* جدید : هماهنگ سازی با وردپرس شبکه
+* رفع : حل مشکل نمایش ندادن پاپ آپ در قسمت جزییات سفارش
+* رفع : حل مشکل موقعیت پیش فرض روی نقشه
+* رفع : حل مشکل نمایش نقشه روی بعضی از پوسته ها
 
 = 4.4 =
-* Edit Update the map to the latest version.
-* Edit Improved user experience when searching for a new address on the map
-* Fix  users were not able to suggest locations when searching map
-* Fix  Fixing UI bugs
+* بروزرسانی : بروزرسانی نقشه به آخرین نسخه
+* بروزرسانی : بهبود تجربه کاربری هنگام جستجوی آدرس در نقشه
+* رفع : حل مشکل نمایش ندادن آدرس های پیشنهادی در نقشه
+* رفع : حل مشکلات اعلام شده
 
 = 4.3 =
-* new Test with the latest WordPress and Woocommerce
-* Edit Change title
-* Fix Map marker bug for some templates
-* Fix Jquery on ready event bug
+* جدید : هماهنگ سازی با آخرین نسخه وردپرس و ووکامرس
+* بروزرسانی : تغییر عنوان افزونه
+* رفع : حل مشکل نمایش ندادن مارکر نقشه در بعضی از پوسته ها
+* رفع : حل مشکل تداخل فایل های جاوااسکریپت در بعضی از قالب ها
 
 = 4.2.1 =
-* Edit Change plugin title
+* بروزرسانی : تغییر نام افزونه
 
 
 = 4.2.0 =
-* Fix Check Woocommerce activation
-* Fix Show credit in Tomans
-* Fix Showing map in flex templates
+* رفع : حل مشکل بررسی وجود افزونه ووکامرس در هنگام نصب افزونه
+* رفع : حل مشکل نمایش اعتبار مدیر سایت 
+* رفع : حل مشکل نمایش نقشه در بغضی از پوسته ها
 
 = 4.1.0 =
-* Edit Support details
-* Fix Invalid API error after fresh install
-* Fix Set Default environment to production
-* Fix Hide environment URL fields
+* بروزرسانی : بهبود صفحه پشتیبانی
+* رفع : حل مشکل تشخیص ندادن توکن کاربر هنگام اولین نصب افزونه
+* رفع : حل مشکل نمایش محیط واقعی به عنوان پیش فرض
+* رفع : حل مشکل مخفی شدن فیلدهای انتخاب محیط
 
 = 4.0.0 =
-* New  Add README.md
-* Edit Compatible plugin with WordPress 6.x and Woocommerce 8.x
-* Edit Compatible plugin with PHP 8.x
-* Edit Improvements in code quality
-* Edit Add some logs on errors
-* Edit Update Alopeyk API php package
-* Edit Use a constant value for refresh intervals and cron job
-* Edit Update logo and menu icon
-* Edit Add details in Alopeyk shipping modal
-* Fix Update order on Alopeyk order list and Alopeyk order details
-* Fix Add log level
-* Fix Remove the old Woocommerce Emogrifier and use the built-in Woocommerce mail function
-* Fix Remove unused variables
-* Fix Add missed admin class properties
-* Fix Setting page errors
-* Fix Change default center in map
+* جدید : اضافه شدن فایل README.md
+* بروزرسانی : هماهنگ سازی با ورژن 6 وردپرس و ورژن 8 ووکامرس
+* بروزرسانی : هماهنگ سازی با ورژن 8  php
+* بروزرسانی : بهینه سازی کدهای افزونه
+* بروزرسانی : اضافه شدن تعدادی گزارش در قسمت خطاها
+* بروزرسانی : بروزرسانی API php package
+* بروزرسانی : استفاده از یک مقدار ثابت برای بازخوانی مجدد اطلاعات و کران جاب ها
+* بروزرسانی : بروزرسانی لوگو و آیکون منو
+* بروزرسانی : اضافه شدن بخش جزییات به قسمت پاپ آپ ثبت سفارش
+* رفع : رفع مشکل و بروزرسانی سفارشات در صفحه سفارشات الوپیک و صفحه جزییات سفارش الوپیک
+* رفع : بروزرسانی گزارشات خطا
+* رفع : حذف Woocommerce Emogrifier و استفاده از  تابع ایمیل ووکامرس
+* رفع : حذف متغیر های بلااستفاده
+* رفع : اضافه کردن ویژگی های لازم در کلاس admin
+* رفع : حل خطاهای صفحه تنظیمات
+* رفع : تغییر موقعیت مکانی پیش فرض نقشه
 
 = 3.1.0 =
-* tested on wordpress 5.9 and woo commerce 5.9
-* New Add docker-compose file
-* Edit Refactor new order function
-* Fix nested condition syntax
-* Fix Show shipping rates and map
+* تست شده با ووکامرس و وردپرس نسخه 5
+* جدید : اضافه کردن فایل docker-compose
+* بروزرسانی : بازنویسی کامل تابع ثبت سفارش جدید
+* رفع : حل مشکل در شرط های تودر تو
+* رفع : حل مشکل امتیاز دهی و نمایش نقشه
 
 = 3.0.0 =
-* New Add Iran province and cities to Woocommerce shipping
-* Edit UI improvements
-* Edit Move Alopeyk from the shipping menu to Woocommerce main setting
-* Edit Map improvements
-* Fix Add Alopeyk to shipping methods in settings
+* جدید : اضافه شدن استان و شهرهای ایران به حمل و نقل ووکامرس
+* بروزرسانی : بهینه سازی ظاهری افزونه
+* بروزرسانی : انتقال منو تنظیمات الوپیک به قسمت تنظیمات اصلی ووکامرس
+* بروزرسانی : بهبود نمایش نقشه
+* رفع : حل مشکل اضافه شدن روش حمل و نقل الوپیک در تنظیمات
 
 = 2.0.0 =
-* New Importing cities and provinces in address forms if not included already
-* New Adding new development environments to dashboard settings
-* New Adding AloPeyk summary widget to the admin dashboard
-* New Adding the ability to apply a discount coupon at the time of submitting orders
-* Edit Adding more detailed information in AloPeyk's Profile page
-* Edit Changing the map engine from CedarMap to ParsiMap
-* Fix Fixing mobile-related issues of the maps
+* جدید : بارگذاری استان و شهر های ایران در فرم آدرس درصورتی که درج نشده باشد
+* جدید : اضافه کردن محیط توسعه در صفحه تنظیمات
+* جدید : اضافه کردن ابزارک خلاصه آمار سفارشات الوپیک در صفحه پیشخوان وردپرس
+* جدید : اضافه کردن قابلیت ثبت کد تخفیف هنگام ساخت سفارش جدید
+* بروزرسانی : اضافه کردن جزییات بیشتر در صفحه حساب کاربری
+* بروزرسانی : تغییر سرویس دهنده نقشه سایت از سیدار مپ به پارسی مپ
+* رفع : حل مشکلات نمایش نقشه در تلفن های همراه
 
 = 1.6.0 =
-* New Adding new transport types
-* New Preventing address map from being shown for virtual products
-* Edit Improving autocomplete functionality
-* Edit Improving map functionality
-* Fix Fixing UI bugs
+* جدید : اضافه کردن یک روش حمل و نقل جدید
+* جدید : جلوگیری از ثبت آدرس و نقشه اگر محصول مجازی باشد
+* بروزرسانی : بروزرسانی تابع پیشنهاد خودکار آدرس
+* بروزرسانی : اصلاح تابع نمایش نقشه
+* رفع : حل مشکلات نمایش نقشه
 
 = 1.5.0 =
-* Edit Changing map engine from Google to Cedar
-* Edit Watching for map movement instead of marker
-* Fix  Fix for using unicode characters while searching addresses
-* Fix  Fixing some RTL support issues
+* بروزرسانی : تغییر سرویس دهنده نقشه از گوگل به سیدار مپ
+* بروزرسانی : بهبود حرکت نقشه با نشانگر
+* رفع : حل مشکل مربوط به وارد کردن یونیکد هنگام جستجوی آدرس
+* رفع : حل مشکلات نمایش به صورت راستچین
 
 = 1.4.0 =
-* New Update plugin from github master source
-* New Manage timezone setting
+* جدید : بروزرسانی افزونه در گیت هاب
+* جدید : اضافه شدن مدیریت ساعت زمانی در صفحه مدیریت
 
 = 1.3.3 =
-* New Add new supported cities
+* جدید : اضافه شدن شهر های جدید تحت پوشش
 
 = 1.3.2 =
-* Fix Admin panel origin map visibility
+* رفع : حل مشکل نمایش نقشه 
 
 = 1.3.1 =
-* Fix Current location CTA UI override issue
+* رفع : حل مشکل نمایش موقعیت مکانی پیش فرض در نقشه
 
 = 1.3.0 =
-* New Adding current position CTA and functionality to destination address maps
-* Fix Loading default and minified version of assets based on WP_DEBUG constant
+* جدید : اضافه کردن موقعیت مکانی پیش فرض مقصد بر اساس سفارش گذشته
+* رفع : حل مشکل نمایش نسخه فشرده استایل و اسکریپت های افزونه
 
 = 1.2.2 =
-* Fix Admin shipping address fields visibility issue
+* رفع : حل مشکل نمایش آدرس و نقشه در قسمت پیشخوان سایت
 
 = 1.2.1 =
-* Fix Check for alternative if WC_Admin_Settings is not present
+* رفع : بررسی جایگزین اگر WC_Admin_Settings وجود ندارد
 
 = 1.2.0 =
-* New Installing a filter for dynamic price (alopeyk_woocommerce_shipping_method/shipping_info)
-* Edit Changing filter name for method availability (alopeyk_woocommerce_shipping_method/is_available)
+* جدید : فعال سازی روش جدید برای محاسبه قیمت به صورت خودکار
+* بروزرسانی : تغییر نام فیلتر برای method availability
 
 = 1.1.1 =
-* Fix Translation refinement
-* Fix Currency change support for Alopeyk order details page
-* Fix Currency change support for credit page
+* رفع : حل مشکلات ترجمه
+* رفع : حل مشکل واحد پولی در صفحه جزییات سفارش
+* رفع : حل مشکل واحد پولی در صفحه اعتبار حساب
 
 = 1.1.0 =
-* Edit Removing limitations from scheduled order options
+* بروزرسانی : رفع محدودیت هنگام ثبت سفارش های زمان بندی شده
 
 = 1.0 =
-* New First release
+* جدید : انتشار اولیه
